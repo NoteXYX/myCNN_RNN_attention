@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-import cPickle
+import pickle
 import random
 def atisfold():
     f = open('data/data_set.pkl')
-    train_set, test_set, dicts = cPickle.load(f)
-    embedding = cPickle.load(open('data/embedding.pkl'))
+    train_set, test_set, dicts = pickle.load(f)
+    embedding = pickle.load(open('data/embedding.pkl'))
     return train_set, test_set,dicts,embedding
 
 def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
@@ -14,7 +14,7 @@ def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
     else:
         sequence_length=forced_sequence_length
     padded_sentences=[]
-    for i in xrange(len(sentences)):
+    for i in range(len(sentences)):
         sentence=sentences[i]
         num_padding=sequence_length-len(sentence)
         if num_padding<0:
