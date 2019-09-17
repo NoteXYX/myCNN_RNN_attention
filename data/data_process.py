@@ -2,12 +2,13 @@
 import numpy as np
 import re
 import pickle
+import dill
 from collections import Counter
 
 
 def getlist(filename):
     
-    with open(filename) as f:
+    with open(filename,'r',encoding='utf-8') as f:
         datalist,taglist=[],[]
         for line in f:
             line=line.strip()
@@ -74,7 +75,7 @@ def get_train_test_dicts(filenames):
             word_list=s.split()
             t_list=tag.split()
 
-            emb=map(lambda x:words2idx[x],word_list)
+            emb=list(map(lambda x:words2idx[x],word_list))
 
 
             begin=-1
@@ -117,8 +118,9 @@ def get_train_test_dicts(filenames):
     train_set = [train_lex, train_y, train_z]
     test_set = [test_lex, test_y, test_z]
     data_set = [train_set, test_set, dicts]
-    with open('data_set.pkl', 'w') as f:
+    with open('data_set.pkl', 'wb') as f:
         pickle.dump(data_set, f)
+        # dill.dump(data_set, f)
     return data_set
 
 
@@ -126,10 +128,10 @@ def get_train_test_dicts(filenames):
 def load_bin_vec(frame,vocab):
     k=0
     word_vecs={}
-    with open(frame) as f:
-        for line in f:
-            word=line.strip().split(' ',1)[0]
-            embeding=line.strip().split(' ',1)[1].split()
+    with open(frame,'r',encoding='utf-8') as f:
+        for line in f.readlines():
+            word=line.strip().split('\t',1)[0]
+            embeding=line.strip().split('\t',1)[1].split()
             if word in vocab:
                 word_vecs[word]=np.asarray(embeding,dtype=np.float32)
             k+=1
@@ -157,13 +159,13 @@ def get_embedding(w2v,words2idx,k=300):
     for (w,idx) in words2idx.items():
         embedding[idx]=w2v[w]
     #embedding[0]=np.asarray(np.random.uniform(-0.25,0.25,k),dtype=np.float32)
-    with open('embedding.pkl','w') as f:
+    with open('embedding.pkl','wb') as f:
         pickle.dump(embedding,f)
     return embedding
 
 
 if __name__ == '__main__':
-    data_folder = ["original_data/trnTweet","original_data/testTweet"]
+    data_folder = ["original_data/keyphrase_dataset/trnTweet","original_data/keyphrase_dataset/testTweet"]
     data_set = get_train_test_dicts(data_folder)
     print ("data_set complete!")
     dicts = data_set[2]
@@ -174,7 +176,7 @@ if __name__ == '__main__':
     print (len(train_set[0]))
 
     #GoogleNews-vectors-negative300.txt为预先训练的词向量 
-    w2v_file='original_data/GoogleNews-vectors-negative300.txt' 
+    w2v_file='D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.txt'
     w2v=load_bin_vec(w2v_file,vocab)
     print ("word2vec loaded")
     add_unknown_words(w2v,vocab)
