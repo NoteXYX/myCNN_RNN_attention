@@ -4,6 +4,7 @@ import re
 import pickle
 import dill
 from collections import Counter
+import gensim
 
 
 def getlist(filename):
@@ -124,8 +125,23 @@ def get_train_test_dicts(filenames):
     return data_set
 
 
-
 def load_bin_vec(frame,vocab):
+    k = 0
+    word_vecs = {}
+    model = gensim.models.KeyedVectors.load_word2vec_format(frame, binary=True)
+    vec_vocab = model.vocab
+    for word in vec_vocab:
+        embedding = model[word]
+        if word in vocab:
+            word_vecs[word] = np.asarray(embedding,dtype=np.float32)
+        k += 1
+        if k % 10000 == 0:
+            print("load_bin_vec %d" % k)
+    return word_vecs
+
+
+
+def load_txt_vec(frame,vocab):
     k=0
     word_vecs={}
     with open(frame,'r',encoding='utf-8') as f:
@@ -176,9 +192,10 @@ if __name__ == '__main__':
     print (len(train_set[0]))
 
     #GoogleNews-vectors-negative300.txt为预先训练的词向量 
-    w2v_file='D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.txt'
-    w2v=load_bin_vec(w2v_file,vocab)
+    w2v_file = 'D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.bin'
+    w2v = load_bin_vec(w2v_file,vocab)
     print ("word2vec loaded")
-    add_unknown_words(w2v,vocab)
+    # add_unknown_words(w2v,vocab)
+    w2v = add_unknown_words(w2v, vocab)
     embedding=get_embedding(w2v,dicts['words2idx'])
     print ("embedding created")

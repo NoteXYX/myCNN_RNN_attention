@@ -18,15 +18,15 @@ def main():
         'win':3,
         'emb_dimension':300,
         'lr':0.1,
-        'lr_decay':0.5,
-        'max_grad_norm':5,
-        'seed':345,
+        'lr_decay':0.5,         #
+        'max_grad_norm':5,      #
+        'seed':345,             #
         'nepochs':150,
         'batch_size':16,
         'keep_prob':0.5,
         'check_dir':'./checkpoints',
-        'display_test_per':3,
-        'lr_decay_per':10
+        'display_test_per':3,   #
+        'lr_decay_per':10       #
     }
 
     train_set,test_set,dic,embedding=load.atisfold()
@@ -109,7 +109,7 @@ def main():
         test_best_e=0
         best_res=None
         test_best_res=None
-        for e in xrange(s['nepochs']):
+        for e in range(s['nepochs']):
             tools.shuffle([train_lex,train_y,train_z],s['seed'])
             t_start=time.time()
             for step,batch in enumerate(tl.iterate.minibatches(train_lex,zip(train_y,train_z),batch_size=s['batch_size'])):

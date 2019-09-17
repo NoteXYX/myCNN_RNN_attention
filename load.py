@@ -3,9 +3,9 @@ import numpy as np
 import pickle
 import random
 def atisfold():
-    f = open('data/data_set.pkl')
+    f = open('data/data_set.pkl', 'rb')
     train_set, test_set, dicts = pickle.load(f)
-    embedding = pickle.load(open('data/embedding.pkl'))
+    embedding = pickle.load(open('data/embedding.pkl', 'rb'))
     return train_set, test_set,dicts,embedding
 
 def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
