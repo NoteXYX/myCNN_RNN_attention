@@ -2,7 +2,6 @@
 import numpy as np
 import re
 import pickle
-import dill
 from collections import Counter
 import gensim
 
@@ -114,7 +113,7 @@ def get_train_test_dicts(filenames):
             z.append(labels_z)
         return lex,y,z
     
-    train_lex, train_y, train_z = get_lex_y(trn_sentence_list,trn_tag_list, words2idx)
+    train_lex, train_y, train_z = get_lex_y(trn_sentence_list,trn_tag_list, words2idx)  # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     test_lex, test_y, test_z = get_lex_y(test_sentence_list,test_tag_list,words2idx)
     train_set = [train_lex, train_y, train_z]
     test_set = [test_lex, test_y, test_z]

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
-import tensorlayer as tl
+# import tensorlayer as tl
 import numpy as np
 import time
 import time

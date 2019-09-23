@@ -2,9 +2,9 @@
 import pickle
 def main():
     
-    f = open('data_set.pkl')
+    f = open('data_set.pkl','rb')
     train_set, test_set, dicts = pickle.load(f)
-    embedding = pickle.load(open('embedding.pkl'))
+    embedding = pickle.load(open('embedding.pkl','rb'))
   
     word2idx=dicts['words2idx']
     labels2idx=dicts['labels2idx']

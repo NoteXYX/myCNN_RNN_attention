@@ -23,7 +23,7 @@ def contextwin(l, win):
     assert win >=1
     l = list(l)
 
-    lpadded = win/2 * [0] + l + win/2 * [0]
+    lpadded = win//2 * [0] + l + win//2 * [0]
     out = [ lpadded[i:i+win] for i in range(len(l)) ]
 
     assert len(out) == len(l)
@@ -39,7 +39,7 @@ def contextwin_2(ls,win):
 
 def getKeyphraseList(l):
     res, now= [], []
-    for i in xrange(len(l)):
+    for i in range(len(l)):
         if l[i] != 0:
             now.append(str(i))
         if l[i] == 0 or i == len(l) - 1:
