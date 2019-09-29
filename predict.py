@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import tensorflow as tf
 # import tensorlayer as tl
 import numpy as np
@@ -11,6 +10,10 @@ import models.model as model
 
 import tools
 import sys
+
+def batch_putin(train, test, start_num=0, batch_size=16):
+    batch = [train[start_num:start_num+batch_size],test[start_num:start_num+batch_size]]
+    return batch
 
 def main():
     s={
@@ -33,8 +36,8 @@ def main():
     
     # load the dataset
     train_set,test_set,dic,embedding=load.atisfold()
-    idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
-    idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
+    idx2label = dict((k,v) for v,k in dic['labels2idx'].items())
+    idx2word  = dict((k,v) for v,k in dic['words2idx'].items())
 
     vocab = set(dic['words2idx'].keys())
     vocsize = len(vocab)
@@ -58,6 +61,7 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
+            keep_prob=s['keep_prob'],
             model_cell='lstm'
         )
 
@@ -70,8 +74,8 @@ def main():
         def dev_step(cwords):
             feed={
                 rnn.input_x:cwords,
-                rnn.keep_prob:1.0,
-                rnn.batch_size:s['batch_size']
+                # rnn.keep_prob:1.0,
+                # rnn.batch_size:s['batch_size']
             }
             fetches=rnn.sz_pred
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
@@ -79,7 +83,11 @@ def main():
         print ("测试结果：")
         predictions_test=[]
         groundtruth_test=[]
-        for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+        start_num = 0
+        steps = len(test_lex) // s['batch_size']
+        # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+        for step in range(steps):
+            batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             x, z = batch
             x = load.pad_sentences(x)
             x = tools.contextwin_2(x, s['win'])

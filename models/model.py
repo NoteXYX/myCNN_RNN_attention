@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import numpy as np
 import tensorflow as tf
 tf.compat.v1.disable_v2_behavior()
@@ -105,11 +104,11 @@ class Model(object):
             label_y = tf.reshape(self.input_y, [-1])    # label_y (?, )
             # label_y = tf.argmax(self.input_y, 1)
             # loss1 = tf.nn.sparse_softmax_cross_entropy_with_logits(sy, label_y)
-            loss1 = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_y, logits=sy)
-            label_z = tf.reshape(self.input_z, [-1])
+            loss1 = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_y, logits=sy)   # loss1 (?, )
+            label_z = tf.reshape(self.input_z, [-1])    # label_z (?, )
             # label_z = tf.argmax(self.input_z, 1)
             # loss2 = tf.nn.softmax_cross_entropy_with_logits(labels=sz, logits=label_z)
-            loss2 = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_z, logits=sz)
+            loss2 = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_z, logits=sz)   # loss2 (?, )
             self.loss=tf.reduce_sum(0.5*loss1+0.5*loss2)/tf.cast(self.batch_size,tf.float32)
 
         tvars=tf.compat.v1.trainable_variables()
