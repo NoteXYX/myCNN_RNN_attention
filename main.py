@@ -6,6 +6,7 @@ import os
 # import random
 import load
 import models.model as model
+import models.mymodel as mymodel
 import tools
 import sys
 
