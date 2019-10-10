@@ -22,7 +22,7 @@ class myModel(object):
                  model='basic_model',
                  nonstatic=False):
         self.batch_size = 16
-        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
+        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_input_x')  # cnn_input_x.shape=(None,None)
         self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
