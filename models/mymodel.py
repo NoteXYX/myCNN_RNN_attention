@@ -22,7 +22,8 @@ class myModel(object):
                  model='basic_model',
                  nonstatic=False):
         self.batch_size = 16
-        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_input_x')  # cnn_input_x.shape=(None,None)
+        self.wordlen = 30
+        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, self.wordlen], name='rnn_input_x')  # cnn_input_x.shape=(None,None)
         self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
@@ -38,12 +39,12 @@ class myModel(object):
                 W = tf.constant(embedding, name='embW', dtype=tf.float32)
             else:
                 W = tf.Variable(embedding, name='embW', dtype=tf.float32)
-            inputs = tf.nn.embedding_lookup(W, self.rnn_input_x)
-            inputs = tf.reshape(inputs, [self.batch_size, -1, cs * de])  # (16,?,900)
+            rnn_inputs = tf.nn.embedding_lookup(W, self.rnn_input_x)
+            rnn_inputs = tf.reshape(rnn_inputs, [self.batch_size, -1, cs * de])  # (16,?,900)
 
         # Droupout embedding input
-        # inputs=tf.nn.dropout(inputs,keep_prob=self.keep_prob,name='drop_inputs')
-        inputs = tf.nn.dropout(inputs, rate=1 - self.keep_prob, name='drop_inputs')
+        # rnn_inputs=tf.nn.dropout(rnn_inputs,keep_prob=self.keep_prob,name='drop_rnn_inputs')
+        rnn_inputs = tf.nn.dropout(rnn_inputs, rate=1 - self.keep_prob, name='drop_rnn_inputs')
 
         # Create the internal multi-layer cell for rnn
         if model_cell == 'rnn':
@@ -67,7 +68,7 @@ class myModel(object):
         with tf.compat.v1.variable_scope('rnn1'):
             self.outputs1, self.state1 = tf.compat.v1.nn.dynamic_rnn(
                 cell=single_cell1,
-                inputs=inputs,
+                inputs=rnn_inputs,
                 initial_state=self.init_state,
                 dtype=tf.float32
             )
