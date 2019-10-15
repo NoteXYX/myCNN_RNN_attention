@@ -129,7 +129,8 @@ def main():
                 input_x=load.pad_sentences(input_x)
                 label_y=load.pad_sentences(label_y)
                 label_z=load.pad_sentences(label_z)
-                cwords=tools.contextwin_2(input_x,s['win'])
+                # cwords=tools.contextwin_2(input_x,s['win'])
+                cwords = input_x
                 loss=train_step(cwords,label_y,label_z)
                 start_num += s['batch_size']
                 print('loss %.2f' % loss,
@@ -152,7 +153,7 @@ def main():
                 batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
                 x,z=batch
                 x=load.pad_sentences(x)
-                x=tools.contextwin_2(x,s['win'])
+                # x=tools.contextwin_2(x,s['win'])
                 predictions_valid.extend(dev_step(x))
                 groundtruth_valid.extend(z)
                 start_num += s['batch_size']
@@ -178,7 +179,7 @@ def main():
                     batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
                     x,z = batch
                     x = load.pad_sentences(x)
-                    x = tools.contextwin_2(x, s['win'])
+                    # x = tools.contextwin_2(x, s['win'])
                     predictions_test.extend(dev_step(x))
                     groundtruth_test.extend(z)
                     start_num += s['batch_size']
@@ -200,7 +201,6 @@ def main():
             lr=sess.run(fetches=rnn.lr)
             print ('learning rate:%f' % lr)
             if lr<1e-5:break
-            # print
 
         print ("Train finished!")
         print ('Valid Best Result: epoch %d:  ' % (best_e),best_res)

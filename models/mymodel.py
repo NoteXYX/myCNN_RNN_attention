@@ -7,24 +7,24 @@ tf.compat.v1.disable_v2_behavior()
 class myModel(object):
 
     def __init__(self,
-                 nh1,
-                 nh2,
-                 ny,
-                 nz,
-                 de,
-                 cs,
-                 lr,
+                 nh1,   # nh1表示第1层rnn神经元的个数
+                 nh2,   # nh2表示第2层rnn神经元的个数
+                 ny,    # ny: 第1层rnn输出的类别数
+                 nz,    # nz: 第2层rnn输出的类别数
+                 de,    # emb_dimension: 300
+                 cs,    # win: 3
+                 lr,    # 学习率
                  lr_decay,
-                 embedding,
+                 embedding, # 词向量
                  max_gradient_norm,
                  keep_prob,
                  model_cell='rnn',
                  model='basic_model',
                  nonstatic=False):
         self.batch_size = 16
-        self.wordlen = 30
-        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, self.wordlen], name='rnn_input_x')  # cnn_input_x.shape=(None,None)
-        self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
+        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
+        self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
+        # self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
         self.keep_prob = keep_prob
@@ -39,8 +39,10 @@ class myModel(object):
                 W = tf.constant(embedding, name='embW', dtype=tf.float32)
             else:
                 W = tf.Variable(embedding, name='embW', dtype=tf.float32)
+            cnn_inputs = tf.nn.embedding_lookup(W, self.cnn_input_x)
+            cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
             rnn_inputs = tf.nn.embedding_lookup(W, self.rnn_input_x)
-            rnn_inputs = tf.reshape(rnn_inputs, [self.batch_size, -1, cs * de])  # (16,?,900)
+            rnn_inputs = tf.reshape(rnn_inputs, [self.batch_size, -1, de])  # (16,?,900)
 
         # Droupout embedding input
         # rnn_inputs=tf.nn.dropout(rnn_inputs,keep_prob=self.keep_prob,name='drop_rnn_inputs')
@@ -48,8 +50,8 @@ class myModel(object):
 
         # Create the internal multi-layer cell for rnn
         if model_cell == 'rnn':
-            single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1)
-            single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2)
+            single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数
+            single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2) # nh2表示神经元的个数
         elif model_cell == 'lstm':
             single_cell1 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh1, state_is_tuple=True)
             single_cell2 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh2, state_is_tuple=True)
