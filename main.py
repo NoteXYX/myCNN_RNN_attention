@@ -75,7 +75,21 @@ def main():
             keep_prob=s['keep_prob'],
             model_cell='lstm'
         )
+    #     my_model = mymodel.myModel(
+    #         # nh1=s['nh1'],
+    #         # nh2=s['nh2'],
+    #         # ny=y_nclasses,
+    #         # nz=z_nclasses,
+    #         de=s['emb_dimension'],
+    #         lr=s['lr'],
+    #         lr_decay=s['lr_decay'],
+    #         embedding=embedding,
+    #         max_gradient_norm=s['max_grad_norm'],
+    #         keep_prob=s['keep_prob'],
+    #         model_cell='lstm'
+    #     )
 
+        # 保存模型
         checkpoint_dir=s['check_dir']
         if not os.path.exists(checkpoint_dir):
             os.mkdir(checkpoint_dir)
@@ -106,7 +120,6 @@ def main():
             return sz_pred
 
         saver=tf.train.Saver(tf.all_variables())
-        # sess.run(tf.initialize_all_variables())
         sess.run(tf.global_variables_initializer())
 
         best_f=-1
@@ -153,7 +166,7 @@ def main():
                 batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
                 x,z=batch
                 x=load.pad_sentences(x)
-                # x=tools.contextwin_2(x,s['win'])
+                x=tools.contextwin_2(x,s['win'])
                 predictions_valid.extend(dev_step(x))
                 groundtruth_valid.extend(z)
                 start_num += s['batch_size']
@@ -179,7 +192,7 @@ def main():
                     batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
                     x,z = batch
                     x = load.pad_sentences(x)
-                    # x = tools.contextwin_2(x, s['win'])
+                    x = tools.contextwin_2(x, s['win'])
                     predictions_test.extend(dev_step(x))
                     groundtruth_test.extend(z)
                     start_num += s['batch_size']
