@@ -22,7 +22,7 @@ class myModel(object):
                  model='basic_model',
                  nonstatic=False):
         self.batch_size = 16
-        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
+        self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, 1], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
         self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
         # self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
@@ -40,7 +40,7 @@ class myModel(object):
             else:
                 W = tf.Variable(embedding, name='embW', dtype=tf.float32)
             cnn_inputs = tf.nn.embedding_lookup(W, self.cnn_input_x)
-            cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
+            cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de])
             rnn_inputs = tf.nn.embedding_lookup(W, self.rnn_input_x)
             rnn_inputs = tf.reshape(rnn_inputs, [self.batch_size, -1, de])  # (16,?,900)
 
