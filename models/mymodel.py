@@ -22,8 +22,7 @@ class myModel(object):
                  nonstatic=False):
         self.batch_size = 16
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, 1], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
-        self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
-        # self.rnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='rnn_input_x')  # rnn_input_x.shape=(None,None,3)
+        self.rnn_ori_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, 1], name='rnn_ori_input_x')  # rnn_input_x.shape=(None,None,1)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
         self.keep_prob = keep_prob
@@ -43,31 +42,30 @@ class myModel(object):
             # rnn_inputs = tf.nn.embedding_lookup(W, self.rnn_input_x)
             # rnn_inputs = tf.reshape(rnn_inputs, [self.batch_size, -1, de])  # (16,?,900)
 
-        # Droupout embedding input
-        # rnn_inputs=tf.nn.dropout(rnn_inputs,keep_prob=self.keep_prob,name='drop_rnn_inputs')
-        # rnn_inputs = tf.nn.dropout(rnn_inputs, rate=1 - self.keep_prob, name='drop_rnn_inputs')
-
-        # Create the internal multi-layer cell for rnn
-        # if model_cell == 'rnn':
-        #     single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数
-        #     single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2) # nh2表示神经元的个数
-        # elif model_cell == 'lstm':
-        #     single_cell1 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh1, state_is_tuple=True)
-        #     single_cell2 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh2, state_is_tuple=True)
-        # elif model_cell == 'gru':
-        #     single_cell1 = tf.nn.rnn_cell.GRUCell(nh1)
-        #     single_cell2 = tf.nn.rnn_cell.GRUCell(nh2)
-        # else:
-        #     raise Exception('model_cell error!')
-        # DropoutWrapper rnn_cell
-        conv = tf.layers.conv2d(
+        self.conv = tf.layers.conv2d(
             inputs=cnn_inputs,
-            filters=5,
+            filters=1,
             kernel_size=[3, 1],
             strides=1,
             padding='same',
             activation=tf.nn.relu
         )
+        rnn_inputs = tf.reshape(self.conv, [self.batch_size, -1, de])  # (16,?,300)
+        # Droupout embedding input
+        rnn_inputs = tf.nn.dropout(rnn_inputs, rate=1 - self.keep_prob, name='drop_rnn_inputs')
+        # Create the internal multi-layer cell for rnn
+        if model_cell == 'rnn':
+            single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数
+            single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2) # nh2表示神经元的个数
+        elif model_cell == 'lstm':
+            single_cell1 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh1, state_is_tuple=True)
+            single_cell2 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh2, state_is_tuple=True)
+        elif model_cell == 'gru':
+            single_cell1 = tf.nn.rnn_cell.GRUCell(nh1)
+            single_cell2 = tf.nn.rnn_cell.GRUCell(nh2)
+        else:
+            raise Exception('model_cell error!')
+        # DropoutWrapper rnn_cell
         # single_cell1 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell1, output_keep_prob=self.keep_prob)
         # single_cell2 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell2, output_keep_prob=self.keep_prob)
         #
