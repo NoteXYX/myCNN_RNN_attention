@@ -18,11 +18,10 @@ class myModel(object):
                  max_gradient_norm,
                  keep_prob,
                  rnn_model_cell='rnn',
-                 model='basic_model',
                  nonstatic=False):
         self.batch_size = 16
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
-        self.rnn_ori_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, 1], name='rnn_ori_input_x')  # rnn_input_x.shape=(None,None,1)
+        self.rnn_ori_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, 1], name='rnn_ori_input_x')  # rnn_ori_input_x.shape=(None,None,1)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
         self.keep_prob = keep_prob

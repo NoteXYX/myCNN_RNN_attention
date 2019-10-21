@@ -2,7 +2,6 @@ import tensorflow as tf
 import load
 import models.mymodel as mymodel
 import tools
-tf.reset_default_graph()
 
 def batch_putin(train, test, start_num=0, batch_size=16):
     batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
@@ -32,7 +31,7 @@ def main():
     # idx2label = dict((k, v) for v, k in dic['labels2idx'].items())
     # idx2word = dict((k, v) for v, k in dic['words2idx'].items())
 
-    vocab = set(dic['words2idx'].keys())
+    # vocab = set(dic['words2idx'].keys())
     # vocsize = len(vocab)
 
     test_lex, test_y, test_z = test_set[0:1000]
