@@ -69,7 +69,7 @@ def main():
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
-            saver.restore(sess, ckpt.model_checkpoint_path)
+            saver.restore(sess, ckpt.all_model_checkpoint_paths[0])
 
         def dev_step(cwords):
             feed={
@@ -90,7 +90,7 @@ def main():
             batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             x, z = batch
             x = load.pad_sentences(x)
-            # x = tools.contextwin_2(x, s['win'])
+            x = tools.contextwin_2(x, s['win'])
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
 

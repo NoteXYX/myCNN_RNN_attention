@@ -21,7 +21,7 @@ class myModel(object):
                  nonstatic=False):
         self.batch_size = 16
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
-        self.rnn_ori_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, 1], name='rnn_ori_input_x')  # rnn_ori_input_x.shape=(None,None,1)
+        self.rnn_ori_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_ori_input_x')  # rnn_ori_input_x.shape=(None,None,1)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
         self.keep_prob = keep_prob
@@ -39,7 +39,7 @@ class myModel(object):
             cnn_inputs = tf.nn.embedding_lookup(W, self.cnn_input_x)
             cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
             rnn_ori_inputs = tf.nn.embedding_lookup(W, self.rnn_ori_input_x)
-            rnn_ori_inputs = tf.reshape(rnn_ori_inputs, [self.batch_size, -1, de])  # (16,?,900)
+            rnn_ori_inputs = tf.reshape(rnn_ori_inputs, [self.batch_size, -1, de])  # (16,?,300)
 
         self.conv = tf.layers.conv2d(
             inputs=cnn_inputs,
@@ -47,11 +47,12 @@ class myModel(object):
             kernel_size=[3, 1],
             strides=1,
             padding='same',
-            activation=tf.nn.relu
-        )
+            activation=tf.nn.relu)
         rnn_conv_inputs = tf.reshape(self.conv, [self.batch_size, -1, de])  # (16,?,300)
         # Droupout embedding input
         rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')
+        rnn_ori_inputs = tf.nn.dropout(rnn_ori_inputs, rate=1 - self.keep_prob, name='drop_rnn_ori_inputs')
+        # rnn_inputs = tf.concat([rnn_conv_inputs, rnn_ori_inputs], 1)
         # Create the internal multi-layer cell for rnn
         if rnn_model_cell == 'rnn':
             single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数
@@ -65,26 +66,41 @@ class myModel(object):
         else:
             raise Exception('model_cell error!')
         # DropoutWrapper rnn_cell
-        single_cell1 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell1, output_keep_prob=self.keep_prob)
-        single_cell2 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell2, output_keep_prob=self.keep_prob)
-        #
-        self.init_state = single_cell1.zero_state(self.batch_size, dtype=tf.float32)
+        self.single_cell1 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell1, output_keep_prob=self.keep_prob)
+        self.single_cell2 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell2, output_keep_prob=self.keep_prob)
+        self.rnn_ori_init_state = self.single_cell1.zero_state(self.batch_size, dtype=tf.float32)
 
         # RNN1
         with tf.compat.v1.variable_scope('rnn1'):
-            self.outputs1, self.state1 = tf.compat.v1.nn.dynamic_rnn(
-                cell=single_cell1,
+            # rnn_conv_1
+            self.rnn_conv_outputs1, self.rnn_conv_state1 = tf.compat.v1.nn.dynamic_rnn(
+                cell=self.single_cell1,
                 inputs=rnn_conv_inputs,
-                initial_state=self.init_state,
+                initial_state=self.rnn_ori_init_state,
+                dtype=tf.float32
+            )
+            # rnn_ori_1
+            self.rnn_ori_outputs1, self.rnn_ori_state1 = tf.compat.v1.nn.dynamic_rnn(
+                cell=self.single_cell1,
+                inputs=rnn_ori_inputs,
+                initial_state=self.rnn_conv_state1,
                 dtype=tf.float32
             )
 
         # RNN2
         with tf.compat.v1.variable_scope('rnn2'):
-            self.outputs2, self.state2 = tf.compat.v1.nn.dynamic_rnn(
-                cell=single_cell2,
-                inputs=self.outputs1,
-                initial_state=self.init_state,
+            # rnn_conv_2
+            self.rnn_conv_outputs2, self.rnn_conv_state2 = tf.compat.v1.nn.dynamic_rnn(
+                cell=self.single_cell2,
+                inputs=self.rnn_conv_outputs1,
+                initial_state=self.rnn_ori_init_state,
+                dtype=tf.float32
+            )
+            # rnn_ori_2
+            self.rnn_ori_outputs2, self.rnn_ori_state2 = tf.compat.v1.nn.dynamic_rnn(
+                cell=self.single_cell2,
+                inputs=self.rnn_ori_outputs1,
+                initial_state=self.rnn_conv_state2,
                 dtype=tf.float32
             )
 
@@ -92,15 +108,15 @@ class myModel(object):
         with tf.compat.v1.variable_scope('output_sy'):
             w_y = tf.compat.v1.get_variable("softmax_w_y", [nh1, ny])  # w_y (300, 2)
             b_y = tf.compat.v1.get_variable("softmax_b_y", [ny])  # b_y (2, )
-            outputs1 = tf.reshape(self.outputs1, [-1, nh1])  # outputs1 (?, 300)
-            sy = tf.compat.v1.nn.xw_plus_b(outputs1, w_y, b_y)  # sy (?, 2)
+            rnn_ori_outputs1 = tf.reshape(self.rnn_ori_outputs1, [-1, nh1])  # rnn_ori_outputs1 (?, 300)
+            sy = tf.compat.v1.nn.xw_plus_b(rnn_ori_outputs1, w_y, b_y)  # sy (?, 2)
             self.sy_pred = tf.reshape(tf.argmax(sy, 1), [self.batch_size, -1])  # sy_pred (16, ?)
         # outputs_z
         with tf.compat.v1.variable_scope('output_sz'):
             w_z = tf.get_variable("softmax_w_z", [nh2, nz])  # w_z (300, 5)
             b_z = tf.get_variable("softmax_b_z", [nz])  # b_z (5, )
-            outputs2 = tf.reshape(self.outputs2, [-1, nh2])  # outputs2 (?, 300)
-            sz = tf.compat.v1.nn.xw_plus_b(outputs2, w_z, b_z)  # sz (?, 5)
+            rnn_ori_outputs2 = tf.reshape(self.rnn_ori_outputs2, [-1, nh2])  # rnn_ori_outputs2 (?, 300)
+            sz = tf.compat.v1.nn.xw_plus_b(rnn_ori_outputs2, w_z, b_z)  # sz (?, 5)
             self.sz_pred = tf.reshape(tf.argmax(sz, 1), [self.batch_size, -1])  # sz_pred (16, ?)
         # loss
         with tf.compat.v1.variable_scope('loss'):

@@ -52,6 +52,7 @@ def main():
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
+            rnn_model_cell='lstm'
         )
 
 
@@ -59,7 +60,7 @@ def main():
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
-            saver.restore(sess, ckpt.model_checkpoint_path)
+            saver.restore(sess, ckpt.all_model_checkpoint_paths[0])
 
         def dev_step(cwords):
             feed = {
