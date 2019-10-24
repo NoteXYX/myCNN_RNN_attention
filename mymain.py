@@ -28,11 +28,11 @@ def main():
         'nepochs': 35,
         'batch_size': 16,
         'keep_prob': 0.5,
-        'check_dir': './mycheckpoints1',
+        'check_dir': './mycheckpoints_CNN+ori',
         'display_test_per': 3,  #
         'lr_decay_per': 10  #
     }
-    logfile = open('./mycheckpoints/log.txt', 'w', encoding='utf-8')
+    logfile = open('./mycheckpoints_CNN+ori/log.txt', 'w', encoding='utf-8')
     train_set, test_set, dic, embedding = load.atisfold()
 
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
@@ -91,6 +91,7 @@ def main():
                 my_model.rnn_input_y: label_y,
                 my_model.rnn_input_z: label_z
             }
+            my_model.keep_prob = s['keep_prob']
             # fetches = [rnn.loss, rnn.train_op]
             fetches = [my_model.loss, my_model.train_op]
             loss, _ = sess.run(fetches=fetches, feed_dict=feed)
@@ -108,7 +109,7 @@ def main():
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
 
-        saver = tf.train.Saver(tf.all_variables())
+        saver = tf.train.Saver(tf.all_variables(), max_to_keep=15)
         sess.run(tf.global_variables_initializer())
         best_f = -1
         best_e = 0
@@ -170,13 +171,13 @@ def main():
                 best_e = e
                 best_res = res_valid
                 print('\nVALID new best:', res_valid)
-                logfile.write('\nVALID new best: ' + res_valid)
+                logfile.write('\nVALID new best: ' + str(res_valid))
                 path = saver.save(sess=sess, save_path=checkpoint_prefix, global_step=e)
                 print("Save model checkpoint to {}".format(path))
                 logfile.write("\nSave model checkpoint to {}\n".format(path))
             else:
                 print('\nVALID new curr:', res_valid)
-                logfile.write('\nVALID new curr: ' + res_valid)
+                logfile.write('\nVALID new curr: ' + str(res_valid))
 
             # TEST
             start_num = 0
@@ -199,10 +200,10 @@ def main():
                     test_best_e = e
                     test_best_res = res_test
                     print('TEST new best:', res_test)
-                    logfile.write('\nTEST new best: ' + res_test)
+                    logfile.write('\nTEST new best: ' + str(res_test))
                 else:
                     print('TEST new curr:', res_test)
-                    logfile.write('\nTEST new curr: ' + res_test)
+                    logfile.write('\nTEST new curr: ' + str(res_test))
 
             # learning rate decay if no improvement in 10 epochs
             if e - best_e > s['lr_decay_per']:

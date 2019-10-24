@@ -1,6 +1,7 @@
 import tensorflow as tf
 import load
 import models.mymodel as mymodel
+import models.mymodel1 as mymodel1
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -21,7 +22,7 @@ def main():
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 1.0,
-        'check_dir': './mycheckpoints',
+        'check_dir': './mycheckpointsOLD',
         'display_test_per': 5,
         'lr_decay_per': 10
     }
@@ -60,11 +61,13 @@ def main():
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
-            saver.restore(sess, ckpt.all_model_checkpoint_paths[0])
+            print(ckpt.all_model_checkpoint_paths[4])
+            saver.restore(sess, ckpt.all_model_checkpoint_paths[4])
 
         def dev_step(cwords):
             feed = {
                 my_model.cnn_input_x: cwords,
+                my_model.rnn_ori_input_x: cwords
                 # rnn.keep_prob:1.0,
                 # rnn.batch_size:s['batch_size']
             }
