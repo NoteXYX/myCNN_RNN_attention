@@ -42,7 +42,10 @@ def main():
     vocab = set(dic['words2idx'].keys())
     vocsize = len(vocab)
 
-    test_lex,  test_y, test_z  = test_set[0:1000]
+    test_lex,  test_y, test_z  = test_set
+    test_lex = test_lex[:2000]
+    test_y = test_y[:2000]
+    test_z = test_z[:2000]
 
     y_nclasses = 2
     z_nclasses = 5
@@ -69,8 +72,8 @@ def main():
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
-            print(ckpt.all_model_checkpoint_paths[3])
-            saver.restore(sess, ckpt.all_model_checkpoint_paths[3])
+            print(ckpt.model_checkpoint_path)
+            saver.restore(sess, ckpt.model_checkpoint_path)
 
         def dev_step(cwords):
             feed={
@@ -94,6 +97,7 @@ def main():
             x = tools.contextwin_2(x, s['win'])
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
+            start_num += s['batch_size']
 
         res_test = tools.conlleval(predictions_test, groundtruth_test, '')
 
