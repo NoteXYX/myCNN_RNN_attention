@@ -6,6 +6,7 @@ import os
 import load
 import models.model as model
 import models.mymodel as mymodel
+import models.mymodel1 as mymodel1
 import tools
 import sys
 
@@ -25,16 +26,15 @@ def main():
         'lr_decay': 0.5,  #
         'max_grad_norm': 5,  #
         'seed': 345,  #
-        'nepochs': 35,
+        'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 0.5,
-        'check_dir': './mycheckpoints_CNN+ori',
+        'check_dir': './mycheckpoints_CNN',
         'display_test_per': 3,  #
         'lr_decay_per': 10  #
     }
-    logfile = open('./mycheckpoints_CNN+ori/log.txt', 'w', encoding='utf-8')
-    train_set, test_set, dic, embedding = load.atisfold()
 
+    train_set, test_set, dic, embedding = load.atisfold()
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
     # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
 
@@ -45,7 +45,7 @@ def main():
     # valid_lex, valid_y, valid_z = train_lex[:100], train_y[:100], train_z[:100]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex, test_y, test_z = test_set
-
+    logfile = open(str(s['check_dir']) + '/log.txt', 'w', encoding='utf-8')
     print('len(train_data) {}'.format(len(train_lex)))
     print('len(valid_data) {}'.format(len(valid_lex)))
     print('len(test_data) {}'.format(len(test_lex)))
@@ -64,7 +64,7 @@ def main():
     nsentences = len(train_lex)
 
     with tf.compat.v1.Session() as sess:
-        my_model = mymodel.myModel(
+        my_model = mymodel1.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
             ny=y_nclasses,
@@ -87,7 +87,7 @@ def main():
         def train_step(cwords, label_y, label_z):
             feed = {
                 my_model.cnn_input_x: cwords,
-                my_model.rnn_ori_input_x: cwords,
+                # my_model.rnn_ori_input_x: cwords,
                 my_model.rnn_input_y: label_y,
                 my_model.rnn_input_z: label_z
             }
@@ -100,7 +100,7 @@ def main():
         def dev_step(cwords):
             feed={
                 my_model.cnn_input_x:cwords,
-                my_model.rnn_ori_input_x: cwords
+                # my_model.rnn_ori_input_x: cwords
                 # rnn.keep_prob:1.0,
                 # rnn.batch_size:s['batch_size']
             }
