@@ -34,11 +34,11 @@ def main():
 
     # vocab = set(dic['words2idx'].keys())
     # vocsize = len(vocab)
-
+    logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
-    test_lex = test_lex[:2000]
-    test_y = test_y[:2000]
-    test_z = test_z[:2000]
+    # test_lex = test_lex[:2000]
+    # test_y = test_y[:2000]
+    # test_z = test_z[:2000]
 
     y_nclasses = 2
     z_nclasses = 5
@@ -66,6 +66,7 @@ def main():
         if ckpt and ckpt.model_checkpoint_path:
             # print(ckpt.all_model_checkpoint_paths[4])
             print(ckpt.model_checkpoint_path)
+            logfile.write(str(ckpt.model_checkpoint_path) + '\n')
             saver.restore(sess, ckpt.model_checkpoint_path)
 
         def dev_step(cwords):
@@ -80,6 +81,7 @@ def main():
             return sz_pred
 
         print("测试结果：")
+        logfile.write("测试结果：\n")
         predictions_test = []
         groundtruth_test = []
         start_num = 0
@@ -97,7 +99,8 @@ def main():
         res_test = tools.conlleval(predictions_test, groundtruth_test, '')
 
         print(res_test)
-
+        logfile.write(str(res_test))
+    logfile.close()
 
 if __name__ == '__main__':
     main()

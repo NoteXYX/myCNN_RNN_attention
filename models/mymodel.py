@@ -21,7 +21,6 @@ class myModel(object):
                  nonstatic=False):
         self.batch_size = 16
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
-        self.rnn_ori_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='rnn_ori_input_x')  # rnn_ori_input_x.shape=(None,None,1)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
         self.keep_prob = keep_prob
@@ -38,8 +37,7 @@ class myModel(object):
                 W = tf.Variable(embedding, name='embW', dtype=tf.float32)
             cnn_inputs = tf.nn.embedding_lookup(W, self.cnn_input_x)
             cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
-            rnn_ori_inputs = tf.nn.embedding_lookup(W, self.rnn_ori_input_x)
-            rnn_ori_inputs = tf.reshape(rnn_ori_inputs, [self.batch_size, -1, de])  # (16,?,300)
+            rnn_ori_inputs = cnn_inputs
 
         self.conv = tf.layers.conv2d(
             inputs=cnn_inputs,

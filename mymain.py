@@ -217,8 +217,8 @@ def main():
         print('Valid Best Result: epoch %d:  ' % (best_e), best_res)
         print('Test Best Result: epoch %d:  ' % (test_best_e), test_best_res)
         logfile.write("Train finished!\n")
-        logfile.write('Valid Best Result: epoch %d:   ' % (best_e) + best_res)
-        logfile.write('\nTest Best Result: epoch %d:   ' % (test_best_e) + test_best_res)
+        logfile.write('Valid Best Result: epoch %d:   ' % (best_e) + str(best_res))
+        logfile.write('\nTest Best Result: epoch %d:   ' % (test_best_e) + str(test_best_res))
         logfile.close()
 
 

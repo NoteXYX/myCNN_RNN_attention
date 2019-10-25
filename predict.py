@@ -43,9 +43,9 @@ def main():
     vocsize = len(vocab)
 
     test_lex,  test_y, test_z  = test_set
-    test_lex = test_lex[:2000]
-    test_y = test_y[:2000]
-    test_z = test_z[:2000]
+    # test_lex = test_lex[:2000]
+    # test_y = test_y[:2000]
+    # test_z = test_z[:2000]
 
     y_nclasses = 2
     z_nclasses = 5
