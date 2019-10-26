@@ -6,7 +6,7 @@ import os
 # import random
 import load
 import models.model as model
-import models.mymodel as mymodel
+import models.mymodel_CNN_ori as mymodel
 import tools
 import sys
 

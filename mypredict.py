@@ -1,7 +1,7 @@
 import tensorflow as tf
 import load
-import models.mymodel as mymodel
-import models.mymodel1 as mymodel1
+import models.mymodel_CNN_ori as mymodel
+import models.mymodel_CNN_LSTM as mymodel1
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -36,15 +36,14 @@ def main():
     # vocsize = len(vocab)
     logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
-    # test_lex = test_lex[:2000]
-    # test_y = test_y[:2000]
-    # test_z = test_z[:2000]
+    test_lex = test_lex[:1000]
+    test_y = test_y[:1000]
+    test_z = test_z[:1000]
 
     y_nclasses = 2
     z_nclasses = 5
 
     with tf.Session() as sess:
-
         my_model = mymodel1.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],

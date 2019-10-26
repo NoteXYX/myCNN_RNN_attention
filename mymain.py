@@ -5,8 +5,8 @@ import os
 # import random
 import load
 import models.model as model
-import models.mymodel as mymodel
-import models.mymodel1 as mymodel1
+import models.mymodel_CNN_ori as mymodel
+import models.mymodel_multi_CNN as mymodelmultiCNN
 import tools
 import sys
 
@@ -29,7 +29,7 @@ def main():
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 0.5,
-        'check_dir': './mycheckpoints_CNN',
+        'check_dir': './mycheckpoints_multi_CNN',
         'display_test_per': 3,  #
         'lr_decay_per': 10  #
     }
@@ -45,7 +45,7 @@ def main():
     # valid_lex, valid_y, valid_z = train_lex[:100], train_y[:100], train_z[:100]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex, test_y, test_z = test_set
-    logfile = open(str(s['check_dir']) + '/log.txt', 'w', encoding='utf-8')
+    logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print('len(train_data) {}'.format(len(train_lex)))
     print('len(valid_data) {}'.format(len(valid_lex)))
     print('len(test_data) {}'.format(len(test_lex)))
@@ -64,7 +64,7 @@ def main():
     nsentences = len(train_lex)
 
     with tf.compat.v1.Session() as sess:
-        my_model = mymodel1.myModel(
+        my_model = mymodelmultiCNN.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
             ny=y_nclasses,

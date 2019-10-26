@@ -1,15 +1,7 @@
 import tensorflow as tf
-# import tensorlayer as tl
-import numpy as np
-import time
-import time
-import os
-import random
 import load
 import models.model as model
-
 import tools
-import sys
 
 def batch_putin(train, test, start_num=0, batch_size=16):
     batch = [train[start_num:start_num+batch_size],test[start_num:start_num+batch_size]]
@@ -43,10 +35,10 @@ def main():
     vocsize = len(vocab)
 
     test_lex,  test_y, test_z  = test_set
-    # test_lex = test_lex[:2000]
-    # test_y = test_y[:2000]
-    # test_z = test_z[:2000]
-
+    test_lex = test_lex[:1000]
+    test_y = test_y[:1000]
+    test_z = test_z[:1000]
+    logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     y_nclasses = 2
     z_nclasses = 5
 
@@ -73,6 +65,7 @@ def main():
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
             print(ckpt.model_checkpoint_path)
+            logfile.write(str(ckpt.model_checkpoint_path) + '\n')
             saver.restore(sess, ckpt.model_checkpoint_path)
 
         def dev_step(cwords):
@@ -85,6 +78,7 @@ def main():
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
         print ("测试结果：")
+        logfile.write("测试结果：\n")
         predictions_test=[]
         groundtruth_test=[]
         start_num = 0
@@ -102,6 +96,8 @@ def main():
         res_test = tools.conlleval(predictions_test, groundtruth_test, '')
 
         print (res_test)
+        logfile.write(str(res_test))
+    logfile.close()
 
 if __name__ == '__main__':
     main()
