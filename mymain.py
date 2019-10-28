@@ -4,9 +4,10 @@ import time
 import os
 # import random
 import load
-import models.model as model
-import models.mymodel_CNN_ori as mymodel
-import models.mymodel_multi_CNN as mymodelmultiCNN
+# import models.model as model
+# import models.mymodel_CNN_ori as mymodel
+# import models.mymodel_multi_CNN as mymodelmultiCNN
+import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
 import tools
 import sys
 
@@ -18,8 +19,10 @@ def batch_putin(train, test, start_num=0, batch_size=16):
 
 def main():
     s = {
-        'nh1': 300,
-        'nh2': 300,
+        # 'nh1': 300,
+        # 'nh2': 300,
+        'nh1': 400,
+        'nh2': 400,
         'win': 3,
         'emb_dimension': 300,
         'lr': 0.1,
@@ -29,7 +32,7 @@ def main():
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 0.5,
-        'check_dir': './mycheckpoints_multi_CNN',
+        'check_dir': './mycheckpoints_multi_CNN_NEW',
         'display_test_per': 3,  #
         'lr_decay_per': 10  #
     }
@@ -64,7 +67,7 @@ def main():
     nsentences = len(train_lex)
 
     with tf.compat.v1.Session() as sess:
-        my_model = mymodelmultiCNN.myModel(
+        my_model = mymodelmultiCNN_NEW.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
             ny=y_nclasses,
