@@ -3,10 +3,16 @@ import numpy as np
 import pickle
 import random
 def atisfold():
-    f = open('data/data_set.pkl', 'rb')
-    train_set, test_set, dicts = pickle.load(f)
-    embedding = pickle.load(open('data/embedding.pkl', 'rb'))
-    return train_set, test_set, dicts, embedding
+    f_data_set = open('data/data_set.pkl', 'rb')
+    f_emb = open('data/embedding.pkl', 'rb')
+    f_idx2word = open('data/char_embedding.pkl', 'rb')
+    train_set, test_set, dicts = pickle.load(f_data_set)
+    embedding = pickle.load(f_emb)
+    idx2word = pickle.load(f_idx2word)
+    f_data_set.close()
+    f_emb.close()
+    f_idx2word.close()
+    return train_set, test_set, dicts, embedding, idx2word
 
 def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
     if forced_sequence_length is None:

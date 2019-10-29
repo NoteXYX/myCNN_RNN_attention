@@ -19,19 +19,15 @@ def getlist(filename):
 def get_dict(filenames):
     trnTweet,testTweet=filenames
     sentence_list=getlist(trnTweet)[0]+getlist(testTweet)[0]
-
-    words2idx=1,{}
     words=[]
-
     for sentence in sentence_list:
         word_list=sentence.split()
         words.extend(word_list)
-
     word_counts=Counter(words)
     words2idx={word[0]:i+1 for i,word in enumerate(word_counts.most_common())}
-
+    idx2words = {v: k for (k,v) in words2idx.items()}
     labels2idx = {'O': 0, 'B': 1, 'I': 2, 'E': 3, 'S': 4}
-    dicts = {'words2idx': words2idx, 'labels2idx': labels2idx}
+    dicts = {'words2idx': words2idx, 'labels2idx': labels2idx, 'idx2words': idx2words}
 
     return dicts
 
@@ -247,11 +243,17 @@ if __name__ == '__main__':
     # print ("embedding created")
 
     data_folder = ["original_data/keyphrase_dataset/trnTweet", "original_data/keyphrase_dataset/testTweet"]
-    char_dicts = get_chardict(data_folder)
-    chars2idx = char_dicts['chars2idx']
-    char_vocab = set(chars2idx.keys())
-    print("total num chars: " + str(len(char_vocab)))
-    char2vec = get_char2vec()   #仅有A-Z和a-z
-    char2vec = add_unknown_chars(char2vec, char_vocab)
-    char_vecs = get_char_embedding(char2vec, chars2idx)
-    print("char_embedding created!")
+    # char_dicts = get_chardict(data_folder)
+    # chars2idx = char_dicts['chars2idx']
+    # char_vocab = set(chars2idx.keys())
+    # print("total num chars: " + str(len(char_vocab)))
+    # char2vec = get_char2vec()   #仅有A-Z和a-z
+    # char2vec = add_unknown_chars(char2vec, char_vocab)
+    # char_vecs = get_char_embedding(char2vec, chars2idx)
+    # print("char_embedding created!")
+    idx2words = get_dict(data_folder)['idx2words']
+    with open('idx2words.pkl', 'wb') as f:
+        pickle.dump(idx2words, f)
+    with open('idx2words.pkl', 'rb') as f:
+        d = pickle.load(f)
+    print(d)

@@ -1,13 +1,8 @@
 import tensorflow as tf
-# import numpy as np
 import time
 import os
-# import random
 import load
-# import models.model as model
-# import models.mymodel_CNN_ori as mymodel
-# import models.mymodel_multi_CNN as mymodelmultiCNN
-import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
+import models.charCNN_LSTM_attention as charCNN_LSTM_attention
 import tools
 import sys
 
@@ -19,10 +14,8 @@ def batch_putin(train, test, start_num=0, batch_size=16):
 
 def main():
     s = {
-        # 'nh1': 300,
-        # 'nh2': 300,
-        'nh1': 400,
-        'nh2': 400,
+        'nh1': 330,
+        'nh2': 330,
         'win': 3,
         'emb_dimension': 300,
         'lr': 0.1,
@@ -67,7 +60,7 @@ def main():
     nsentences = len(train_lex)
 
     with tf.compat.v1.Session() as sess:
-        my_model = mymodelmultiCNN_NEW.myModel(
+        my_model = charCNN_LSTM_attention.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
             ny=y_nclasses,
@@ -75,10 +68,12 @@ def main():
             de=s['emb_dimension'],
             lr=s['lr'],
             lr_decay=s['lr_decay'],
-            embedding=embedding,
+            word_embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
+            idx2word=idx2word,
             rnn_model_cell='lstm'
+
         )
 
         # 保存模型
