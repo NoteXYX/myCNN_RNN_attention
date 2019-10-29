@@ -3,6 +3,7 @@ import re
 import pickle
 from collections import Counter
 import gensim
+import random
 
 
 def getlist(filename):
@@ -13,10 +14,16 @@ def getlist(filename):
             line=line.strip()
             datalist.append(line.split('\t')[0])
             taglist.append(line.split('\t')[1])
-            
-   
-    
     return datalist,taglist
+
+def get_charlist(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        charlist = []
+        for line in f:
+            line = line.strip()
+            sentence = line.split('\t')[0]
+            wordlist = sentence.split()
+
 
 #build vocabulary
 def get_dict(filenames):
@@ -177,23 +184,36 @@ def get_embedding(w2v,words2idx,k=300):
         pickle.dump(embedding,f)
     return embedding
 
+def get_char_embedding(filename, k=30):
+    trn_file, test_file = filename
+    upper = [chr(i) for i in range(ord("A"), ord("Z") + 1)]
+    lower = [chr(i) for i in range(ord("a"), ord("z") + 1)]
+    alphabet = upper + lower
+    letter2index = {}
+    for i, letter in enumerate(alphabet):
+        letter2index[letter] = i
+    char_embedding = np.zeros((len(letter2index), k), dtype=np.float32)
+    for w, idx in letter2index.items():
+        char_embedding[idx] = np.asarray(np.random.uniform(-1*(3.0/k)**0.5,(3.0/k)**0.5,k),dtype=np.float32)
+    return char_embedding
 
 if __name__ == '__main__':
-    data_folder = ["original_data/keyphrase_dataset/trnTweet","original_data/keyphrase_dataset/testTweet"]
-    data_set = get_train_test_dicts(data_folder)
-    print ("data_set complete!")
-    dicts = data_set[2]
-    vocab = set(dicts['words2idx'].keys())
-    print ("total num words: " + str(len(vocab)))
-    print ("dataset created!")
-    train_set, test_set, dicts=data_set
-    print (len(train_set[0]))
-
-    #GoogleNews-vectors-negative300.txt为预先训练的词向量 
-    w2v_file = 'D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.bin'
-    w2v = load_bin_vec(w2v_file,vocab)
-    print ("word2vec loaded")
-    # add_unknown_words(w2v,vocab)
-    w2v = add_unknown_words(w2v, vocab)
-    embedding=get_embedding(w2v,dicts['words2idx'])
-    print ("embedding created")
+    # data_folder = ["original_data/keyphrase_dataset/trnTweet","original_data/keyphrase_dataset/testTweet"]
+    # data_set = get_train_test_dicts(data_folder)
+    # print ("data_set complete!")
+    # dicts = data_set[2]
+    # vocab = set(dicts['words2idx'].keys())
+    # print ("total num words: " + str(len(vocab)))
+    # print ("dataset created!")
+    # train_set, test_set, dicts=data_set
+    # print (len(train_set[0]))
+    #
+    # #GoogleNews-vectors-negative300.txt为预先训练的词向量
+    # w2v_file = 'D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.bin'
+    # w2v = load_bin_vec(w2v_file,vocab)
+    # print ("word2vec loaded")
+    # # add_unknown_words(w2v,vocab)
+    # w2v = add_unknown_words(w2v, vocab)
+    # embedding=get_embedding(w2v,dicts['words2idx'])
+    # print ("embedding created")
+    get_char_embedding()
