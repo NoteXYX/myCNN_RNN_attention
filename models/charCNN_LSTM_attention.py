@@ -23,6 +23,7 @@ class myModel(object):
                  nonstatic=False):
         self.batch_size = 16
         self.input_word_idx = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='input_word_idx')  # input_word_idx.shape=(None,None)  (16,每段文本单词数)
+        self.input_char_idx = tf.compat.v1.placeholder(tf.int32, shape=[None, None,None], name='input_char_idx')  # input_word_idx.shape=(None,None)  (16,每段文本单词数, 每个单词字母数)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
         self.keep_prob = keep_prob
