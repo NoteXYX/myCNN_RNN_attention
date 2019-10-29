@@ -4,13 +4,25 @@ import os
 import load
 import models.charCNN_LSTM_attention as charCNN_LSTM_attention
 import tools
-import sys
 
 
 def batch_putin(train, test, start_num=0, batch_size=16):
     batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
     return batch
 
+def get_charidx(lex, idx2word, char2idx):
+    char_idx = []
+    for wordidx_list in lex:
+        sentence_charidx = []
+        for wordidx in wordidx_list:
+            word_charidx = []
+            cur_word = idx2word[wordidx]
+            for char in cur_word:
+                cur_charidx = char2idx[char]
+                word_charidx.append(cur_charidx)
+            sentence_charidx.append(word_charidx)
+        char_idx.append(sentence_charidx)
+    return char_idx
 
 def main():
     s = {
@@ -25,22 +37,19 @@ def main():
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 0.5,
-        'check_dir': './mycheckpoints_multi_CNN_NEW',
+        'check_dir': './mycheckpoints_charCNN_LSTM_attention',
         'display_test_per': 3,  #
         'lr_decay_per': 10  #
     }
 
-    train_set, test_set, dic, embedding, idx2word = load.atisfold()
-    # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
-    # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
-
+    train_set, test_set, dic, word_embedding, idx2word, char_embedding = load.atisfold()
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     tr = int(len(train_lex) * 0.9)
-    valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
-    # valid_lex, valid_y, valid_z = train_lex[:100], train_y[:100], train_z[:100]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
+    valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
     test_lex, test_y, test_z = test_set
+
     logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print('len(train_data) {}'.format(len(train_lex)))
     print('len(valid_data) {}'.format(len(valid_lex)))
@@ -68,7 +77,7 @@ def main():
             de=s['emb_dimension'],
             lr=s['lr'],
             lr_decay=s['lr_decay'],
-            word_embedding=embedding,
+            word_embedding=word_embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
             idx2word=idx2word,

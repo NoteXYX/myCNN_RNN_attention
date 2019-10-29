@@ -243,17 +243,22 @@ if __name__ == '__main__':
     # print ("embedding created")
 
     data_folder = ["original_data/keyphrase_dataset/trnTweet", "original_data/keyphrase_dataset/testTweet"]
-    # char_dicts = get_chardict(data_folder)
-    # chars2idx = char_dicts['chars2idx']
+    char_dicts = get_chardict(data_folder)
+    chars2idx = char_dicts['chars2idx']
+    with open('char2idx.pkl', 'wb') as f:
+        pickle.dump(chars2idx, f)
+    with open('char2idx.pkl', 'rb') as f:
+        d = pickle.load(f)
+    print(d)
     # char_vocab = set(chars2idx.keys())
     # print("total num chars: " + str(len(char_vocab)))
     # char2vec = get_char2vec()   #仅有A-Z和a-z
     # char2vec = add_unknown_chars(char2vec, char_vocab)
     # char_vecs = get_char_embedding(char2vec, chars2idx)
     # print("char_embedding created!")
-    idx2words = get_dict(data_folder)['idx2words']
-    with open('idx2words.pkl', 'wb') as f:
-        pickle.dump(idx2words, f)
-    with open('idx2words.pkl', 'rb') as f:
-        d = pickle.load(f)
-    print(d)
+    # idx2words = get_dict(data_folder)['idx2words']
+    # with open('idx2words.pkl', 'wb') as f:
+    #     pickle.dump(idx2words, f)
+    # with open('idx2words.pkl', 'rb') as f:
+    #     d = pickle.load(f)
+    # print(d)
