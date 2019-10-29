@@ -42,14 +42,14 @@ def main():
         'lr_decay_per': 10  #
     }
 
-    train_set, test_set, dic, word_embedding, idx2word, char_embedding = load.atisfold()
+    train_set, test_set, dic, word_embedding, idx2word, char_embedding, char2idx = load.atisfold()
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     tr = int(len(train_lex) * 0.9)
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
     test_lex, test_y, test_z = test_set
-
+    train_char_lex = get_charidx(train_lex, idx2word, char2idx)
     logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print('len(train_data) {}'.format(len(train_lex)))
     print('len(valid_data) {}'.format(len(valid_lex)))
