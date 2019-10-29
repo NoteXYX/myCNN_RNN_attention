@@ -7,7 +7,6 @@ import random
 
 
 def getlist(filename):
-    
     with open(filename,'r',encoding='utf-8') as f:
         datalist,taglist=[],[]
         for line in f:
@@ -15,15 +14,6 @@ def getlist(filename):
             datalist.append(line.split('\t')[0])
             taglist.append(line.split('\t')[1])
     return datalist,taglist
-
-def get_charlist(filename):
-    with open(filename, 'r', encoding='utf-8') as f:
-        charlist = []
-        for line in f:
-            line = line.strip()
-            sentence = line.split('\t')[0]
-            wordlist = sentence.split()
-
 
 #build vocabulary
 def get_dict(filenames):
@@ -184,18 +174,57 @@ def get_embedding(w2v,words2idx,k=300):
         pickle.dump(embedding,f)
     return embedding
 
-def get_char_embedding(filename, k=30):
-    trn_file, test_file = filename
+def get_charlist(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        char_list = []
+        for line in f:
+            line = line.strip()
+            sentence = line.split('\t')[0]
+            for letter in  sentence:
+                if letter != ' ':
+                    char_list.append(letter)
+    return char_list
+
+def get_chardict(filenames):
+    trnTweet,testTweet=filenames
+    char_list=get_charlist(trnTweet)+get_charlist(testTweet)
+    char_counts=Counter(char_list)
+    chars2idx={letter[0]:i+1 for i,letter in enumerate(char_counts.most_common())}
+    labels2idx = {'O': 0, 'B': 1, 'I': 2, 'E': 3, 'S': 4}
+    dicts = {'chars2idx': chars2idx, 'labels2idx': labels2idx}
+    return dicts
+def get_char2vec(dim=30):
     upper = [chr(i) for i in range(ord("A"), ord("Z") + 1)]
     lower = [chr(i) for i in range(ord("a"), ord("z") + 1)]
     alphabet = upper + lower
     letter2index = {}
+    char2vec = {}
     for i, letter in enumerate(alphabet):
         letter2index[letter] = i
-    char_embedding = np.zeros((len(letter2index), k), dtype=np.float32)
-    for w, idx in letter2index.items():
-        char_embedding[idx] = np.asarray(np.random.uniform(-1*(3.0/k)**0.5,(3.0/k)**0.5,k),dtype=np.float32)
-    return char_embedding
+    for (letter, idx) in letter2index.items():
+        char2vec[letter] = np.asarray(np.random.uniform(-1 * (3.0 / dim) ** 0.5, (3.0 / dim) ** 0.5, dim), dtype=np.float32)
+    return char2vec
+
+def add_unknown_chars(char2vec, char_vocab, min_df=1, dim=30):
+    k=0
+    for char in char_vocab:
+        if char not in char2vec:
+            char2vec[char]=np.asarray(np.random.uniform(-1*(3.0/dim)**0.5,(3.0/dim)**0.5,dim),dtype=np.float32)
+            k+=1
+            if k % 10000==0:
+                print ("add_unknow_words %d" % k)
+    return char2vec
+
+
+def get_char_embedding(char2vec, char2idx, dim=30):
+    assert len(char2vec) == len(char2idx)
+    char_vecs = np.zeros((len(char2vec)+2, dim), dtype=np.float32)
+    for (char, idx) in char2idx.items():
+        char_vecs[idx] = char2vec[char]
+    with open('char_embedding.pkl','wb') as f:
+        pickle.dump(char_vecs,f)
+    return char_vecs
+
 
 if __name__ == '__main__':
     # data_folder = ["original_data/keyphrase_dataset/trnTweet","original_data/keyphrase_dataset/testTweet"]
@@ -216,4 +245,13 @@ if __name__ == '__main__':
     # w2v = add_unknown_words(w2v, vocab)
     # embedding=get_embedding(w2v,dicts['words2idx'])
     # print ("embedding created")
-    get_char_embedding()
+
+    data_folder = ["original_data/keyphrase_dataset/trnTweet", "original_data/keyphrase_dataset/testTweet"]
+    char_dicts = get_chardict(data_folder)
+    chars2idx = char_dicts['chars2idx']
+    char_vocab = set(chars2idx.keys())
+    print("total num chars: " + str(len(char_vocab)))
+    char2vec = get_char2vec()   #仅有A-Z和a-z
+    char2vec = add_unknown_chars(char2vec, char_vocab)
+    char_vecs = get_char_embedding(char2vec, chars2idx)
+    print("char_embedding created!")
