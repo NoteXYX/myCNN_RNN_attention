@@ -11,7 +11,7 @@ class myModel(object):
                  nh2,   # nh2表示第2层rnn神经元的个数
                  ny,    # ny: 第1层rnn输出的类别数
                  nz,    # nz: 第2层rnn输出的类别数
-                 de,    # emb_dimension: 330
+                 de,    # word_emb_dimension: 300
                  lr,    # 学习率
                  lr_decay,
                  word_embedding, # 词向量

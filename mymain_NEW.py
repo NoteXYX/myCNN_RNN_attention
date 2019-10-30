@@ -28,8 +28,7 @@ def main():
     s = {
         'nh1': 330,
         'nh2': 330,
-        'win': 3,
-        'emb_dimension': 300,
+        'word_emb_dimension': 300,
         'lr': 0.1,
         'lr_decay': 0.5,  #
         'max_grad_norm': 5,  #
@@ -73,7 +72,7 @@ def main():
             nh2=s['nh2'],
             ny=y_nclasses,
             nz=z_nclasses,
-            de=s['emb_dimension'],
+            de=s['word_emb_dimension'],
             lr=s['lr'],
             lr_decay=s['lr_decay'],
             word_embedding=word_embedding,
@@ -141,14 +140,13 @@ def main():
                 input_x = load.pad_sentences(input_x)
                 label_y = load.pad_sentences(label_y)
                 label_z = load.pad_sentences(label_z)
-                # cwords=tools.contextwin_2(input_x,s['win'])
                 cwords = input_x
                 loss = train_step(cwords, label_y, label_z)
                 start_num += s['batch_size']
-                print('loss %.2f' % loss,
+                print('loss %.6f' % loss,
                       ' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences),
                       'completed in %.2f (sec) <<\r' % (time.time() - t_start))
-                logfile.write('loss %.2f' % loss)
+                logfile.write('loss %.6f' % loss)
                 logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
                 logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
                 # print ('loss %.2f' % loss,' [learning] epoch %i>> %2.2f%%' % (e,s['batch_size']*step*100./nsentences),'completed in %.2f (sec) <<\r' % (time.time()-t_start),
