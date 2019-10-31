@@ -38,6 +38,22 @@ def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
 
     return padded_sentences
 
+def pad_chars(sentence_input_char_idx, padding_word=0, forced_word_length=None):
+    if forced_word_length is None:
+        word_length=max(len(word) for word in sentence_input_char_idx)
+    else:
+        word_length=forced_word_length
+    padded_words = []
+    for i in range(len(sentence_input_char_idx)):
+        word = sentence_input_char_idx[i]
+        num_padding = word_length - len(word)
+        if num_padding<0:
+            padded_word=word[0:word_length]
+        else:
+            padded_word=word+[int(padding_word)]*num_padding
+        padded_words.append(padded_word)
+    return padded_words
+
 
 
 

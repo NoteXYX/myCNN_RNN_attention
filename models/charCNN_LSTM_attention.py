@@ -15,7 +15,7 @@ class myModel(object):
                  lr,    # 学习率
                  lr_decay,
                  word_embedding, # 词向量
-                 char_embdedding,# 字符向量
+                 char_embedding,# 字符向量
                  max_gradient_norm,
                  keep_prob,
                  idx2word,
@@ -33,12 +33,14 @@ class myModel(object):
         with tf.device("/cpu:0"), tf.name_scope('embedding'):
             if nonstatic:
                 word_emb = tf.constant(word_embedding, name='word_emb', dtype=tf.float32)
-                char_emb = tf.constant(char_embdedding, name='char_emb', dtype=tf.float32)
+                char_emb = tf.constant(char_embedding, name='char_emb', dtype=tf.float32)
             else:
                 word_emb = tf.Variable(word_embedding, name='word_emb', dtype=tf.float32)
-                char_emb = tf.Variable(char_embdedding, name='char_emb', dtype=tf.float32)
-        rnn_ori_inputs = tf.nn.embedding_lookup(word_emb, self.input_word_idx)
-        rnn_ori_inputs = tf.reshape(rnn_ori_inputs, [self.batch_size, -1, de])  # (16,?,300)
+                char_emb = tf.Variable(char_embedding, name='char_emb', dtype=tf.float32)
+        word_emb_inputs = tf.nn.embedding_lookup(word_emb, self.input_word_idx)
+        word_emb_inputs = tf.reshape(word_emb_inputs, [self.batch_size, -1, de])  # (16,?,300)
+        char_emb_inputs = tf.nn.embedding_lookup(char_emb, self.input_char_idx)
+        char_emb_inputs = tf.reshape(char_emb_inputs, [self.batch_size,-1,-1,30])
         for s_num in range(self.batch_size):
             cur_wordidx_list = self.input_word_idx
 
@@ -48,8 +50,8 @@ class myModel(object):
 
             # cnn_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
             # cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
-            # rnn_ori_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
-            # rnn_ori_inputs = tf.reshape(rnn_ori_inputs, [self.batch_size, -1, de])  # (16,?,300)
+            # word_emb_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
+            # word_emb_inputs = tf.reshape(word_emb_inputs, [self.batch_size, -1, de])  # (16,?,300)
 
         self.conv = tf.layers.conv2d(
             inputs=cnn_inputs,
@@ -59,10 +61,10 @@ class myModel(object):
             padding='same',
             activation=tf.nn.relu)
         rnn_conv_inputs = tf.reshape(self.conv, [self.batch_size, -1, 100])  # (16,?,100)
-        rnn_conv_inputs = tf.concat([rnn_ori_inputs, rnn_conv_inputs], 2)    # (16,?,400)
+        rnn_conv_inputs = tf.concat([word_emb_inputs, rnn_conv_inputs], 2)    # (16,?,400)
         # Droupout embedding input
         rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')
-        # rnn_ori_inputs = tf.nn.dropout(rnn_ori_inputs, rate=1 - self.keep_prob, name='drop_rnn_ori_inputs')
+        # word_emb_inputs = tf.nn.dropout(word_emb_inputs, rate=1 - self.keep_prob, name='word_emb_inputs')
 
         # Create the internal multi-layer cell for rnn
         if rnn_model_cell == 'rnn':

@@ -6,8 +6,11 @@ import models.charCNN_LSTM_attention as charCNN_LSTM_attention
 import tools
 
 
-def batch_putin(train, test, start_num=0, batch_size=16):
-    batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
+def batch_putin(train, test=None, start_num=0, batch_size=16):
+    if test is None:
+        batch = [train[start_num:start_num + batch_size]]
+    else:
+        batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
     return batch
 
 def get_charidx(lex, idx2word, char2idx):
@@ -22,7 +25,7 @@ def get_charidx(lex, idx2word, char2idx):
                 word_charidx.append(cur_charidx)
             sentence_charidx.append(word_charidx)
         char_idx.append(sentence_charidx)
-    return char_idx
+    return char_idx     # (文本数，单词数，字母数)
 
 def main():
     s = {
@@ -76,6 +79,7 @@ def main():
             lr=s['lr'],
             lr_decay=s['lr_decay'],
             word_embedding=word_embedding,
+            char_embedding=char_embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
             idx2word=idx2word,
@@ -89,9 +93,10 @@ def main():
             os.mkdir(checkpoint_dir)
         checkpoint_prefix=os.path.join(checkpoint_dir,'model')
 
-        def train_step(cwords, label_y, label_z):
+        def train_step(word_input_x, char_input_x, label_y, label_z):
             feed = {
-                my_model.cnn_input_x: cwords,
+                my_model.input_word_idx: word_input_x,
+                my_model.input_char_idx: char_input_x,
                 # my_model.rnn_ori_input_x: cwords,
                 my_model.rnn_input_y: label_y,
                 my_model.rnn_input_z: label_z
@@ -102,9 +107,10 @@ def main():
             loss, _ = sess.run(fetches=fetches, feed_dict=feed)
             return loss
 
-        def dev_step(cwords):
+        def dev_step(word_input_x, char_input_x):
             feed={
-                my_model.cnn_input_x:cwords,
+                my_model.input_word_idx: word_input_x,
+                my_model.input_char_idx: char_input_x,
                 # my_model.rnn_ori_input_x: cwords
                 # rnn.keep_prob:1.0,
                 # rnn.batch_size:s['batch_size']
@@ -133,15 +139,17 @@ def main():
             test_char_lex = get_charidx(test_lex, idx2word, char2idx)
             steps = len(train_lex) // s['batch_size']
             for step in range(steps):       ##################################################
-                batch = batch_putin(train_lex, list(zip(train_y, train_z)), start_num=start_num,
-                                    batch_size=s['batch_size'])
-                input_x, target = batch
+                batch = batch_putin(train_lex, test=list(zip(train_y, train_z)), start_num=start_num, batch_size=s['batch_size'])
+                char_input_x = batch_putin(train_char_lex, test=None, start_num=start_num, batch_size=s['batch_size'])
+                word_input_x, target = batch
                 label_y, label_z = list(zip(*target))
-                input_x = load.pad_sentences(input_x)
+                word_input_x = load.pad_sentences(word_input_x)
                 label_y = load.pad_sentences(label_y)
                 label_z = load.pad_sentences(label_z)
-                cwords = input_x
-                loss = train_step(cwords, label_y, label_z)
+                for i in range(len(char_input_x)):
+                    char_input_x[i] = load.pad_chars(char_input_x[i])
+                # cwords = word_input_x
+                loss = train_step(word_input_x, char_input_x, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.6f' % loss,
                       ' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences),
@@ -163,7 +171,7 @@ def main():
             steps = len(valid_lex) // s['batch_size']
             # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
             for step in range(steps):
-                batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
+                batch = batch_putin(valid_lex, test=valid_z, start_num=start_num, batch_size=s['batch_size'])
                 x, z = batch
                 x = load.pad_sentences(x)
                 # x=tools.contextwin_2(x,s['win'])
@@ -192,7 +200,7 @@ def main():
             if e % s['display_test_per'] == 0:
                 # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
                 for step in range(steps):
-                    batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
+                    batch = batch_putin(test_lex, test=test_z, start_num=start_num, batch_size=s['batch_size'])
                     x, z = batch
                     x = load.pad_sentences(x)
                     # x = tools.contextwin_2(x, s['win'])
