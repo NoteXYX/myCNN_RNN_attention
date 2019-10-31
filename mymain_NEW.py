@@ -131,7 +131,7 @@ def main():
             valid_char_lex = get_charidx(valid_lex, idx2word, char2idx)
             test_char_lex = get_charidx(test_lex, idx2word, char2idx)
             steps = len(train_lex) // s['batch_size']
-            for step in range(1):       ##################################################
+            for step in range(steps):       ##################################################
                 batch = batch_putin(train_lex, test=list(zip(train_y, train_z)), start_num=start_num, batch_size=s['batch_size'])
                 char_input_x = batch_putin(train_char_lex, test=None, start_num=start_num, batch_size=s['batch_size'])
                 word_input_x, target = batch
