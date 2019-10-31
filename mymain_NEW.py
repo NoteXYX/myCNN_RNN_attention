@@ -4,11 +4,12 @@ import os
 import load
 import models.charCNN_LSTM_attention as charCNN_LSTM_attention
 import tools
+import numpy as np
 
 
 def batch_putin(train, test=None, start_num=0, batch_size=16):
     if test is None:
-        batch = [train[start_num:start_num + batch_size]]
+        batch = train[start_num:start_num + batch_size]
     else:
         batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
     return batch
@@ -82,7 +83,6 @@ def main():
             char_embedding=char_embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
-            idx2word=idx2word,
             rnn_model_cell='lstm'
 
         )
@@ -140,6 +140,7 @@ def main():
                 label_y = load.pad_sentences(label_y)
                 label_z = load.pad_sentences(label_z)
                 char_input_x = load.pad_chars(char_input_x)
+                char_input_x = np.asarray(char_input_x)
                 loss = train_step(word_input_x, char_input_x, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.6f' % loss,

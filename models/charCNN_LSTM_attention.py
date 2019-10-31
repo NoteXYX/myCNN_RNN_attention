@@ -18,7 +18,6 @@ class myModel(object):
                  char_embedding,# 字符向量
                  max_gradient_norm,
                  keep_prob,
-                 idx2word,
                  rnn_model_cell='rnn',
                  nonstatic=False):
         self.batch_size = 16

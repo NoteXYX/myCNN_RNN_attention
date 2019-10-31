@@ -9,6 +9,7 @@ import load
 # import models.mymodel_multi_CNN as mymodelmultiCNN
 import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
 import tools
+import numpy as np
 import sys
 
 
@@ -37,7 +38,7 @@ def main():
         'lr_decay_per': 10  #
     }
 
-    train_set, test_set, dic, embedding, idx2word = load.atisfold()
+    train_set, test_set, dic, embedding = load.atisfold_old()
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
     # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
 
@@ -137,6 +138,7 @@ def main():
                 label_z = load.pad_sentences(label_z)
                 # cwords=tools.contextwin_2(input_x,s['win'])
                 cwords = input_x
+                #cwords = np.asarray(cwords)
                 loss = train_step(cwords, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.2f' % loss,

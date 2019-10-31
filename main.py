@@ -1,6 +1,6 @@
 import tensorflow as tf
 # import tensorlayer as tl
-# import numpy as np
+import numpy as np
 import time
 import os
 # import random
@@ -32,7 +32,7 @@ def main():
         'lr_decay_per':10       #
     }
 
-    train_set,test_set,dic,embedding=load.atisfold()
+    train_set,test_set,dic,embedding=load.atisfold_old()
     
     
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
@@ -142,7 +142,8 @@ def main():
                 input_x=load.pad_sentences(input_x)
                 label_y=load.pad_sentences(label_y)
                 label_z=load.pad_sentences(label_z)
-                # cwords=tools.contextwin_2(input_x,s['win'])
+                #cwords=tools.contextwin_2(input_x,s['win'])
+                #cwords = np.asarray(cwords)
                 cwords = input_x
                 loss=train_step(cwords,label_y,label_z)
                 start_num += s['batch_size']

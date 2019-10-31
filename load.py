@@ -20,6 +20,24 @@ def atisfold():
     f_char2idx.close()
     return train_set, test_set, dicts, embedding, idx2word, char_emb, char2idx
 
+def atisfold_old():
+    f_data_set = open('data/data_set.pkl', 'rb')
+    f_emb = open('data/embedding.pkl', 'rb')
+    f_idx2word = open('data/idx2words.pkl', 'rb')
+    f_char_emb = open('data/char_embedding.pkl', 'rb')
+    f_char2idx = open('data/char2idx.pkl', 'rb')
+    train_set, test_set, dicts = pickle.load(f_data_set)
+    embedding = pickle.load(f_emb)
+    idx2word = pickle.load(f_idx2word)
+    char_emb = pickle.load(f_char_emb)
+    char2idx = pickle.load(f_char2idx)
+    f_data_set.close()
+    f_emb.close()
+    f_idx2word.close()
+    f_char_emb.close()
+    f_char2idx.close()
+    return train_set, test_set, dicts, embedding
+
 def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
     if forced_sequence_length is None:
         sequence_length=max(len(x) for x in sentences)
@@ -38,11 +56,12 @@ def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
 
     return padded_sentences
 
-def pad_chars(char_input_x, padding_word=0, forced_word_length=30):
-    if forced_word_length is None:
-        word_length=max(len(word) for word in sentence_input_char_idx)
+def pad_chars(char_input_x, padding=0, forced_word_length=30, forced_sentence_length=None):
+    if forced_sentence_length is None:
+        sentence_length=max(len(sentence) for sentence in char_input_x)
     else:
-        word_length=forced_word_length
+        sentence_length=forced_word_length
+    word_length = forced_word_length
     res_char_input_x = []
     for num_sent in range(len(char_input_x)):
         padded_words = []
@@ -53,8 +72,14 @@ def pad_chars(char_input_x, padding_word=0, forced_word_length=30):
             if num_padding<0:
                 padded_word=word[0:word_length]
             else:
-                padded_word=word+[int(padding_word)]*num_padding
+                padded_word=word+[int(padding)]*num_padding
             padded_words.append(padded_word)
+        sentence_pad_num = sentence_length - len(padded_words)
+        if sentence_pad_num > 0:
+            for i in range(sentence_pad_num):
+                padded_words.append([int(padding)]*forced_word_length)
+        else:
+            padded_words = padded_words[0 : sentence_length]
         res_char_input_x.append(padded_words)
     return res_char_input_x
 
