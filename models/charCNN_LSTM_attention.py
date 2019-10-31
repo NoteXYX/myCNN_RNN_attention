@@ -40,7 +40,7 @@ class myModel(object):
         word_emb_inputs = tf.nn.embedding_lookup(word_emb, self.input_word_idx)
         word_emb_inputs = tf.reshape(word_emb_inputs, [self.batch_size, -1, de])  # (16,?,300)
         char_emb_inputs = tf.nn.embedding_lookup(char_emb, self.input_char_idx)
-        char_emb_inputs = tf.reshape(char_emb_inputs, [self.batch_size,-1,-1,30])
+        char_emb_inputs = tf.reshape(char_emb_inputs, [self.batch_size, -1, 30, 30])    #(batch_size, 一段文本的单词数, 每个单词的最大字母数, 每个字母的维度)
             # cnn_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
             # cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
             # word_emb_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
@@ -53,15 +53,17 @@ class myModel(object):
             strides=[1, 1],
             padding='same',
             activation=tf.nn.relu)
-        rnn_conv_inputs = tf.reshape(self.conv, [self.batch_size, -1, 100])  # (16,?,100)
-        rnn_conv_inputs = tf.concat([word_emb_inputs, rnn_conv_inputs], 2)    # (16,?,400)
+        # word_max_len = self.conv.shape[2]
+        charCNN_output = tf.layers.max_pooling2d(inputs=self.conv, pool_size=(1, 30), strides=[1,30])    # (batch_size, 一段文本的单词数, 1, 每个字母的维度)
+        charCNN_output = tf.reshape(charCNN_output, [self.batch_size, -1, 30])  #（16, ?, 30）
+        rnn_inputs = tf.concat([word_emb_inputs, charCNN_output], 2)    # (16, ?, 330)
         # Droupout embedding input
-        rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')
+        rnn_inputs = tf.nn.dropout(rnn_inputs, rate=1 - self.keep_prob, name='rnn_inputs')
 
         # Create the internal multi-layer cell for rnn
         if rnn_model_cell == 'rnn':
-            single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数,400
-            single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2) # nh2表示神经元的个数,400
+            single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数,330
+            single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2) # nh2表示神经元的个数,330
         elif rnn_model_cell == 'lstm':
             single_cell1 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh1, state_is_tuple=True)
             single_cell2 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh2, state_is_tuple=True)
@@ -78,9 +80,9 @@ class myModel(object):
         # RNN1
         with tf.compat.v1.variable_scope('rnn1'):
             # rnn_conv_1
-            self.rnn_conv_outputs1, self.rnn_conv_state1 = tf.compat.v1.nn.dynamic_rnn(
+            self.rnn_outputs1, self.rnn_state1 = tf.compat.v1.nn.dynamic_rnn(
                 cell=self.single_cell1,
-                inputs=rnn_conv_inputs,
+                inputs=rnn_inputs,
                 initial_state=self.init_state,
                 dtype=tf.float32
             )
@@ -88,9 +90,9 @@ class myModel(object):
         # RNN2
         with tf.compat.v1.variable_scope('rnn2'):
             # rnn_conv_2
-            self.rnn_conv_outputs2, self.rnn_conv_state2 = tf.compat.v1.nn.dynamic_rnn(
+            self.rnn_outputs2, self.rnn_state2 = tf.compat.v1.nn.dynamic_rnn(
                 cell=self.single_cell2,
-                inputs=self.rnn_conv_outputs1,
+                inputs=self.rnn_outputs1,
                 initial_state=self.init_state,
                 dtype=tf.float32
             )
@@ -99,15 +101,15 @@ class myModel(object):
         with tf.compat.v1.variable_scope('output_sy'):
             w_y = tf.compat.v1.get_variable("softmax_w_y", [nh1, ny])  # w_y (400, 2)
             b_y = tf.compat.v1.get_variable("softmax_b_y", [ny])  # b_y (2, )
-            rnn_conv_outputs1 = tf.reshape(self.rnn_conv_outputs1, [-1, nh1])  # rnn_ori_outputs1 (?, 400)
-            sy = tf.compat.v1.nn.xw_plus_b(rnn_conv_outputs1, w_y, b_y)  # sy (?, 2)
+            rnn_outputs1 = tf.reshape(self.rnn_outputs1, [-1, nh1])  # rnn_ori_outputs1 (?, 400)
+            sy = tf.compat.v1.nn.xw_plus_b(rnn_outputs1, w_y, b_y)  # sy (?, 2)
             self.sy_pred = tf.reshape(tf.argmax(sy, 1), [self.batch_size, -1])  # sy_pred (16, ?)
         # outputs_z
         with tf.compat.v1.variable_scope('output_sz'):
             w_z = tf.get_variable("softmax_w_z", [nh2, nz])  # w_z (400, 5)
             b_z = tf.get_variable("softmax_b_z", [nz])  # b_z (5, )
-            rnn_conv_outputs2 = tf.reshape(self.rnn_conv_outputs2, [-1, nh2])  # rnn_ori_outputs2 (?, 400)
-            sz = tf.compat.v1.nn.xw_plus_b(rnn_conv_outputs2, w_z, b_z)  # sz (?, 5)
+            rnn_outputs2 = tf.reshape(self.rnn_outputs2, [-1, nh2])  # rnn_ori_outputs2 (?, 400)
+            sz = tf.compat.v1.nn.xw_plus_b(rnn_outputs2, w_z, b_z)  # sz (?, 5)
             self.sz_pred = tf.reshape(tf.argmax(sz, 1), [self.batch_size, -1])  # sz_pred (16, ?)
         # loss
         with tf.compat.v1.variable_scope('loss'):

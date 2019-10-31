@@ -139,8 +139,7 @@ def main():
                 word_input_x = load.pad_sentences(word_input_x)
                 label_y = load.pad_sentences(label_y)
                 label_z = load.pad_sentences(label_z)
-                for i in range(len(char_input_x)):
-                    char_input_x[i] = load.pad_chars(char_input_x[i])
+                char_input_x = load.pad_chars(char_input_x)
                 loss = train_step(word_input_x, char_input_x, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.6f' % loss,
@@ -163,9 +162,11 @@ def main():
             steps = len(valid_lex) // s['batch_size']
             for step in range(steps):
                 batch = batch_putin(valid_lex, test=valid_z, start_num=start_num, batch_size=s['batch_size'])
+                char_input_x = batch_putin(valid_char_lex, test=None, start_num=start_num, batch_size=s['batch_size'])
                 x, z = batch
                 x = load.pad_sentences(x)
-                predictions_valid.extend(dev_step(x))
+                char_input_x = load.pad_chars(char_input_x)
+                predictions_valid.extend(dev_step(x, char_input_x))
                 groundtruth_valid.extend(z)
                 start_num += s['batch_size']
 
@@ -191,10 +192,11 @@ def main():
                 # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
                 for step in range(steps):
                     batch = batch_putin(test_lex, test=test_z, start_num=start_num, batch_size=s['batch_size'])
+                    char_input_x = batch_putin(test_char_lex, test=None, start_num=start_num, batch_size=s['batch_size'])
                     x, z = batch
                     x = load.pad_sentences(x)
-                    # x = tools.contextwin_2(x, s['win'])
-                    predictions_test.extend(dev_step(x))
+                    char_input_x = load.pad_chars(char_input_x)
+                    predictions_test.extend(dev_step(x,char_input_x))
                     groundtruth_test.extend(z)
                     start_num += s['batch_size']
 
