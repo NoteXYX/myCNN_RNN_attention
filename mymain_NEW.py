@@ -97,12 +97,10 @@ def main():
             feed = {
                 my_model.input_word_idx: word_input_x,
                 my_model.input_char_idx: char_input_x,
-                # my_model.rnn_ori_input_x: cwords,
                 my_model.rnn_input_y: label_y,
                 my_model.rnn_input_z: label_z
             }
             my_model.keep_prob = s['keep_prob']
-            # fetches = [rnn.loss, rnn.train_op]
             fetches = [my_model.loss, my_model.train_op]
             loss, _ = sess.run(fetches=fetches, feed_dict=feed)
             return loss
@@ -111,9 +109,6 @@ def main():
             feed={
                 my_model.input_word_idx: word_input_x,
                 my_model.input_char_idx: char_input_x,
-                # my_model.rnn_ori_input_x: cwords
-                # rnn.keep_prob:1.0,
-                # rnn.batch_size:s['batch_size']
             }
             my_model.keep_prob = 1.0
             fetches=my_model.sz_pred
@@ -132,8 +127,6 @@ def main():
             tools.shuffle([train_lex, train_y, train_z], s['seed'])
             t_start = time.time()
             start_num = 0
-            # for step,batch in enumerate(tl.iterate.minibatches(train_lex,list(zip(train_y,train_z)),batch_size=s['batch_size'])):
-            # for step, batch in enumerate(batch_putin(train_lex, list(zip(train_y, train_z)), start_num=start_num, batch_size=s['batch_size'])):
             train_char_lex = get_charidx(train_lex, idx2word, char2idx)  # (tweet数, 单词数, 字母数)
             valid_char_lex = get_charidx(valid_lex, idx2word, char2idx)
             test_char_lex = get_charidx(test_lex, idx2word, char2idx)
@@ -148,7 +141,6 @@ def main():
                 label_z = load.pad_sentences(label_z)
                 for i in range(len(char_input_x)):
                     char_input_x[i] = load.pad_chars(char_input_x[i])
-                # cwords = word_input_x
                 loss = train_step(word_input_x, char_input_x, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.6f' % loss,
@@ -169,12 +161,10 @@ def main():
             groundtruth_test = []
             start_num = 0
             steps = len(valid_lex) // s['batch_size']
-            # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
             for step in range(steps):
                 batch = batch_putin(valid_lex, test=valid_z, start_num=start_num, batch_size=s['batch_size'])
                 x, z = batch
                 x = load.pad_sentences(x)
-                # x=tools.contextwin_2(x,s['win'])
                 predictions_valid.extend(dev_step(x))
                 groundtruth_valid.extend(z)
                 start_num += s['batch_size']
