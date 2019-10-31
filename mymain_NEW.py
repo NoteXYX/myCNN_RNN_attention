@@ -49,8 +49,8 @@ def main():
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     tr = int(len(train_lex) * 0.9)
-    train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
+    train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex, test_y, test_z = test_set
     logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print('len(train_data) {}'.format(len(train_lex)))
@@ -131,7 +131,7 @@ def main():
             valid_char_lex = get_charidx(valid_lex, idx2word, char2idx)
             test_char_lex = get_charidx(test_lex, idx2word, char2idx)
             steps = len(train_lex) // s['batch_size']
-            for step in range(steps):       ##################################################
+            for step in range(1):       ##################################################
                 batch = batch_putin(train_lex, test=list(zip(train_y, train_z)), start_num=start_num, batch_size=s['batch_size'])
                 char_input_x = batch_putin(train_char_lex, test=None, start_num=start_num, batch_size=s['batch_size'])
                 word_input_x, target = batch
