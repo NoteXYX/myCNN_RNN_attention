@@ -56,7 +56,7 @@ def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):
 
     return padded_sentences
 
-def pad_chars(char_input_x, padding=0, forced_word_length=30, forced_sentence_length=None):
+def pad_chars(char_input_x, padding=0, forced_word_length=20, forced_sentence_length=None):
     if forced_sentence_length is None:
         sentence_length=max(len(sentence) for sentence in char_input_x)
     else:

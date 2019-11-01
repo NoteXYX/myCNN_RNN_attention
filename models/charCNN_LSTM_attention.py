@@ -39,7 +39,7 @@ class myModel(object):
         word_emb_inputs = tf.nn.embedding_lookup(word_emb, self.input_word_idx)
         word_emb_inputs = tf.reshape(word_emb_inputs, [self.batch_size, -1, de])  # (16,?,300)
         char_emb_inputs = tf.nn.embedding_lookup(char_emb, self.input_char_idx)
-        char_emb_inputs = tf.reshape(char_emb_inputs, [self.batch_size, -1, 30, 30])    #(batch_size, 一段文本的单词数, 每个单词的最大字母数, 每个字母的维度)
+        char_emb_inputs = tf.reshape(char_emb_inputs, [self.batch_size, -1, 20, 30])    #(batch_size, 一段文本的单词数, 每个单词的最大字母数, 每个字母的维度)
             # cnn_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
             # cnn_inputs = tf.reshape(cnn_inputs, [self.batch_size, -1, de, 1])
             # word_emb_inputs = tf.nn.embedding_lookup(word_emb, self.cnn_input_x)
@@ -53,7 +53,7 @@ class myModel(object):
             padding='same',
             activation=tf.nn.relu)
         # word_max_len = self.conv.shape[2]
-        charCNN_output = tf.layers.max_pooling2d(inputs=self.conv, pool_size=(1, 30), strides=[1,30])    # (batch_size, 一段文本的单词数, 1, 每个字母的维度)
+        charCNN_output = tf.layers.max_pooling2d(inputs=self.conv, pool_size=(1, 20), strides=[1,20])    # (batch_size, 一段文本的单词数, 1, 每个字母的维度)
         charCNN_output = tf.reshape(charCNN_output, [self.batch_size, -1, 30])  #（16, ?, 30）
         rnn_inputs = tf.concat([word_emb_inputs, charCNN_output], 2)    # (16, ?, 330)
         # Droupout embedding input

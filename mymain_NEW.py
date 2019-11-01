@@ -42,7 +42,7 @@ def main():
         'keep_prob': 0.5,
         'check_dir': './mycheckpoints_charCNN_LSTM_attention',
         'display_test_per': 3,  #
-        'lr_decay_per': 10  #
+        'lr_decay_per': 6  #
     }
 
     train_set, test_set, dic, word_embedding, idx2word, char_embedding, char2idx = load.atisfold()
