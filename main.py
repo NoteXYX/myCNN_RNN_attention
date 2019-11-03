@@ -24,7 +24,7 @@ def main():
         'lr_decay':0.5,         #
         'max_grad_norm':5,      #
         'seed':345,             #
-        'nepochs':35,
+        'nepochs':50,
         'batch_size':16,
         'keep_prob':0.5,
         'check_dir':'./checkpoints',
@@ -44,16 +44,19 @@ def main():
     valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex,  test_y, test_z  = test_set
-
+    logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print ('len(train_data) {}'.format(len(train_lex)))
     print ('len(valid_data) {}'.format(len(valid_lex)))
     print ('len(test_data) {}'.format(len(test_lex)))
-
+    logfile.write('len(train_data) {}\n'.format(len(train_lex)))
+    logfile.write('len(valid_data) {}\n'.format(len(valid_lex)))
+    logfile.write('len(test_data) {}\n'.format(len(test_lex)))
     vocab = set(dic['words2idx'].keys())
     vocsize = len(vocab)
     print ('len(vocab) {}'.format(vocsize))
     print ("Train started!")
-
+    logfile.write('len(vocab) {}\n'.format(vocsize))
+    logfile.write("Train started!\n")
     y_nclasses = 2
     z_nclasses = 5
 
@@ -142,14 +145,16 @@ def main():
                 input_x=load.pad_sentences(input_x)
                 label_y=load.pad_sentences(label_y)
                 label_z=load.pad_sentences(label_z)
-                #cwords=tools.contextwin_2(input_x,s['win'])
-                #cwords = np.asarray(cwords)
-                cwords = input_x
+                cwords=tools.contextwin_2(input_x,s['win'])
+                # cwords = input_x
                 loss=train_step(cwords,label_y,label_z)
                 start_num += s['batch_size']
-                print('loss %.2f' % loss,
+                print('loss %.6f' % loss,
                       ' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences),
                       'completed in %.2f (sec) <<\r' % (time.time() - t_start))
+                logfile.write('loss %.6f' % loss)
+                logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
+                logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
                 # print ('loss %.2f' % loss,' [learning] epoch %i>> %2.2f%%' % (e,s['batch_size']*step*100./nsentences),'completed in %.2f (sec) <<\r' % (time.time()-t_start),
                 #
                 # sys.stdout.flush())
@@ -179,10 +184,13 @@ def main():
                 best_e=e
                 best_res=res_valid
                 print ('\nVALID new best:',res_valid)
+                logfile.write('\nVALID new best: ' + str(res_valid))
                 path = saver.save(sess=sess, save_path=checkpoint_prefix, global_step=e)
                 print ("Save model checkpoint to {}".format(path))
+                logfile.write("\nSave model checkpoint to {}\n".format(path))
             else:
                 print ('\nVALID new curr:',res_valid)
+                logfile.write('\nVALID new curr: ' + str(res_valid))
 
             #TEST
             start_num = 0
@@ -206,19 +214,26 @@ def main():
                     test_best_e=e
                     test_best_res=res_test
                     print ('TEST new best:',res_test)
+                    logfile.write('\nTEST new best: ' + str(res_test))
                 else:
                     print ('TEST new curr:',res_test)
+                    logfile.write('\nTEST new curr: ' + str(res_test))
 
             # learning rate decay if no improvement in 10 epochs
             if e-best_e>s['lr_decay_per']:
                 sess.run(fetches=rnn.learning_rate_decay_op)
             lr=sess.run(fetches=rnn.lr)
             print ('learning rate:%f' % lr)
+            logfile.write('\nlearning rate:%f\n' % lr)
             if lr<1e-5:break
 
         print ("Train finished!")
         print ('Valid Best Result: epoch %d:  ' % (best_e),best_res)
         print ('Test Best Result: epoch %d:  ' %(test_best_e),test_best_res)
+        logfile.write("Train finished!\n")
+        logfile.write('Valid Best Result: epoch %d:   ' % (best_e) + str(best_res))
+        logfile.write('\nTest Best Result: epoch %d:   ' % (test_best_e) + str(test_best_res))
+        logfile.close()
 
 if __name__ == '__main__':
     main()

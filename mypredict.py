@@ -32,7 +32,7 @@ def main():
     }
 
     # load the dataset
-    train_set, test_set, dic, embedding = load.atisfold()
+    train_set, test_set, dic, embedding = load.atisfold_old()
     # idx2label = dict((k, v) for v, k in dic['labels2idx'].items())
     # idx2word = dict((k, v) for v, k in dic['words2idx'].items())
 
@@ -40,9 +40,9 @@ def main():
     # vocsize = len(vocab)
     logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
-    test_lex = test_lex[:1000]
-    test_y = test_y[:1000]
-    test_z = test_z[:1000]
+    #test_lex = test_lex[:1000]
+    #test_y = test_y[:1000]
+    #test_z = test_z[:1000]
 
     y_nclasses = 2
     z_nclasses = 5
