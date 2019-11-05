@@ -1,9 +1,9 @@
 import tensorflow as tf
 import load
-import models.mymodel_CNN_ori as mymodel
+# import models.mymodel_CNN_ori as mymodel
 import models.mymodel_multi_CNN as mymodelmultiCNN
 import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
-import models.mymodel_CNN_LSTM as mymodel1
+import models.mymodel_mutisize_CNN_LSTM as mymodel
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -13,10 +13,8 @@ def batch_putin(train, test, start_num=0, batch_size=16):
 
 def main():
     s = {
-        # 'nh1': 300,
-        # 'nh2': 300,
-        'nh1': 400,
-        'nh2': 400,
+        'nh1': 450,
+        'nh2': 450,
         'win': 3,
         'emb_dimension': 300,
         'lr': 0.1,
@@ -26,7 +24,7 @@ def main():
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 1.0,
-        'check_dir': './mycheckpoints_multi_CNN_NEW',
+        'check_dir': './mycheckpoints_multisize_CNN',
         'display_test_per': 5,
         'lr_decay_per': 10
     }
@@ -40,15 +38,15 @@ def main():
     # vocsize = len(vocab)
     logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
-    #test_lex = test_lex[:1000]
-    #test_y = test_y[:1000]
-    #test_z = test_z[:1000]
+    # test_lex = test_lex[:1000]
+    # test_y = test_y[:1000]
+    # test_z = test_z[:1000]
 
     y_nclasses = 2
     z_nclasses = 5
 
     with tf.Session() as sess:
-        my_model = mymodelmultiCNN_NEW.myModel(
+        my_model = mymodel.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
             ny=y_nclasses,

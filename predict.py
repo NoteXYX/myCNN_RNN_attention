@@ -1,6 +1,7 @@
 import tensorflow as tf
 import load
 import models.model as model
+
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -35,9 +36,9 @@ def main():
     vocsize = len(vocab)
 
     test_lex,  test_y, test_z  = test_set
-    #test_lex = test_lex[:1000]
-    #test_y = test_y[:1000]
-    #test_z = test_z[:1000]
+    # test_lex = test_lex[:1000]
+    # test_y = test_y[:1000]
+    # test_z = test_z[:1000]
     logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     y_nclasses = 2
     z_nclasses = 5
