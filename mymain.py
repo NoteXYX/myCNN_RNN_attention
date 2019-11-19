@@ -28,7 +28,7 @@ def main():
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 0.5,
-        'check_dir': './mycheckpoints_multisize_CNN',
+        'check_dir': './mycheckpoints_multisize_CNN_attention',
         'display_test_per': 3,  #
         'lr_decay_per': 10  #
     }
@@ -136,10 +136,10 @@ def main():
                 #cwords = np.asarray(cwords)
                 loss = train_step(cwords, label_y, label_z)
                 start_num += s['batch_size']
-                print('loss %.2f' % loss,
+                print('loss %.6f' % loss,
                       ' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences),
                       'completed in %.2f (sec) <<\r' % (time.time() - t_start))
-                logfile.write('loss %.2f' % loss)
+                logfile.write('loss %.6f' % loss)
                 logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
                 logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
                 # print ('loss %.2f' % loss,' [learning] epoch %i>> %2.2f%%' % (e,s['batch_size']*step*100./nsentences),'completed in %.2f (sec) <<\r' % (time.time()-t_start),
