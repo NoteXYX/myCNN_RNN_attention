@@ -6,7 +6,8 @@ import load
 # import models.mymodel_CNN_ori as mymodel
 # import models.mymodel_multi_CNN as mymodelmultiCNN
 # import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
-import models.mymodel_mutisize_CNN_LSTM as mymodel
+# import models.mymodel_mutisize_CNN_LSTM as mymodel
+import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
 
 
