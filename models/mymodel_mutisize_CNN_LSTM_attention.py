@@ -69,7 +69,7 @@ class myModel(object):
         rnn_conv_inputs = tf.concat([rnn_conv_inputs, rnn_conv_inputs_3], 2)  # (16,?,400)
         rnn_conv_inputs = tf.concat([rnn_conv_inputs, rnn_conv_inputs_4], 2)  # (16,?,450)
         # Droupout embedding input
-        rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')
+        rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')# (16,?,450)
 
         # Create the internal multi-layer cell for rnn
         if rnn_model_cell == 'rnn':
@@ -91,50 +91,51 @@ class myModel(object):
         # RNN1
         with tf.compat.v1.variable_scope('rnn1'):
             # rnn_conv_1
-            self.rnn_conv_outputs1, self.rnn_conv_state1 = tf.compat.v1.nn.dynamic_rnn(
+            self.rnn_conv_outputs1, self.rnn_conv_state1 = tf.compat.v1.nn.dynamic_rnn(     # self.rnn_conv_outputs1 (16, ?, 450), self.rnn_conv_state1 (16, 450)
                 cell=self.single_cell1,
                 inputs=rnn_conv_inputs,
                 initial_state=self.init_state,
                 dtype=tf.float32
             )
         # Attention layer1
-        ATTENTION_SIZE = 450
-        with tf.name_scope('Attention_layer'):
-            self.attention_output1, self.alphas1 = attention(self.rnn_conv_outputs1, ATTENTION_SIZE, return_alphas=True)
-            tf.summary.histogram('alphas1', self.alphas1)
-        # Dropout
-        self.attention_drop1 = tf.nn.dropout(self.attention_output1, rate=1-0.8, name='drop_attention1')
+        ATTENTION_SIZE = 50
+        # with tf.name_scope('Attention_layer'):
+        #     attention_output1, alphas1 = attention(self.rnn_conv_outputs1, ATTENTION_SIZE, return_alphas=True)
+        #     tf.summary.histogram('alphas', alphas1)
+        #
+        # Dropout Attention1
+        # self.att1_out = tf.nn.dropout(attention_output1, rate=1-0.8, name='drop_att_1')
 
         # RNN2
         with tf.compat.v1.variable_scope('rnn2'):
             # rnn_conv_2
             self.rnn_conv_outputs2, self.rnn_conv_state2 = tf.compat.v1.nn.dynamic_rnn(
                 cell=self.single_cell2,
-                inputs=self.attention_drop1,
+                inputs=self.rnn_conv_outputs1,
                 initial_state=self.init_state,
                 dtype=tf.float32
             )
 
         # Attention layer2
         with tf.name_scope('Attention_layer'):
-            self.attention_output2, self.alphas2 = attention(self.rnn_conv_outputs2, ATTENTION_SIZE, return_alphas=True)
-            tf.summary.histogram('alphas', self.alphas2)
-
+           attention_output2, alphas2 = attention(self.rnn_conv_outputs2, ATTENTION_SIZE, return_alphas=True)
+           tf.summary.histogram('alphas', alphas2)
+        #
         # Dropout
-        self.attention_drop2 = tf.nn.dropout(self.attention_output2, rate=1-0.8, name='drop_attention2')
+        self.att2_out = tf.nn.dropout(attention_output2, rate=1-0.8, name='drop_att_2')
 
         # outputs_y
         with tf.compat.v1.variable_scope('output_sy'):
             w_y = tf.compat.v1.get_variable("softmax_w_y", [nh1, ny])  # w_y (450, 2)
             b_y = tf.compat.v1.get_variable("softmax_b_y", [ny])  # b_y (2, )
-            rnn_conv_outputs1 = tf.reshape(self.attention_drop1, [-1, nh1])  # rnn_ori_outputs1 (?, 450)
+            rnn_conv_outputs1 = tf.reshape(self.rnn_conv_outputs1, [-1, nh1])  # rnn_ori_outputs1 (?, 450)
             sy = tf.compat.v1.nn.xw_plus_b(rnn_conv_outputs1, w_y, b_y)  # sy (?, 2)
             self.sy_pred = tf.reshape(tf.argmax(sy, 1), [self.batch_size, -1])  # sy_pred (16, ?)
         # outputs_z
         with tf.compat.v1.variable_scope('output_sz'):
             w_z = tf.get_variable("softmax_w_z", [nh2, nz])  # w_z (450, 5)
             b_z = tf.get_variable("softmax_b_z", [nz])  # b_z (5, )
-            rnn_conv_outputs2 = tf.reshape(self.attention_drop2, [-1, nh2])  # rnn_ori_outputs2 (?, 450)
+            rnn_conv_outputs2 = tf.reshape(self.att2_out, [-1, nh2])  # rnn_ori_outputs2 (?, 450) ######################################
             sz = tf.compat.v1.nn.xw_plus_b(rnn_conv_outputs2, w_z, b_z)  # sz (?, 5)
             self.sz_pred = tf.reshape(tf.argmax(sz, 1), [self.batch_size, -1])  # sz_pred (16, ?)
         # loss

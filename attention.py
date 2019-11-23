@@ -64,14 +64,18 @@ def attention(inputs, attention_size, time_major=False, return_alphas=False):
     with tf.name_scope('v'):
         # Applying fully connected layer with non-linear activation to each of the B*T timestamps;
         #  the shape of `v` is (B,T,D)*(D,A)=(B,T,A), where A=attention_size
-        v = tf.tanh(tf.tensordot(inputs, w_omega, axes=1) + b_omega)
+        v = tf.tanh(tf.tensordot(inputs, w_omega, axes=1) + b_omega)           # (16, ?, 50)
 
     # For each of the timestamps its vector of size A from `v` is reduced with `u` vector
-    vu = tf.tensordot(v, u_omega, axes=1, name='vu')  # (B,T) shape
-    alphas = tf.nn.softmax(vu, name='alphas')  # (B,T) shape
+    # vu = tf.tensordot(v, u_omega, axes=1, name='vu')  # (B,T) shape (16, ?)
+    # alphas = tf.nn.softmax(vu, name='alphas')  # (B,T) shape (16, ?)
+    alphas = tf.nn.softmax(v, name='alphas')  # (B,T) shape
 
     # Output of (Bi-)RNN is reduced with attention vector; the result has (B,D) shape
-    output = tf.reduce_sum(inputs * tf.expand_dims(alphas, -1), 1)
+    # me = tf.expand_dims(alphas, -1) #(16, ?, 1)
+    # me = tf.expand_dims(alphas)  # (16, ?, 1)
+    my = inputs * alphas    # (16, ?, 450)
+    output = tf.reduce_sum(inputs * tf.expand_dims(alphas, -1), 1)  # (16, 450)
 
     if not return_alphas:
         return output

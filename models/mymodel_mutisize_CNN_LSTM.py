@@ -68,7 +68,7 @@ class myModel(object):
         rnn_conv_inputs = tf.concat([rnn_conv_inputs, rnn_conv_inputs_3], 2)  # (16,?,400)
         rnn_conv_inputs = tf.concat([rnn_conv_inputs, rnn_conv_inputs_4], 2)  # (16,?,450)
         # Droupout embedding input
-        rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')
+        rnn_conv_inputs = tf.nn.dropout(rnn_conv_inputs, rate=1 - self.keep_prob, name='drop_rnn_conv_inputs')# (16,?,450)
 
         # Create the internal multi-layer cell for rnn
         if rnn_model_cell == 'rnn':
@@ -90,7 +90,7 @@ class myModel(object):
         # RNN1
         with tf.compat.v1.variable_scope('rnn1'):
             # rnn_conv_1
-            self.rnn_conv_outputs1, self.rnn_conv_state1 = tf.compat.v1.nn.dynamic_rnn(
+            self.rnn_conv_outputs1, self.rnn_conv_state1 = tf.compat.v1.nn.dynamic_rnn(     # self.rnn_conv_outputs1 (16, ?, 450), self.rnn_conv_state1 (16, 450)
                 cell=self.single_cell1,
                 inputs=rnn_conv_inputs,
                 initial_state=self.init_state,
