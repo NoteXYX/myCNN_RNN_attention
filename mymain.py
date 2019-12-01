@@ -27,7 +27,7 @@ def main():
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'nepochs': 50,
-        'batch_size': 10,
+        'batch_size': 16,
         'keep_prob': 0.5,
         'check_dir': './mycheckpoints_multisize_CNN_attention',
         'display_test_per': 3,  #
