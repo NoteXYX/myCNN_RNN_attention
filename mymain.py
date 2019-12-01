@@ -27,7 +27,7 @@ def main():
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'nepochs': 50,
-        'batch_size': 16,
+        'batch_size': 10,
         'keep_prob': 0.5,
         'check_dir': './mycheckpoints_multisize_CNN_attention',
         'display_test_per': 3,  #
@@ -75,6 +75,7 @@ def main():
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
+            batch_size=s['batch_size'],
             rnn_model_cell='lstm'
         )
 

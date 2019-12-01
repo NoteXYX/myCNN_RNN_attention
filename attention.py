@@ -57,14 +57,14 @@ def attention(inputs, attention_size, time_major=False, return_alphas=False):
     hidden_size = inputs.shape[2].value  # D value - hidden size of the RNN layer
 
     # Trainable parameters
-    w_omega = tf.Variable(tf.random_normal([hidden_size, attention_size], stddev=0.1))
-    b_omega = tf.Variable(tf.random_normal([attention_size], stddev=0.1))
-    u_omega = tf.Variable(tf.random_normal([attention_size], stddev=0.1))
+    w_omega = tf.Variable(tf.random.normal([hidden_size, attention_size], stddev=0.1))
+    b_omega = tf.Variable(tf.random.normal([attention_size], stddev=0.1))
+    # u_omega = tf.Variable(tf.random_normal([attention_size], stddev=0.1))
 
     with tf.name_scope('v'):
         # Applying fully connected layer with non-linear activation to each of the B*T timestamps;
         #  the shape of `v` is (B,T,D)*(D,A)=(B,T,A), where A=attention_size
-        v = tf.tanh(tf.tensordot(inputs, w_omega, axes=1) + b_omega)           # (16, ?, 50)
+        v = tf.tanh(tf.tensordot(inputs, w_omega, axes=1) + b_omega)           # (16, ?, 450)
 
     # For each of the timestamps its vector of size A from `v` is reduced with `u` vector
     # vu = tf.tensordot(v, u_omega, axes=1, name='vu')  # (B,T) shape (16, ?)
@@ -74,7 +74,15 @@ def attention(inputs, attention_size, time_major=False, return_alphas=False):
     # Output of (Bi-)RNN is reduced with attention vector; the result has (B,D) shape
     # me = tf.expand_dims(alphas, -1) #(16, ?, 1)
     # me = tf.expand_dims(alphas)  # (16, ?, 1)
-    my = inputs * alphas    # (16, ?, 450)
+    # my_hidden = inputs * alphas    # (16, ?, 450)
+    my_hidden = tf.tensordot(alphas, inputs, axes=(2,1))    # my_hidden (16, ?, 16, 450)
+    my_list = []
+    for i_batch in range(my_hidden.shape[0].value):
+        cur_batch = tf.reshape(my_hidden[i_batch][0][i_batch], [1, 1, -1])
+        for time_arr in my_hidden[i_batch]:
+            tf.concat([cur_batch, tf.reshape(time_arr[i_batch], [1, 1, -1])], 1)
+
+        c = tf.concat([tf.reshape(my_hidden[i_batch][0][0], [1, -1]), tf.reshape(my_hidden[i_batch][1][0], [1, -1])], 0)
     output = tf.reduce_sum(inputs * tf.expand_dims(alphas, -1), 1)  # (16, 450)
 
     if not return_alphas:
