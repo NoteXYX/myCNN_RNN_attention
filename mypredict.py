@@ -3,7 +3,7 @@ import load
 # import models.mymodel_CNN_ori as mymodel
 import models.mymodel_multi_CNN as mymodelmultiCNN
 import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
-import models.mymodel_mutisize_CNN_LSTM as mymodel
+import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -57,6 +57,7 @@ def main():
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
             keep_prob=s['keep_prob'],
+            batch_size=s['batch_size'],
             rnn_model_cell='lstm'
         )
 
