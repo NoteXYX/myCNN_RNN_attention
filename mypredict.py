@@ -21,8 +21,8 @@ def main():
         'lr_decay': 0.5,
         'max_grad_norm': 5,
         'seed': 345,
-        'nepochs': 50,
-        'batch_size': 16,
+        'nepochs': 50,  # 总共迭代50个epoch
+        'batch_size': 16,   # batch_size=16
         'keep_prob': 1.0,
         'check_dir': './mycheckpoints_multisize_CNN',
         'display_test_per': 5,
@@ -36,7 +36,7 @@ def main():
 
     # vocab = set(dic['words2idx'].keys())
     # vocsize = len(vocab)
-    logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
+    logfile = open(str(s['check_dir']) + '/predict_log_old.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
     # test_lex = test_lex[:1000]
     # test_y = test_y[:1000]

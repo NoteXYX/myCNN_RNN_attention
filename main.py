@@ -44,7 +44,7 @@ def main():
     valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex,  test_y, test_z  = test_set
-    logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
+    logfile = open(str(s['check_dir']) + '/log_old.txt', 'a', encoding='utf-8')
     print ('len(train_data) {}'.format(len(train_lex)))
     print ('len(valid_data) {}'.format(len(valid_lex)))
     print ('len(test_data) {}'.format(len(test_lex)))
