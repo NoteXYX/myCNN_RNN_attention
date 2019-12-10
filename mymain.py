@@ -18,23 +18,22 @@ def batch_putin(train, test, start_num=0, batch_size=16):
 
 def main():
     s = {
-        'nh1': 450, # 第2层LSTM的隐藏单元数
+        'nh1': 450, # 第1层LSTM的隐藏单元数
         'nh2': 450, # 第2层LSTM的隐藏单元数
-        'win': 3,
         'emb_dimension': 300,   # 词向量维度
         'lr': 0.1,  # 初始学习率
         'lr_decay': 0.5,  # 学习率衰减率
-        'max_grad_norm': 5,  #
-        'seed': 345,  #
+        'lr_decay_per': 10,  # 如果训练10次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
         'check_dir': './mycheckpoints_multisize_CNN_attention', # 模型保存地址
+        'max_grad_norm': 5,  #
+        'seed': 345,  #
         'display_test_per': 3,  #
-        'lr_decay_per': 10  # 如果训练10次以后准确率没有上升，则衰减学习率为原来的0.5倍
     }
 
-    train_set, test_set, dic, embedding = load.atisfold_old()
+    train_set, test_set, dic, embedding = load.atisfold()
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
     # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
 

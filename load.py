@@ -2,7 +2,7 @@
 import numpy as np
 import pickle
 import random
-def atisfold():
+def atisfold_old():
     f_data_set = open('data/data_set.pkl', 'rb')
     f_emb = open('data/embedding.pkl', 'rb')
     f_idx2word = open('data/idx2words.pkl', 'rb')
@@ -20,22 +20,22 @@ def atisfold():
     f_char2idx.close()
     return train_set, test_set, dicts, embedding, idx2word, char_emb, char2idx
 
-def atisfold_old():
+def atisfold():
     f_data_set = open('data/data_set.pkl', 'rb')
     f_emb = open('data/embedding.pkl', 'rb')
     f_idx2word = open('data/idx2words.pkl', 'rb')
-    f_char_emb = open('data/char_embedding.pkl', 'rb')
-    f_char2idx = open('data/char2idx.pkl', 'rb')
+    # f_char_emb = open('data/char_embedding.pkl', 'rb')
+    # f_char2idx = open('data/char2idx.pkl', 'rb')
     train_set, test_set, dicts = pickle.load(f_data_set)
     embedding = pickle.load(f_emb)
     idx2word = pickle.load(f_idx2word)
-    char_emb = pickle.load(f_char_emb)
-    char2idx = pickle.load(f_char2idx)
+    # char_emb = pickle.load(f_char_emb)
+    # char2idx = pickle.load(f_char2idx)
     f_data_set.close()
     f_emb.close()
     f_idx2word.close()
-    f_char_emb.close()
-    f_char2idx.close()
+    # f_char_emb.close()
+    # f_char2idx.close()
     return train_set, test_set, dicts, embedding
 
 def pad_sentences(sentences, padding_word=0, forced_sequence_length=None):

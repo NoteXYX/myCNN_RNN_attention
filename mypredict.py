@@ -30,7 +30,7 @@ def main():
     }
 
     # load the dataset
-    train_set, test_set, dic, embedding = load.atisfold_old()
+    train_set, test_set, dic, embedding = load.atisfold()
     # idx2label = dict((k, v) for v, k in dic['labels2idx'].items())
     # idx2word = dict((k, v) for v, k in dic['words2idx'].items())
 
