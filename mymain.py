@@ -27,7 +27,7 @@ def main():
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './mycheckpoints_multisize_CNN_attention', # 模型保存地址
+        'check_dir': './CNTNcheckpoints_multisize_CNN_attention', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 3,  #
