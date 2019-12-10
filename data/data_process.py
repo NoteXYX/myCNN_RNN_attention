@@ -144,33 +144,18 @@ def get_CNTN_train_test_dicts(filenames):
 
     def get_CNTN_lex_y(sentence_list, tag_list, words2idx):
         lex, y, z = [], [], []
-        bad_cnt = 0
         for s, tag in zip(sentence_list, tag_list):
             word_list = s.split()
             t_list = tag.split()
             emb = list(map(lambda x: words2idx[x], word_list))
-            begin = -1
-            # for i in range(len(word_list)):
-            #     ok = True
-            #     for j in range(len(t_list)):
-            #         if word_list[i + j] != t_list[j]:
-            #             ok = False
-            #             break
-            #     if ok == True:
-            #         begin = i
-            #         break
-            #
-            # if begin == -1:
-            #     bad_cnt += 1
-            #     continue
             i = 0
-            j = 0
             find_keyphrase = False
             len_keyphrase = 0
             all_keyphrase_sub = []
             cur_keyphrase_sub = []
             while i < len(word_list):
                 cur_word = word_list[i]
+                j = 0
                 while j < len(t_list):
                     cur_keyword = t_list[j]
                     if cur_word == cur_keyword:
@@ -182,6 +167,7 @@ def get_CNTN_train_test_dicts(filenames):
                         break
                     elif find_keyphrase and j == len(t_list)-1:
                         all_keyphrase_sub.append(cur_keyphrase_sub)
+                        cur_keyphrase_sub = []
                         find_keyphrase = False
                         j += 1
                         # i += 1
@@ -209,22 +195,7 @@ def get_CNTN_train_test_dicts(filenames):
                     cur_y[cur_sub[-1]] = 1
                     cur_z[cur_sub[-1]] = labels2idx['E']
 
-
-            # labels_y = [0] * len(word_list)
-            # for i in range(len(t_list)):
-            #     labels_y[begin + i] = 1
             y.append(cur_y)
-
-            # labels_z = [0] * len(word_list)
-            # if len(t_list) == 1:
-            #     labels_z[begin] = labels2idx['S']
-            # elif len(t_list) > 1:
-            #     labels_z[begin] = labels2idx['B']
-            #
-            #     for i in range(len(t_list) - 2):
-            #         labels_z[begin + i + 1] = labels2idx['I']
-            #     labels_z[begin + len(t_list) - 1] = labels2idx['E']
-
             z.append(cur_z)
         return lex, y, z
 
