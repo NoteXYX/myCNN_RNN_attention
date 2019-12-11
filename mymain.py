@@ -150,71 +150,71 @@ def main():
                 # sys.stdout.flush())
 
             # VALID
-
-            predictions_valid = []
-            predictions_test = []
-            groundtruth_valid = []
-            groundtruth_test = []
-            start_num = 0
-            steps = len(valid_lex) // s['batch_size']
-            # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
-            for step in range(steps):
-                batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
-                x, z = batch
-                x = load.pad_sentences(x)
-                # x=tools.contextwin_2(x,s['win'])
-                predictions_valid.extend(dev_step(x))
-                groundtruth_valid.extend(z)
-                start_num += s['batch_size']
-
-            res_valid = tools.conlleval(predictions_valid, groundtruth_valid, '')
-
-            if res_valid['f'] > best_f:
-                best_f = res_valid['f']
-                best_e = e
-                best_res = res_valid
-                print('\nVALID new best:', res_valid)
-                logfile.write('\nVALID new best: ' + str(res_valid))
-                path = saver.save(sess=sess, save_path=checkpoint_prefix, global_step=e)
-                print("Save model checkpoint to {}".format(path))
-                logfile.write("\nSave model checkpoint to {}\n".format(path))
-            else:
-                print('\nVALID new curr:', res_valid)
-                logfile.write('\nVALID new curr: ' + str(res_valid))
-
-            # TEST
-            start_num = 0
-            steps = len(test_lex) // s['batch_size']
-            if e % s['display_test_per'] == 0:
-                # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+            if e >= 10:
+                predictions_valid = []
+                predictions_test = []
+                groundtruth_valid = []
+                groundtruth_test = []
+                start_num = 0
+                steps = len(valid_lex) // s['batch_size']
+                # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
                 for step in range(steps):
-                    batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
+                    batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
                     x, z = batch
                     x = load.pad_sentences(x)
-                    # x = tools.contextwin_2(x, s['win'])
-                    predictions_test.extend(dev_step(x))
-                    groundtruth_test.extend(z)
+                    # x=tools.contextwin_2(x,s['win'])
+                    predictions_valid.extend(dev_step(x))
+                    groundtruth_valid.extend(z)
                     start_num += s['batch_size']
 
-                res_test = tools.conlleval(predictions_test, groundtruth_test, '')
+                res_valid = tools.conlleval(predictions_valid, groundtruth_valid, '')
 
-                if res_test['f'] > test_best_f:
-                    test_best_f = res_test['f']
-                    test_best_e = e
-                    test_best_res = res_test
-                    print('TEST new best:', res_test)
-                    logfile.write('\nTEST new best: ' + str(res_test))
+                if res_valid['f'] > best_f:
+                    best_f = res_valid['f']
+                    best_e = e
+                    best_res = res_valid
+                    print('\nVALID new best:', res_valid)
+                    logfile.write('\nVALID new best: ' + str(res_valid))
+                    path = saver.save(sess=sess, save_path=checkpoint_prefix, global_step=e)
+                    print("Save model checkpoint to {}".format(path))
+                    logfile.write("\nSave model checkpoint to {}\n".format(path))
                 else:
-                    print('TEST new curr:', res_test)
-                    logfile.write('\nTEST new curr: ' + str(res_test))
+                    print('\nVALID new curr:', res_valid)
+                    logfile.write('\nVALID new curr: ' + str(res_valid))
 
-            # learning rate decay if no improvement in 10 epochs
-            if e - best_e > s['lr_decay_per']:
-                sess.run(fetches=my_model.learning_rate_decay_op)
-            lr = sess.run(fetches=my_model.lr)
-            print('learning rate:%f' % lr)
-            logfile.write('\nlearning rate:%f\n' % lr)
-            if lr < 1e-5: break
+                # TEST
+                start_num = 0
+                steps = len(test_lex) // s['batch_size']
+                if e % s['display_test_per'] == 0:
+                    # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+                    for step in range(steps):
+                        batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
+                        x, z = batch
+                        x = load.pad_sentences(x)
+                        # x = tools.contextwin_2(x, s['win'])
+                        predictions_test.extend(dev_step(x))
+                        groundtruth_test.extend(z)
+                        start_num += s['batch_size']
+
+                    res_test = tools.conlleval(predictions_test, groundtruth_test, '')
+
+                    if res_test['f'] > test_best_f:
+                        test_best_f = res_test['f']
+                        test_best_e = e
+                        test_best_res = res_test
+                        print('TEST new best:', res_test)
+                        logfile.write('\nTEST new best: ' + str(res_test))
+                    else:
+                        print('TEST new curr:', res_test)
+                        logfile.write('\nTEST new curr: ' + str(res_test))
+
+                # learning rate decay if no improvement in 10 epochs
+                if e - best_e > s['lr_decay_per']:
+                    sess.run(fetches=my_model.learning_rate_decay_op)
+                lr = sess.run(fetches=my_model.lr)
+                print('learning rate:%f' % lr)
+                logfile.write('\nlearning rate:%f\n' % lr)
+                if lr < 1e-5: break
 
         print("Train finished!")
         print('Valid Best Result: epoch %d:  ' % (best_e), best_res)
