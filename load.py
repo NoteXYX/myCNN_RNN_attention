@@ -20,9 +20,9 @@ def atisfold_old():
     f_char2idx.close()
     return train_set, test_set, dicts, embedding, idx2word, char_emb, char2idx
 
-def atisfold():
-    f_data_set = open('CNTN/data/semeval_wo_stem/data_set.pkl', 'rb')
-    f_emb = open('CNTN/data/semeval_wo_stem/embedding.pkl', 'rb')
+def atisfold(data_set_file, emb_file):
+    f_data_set = open(data_set_file, 'rb')
+    f_emb = open(emb_file, 'rb')
     # f_idx2word = open('data/idx2words.pkl', 'rb')
     # f_char_emb = open('data/char_embedding.pkl', 'rb')
     # f_char2idx = open('data/char2idx.pkl', 'rb')

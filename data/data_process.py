@@ -110,7 +110,7 @@ def get_train_test_dicts(filenames):
     train_set = [train_lex, train_y, train_z]
     test_set = [test_lex, test_y, test_z]
     data_set = [train_set, test_set, dicts]
-    with open('../CNTN/data/semeval_wo_stem/data_set.pkl', 'wb') as f:
+    with open('../CNTN/data/inspec_wo_stem/data_set.pkl', 'wb') as f:
         pickle.dump(data_set, f)
         # dill.dump(data_set, f)
     return data_set
@@ -205,7 +205,7 @@ def get_CNTN_train_test_dicts(filenames):
     train_set = [train_lex, train_y, train_z]
     test_set = [test_lex, test_y, test_z]
     data_set = [train_set, test_set, dicts]
-    with open('../CNTN/data/semeval_wo_stem/data_set.pkl', 'wb') as f:
+    with open('../CNTN/data/inspec_wo_stem/data_set.pkl', 'wb') as f:
         pickle.dump(data_set, f)
         # dill.dump(data_set, f)
     return data_set
@@ -258,13 +258,13 @@ def get_embedding(w2v,words2idx,k=300):
     for (w,idx) in words2idx.items():
         embedding[idx]=w2v[w]
     #embedding[0]=np.asarray(np.random.uniform(-0.25,0.25,k),dtype=np.float32)
-    with open('../CNTN/data/semeval_wo_stem/embedding.pkl','wb') as f:
+    with open('../CNTN/data/inspec_wo_stem/embedding.pkl','wb') as f:
         pickle.dump(embedding,f)
     return embedding
 
 
 if __name__ == '__main__':
-    data_folder = ["../CNTN/data/semeval_wo_stem/mytrain.txt","../CNTN/data/semeval_wo_stem/mytest.txt"]
+    data_folder = ["../CNTN/data/inspec_wo_stem/mytrain.txt","../CNTN/data/inspec_wo_stem/mytest.txt"]
     data_set = get_CNTN_train_test_dicts(data_folder)
     print ("data_set complete!")
     dicts = data_set[2]
