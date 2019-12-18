@@ -17,7 +17,7 @@ class myModel(object):
                  lr_decay,
                  embedding, # 词向量
                  max_gradient_norm,
-                 keep_prob,
+                 #keep_prob,
                  batch_size,
                  rnn_model_cell='rnn',
                  nonstatic=False):
@@ -25,7 +25,8 @@ class myModel(object):
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
-        self.keep_prob = keep_prob
+        # self.keep_prob = keep_prob
+        self.keep_prob = tf.compat.v1.placeholder(tf.float32, name='keep_prob')
 
         self.lr = tf.Variable(lr, dtype=tf.float32)
 
@@ -86,7 +87,8 @@ class myModel(object):
             raise Exception('model_cell error!')
         # DropoutWrapper rnn_cell
         self.single_cell1 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell1, output_keep_prob=self.keep_prob)
-        self.single_cell2 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell2, output_keep_prob=self.keep_prob)
+        self.single_cell2 = single_cell2
+        # self.single_cell2 = tf.compat.v1.nn.rnn_cell.DropoutWrapper(single_cell2, output_keep_prob=self.keep_prob)
         self.init_state = self.single_cell1.zero_state(self.batch_size, dtype=tf.float32)
 
         # RNN1
@@ -99,7 +101,6 @@ class myModel(object):
                 dtype=tf.float32
             )
         # Attention layer1
-        ATTENTION_SIZE = 450
         # attention_mechanism = tf.contrib.seq2seq.BahdanauAttention(num_units=self.rnn_size, memory=encoder_outputs,
         #                                                            memory_sequence_length=encoder_inputs_length)
         attention_mechanism = tf.contrib.seq2seq.LuongAttention(num_units=nh1, memory=self.rnn_conv_outputs1)
@@ -117,7 +118,7 @@ class myModel(object):
         # RNN2
         with tf.compat.v1.variable_scope('rnn2'):
             # rnn_conv_2
-            self.rnn_conv_outputs2, self.rnn_conv_state2 = tf.compat.v1.nn.dynamic_rnn(
+            self.rnn_out2, self.rnn_conv_state2 = tf.compat.v1.nn.dynamic_rnn(
                 cell=self.att1_out,
                 inputs=self.rnn_conv_outputs1,
                 initial_state=self.att_initial_state,
@@ -138,7 +139,7 @@ class myModel(object):
         #
         # Dropout
         # self.att2_out = tf.nn.dropout(attention_output2, rate=1-0.8, name='drop_att_2')
-        self.rnn_out2 = tf.nn.dropout(self.rnn_conv_outputs2, rate=1 - 0.8, name='drop_att_2')
+        # self.rnn_out2 = tf.nn.dropout(self.rnn_out2, rate=1 - 0.8, name='drop_att_2')
 
         # outputs_y
         with tf.compat.v1.variable_scope('output_sy'):

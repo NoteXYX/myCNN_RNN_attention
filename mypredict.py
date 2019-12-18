@@ -22,9 +22,9 @@ def main():
         'max_grad_norm': 5,
         'seed': 345,
         'nepochs': 100,  # 总共迭代50个epoch
-        'batch_size': 16,   # batch_size=16
+        'batch_size': 10,   # batch_size=16
         'keep_prob': 1.0,
-        'check_dir': './semeval_checkpoints_multisize_CNN_LSTM_attention',
+        'check_dir': './semeval_Adam_checkpoints_multisize_CNN_LSTM_attention',
         'display_test_per': 5,
         'lr_decay_per': 10
     }
@@ -39,7 +39,6 @@ def main():
 
     # vocab = set(dic['words2idx'].keys())
     # vocsize = len(vocab)
-    logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
     # test_lex = test_lex[:1000]
     # test_y = test_y[:1000]
@@ -59,13 +58,14 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
-            keep_prob=s['keep_prob'],
+            # keep_prob=s['keep_prob'],
             batch_size=s['batch_size'],
             rnn_model_cell='lstm'
         )
 
 
         checkpoint_dir = s['check_dir']
+        logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
@@ -77,6 +77,7 @@ def main():
         def dev_step(cwords):
             feed = {
                 my_model.cnn_input_x: cwords,
+                my_model.keep_prob: s['keep_prob']
                 # my_model.rnn_ori_input_x: cwords
                 # rnn.keep_prob:1.0,
                 # rnn.batch_size:s['batch_size']

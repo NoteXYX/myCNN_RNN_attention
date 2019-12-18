@@ -25,16 +25,16 @@ def main():
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 10,  # 如果训练10次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 100,  # 总共迭代50个epoch
-        'batch_size': 16,   # batch_size=16
+        'batch_size': 10,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './inspec_Adam_checkpoints_multisize_CNN_LSTM_attention', # 模型保存地址
+        'check_dir': './semeval_Adam_checkpoints_multisize_CNN_LSTM_attention', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 3,  #
     }
 
-    data_set_file ='CNTN/data/inspec_wo_stem/data_set.pkl'
-    emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
+    data_set_file ='CNTN/data/semeval_wo_stem/data_setNEW.pkl'
+    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
     train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
     # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
@@ -46,6 +46,9 @@ def main():
     # valid_lex, valid_y, valid_z = train_lex[:100], train_y[:100], train_z[:100]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex, test_y, test_z = test_set
+    log_dir = s['check_dir']
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
     logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print('len(train_data) {}'.format(len(train_lex)))
     print('len(valid_data) {}'.format(len(valid_lex)))
@@ -75,7 +78,7 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
-            keep_prob=s['keep_prob'],
+            #keep_prob=s['keep_prob'],
             batch_size=s['batch_size'],
             rnn_model_cell='lstm'
         )
@@ -91,9 +94,10 @@ def main():
                 my_model.cnn_input_x: cwords,
                 # my_model.rnn_ori_input_x: cwords,
                 my_model.rnn_input_y: label_y,
-                my_model.rnn_input_z: label_z
+                my_model.rnn_input_z: label_z,
+                my_model.keep_prob: 0.5
             }
-            my_model.keep_prob = s['keep_prob']
+            # my_model.keep_prob = s['keep_prob']
             # fetches = [rnn.loss, rnn.train_op]
             fetches = [my_model.loss, my_model.train_op]
             loss, _ = sess.run(fetches=fetches, feed_dict=feed)
@@ -102,11 +106,12 @@ def main():
         def dev_step(cwords):
             feed={
                 my_model.cnn_input_x:cwords,
+                my_model.keep_prob: 1.0
                 # my_model.rnn_ori_input_x: cwords
                 # rnn.keep_prob:1.0,
                 # rnn.batch_size:s['batch_size']
             }
-            my_model.keep_prob = 1.0
+            # my_model.keep_prob = 1.0
             fetches=my_model.sz_pred
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
@@ -151,7 +156,7 @@ def main():
                 # sys.stdout.flush())
 
             # VALID
-            if e >= 10:
+            if e >= 30:
                 predictions_valid = []
                 predictions_test = []
                 groundtruth_valid = []
