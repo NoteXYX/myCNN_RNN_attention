@@ -27,7 +27,7 @@ def main():
     }
 
     # load the dataset
-    data_set_file = 'CNTN/data/semeval_wo_stem/data_set.pkl'
+    data_set_file = 'CNTN/data/semeval_wo_stem/data_setNEW.pkl'
     emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
     train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     test_lex, test_y, test_z = test_set
@@ -52,7 +52,7 @@ def main():
 
 
         checkpoint_dir = s['check_dir']
-        logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
+        logfile = open(str(s['check_dir']) + '/predict_log.txt', 'a', encoding='utf-8')
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
