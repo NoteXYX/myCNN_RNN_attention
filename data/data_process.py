@@ -205,7 +205,7 @@ def get_CNTN_train_test_dicts(filenames):
     train_set = [train_lex, train_y, train_z]
     test_set = [test_lex, test_y, test_z]
     data_set = [train_set, test_set, dicts]
-    with open('../CNTN/data/semeval_wo_stem/data_set1.pkl', 'wb') as f:
+    with open('../CNTN/data/semeval_wo_stem/data_set123.pkl', 'wb') as f:
         pickle.dump(data_set, f)
         # dill.dump(data_set, f)
     return data_set
@@ -258,13 +258,13 @@ def get_embedding(w2v,words2idx,k=300):
     for (w,idx) in words2idx.items():
         embedding[idx]=w2v[w]
     #embedding[0]=np.asarray(np.random.uniform(-0.25,0.25,k),dtype=np.float32)
-    with open('../CNTN/data/inspec_wo_stem/embedding.pkl','wb') as f:
+    with open('../CNTN/data/semveal_wo_stem/embedding.pkl','wb') as f:
         pickle.dump(embedding,f)
     return embedding
 
 
 if __name__ == '__main__':
-    data_folder = ["../CNTN/data/semeval_wo_stem/mytrain.txt","../CNTN/data/semeval_wo_stem/mytest.txt"]
+    data_folder = ["../CNTN/data/semeval_wo_stem/mytrain123.txt","../CNTN/data/semeval_wo_stem/mytestNEW.txt"]
     data_set = get_CNTN_train_test_dicts(data_folder)
     print ("data_set complete!")
     dicts = data_set[2]
@@ -272,7 +272,8 @@ if __name__ == '__main__':
     print ("total num words: " + str(len(vocab)))
     print ("dataset created!")
     train_set, test_set, dicts=data_set
-    print (len(train_set[0]))
+    print ("total train lines: " + str(len(train_set[0])))
+    print("total test lines: " + str(len(test_set[0])))
 
     #GoogleNews-vectors-negative300.txt为预先训练的词向量
     #w2v_file = 'D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.bin'
@@ -281,3 +282,19 @@ if __name__ == '__main__':
     #w2v = add_unknown_words(w2v, vocab)
     #embedding=get_embedding(w2v,dicts['words2idx'])
     #print ("embedding created")
+
+    # f = open("../CNTN/data/semeval_wo_stem/mytest.txt", 'r', encoding='utf-8')
+    # w = open("../CNTN/data/semeval_wo_stem/mytestNEW.txt", 'w', encoding='utf-8')
+    # lines = f.readlines()
+    # for line in lines:
+    #     content = line.split('\t')[0]
+    #     keys = line.split('\t')[1]
+    #     mycon1 = content[:(len(content)-1)//2]
+    #     mycon2 = content[(len(content)-1)//2+1:]
+    #     if mycon1 == mycon2:
+    #         w.write(mycon1 + '\t' + keys)
+    #     else:
+    #         w.write(line)
+    #     # print(len(content))
+    # f.close()
+    # w.close()

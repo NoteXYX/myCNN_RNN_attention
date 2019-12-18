@@ -17,26 +17,29 @@ def main():
         'nh2': 450,
         'win': 3,
         'emb_dimension': 300,
-        'lr': 0.1,
+        'lr': 0.001,
         'lr_decay': 0.5,
         'max_grad_norm': 5,
         'seed': 345,
-        'nepochs': 50,  # 总共迭代50个epoch
+        'nepochs': 100,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 1.0,
-        'check_dir': './mycheckpoints_multisize_CNN',
+        'check_dir': './semeval_checkpoints_multisize_CNN_LSTM_attention',
         'display_test_per': 5,
         'lr_decay_per': 10
     }
 
     # load the dataset
-    train_set, test_set, dic, embedding = load.atisfold()
+    data_set_file = 'CNTN/data/semeval_wo_stem/data_set.pkl'
+    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
+    train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
+    # train_set, test_set, dic, embedding = load.atisfold()
     # idx2label = dict((k, v) for v, k in dic['labels2idx'].items())
     # idx2word = dict((k, v) for v, k in dic['words2idx'].items())
 
     # vocab = set(dic['words2idx'].keys())
     # vocsize = len(vocab)
-    logfile = open(str(s['check_dir']) + '/predict_log_old.txt', 'w', encoding='utf-8')
+    logfile = open(str(s['check_dir']) + '/predict_log.txt', 'w', encoding='utf-8')
     test_lex, test_y, test_z = test_set
     # test_lex = test_lex[:1000]
     # test_y = test_y[:1000]

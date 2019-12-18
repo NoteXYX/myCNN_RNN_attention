@@ -11,7 +11,7 @@ import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
 
 
-def batch_putin(train, test, start_num=0, batch_size=5):
+def batch_putin(train, test, start_num=0, batch_size=16):
     batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
     return batch
 
@@ -24,17 +24,17 @@ def main():
         'lr': 0.001,  # 初始学习率
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 10,  # 如果训练10次以后准确率没有上升，则衰减学习率为原来的0.5倍
-        'nepochs': 50,  # 总共迭代50个epoch
-        'batch_size': 5,   # batch_size=16
-        'keep_prob': 1.0,   # drop out 概率
-        'check_dir': './CNTNcheckpoints_multisize_CNN_LSTM_attention', # 模型保存地址
+        'nepochs': 100,  # 总共迭代50个epoch
+        'batch_size': 16,   # batch_size=16
+        'keep_prob': 0.5,   # drop out 概率
+        'check_dir': './inspec_Adam_checkpoints_multisize_CNN_LSTM_attention', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 3,  #
     }
 
-    data_set_file ='CNTN/data/semeval_wo_stem/data_set1.pkl'
-    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
+    data_set_file ='CNTN/data/inspec_wo_stem/data_set.pkl'
+    emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
     train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
     # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
@@ -42,7 +42,7 @@ def main():
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     tr = int(len(train_lex) * 0.9)
-    valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
+    valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]    ################
     # valid_lex, valid_y, valid_z = train_lex[:100], train_y[:100], train_z[:100]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex, test_y, test_z = test_set
@@ -111,10 +111,11 @@ def main():
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
 
-        saver = tf.train.Saver(tf.all_variables(), max_to_keep=15)
+        saver = tf.train.Saver(tf.all_variables(), max_to_keep=10)
         sess.run(tf.global_variables_initializer())
         best_f = -1
         best_e = 0
+        decay_e = 0
         test_best_f = -1
         test_best_e = 0
         best_res = None
@@ -172,6 +173,7 @@ def main():
                 if res_valid['f'] > best_f:
                     best_f = res_valid['f']
                     best_e = e
+                    decay_e = e
                     best_res = res_valid
                     print('\nVALID new best:', res_valid)
                     logfile.write('\nVALID new best: ' + str(res_valid))
@@ -209,12 +211,13 @@ def main():
                         logfile.write('\nTEST new curr: ' + str(res_test))
 
                 # learning rate decay if no improvement in 10 epochs
-                if e - best_e > s['lr_decay_per']:
+                if e - best_e > s['lr_decay_per'] and e - decay_e > s['lr_decay_per']:
                     sess.run(fetches=my_model.learning_rate_decay_op)
+                    decay_e = e
                 lr = sess.run(fetches=my_model.lr)
                 print('learning rate:%f' % lr)
                 logfile.write('\nlearning rate:%f\n' % lr)
-                if lr < 1e-5: break
+                if lr < 1e-6: break
 
         print("Train finished!")
         print('Valid Best Result: epoch %d:  ' % (best_e), best_res)

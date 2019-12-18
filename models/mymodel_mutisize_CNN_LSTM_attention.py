@@ -164,7 +164,8 @@ class myModel(object):
 
         tvars = tf.compat.v1.trainable_variables()
         grads, _ = tf.clip_by_global_norm(tf.gradients(self.loss, tvars), max_gradient_norm)
-        optimizer = tf.compat.v1.train.GradientDescentOptimizer(self.lr)
+        #optimizer = tf.compat.v1.train.GradientDescentOptimizer(self.lr)
+        optimizer = tf.compat.v1.train.AdamOptimizer(self.lr)
         self.train_op = optimizer.minimize(self.loss)
 
     def cost(output, target):

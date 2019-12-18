@@ -52,16 +52,26 @@ def conlleval(predictions, groundtruth, file):
     assert len(predictions) == len(groundtruth)
     res = {}
     all_cnt, good_cnt = len(predictions), 0
-    p_cnt, r_cnt, pr_cnt = 0, 0, 0
+    p_cnt, r_cnt = 0, 0
+    # p_cnt, r_cnt, pr_cnt = 0, 0, 0
     for i in range(all_cnt):
         # print i
-        if all(predictions[i][0:len(groundtruth[i])] == groundtruth[i]) == True:
-            good_cnt += 1
+        # if all(predictions[i][0:len(groundtruth[i])] == groundtruth[i]) == True:
+        #     good_cnt += 1
         pKeyphraseList = getKeyphraseList(predictions[i][0:len(groundtruth[i])])
         gKeyphraseList = getKeyphraseList(groundtruth[i])
-        p_cnt += len(pKeyphraseList)
-        r_cnt += len(gKeyphraseList)
-        pr_cnt += len(pKeyphraseList & gKeyphraseList)
+        for p in pKeyphraseList:
+            for g in gKeyphraseList:
+                if p == g:
+                    good_cnt += 1
+                    break
+        p_cnt += len(pKeyphraseList)  #######################
+        r_cnt += len(gKeyphraseList)  #######################
+        # if len(pKeyphraseList) != 0:
+        #     p_cnt += 1
+        # if len(gKeyphraseList) != 0:
+        #     r_cnt += 1
+        # pr_cnt += len(pKeyphraseList & gKeyphraseList)
     res['a'] = 1.0*good_cnt/all_cnt
     res['p'] = 1.0*good_cnt/p_cnt
     res['r'] = 1.0*good_cnt/r_cnt
