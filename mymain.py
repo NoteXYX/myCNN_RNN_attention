@@ -2,11 +2,6 @@ import tensorflow as tf
 import time
 import os
 import load
-# import models.model as model
-# import models.mymodel_CNN_ori as mymodel
-# import models.mymodel_multi_CNN as mymodelmultiCNN
-# import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
-# import models.mymodel_mutisize_CNN_LSTM as mymodel
 import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
 
@@ -36,14 +31,11 @@ def main():
     data_set_file ='CNTN/data/semeval_wo_stem/data_setNEW.pkl'
     emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
     train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
-    # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
-    # idx2word  = dict((k,v) for v,k in dic['words2idx'].iteritems())
 
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     tr = int(len(train_lex) * 0.9)
     valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]    ################
-    # valid_lex, valid_y, valid_z = train_lex[:100], train_y[:100], train_z[:100]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex, test_y, test_z = test_set
     log_dir = s['check_dir']
@@ -78,7 +70,6 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
-            #keep_prob=s['keep_prob'],
             batch_size=s['batch_size'],
             rnn_model_cell='lstm'
         )
@@ -92,13 +83,10 @@ def main():
         def train_step(cwords, label_y, label_z):
             feed = {
                 my_model.cnn_input_x: cwords,
-                # my_model.rnn_ori_input_x: cwords,
                 my_model.rnn_input_y: label_y,
                 my_model.rnn_input_z: label_z,
                 my_model.keep_prob: 0.5
             }
-            # my_model.keep_prob = s['keep_prob']
-            # fetches = [rnn.loss, rnn.train_op]
             fetches = [my_model.loss, my_model.train_op]
             loss, _ = sess.run(fetches=fetches, feed_dict=feed)
             return loss
@@ -107,11 +95,7 @@ def main():
             feed={
                 my_model.cnn_input_x:cwords,
                 my_model.keep_prob: 1.0
-                # my_model.rnn_ori_input_x: cwords
-                # rnn.keep_prob:1.0,
-                # rnn.batch_size:s['batch_size']
             }
-            # my_model.keep_prob = 1.0
             fetches=my_model.sz_pred
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
@@ -140,9 +124,7 @@ def main():
                 input_x = load.pad_sentences(input_x)
                 label_y = load.pad_sentences(label_y)
                 label_z = load.pad_sentences(label_z)
-                # cwords=tools.contextwin_2(input_x,s['win'])
                 cwords = input_x
-                #cwords = np.asarray(cwords)
                 loss = train_step(cwords, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.6f' % loss,
@@ -168,7 +150,6 @@ def main():
                     batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
                     x, z = batch
                     x = load.pad_sentences(x)
-                    # x=tools.contextwin_2(x,s['win'])
                     predictions_valid.extend(dev_step(x))
                     groundtruth_valid.extend(z)
                     start_num += s['batch_size']
@@ -198,7 +179,6 @@ def main():
                         batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
                         x, z = batch
                         x = load.pad_sentences(x)
-                        # x = tools.contextwin_2(x, s['win'])
                         predictions_test.extend(dev_step(x))
                         groundtruth_test.extend(z)
                         start_num += s['batch_size']

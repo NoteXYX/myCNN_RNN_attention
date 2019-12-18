@@ -1,8 +1,5 @@
 import tensorflow as tf
 import load
-# import models.mymodel_CNN_ori as mymodel
-import models.mymodel_multi_CNN as mymodelmultiCNN
-import models.mymodel_multi_CNN_NEW as mymodelmultiCNN_NEW
 import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
 
@@ -33,16 +30,7 @@ def main():
     data_set_file = 'CNTN/data/semeval_wo_stem/data_set.pkl'
     emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
     train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
-    # train_set, test_set, dic, embedding = load.atisfold()
-    # idx2label = dict((k, v) for v, k in dic['labels2idx'].items())
-    # idx2word = dict((k, v) for v, k in dic['words2idx'].items())
-
-    # vocab = set(dic['words2idx'].keys())
-    # vocsize = len(vocab)
     test_lex, test_y, test_z = test_set
-    # test_lex = test_lex[:1000]
-    # test_y = test_y[:1000]
-    # test_z = test_z[:1000]
 
     y_nclasses = 2
     z_nclasses = 5
@@ -58,7 +46,6 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
-            # keep_prob=s['keep_prob'],
             batch_size=s['batch_size'],
             rnn_model_cell='lstm'
         )
@@ -78,9 +65,6 @@ def main():
             feed = {
                 my_model.cnn_input_x: cwords,
                 my_model.keep_prob: s['keep_prob']
-                # my_model.rnn_ori_input_x: cwords
-                # rnn.keep_prob:1.0,
-                # rnn.batch_size:s['batch_size']
             }
             fetches = my_model.sz_pred
             sz_pred = sess.run(fetches=fetches, feed_dict=feed)
@@ -97,7 +81,6 @@ def main():
             batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             x, z = batch
             x = load.pad_sentences(x)
-            # x = tools.contextwin_2(x, s['win'])
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
             start_num += s['batch_size']
