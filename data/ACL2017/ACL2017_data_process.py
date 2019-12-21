@@ -32,7 +32,7 @@ def get_dict(filenames):
     dicts = {'words2idx': words2idx, 'labels2idx': labels2idx, 'idx2words': idx2words}
     return dicts
 
-def get_CNTN_train_test_dicts(filenames):
+def get_CNTN_train_valid_test_dicts(filenames):
     """
     Args:
     filenames:trnTweet,testTweet,tag_id_cnt
@@ -66,28 +66,13 @@ def get_CNTN_train_test_dicts(filenames):
             word_list = s.split()
             t_list = tag.split('\t')
             emb = list(map(lambda x: words2idx[x], word_list))
-            i = 0
-            find_keyphrase = False
-            len_keyphrase = 0
             all_keyphrase_sub = []
-            cur_keyphrase_sub = []
-            while i < len(word_list):
-                cur_word = word_list[i]
-                j = 0
-                while j < len(t_list):
-                    cur_keyword = t_list[j]
-                    if cur_word == cur_keyword:
-                        len_keyphrase += 1
-                        cur_keyphrase_sub.append(i)
-                        find_keyphrase = True
-                        break
-                    elif find_keyphrase and j == len(t_list) - 1:
+            for kp in t_list:
+                win = len(kp)
+                for i in range(len(s)-win+1):
+                    if ' '.join(s[i:i+win]) == kp:
+                        cur_keyphrase_sub = range(i, i+win)
                         all_keyphrase_sub.append(cur_keyphrase_sub)
-                        cur_keyphrase_sub = []
-                        find_keyphrase = False
-                    j += 1
-                i += 1
-
             lex.append(emb)
             cur_y = [0 for k in range(len(word_list))]
             cur_z = [0 for k in range(len(word_list))]
@@ -103,20 +88,20 @@ def get_CNTN_train_test_dicts(filenames):
                         cur_z[cur_sub[1 + k]] = labels2idx['I']
                     cur_y[cur_sub[-1]] = 1
                     cur_z[cur_sub[-1]] = labels2idx['E']
-
             y.append(cur_y)
             z.append(cur_z)
         return lex, y, z
 
     train_lex, train_y, train_z = get_CNTN_lex_y(trn_sentence_list, trn_tag_list,
                                                  words2idx)  # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
+    valid_lex, valid_y, valid_z = get_CNTN_lex_y(valid_sentence_list, valid_tag_list, words2idx)
     test_lex, test_y, test_z = get_CNTN_lex_y(test_sentence_list, test_tag_list, words2idx)
     train_set = [train_lex, train_y, train_z]
+    valid_set = [valid_lex, valid_y, valid_z]
     test_set = [test_lex, test_y, test_z]
-    data_set = [train_set, test_set, dicts]
-    with open('../CNTN/data/semeval_wo_stem/data_set123.pkl', 'wb') as f:
+    data_set = [train_set, valid_set, test_set, dicts]
+    with open('kp20k/kp20k_data_set.pkl', 'wb') as f:
         pickle.dump(data_set, f)
-        # dill.dump(data_set, f)
     return data_set
 
 
@@ -154,30 +139,31 @@ def get_embedding(w2v, words2idx, k=300):
     for (w, idx) in words2idx.items():
         embedding[idx] = w2v[w]
     # embedding[0]=np.asarray(np.random.uniform(-0.25,0.25,k),dtype=np.float32)
-    with open('../CNTN/data/semveal_wo_stem/embedding.pkl', 'wb') as f:
+    with open('kp20k/kp20k_embedding.pkl', 'wb') as f:
         pickle.dump(embedding, f)
     return embedding
 
 
 if __name__ == '__main__':
     data_folder = ["kp20k/kp20k_train.json", "kp20k/kp20k_valid.json", "kp20k/kp20k_test.json"]
-    data_set = get_CNTN_train_test_dicts(data_folder)
-    # print("data_set complete!")
-    # dicts = data_set[2]
-    # vocab = set(dicts['words2idx'].keys())
-    # print("total num words: " + str(len(vocab)))
-    # print("dataset created!")
-    # train_set, test_set, dicts = data_set
-    # print("total train lines: " + str(len(train_set[0])))
-    # print("total test lines: " + str(len(test_set[0])))
+    data_set = get_CNTN_train_valid_test_dicts(data_folder)
+    print("data_set complete!")
+    dicts = data_set[3]
+    vocab = set(dicts['words2idx'].keys())
+    print("total num words: " + str(len(vocab)))
+    print("dataset created!")
+    train_set, valid_set, test_set, dicts = data_set
+    print("total train lines: " + str(len(train_set[0])))
+    print("total valid lines: " + str(len(valid_set[0])))
+    print("total test lines: " + str(len(test_set[0])))
 
     # GoogleNews-vectors-negative300.txt为预先训练的词向量
-    # w2v_file = 'D:\PycharmProjects\myCNN_RNN_attention\data\original_data\GoogleNews-vectors-negative300.bin'
-    # w2v = load_bin_vec(w2v_file,vocab)
-    # print ("word2vec loaded")
-    # w2v = add_unknown_words(w2v, vocab)
-    # embedding=get_embedding(w2v,dicts['words2idx'])
-    # print ("embedding created")
+    w2v_file = '../tweet_data/original_data/GoogleNews-vectors-negative300.bin'
+    w2v = load_bin_vec(w2v_file,vocab)
+    print ("word2vec loaded")
+    w2v = add_unknown_words(w2v, vocab)
+    embedding=get_embedding(w2v,dicts['words2idx'])
+    print ("embedding created")
 
     # f = open("../CNTN/data/semeval_wo_stem/mytest.txt", 'r', encoding='utf-8')
     # w = open("../CNTN/data/semeval_wo_stem/mytestNEW.txt", 'w', encoding='utf-8')
