@@ -14,26 +14,28 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
-        'lr':0.1,
+        'lr':0.0001,
         'lr_decay':0.5,
         'max_grad_norm':5,
         'seed':345,
-        'nepochs':50,
-        'batch_size':16,
+        'nepochs':100,
+        'batch_size':10,
         'keep_prob':1.0,
-        'check_dir':'./checkpoints',
+        'check_dir':'./checkpoints/baseline_semeval_checkpoints',
         'display_test_per':5,
         'lr_decay_per':10
     }
 
     
     # load the dataset
-    train_set,test_set,dic,embedding=load.atisfold_old()
-    idx2label = dict((k,v) for v,k in dic['labels2idx'].items())
-    idx2word  = dict((k,v) for v,k in dic['words2idx'].items())
+    data_set_file = 'CNTN/data/semeval_wo_stem/data_setNEW.pkl'
+    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
+    train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
+    # idx2label = dict((k,v) for v,k in dic['labels2idx'].items())
+    # idx2word  = dict((k,v) for v,k in dic['words2idx'].items())
 
-    vocab = set(dic['words2idx'].keys())
-    vocsize = len(vocab)
+    # vocab = set(dic['words2idx'].keys())
+    # vocsize = len(vocab)
 
     test_lex,  test_y, test_z  = test_set
     # test_lex = test_lex[:1000]
@@ -57,7 +59,7 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
-            keep_prob=s['keep_prob'],
+            batch_size=s['batch_size'],
             model_cell='lstm'
         )
 
@@ -72,7 +74,7 @@ def main():
         def dev_step(cwords):
             feed={
                 rnn.input_x:cwords,
-                # rnn.keep_prob:1.0,
+                rnn.keep_prob: s['keep_prob'],
                 # rnn.batch_size:s['batch_size']
             }
             fetches=rnn.sz_pred

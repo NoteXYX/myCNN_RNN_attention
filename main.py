@@ -1,14 +1,9 @@
 import tensorflow as tf
-# import tensorlayer as tl
-import numpy as np
 import time
 import os
-# import random
 import load
 import models.model as model
-import models.mymodel_CNN_ori as mymodel
 import tools
-import sys
 
 def batch_putin(train, test, start_num=0, batch_size=16):
     batch = [train[start_num:start_num+batch_size],test[start_num:start_num+batch_size]]
@@ -20,19 +15,21 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
-        'lr':0.1,
+        'lr':0.0001,
         'lr_decay':0.5,         #
         'max_grad_norm':5,      #
         'seed':345,             #
-        'nepochs':50,
-        'batch_size':16,
+        'nepochs':100,
+        'batch_size':10,
         'keep_prob':0.5,
-        'check_dir':'./checkpoints',
+        'check_dir':'./baseline_semeval_checkpoints',
         'display_test_per':3,   #
         'lr_decay_per':10       #
     }
 
-    train_set,test_set,dic,embedding=load.atisfold_old()
+    data_set_file = 'CNTN/data/semeval_wo_stem/data_setNEW.pkl'
+    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
+    train_set,test_set,dic,embedding = load.atisfold(data_set_file, emb_file)
     
     
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].iteritems())
@@ -44,7 +41,10 @@ def main():
     valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]
     train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
     test_lex,  test_y, test_z  = test_set
-    logfile = open(str(s['check_dir']) + '/log_old.txt', 'a', encoding='utf-8')
+    log_dir = s['check_dir']
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
+    logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
     print ('len(train_data) {}'.format(len(train_lex)))
     print ('len(valid_data) {}'.format(len(valid_lex)))
     print ('len(test_data) {}'.format(len(test_lex)))
@@ -75,7 +75,8 @@ def main():
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
-            keep_prob=s['keep_prob'],
+            batch_size=s['batch_size'],
+            # keep_prob=s['keep_prob'],
             model_cell='lstm'
         )
     #     my_model = mymodel.myModel(
@@ -103,7 +104,7 @@ def main():
                 rnn.input_x:cwords,
                 rnn.input_y:label_y,
                 rnn.input_z:label_z,
-                # rnn.keep_prob:s['keep_prob'],
+                rnn.keep_prob:s['keep_prob']
                 # rnn.batch_size:s['batch_size']
             }
             fetches=[rnn.loss,rnn.train_op]
@@ -114,10 +115,10 @@ def main():
         def dev_step(cwords):
             feed={
                 rnn.input_x:cwords,
+                rnn.keep_prob: 1.0
                 # rnn.keep_prob:1.0,
                 # rnn.batch_size:s['batch_size']
             }
-            rnn.keep_prob = 1.0
             fetches=rnn.sz_pred
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
@@ -160,72 +161,72 @@ def main():
                 # sys.stdout.flush())
 
             #VALID
-
-            predictions_valid=[]
-            predictions_test=[]
-            groundtruth_valid=[]
-            groundtruth_test=[]
-            start_num = 0
-            steps = len(valid_lex) // s['batch_size']
-            # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
-            for step in range(steps):
-                batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
-                x,z=batch
-                x=load.pad_sentences(x)
-                x=tools.contextwin_2(x,s['win'])
-                predictions_valid.extend(dev_step(x))
-                groundtruth_valid.extend(z)
-                start_num += s['batch_size']
-
-            res_valid=tools.conlleval(predictions_valid,groundtruth_valid,'')
-
-            if res_valid['f']>best_f:
-                best_f=res_valid['f']
-                best_e=e
-                best_res=res_valid
-                print ('\nVALID new best:',res_valid)
-                logfile.write('\nVALID new best: ' + str(res_valid))
-                path = saver.save(sess=sess, save_path=checkpoint_prefix, global_step=e)
-                print ("Save model checkpoint to {}".format(path))
-                logfile.write("\nSave model checkpoint to {}\n".format(path))
-            else:
-                print ('\nVALID new curr:',res_valid)
-                logfile.write('\nVALID new curr: ' + str(res_valid))
-
-            #TEST
-            start_num = 0
-            steps = len(test_lex) // s['batch_size']
-            if e%s['display_test_per']==0:
-                # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+            if e >= 50:
+                predictions_valid=[]
+                predictions_test=[]
+                groundtruth_valid=[]
+                groundtruth_test=[]
+                start_num = 0
+                steps = len(valid_lex) // s['batch_size']
+                # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
                 for step in range(steps):
-                    batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
-                    x,z = batch
-                    x = load.pad_sentences(x)
-                    x = tools.contextwin_2(x, s['win'])
-                    predictions_test.extend(dev_step(x))
-                    groundtruth_test.extend(z)
+                    batch = batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
+                    x,z=batch
+                    x=load.pad_sentences(x)
+                    x=tools.contextwin_2(x,s['win'])
+                    predictions_valid.extend(dev_step(x))
+                    groundtruth_valid.extend(z)
                     start_num += s['batch_size']
 
+                res_valid=tools.conlleval(predictions_valid,groundtruth_valid,'')
 
-                res_test = tools.conlleval(predictions_test, groundtruth_test, '')
-
-                if res_test['f'] > test_best_f:
-                    test_best_f = res_test['f']
-                    test_best_e=e
-                    test_best_res=res_test
-                    print ('TEST new best:',res_test)
-                    logfile.write('\nTEST new best: ' + str(res_test))
+                if res_valid['f']>best_f:
+                    best_f=res_valid['f']
+                    best_e=e
+                    best_res=res_valid
+                    print ('\nVALID new best:',res_valid)
+                    logfile.write('\nVALID new best: ' + str(res_valid))
+                    path = saver.save(sess=sess, save_path=checkpoint_prefix, global_step=e)
+                    print ("Save model checkpoint to {}".format(path))
+                    logfile.write("\nSave model checkpoint to {}\n".format(path))
                 else:
-                    print ('TEST new curr:',res_test)
-                    logfile.write('\nTEST new curr: ' + str(res_test))
+                    print ('\nVALID new curr:',res_valid)
+                    logfile.write('\nVALID new curr: ' + str(res_valid))
 
-            # learning rate decay if no improvement in 10 epochs
-            if e-best_e>s['lr_decay_per']:
-                sess.run(fetches=rnn.learning_rate_decay_op)
-            lr=sess.run(fetches=rnn.lr)
-            print ('learning rate:%f' % lr)
-            logfile.write('\nlearning rate:%f\n' % lr)
-            if lr<1e-5:break
+                #TEST
+                start_num = 0
+                steps = len(test_lex) // s['batch_size']
+                if e%s['display_test_per']==0:
+                    # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+                    for step in range(steps):
+                        batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
+                        x,z = batch
+                        x = load.pad_sentences(x)
+                        x = tools.contextwin_2(x, s['win'])
+                        predictions_test.extend(dev_step(x))
+                        groundtruth_test.extend(z)
+                        start_num += s['batch_size']
+
+
+                    res_test = tools.conlleval(predictions_test, groundtruth_test, '')
+
+                    if res_test['f'] > test_best_f:
+                        test_best_f = res_test['f']
+                        test_best_e=e
+                        test_best_res=res_test
+                        print ('TEST new best:',res_test)
+                        logfile.write('\nTEST new best: ' + str(res_test))
+                    else:
+                        print ('TEST new curr:',res_test)
+                        logfile.write('\nTEST new curr: ' + str(res_test))
+
+                # learning rate decay if no improvement in 10 epochs
+                if e-best_e>s['lr_decay_per']:
+                    sess.run(fetches=rnn.learning_rate_decay_op)
+                lr=sess.run(fetches=rnn.lr)
+                print ('learning rate:%f' % lr)
+                logfile.write('\nlearning rate:%f\n' % lr)
+                if lr<1e-6:break
 
         print ("Train finished!")
         print ('Valid Best Result: epoch %d:  ' % (best_e),best_res)

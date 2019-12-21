@@ -19,8 +19,8 @@ def main():
         'lr': 0.001,  # 初始学习率
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 10,  # 如果训练10次以后准确率没有上升，则衰减学习率为原来的0.5倍
-        'nepochs': 100,  # 总共迭代50个epoch
-        'batch_size': 10,   # batch_size=16
+        'nepochs': 50,  # 总共迭代50个epoch
+        'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
         'check_dir': './semeval_Adam_checkpoints_multisize_CNN_LSTM_attention', # 模型保存地址
         'max_grad_norm': 5,  #
@@ -85,7 +85,7 @@ def main():
                 my_model.cnn_input_x: cwords,
                 my_model.rnn_input_y: label_y,
                 my_model.rnn_input_z: label_z,
-                my_model.keep_prob: 0.5
+                my_model.keep_prob: s['keep_prob']
             }
             fetches = [my_model.loss, my_model.train_op]
             loss, _ = sess.run(fetches=fetches, feed_dict=feed)

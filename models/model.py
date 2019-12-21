@@ -14,9 +14,10 @@ class Model(object):
                  lr_decay,
                  embedding,
                  max_gradient_norm,
-                 keep_prob,
+                 batch_size,
+                 #keep_prob,
                  model_cell='rnn',
-                 model='basic_model',
+                 #model='basic_model',
                  nonstatic=False):
 
         # self.batch_size = tf.compat.v1.placeholder(dtype=tf.float32, shape=None)
@@ -24,11 +25,12 @@ class Model(object):
         # self.input_y=tf.compat.v1.placeholder(tf.int32,shape=[None,None],name="input_y")
         # self.input_z=tf.compat.v1.placeholder(tf.int32,shape=[None,None],name='input_z')
         # self.keep_prob=tf.compat.v1.placeholder(dtype=tf.float32,name='keep_prob')
-        self.batch_size = 16
+        # self.batch_size = 16
+        self.batch_size = batch_size
         self.input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs], name='input_x')   # input_x.shape=(None,None,3)
         self.input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name="input_y") # input_y.shape = (None,None)
         self.input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='input_z') # input_z.shape = (None,None)
-        self.keep_prob = keep_prob
+        self.keep_prob = tf.compat.v1.placeholder(tf.float32)
 
         self.lr=tf.Variable(lr,dtype=tf.float32)
 

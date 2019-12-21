@@ -19,16 +19,16 @@ def main():
         'max_grad_norm': 5,
         'seed': 345,
         'nepochs': 100,  # 总共迭代50个epoch
-        'batch_size': 10,   # batch_size=16
+        'batch_size': 16,   # batch_size=16
         'keep_prob': 1.0,
-        'check_dir': './semeval_Adam_checkpoints_multisize_CNN_LSTM_attention',
+        'check_dir': './inspec_Adam_checkpoints_multisize_CNN_LSTM_attention',
         'display_test_per': 5,
         'lr_decay_per': 10
     }
 
     # load the dataset
-    data_set_file = 'CNTN/data/semeval_wo_stem/data_setNEW.pkl'
-    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
+    data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
+    emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
     train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     test_lex, test_y, test_z = test_set
 
