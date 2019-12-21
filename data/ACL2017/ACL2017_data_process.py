@@ -158,7 +158,7 @@ if __name__ == '__main__':
     print("total test lines: " + str(len(test_set[0])))
 
     # GoogleNews-vectors-negative300.txt为预先训练的词向量
-    w2v_file = '../tweet_data/original_data/GoogleNews-vectors-negative300.bin'
+    w2v_file = '../tweet_data/GoogleNews-vectors-negative300.bin'
     w2v = load_bin_vec(w2v_file,vocab)
     print ("word2vec loaded")
     w2v = add_unknown_words(w2v, vocab)
