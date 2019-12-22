@@ -12,8 +12,8 @@ def get_va_test_list(filename):
     for line in json_file.readlines():
         json_data = json.loads(line)
         datalist.append(json_data["abstract"].strip().lower())
-        keywords_str = json_data["keywords"].strip()
-        keywords_str = '\t'.join(keywords_str.split(';'))
+        keywords_list = [keyword.strip() for keyword in json_data["keywords"].split(';')]
+        keywords_str = '\t'.join(keywords_list)
         taglist.append(keywords_str)
     json_file.close()
     return datalist, taglist
@@ -24,7 +24,8 @@ def get_train_list(filename):
     for line in json_file.readlines():
         json_data = json.loads(line)
         datalist.append(json_data["abstract"].strip().lower())
-        keywords_str = '\t'.join(json_data["keywords"])
+        keywords_list = [keyword.strip() for keyword in json_data["keywords"]]
+        keywords_str = '\t'.join(keywords_list)
         taglist.append(keywords_str)
     json_file.close()
     return datalist, taglist
@@ -35,7 +36,6 @@ def get_dict(filenames):
     sentence_list = get_train_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
     words = []
     for sentence in sentence_list:
-        # word_list = sentence.split()
         word_list = nltk.word_tokenize(sentence)
         words.extend(word_list)
     word_counts = Counter(words)
@@ -79,19 +79,17 @@ def get_CNTN_train_valid_test_dicts(filenames):
         bad_num = 0
         num = 0
         for s, tag in zip(sentence_list, tag_list):
-            # word_list = s.split()
             num += 1
             word_list = nltk.word_tokenize(s)
             t_list = tag.split('\t')
             emb = list(map(lambda x: words2idx[x], word_list))
             all_keyphrase_sub = []
             for kp in t_list:
-                win = len(kp)
+                win = len(kp.split(' '))
                 for i in range(len(word_list)-win+1):
                     if ' '.join(word_list[i:i+win]) == kp:
                         cur_keyphrase_sub = list(range(i, i+win))
                         all_keyphrase_sub.append(cur_keyphrase_sub)
-            lex.append(emb)
             cur_y = [0 for k in range(len(word_list))]
             cur_z = [0 for k in range(len(word_list))]
             if len(all_keyphrase_sub) > 0:
@@ -107,12 +105,13 @@ def get_CNTN_train_valid_test_dicts(filenames):
                             cur_z[cur_sub[1 + k]] = labels2idx['I']
                         cur_y[cur_sub[-1]] = 1
                         cur_z[cur_sub[-1]] = labels2idx['E']
+                lex.append(emb)
                 y.append(cur_y)
                 z.append(cur_z)
             else:
                 bad_num += 1
             if num % 1000 == 0:
-                print('%d papers completed!')
+                print('%d papers completed!' % num)
         print("Bad num = %d" % bad_num)
         return lex, y, z
     print('Bunilding train_lex, train_y, train_z...')

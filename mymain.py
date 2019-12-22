@@ -28,9 +28,10 @@ def main():
         'display_test_per': 3,  #
     }
 
-    data_set_file ='CNTN/data/semeval_wo_stem/data_setNEW.pkl'
-    emb_file = 'CNTN/data/semeval_wo_stem/embedding.pkl'
-    train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
+    data_set_file ='data/ACL2017/kp20k/kp20k_data_set.pkl'
+    emb_file = 'data/ACL2017/kp20k/kp20k_embedding.pkl'
+    # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
+    train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
 
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
