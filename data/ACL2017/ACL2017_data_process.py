@@ -3,16 +3,28 @@ import pickle
 from collections import Counter
 import gensim
 import json
+import nltk
 
 
-def getlist(filename):
+def get_va_test_list(filename):
     datalist, taglist = [], []
     json_file = open(filename, 'r', encoding='utf-8')
     for line in json_file.readlines():
         json_data = json.loads(line)
-        datalist.append(json_data["abstract"].strip())
+        datalist.append(json_data["abstract"].strip().lower())
         keywords_str = json_data["keywords"].strip()
         keywords_str = '\t'.join(keywords_str.split(';'))
+        taglist.append(keywords_str)
+    json_file.close()
+    return datalist, taglist
+
+def get_train_list(filename):
+    datalist, taglist = [], []
+    json_file = open(filename, 'r', encoding='utf-8')
+    for line in json_file.readlines():
+        json_data = json.loads(line)
+        datalist.append(json_data["abstract"].strip().lower())
+        keywords_str = '\t'.join(json_data["keywords"])
         taglist.append(keywords_str)
     json_file.close()
     return datalist, taglist
@@ -20,10 +32,11 @@ def getlist(filename):
 # build vocabulary
 def get_dict(filenames):
     train_f, vaild_f, test_f = filenames
-    sentence_list = getlist(train_f)[0] + getlist(vaild_f)[0] + getlist(test_f)[0]
+    sentence_list = get_train_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
     words = []
     for sentence in sentence_list:
-        word_list = sentence.split()
+        # word_list = sentence.split()
+        word_list = nltk.word_tokenize(sentence)
         words.extend(word_list)
     word_counts = Counter(words)
     words2idx = {word[0]: i + 1 for i, word in enumerate(word_counts.most_common())}
@@ -48,10 +61,11 @@ def get_CNTN_train_valid_test_dicts(filenames):
     """
     train_doc, valid_doc, test_doc = filenames
     dicts = get_dict(filenames)
+    print('dict completed!')
 
-    trn_data = getlist(train_doc)
-    valid_data = getlist(valid_doc)
-    test_data = getlist(test_doc)
+    trn_data = get_train_list(train_doc)
+    valid_data = get_va_test_list(valid_doc)
+    test_data = get_va_test_list(test_doc)
 
     trn_sentence_list, trn_tag_list = trn_data
     valid_sentence_list, valid_tag_list = valid_data
@@ -62,39 +76,50 @@ def get_CNTN_train_valid_test_dicts(filenames):
 
     def get_CNTN_lex_y(sentence_list, tag_list, words2idx):
         lex, y, z = [], [], []
+        bad_num = 0
+        num = 0
         for s, tag in zip(sentence_list, tag_list):
-            word_list = s.split()
+            # word_list = s.split()
+            num += 1
+            word_list = nltk.word_tokenize(s)
             t_list = tag.split('\t')
             emb = list(map(lambda x: words2idx[x], word_list))
             all_keyphrase_sub = []
             for kp in t_list:
                 win = len(kp)
-                for i in range(len(s)-win+1):
-                    if ' '.join(s[i:i+win]) == kp:
-                        cur_keyphrase_sub = range(i, i+win)
+                for i in range(len(word_list)-win+1):
+                    if ' '.join(word_list[i:i+win]) == kp:
+                        cur_keyphrase_sub = list(range(i, i+win))
                         all_keyphrase_sub.append(cur_keyphrase_sub)
             lex.append(emb)
             cur_y = [0 for k in range(len(word_list))]
             cur_z = [0 for k in range(len(word_list))]
-            for cur_sub in all_keyphrase_sub:
-                if len(cur_sub) == 1:
-                    cur_y[cur_sub[0]] = 1
-                    cur_z[cur_sub[0]] = labels2idx['S']
-                elif len(cur_sub) > 1:
-                    cur_y[cur_sub[0]] = 1
-                    cur_z[cur_sub[0]] = labels2idx['B']
-                    for k in range(len(cur_sub) - 2):
-                        cur_y[cur_sub[1 + k]] = 1
-                        cur_z[cur_sub[1 + k]] = labels2idx['I']
-                    cur_y[cur_sub[-1]] = 1
-                    cur_z[cur_sub[-1]] = labels2idx['E']
-            y.append(cur_y)
-            z.append(cur_z)
+            if len(all_keyphrase_sub) > 0:
+                for cur_sub in all_keyphrase_sub:
+                    if len(cur_sub) == 1:
+                        cur_y[cur_sub[0]] = 1
+                        cur_z[cur_sub[0]] = labels2idx['S']
+                    elif len(cur_sub) > 1:
+                        cur_y[cur_sub[0]] = 1
+                        cur_z[cur_sub[0]] = labels2idx['B']
+                        for k in range(len(cur_sub) - 2):
+                            cur_y[cur_sub[1 + k]] = 1
+                            cur_z[cur_sub[1 + k]] = labels2idx['I']
+                        cur_y[cur_sub[-1]] = 1
+                        cur_z[cur_sub[-1]] = labels2idx['E']
+                y.append(cur_y)
+                z.append(cur_z)
+            else:
+                bad_num += 1
+            if num % 1000 == 0:
+                print('%d papers completed!')
+        print("Bad num = %d" % bad_num)
         return lex, y, z
-
-    train_lex, train_y, train_z = get_CNTN_lex_y(trn_sentence_list, trn_tag_list,
-                                                 words2idx)  # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
+    print('Bunilding train_lex, train_y, train_z...')
+    train_lex, train_y, train_z = get_CNTN_lex_y(trn_sentence_list, trn_tag_list, words2idx)  # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
+    print('Bunilding valid_lex, valid_y, valid_z...')
     valid_lex, valid_y, valid_z = get_CNTN_lex_y(valid_sentence_list, valid_tag_list, words2idx)
+    print('Bunilding test_lex, test_y, test_z...')
     test_lex, test_y, test_z = get_CNTN_lex_y(test_sentence_list, test_tag_list, words2idx)
     train_set = [train_lex, train_y, train_z]
     valid_set = [valid_lex, valid_y, valid_z]
@@ -164,6 +189,14 @@ if __name__ == '__main__':
     w2v = add_unknown_words(w2v, vocab)
     embedding=get_embedding(w2v,dicts['words2idx'])
     print ("embedding created")
+
+
+    # json_file = open("kp20k/kp20k_train.json", 'r', encoding='utf-8')
+    # for line in json_file.readlines():
+    #     json_data = json.loads(line)
+    #     print(type(json_data["keywords"].strip()))
+    #     break
+    # json_file.close()
 
     # f = open("../CNTN/data/semeval_wo_stem/mytest.txt", 'r', encoding='utf-8')
     # w = open("../CNTN/data/semeval_wo_stem/mytestNEW.txt", 'w', encoding='utf-8')
