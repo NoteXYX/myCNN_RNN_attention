@@ -48,7 +48,7 @@ def getKeyphraseList(l):
             now = []
     return set(res)
 
-def conlleval(predictions, groundtruth, file):
+def conlleval(predictions, groundtruth):
     assert len(predictions) == len(groundtruth)
     res = {}
     all_cnt, good_cnt = len(predictions), 0

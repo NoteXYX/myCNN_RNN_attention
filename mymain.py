@@ -22,7 +22,7 @@ def main():
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './semeval_Adam_checkpoints_multisize_CNN_LSTM_attention', # 模型保存地址
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 3,  #
@@ -35,9 +35,10 @@ def main():
 
     train_lex, train_y, train_z = train_set
     # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
-    tr = int(len(train_lex) * 0.9)
-    valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]    ################
-    train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
+    # tr = int(len(train_lex) * 0.9)
+    # valid_lex, valid_y, valid_z = train_lex[tr:], train_y[tr:], train_z[tr:]    ################
+    # train_lex, train_y, train_z = train_lex[:tr], train_y[:tr], train_z[:tr]
+    valid_lex, valid_y, valid_z = valid_set
     test_lex, test_y, test_z = test_set
     log_dir = s['check_dir']
     if not os.path.exists(log_dir):
@@ -139,7 +140,7 @@ def main():
                 # sys.stdout.flush())
 
             # VALID
-            if e >= 30:
+            if e >= 0:
                 predictions_valid = []
                 predictions_test = []
                 groundtruth_valid = []
@@ -155,7 +156,7 @@ def main():
                     groundtruth_valid.extend(z)
                     start_num += s['batch_size']
 
-                res_valid = tools.conlleval(predictions_valid, groundtruth_valid, '')
+                res_valid = tools.conlleval(predictions_valid, groundtruth_valid)
 
                 if res_valid['f'] > best_f:
                     best_f = res_valid['f']
@@ -184,7 +185,7 @@ def main():
                         groundtruth_test.extend(z)
                         start_num += s['batch_size']
 
-                    res_test = tools.conlleval(predictions_test, groundtruth_test, '')
+                    res_test = tools.conlleval(predictions_test, groundtruth_test)
 
                     if res_test['f'] > test_best_f:
                         test_best_f = res_test['f']

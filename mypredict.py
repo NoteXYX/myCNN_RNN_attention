@@ -85,7 +85,7 @@ def main():
             groundtruth_test.extend(z)
             start_num += s['batch_size']
 
-        res_test = tools.conlleval(predictions_test, groundtruth_test, '')
+        res_test = tools.conlleval(predictions_test, groundtruth_test)
 
         print(res_test)
         logfile.write(str(res_test))
