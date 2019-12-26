@@ -11,7 +11,7 @@ def get_va_test_list(filename):
     json_file = open(filename, 'r', encoding='utf-8')
     for line in json_file.readlines():
         json_data = json.loads(line)
-        datalist.append(json_data["abstract"].strip().lower())
+        datalist.append(json_data["title"].strip().lower() + ' ' + json_data["abstract"].strip().lower())
         keywords_list = [keyword.strip() for keyword in json_data["keywords"].split(';')]
         keywords_str = '\t'.join(keywords_list)
         taglist.append(keywords_str)
@@ -23,7 +23,7 @@ def get_train_list(filename):
     json_file = open(filename, 'r', encoding='utf-8')
     for line in json_file.readlines():
         json_data = json.loads(line)
-        datalist.append(json_data["abstract"].strip().lower())
+        datalist.append(json_data["title"].strip().lower() + ' ' + json_data["abstract"].strip().lower())
         keywords_list = [keyword.strip() for keyword in json_data["keywords"]]
         keywords_str = '\t'.join(keywords_list)
         taglist.append(keywords_str)
@@ -45,7 +45,7 @@ def get_dict(filenames):
     dicts = {'words2idx': words2idx, 'labels2idx': labels2idx, 'idx2words': idx2words}
     return dicts
 
-def get_CNTN_train_valid_test_dicts(filenames):
+def get_kp20k_train_valid_test_dicts(filenames):
     """
     Args:
     filenames:trnTweet,testTweet,tag_id_cnt
@@ -74,7 +74,7 @@ def get_CNTN_train_valid_test_dicts(filenames):
     words2idx = dicts['words2idx']
     labels2idx = dicts['labels2idx']
 
-    def get_CNTN_lex_y(sentence_list, tag_list, words2idx):
+    def get_kp20k_lex_y(sentence_list, tag_list, words2idx):
         lex, y, z = [], [], []
         bad_num = 0
         num = 0
@@ -115,16 +115,16 @@ def get_CNTN_train_valid_test_dicts(filenames):
         print("Bad num = %d" % bad_num)
         return lex, y, z
     print('Bunilding train_lex, train_y, train_z...')
-    train_lex, train_y, train_z = get_CNTN_lex_y(trn_sentence_list, trn_tag_list, words2idx)  # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
+    train_lex, train_y, train_z = get_kp20k_lex_y(trn_sentence_list, trn_tag_list, words2idx)  # train_lex: [[每条tweet的word的idx],[每条tweet的word的idx]], train_y: [[关键词的位置为1]], train_z: [[关键词的位置为0~4(开头、结尾...)]]
     print('Bunilding valid_lex, valid_y, valid_z...')
-    valid_lex, valid_y, valid_z = get_CNTN_lex_y(valid_sentence_list, valid_tag_list, words2idx)
+    valid_lex, valid_y, valid_z = get_kp20k_lex_y(valid_sentence_list, valid_tag_list, words2idx)
     print('Bunilding test_lex, test_y, test_z...')
-    test_lex, test_y, test_z = get_CNTN_lex_y(test_sentence_list, test_tag_list, words2idx)
+    test_lex, test_y, test_z = get_kp20k_lex_y(test_sentence_list, test_tag_list, words2idx)
     train_set = [train_lex, train_y, train_z]
     valid_set = [valid_lex, valid_y, valid_z]
     test_set = [test_lex, test_y, test_z]
     data_set = [train_set, valid_set, test_set, dicts]
-    with open('kp20k/kp20k_data_set.pkl', 'wb') as f:
+    with open('kp20k/kp20k_t_a_data_set.pkl', 'wb') as f:
         pickle.dump(data_set, f)
     return data_set
 
@@ -163,14 +163,14 @@ def get_embedding(w2v, words2idx, k=300):
     for (w, idx) in words2idx.items():
         embedding[idx] = w2v[w]
     # embedding[0]=np.asarray(np.random.uniform(-0.25,0.25,k),dtype=np.float32)
-    with open('kp20k/kp20k_embedding.pkl', 'wb') as f:
+    with open('kp20k/kp20k_t_a_embedding.pkl', 'wb') as f:
         pickle.dump(embedding, f)
     return embedding
 
 
 if __name__ == '__main__':
     data_folder = ["kp20k/kp20k_train.json", "kp20k/kp20k_valid.json", "kp20k/kp20k_test.json"]
-    data_set = get_CNTN_train_valid_test_dicts(data_folder)
+    data_set = get_kp20k_train_valid_test_dicts(data_folder)
     print("data_set complete!")
     dicts = data_set[3]
     vocab = set(dicts['words2idx'].keys())

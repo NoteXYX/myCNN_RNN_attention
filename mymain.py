@@ -25,20 +25,20 @@ def main():
         'nh1': 450, # 第1层LSTM的隐藏单元数
         'nh2': 450, # 第2层LSTM的隐藏单元数
         'emb_dimension': 300,   # 词向量维度
-        'lr': 0.0001,  # 初始学习率
+        'lr': 0.001,  # 初始学习率
         'lr_decay': 0.5,  # 学习率衰减率
-        'lr_decay_per': 5,  # 如果训练10次以后准确率没有上升，则衰减学习率为原来的0.5倍
+        'lr_decay_per': 5,  # 如果训练5次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam', # 模型保存地址
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.001_16', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 3,  #
     }
 
-    data_set_file ='data/ACL2017/kp20k/kp20k_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_embedding.pkl'
+    data_set_file ='data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
+    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -70,8 +70,8 @@ def main():
     z_nclasses = 5
 
     nsentences = len(train_lex)
-    
-    config = tf.ConfigProto(log_device_placement=True,allow_soft_placement=True)###########################################
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.7)
+    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
     with tf.compat.v1.Session(config=config) as sess:#####################################
         my_model = mymodel.myModel(
             nh1=s['nh1'],
