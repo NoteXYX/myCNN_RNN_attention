@@ -126,8 +126,6 @@ def main():
             tools.shuffle([train_lex, train_y, train_z], s['seed'])
             t_start = time.time()
             start_num = 0
-            # for step,batch in enumerate(tl.iterate.minibatches(train_lex,list(zip(train_y,train_z)),batch_size=s['batch_size'])):
-            # for step, batch in enumerate(batch_putin(train_lex, list(zip(train_y, train_z)), start_num=start_num, batch_size=s['batch_size'])):
             steps = len(train_lex) // s['batch_size']
             for step in range(steps):       ##################################################
                 input_x, label_y, label_z = train_batch_putin(train_lex, train_y, train_z, start_num=start_num, batch_size=s['batch_size'])
@@ -136,7 +134,6 @@ def main():
                 input_x = load.pad_sentences(input_x)
                 label_y = load.pad_sentences(label_y)
                 label_z = load.pad_sentences(label_z)
-                # cwords = input_x
                 loss = train_step(input_x, label_y, label_z)
                 start_num += s['batch_size']
                 print('loss %.6f' % loss,
@@ -145,9 +142,6 @@ def main():
                 logfile.write('loss %.6f' % loss)
                 logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
                 logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
-                # print ('loss %.2f' % loss,' [learning] epoch %i>> %2.2f%%' % (e,s['batch_size']*step*100./nsentences),'completed in %.2f (sec) <<\r' % (time.time()-t_start),
-                #
-                # sys.stdout.flush())
 
             # VALID
             if e >= 0:
@@ -158,7 +152,6 @@ def main():
                 groundtruth_test = []
                 start_num = 0
                 steps = len(valid_lex) // s['batch_size']
-                # for batch in  tl.iterate.minibatches(valid_lex,valid_z,batch_size=s['batch_size']):
                 for step in range(steps):
                     x, z = test_batch_putin(valid_lex, valid_z, start_num=start_num, batch_size=s['batch_size'])
                     # x, z = batch
@@ -189,7 +182,6 @@ def main():
                 start_num = 0
                 steps = len(test_lex) // s['batch_size']
                 if e % s['display_test_per'] == 0:
-                    # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
                     for step in range(steps):
                         x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
                         # x, z = batch
