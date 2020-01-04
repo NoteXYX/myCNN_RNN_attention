@@ -33,7 +33,8 @@ def get_train_list(filename):
 # build vocabulary
 def get_dict(filenames):
     train_f, vaild_f, test_f = filenames
-    sentence_list = get_train_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
+    # sentence_list = get_train_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
+    sentence_list = get_va_test_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
     words = []
     for sentence in sentence_list:
         word_list = nltk.word_tokenize(sentence)
@@ -45,7 +46,7 @@ def get_dict(filenames):
     dicts = {'words2idx': words2idx, 'labels2idx': labels2idx, 'idx2words': idx2words}
     return dicts
 
-def get_kp20k_train_valid_test_dicts(filenames):
+def get_kp20k_train_valid_test_dicts(filenames, dataset_file):
     """
     Args:
     filenames:trnTweet,testTweet,tag_id_cnt
@@ -63,7 +64,8 @@ def get_kp20k_train_valid_test_dicts(filenames):
     dicts = get_dict(filenames)
     print('dict completed!')
 
-    trn_data = get_train_list(train_doc)
+    # trn_data = get_train_list(train_doc)
+    trn_data = get_va_test_list(train_doc)
     valid_data = get_va_test_list(valid_doc)
     test_data = get_va_test_list(test_doc)
 
@@ -124,7 +126,7 @@ def get_kp20k_train_valid_test_dicts(filenames):
     valid_set = [valid_lex, valid_y, valid_z]
     test_set = [test_lex, test_y, test_z]
     data_set = [train_set, valid_set, test_set, dicts]
-    with open('kp20k/kp20k_t_a_data_set.pkl', 'wb') as f:
+    with open(dataset_file, 'wb') as f:
         pickle.dump(data_set, f)
     return data_set
 
@@ -158,19 +160,19 @@ def add_unknown_words(word_vecs, vocab, min_df=1, dim=300):
     return word_vecs
 
 
-def get_embedding(w2v, words2idx, k=300):
+def get_embedding(w2v, words2idx, emb_file, k=300):
     embedding = np.zeros((len(w2v) + 2, k), dtype=np.float32)
     for (w, idx) in words2idx.items():
         embedding[idx] = w2v[w]
     # embedding[0]=np.asarray(np.random.uniform(-0.25,0.25,k),dtype=np.float32)
-    with open('kp20k/kp20k_t_a_embedding.pkl', 'wb') as f:
+    with open(emb_file, 'wb') as f:
         pickle.dump(embedding, f)
     return embedding
 
 
 if __name__ == '__main__':
-    data_folder = ["kp20k/kp20k_train.json", "kp20k/kp20k_valid.json", "kp20k/kp20k_test.json"]
-    data_set = get_kp20k_train_valid_test_dicts(data_folder)
+    data_folder = ["semeval/semeval_valid.json", "semeval/semeval_valid.json", "semeval/semeval_test.json"]
+    data_set = get_kp20k_train_valid_test_dicts(data_folder, 'semeval/semeval_t_a_data_set.pkl')
     print("data_set complete!")
     dicts = data_set[3]
     vocab = set(dicts['words2idx'].keys())
@@ -186,7 +188,7 @@ if __name__ == '__main__':
     w2v = load_bin_vec(w2v_file,vocab)
     print ("word2vec loaded")
     w2v = add_unknown_words(w2v, vocab)
-    embedding=get_embedding(w2v,dicts['words2idx'])
+    embedding=get_embedding(w2v,dicts['words2idx'], 'semeval/semeval_t_a_embedding.pkl')
     print ("embedding created")
 
 
