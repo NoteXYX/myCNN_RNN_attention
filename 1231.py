@@ -1,37 +1,3 @@
-import tensorflow as tf
-import numpy as np
-import pandas as pd
-from sklearn.utils import shuffle
-a = tf.constant([1,2,3,4,5,6,7,8,9,10,11,12], shape=[3,2,2])
-# e = tf.Variable(tf.float32, a)
-b = tf.constant([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30], shape=[3,2,5])
-c = tf.tensordot(a, b, axes=(2,1))
-d = tf.concat([tf.reshape(c[0][0][0], [1,-1]), tf.reshape(c[0][1][0], [1,-1])], 0)
-# alphas = tf.nn.softmax(e, name='alphas')  # (B,T) shape
-with tf.Session():
-    print('a:')
-    print(a.eval())
-    print('b:')
-    print(b.eval())
-    print('c:')
-    print(c.eval())
-    # print('alpha')
-    # print(alphas.eval())
-    print(c.shape)
-    # print(c.eval()[0][0])
-    print(d.eval())
-# df = pd.read_csv("boston housing price.csv", header=0)
-# df = np.array(df.values)  # 获取df的值并且转换成 np 的数组格式
-#
-# y_data = df[:, 12]  # 标签数据
-# for i in range(12):
-#     df[:, i] = (df[:, i] - df[:, i].min()) / (df[:, i].max() - df[:, i].min())
-# x_data = df[:, :12]  # 特征数据
-# x = tf.placeholder(tf.float32, [None, 12], name="x")
-# y = tf.placeholder(tf.float32, [None, 1], name="y")
-w_omega = tf.Variable(tf.random.normal([12,1], stddev=0.1))
-b_omega = tf.Variable(tf.random.normal([1], stddev=0.1))
-u_omega = tf.Variable(tf.random.normal([1], stddev=0.1))
 # with tf.name_scope('v'):
     # Applying fully connected layer with non-linear activation to each of the B*T timestamps;
     #  the shape of `v` is (B,T,D)*(D,A)=(B,T,A), where A=attention_size
@@ -135,4 +101,28 @@ import matplotlib.pyplot as plt
 #         print(sess.run(w))
 # plt.plot(loss_list)  # 显示迭代过程中的平均代价
 # plt.show()  # 显示图表
+import numpy as np
+import math
 
+def s_xy(x,y):
+    x_mean = np.mean(x)
+    y_mean = np.mean(y)
+    sum = 0.0
+    for i in range(len(x)):
+        multi = (x[i] - x_mean) * (y[i] - y_mean)
+        sum += multi
+    sum = sum / (len(x) - 1)
+    return sum
+
+def main():
+    # x = [30085.1, 16575.4, 20375.4, 50576.3, 37869.6, 8877.07, 24946.6]
+    # y = [0,0,0,0,1,1,0]
+    # x_std = np.std(x, ddof=1)
+    # y_std = np.std(y, ddof=1)
+    # per = s_xy(x,y) / (x_std*y_std)
+    # print(per)
+    entropy = -1*(3.0/5*math.log(3.0/5, 2) + 2.0/5*math.log(2.0/5, 2))*5.0/14
+    print(entropy)
+
+if __name__ == '__main__':
+    main()
