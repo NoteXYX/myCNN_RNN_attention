@@ -48,12 +48,24 @@ def getKeyphraseList(l):
             now = []
     return set(res)
 
+def getKeyphraseList_top(l, top_num):
+    res, now= [], []
+    for i in range(len(l)):
+        if l[i] != 0:
+            now.append(str(i))
+        if l[i] == 0 or i == len(l) - 1:
+            if len(now) != 0:
+                res.append(' '.join(now))
+                if len(res) >= top_num:
+                    break
+            now = []
+    return set(res)
+
 def conlleval(predictions, groundtruth):
     assert len(predictions) == len(groundtruth)
     res = {}
     all_cnt, good_cnt = len(predictions), 0
     p_cnt, r_cnt = 0, 0
-    # p_cnt, r_cnt, pr_cnt = 0, 0, 0
     for i in range(all_cnt):
         # print i
         # if all(predictions[i][0:len(groundtruth[i])] == groundtruth[i]) == True:
@@ -72,6 +84,27 @@ def conlleval(predictions, groundtruth):
         # if len(gKeyphraseList) != 0:
         #     r_cnt += 1
         # pr_cnt += len(pKeyphraseList & gKeyphraseList)
+    res['a'] = 1.0*good_cnt/all_cnt
+    res['p'] = 1.0*good_cnt/p_cnt
+    res['r'] = 1.0*good_cnt/r_cnt
+    res['f'] = 2.0*res['p']*res['r']/(res['p']+res['r'])
+    return res
+
+def conlleval_top(predictions, groundtruth, top_num):
+    assert len(predictions) == len(groundtruth)
+    res = {}
+    all_cnt, good_cnt = len(predictions), 0
+    p_cnt, r_cnt = 0, 0
+    for i in range(all_cnt):
+        pKeyphraseList = getKeyphraseList_top(predictions[i][0:len(groundtruth[i])], top_num)
+        gKeyphraseList = getKeyphraseList(groundtruth[i])
+        for p in pKeyphraseList:
+            for g in gKeyphraseList:
+                if p == g:
+                    good_cnt += 1
+                    break
+        p_cnt += len(pKeyphraseList)  #######################
+        r_cnt += len(gKeyphraseList)  #######################
     res['a'] = 1.0*good_cnt/all_cnt
     res['p'] = 1.0*good_cnt/p_cnt
     res['r'] = 1.0*good_cnt/r_cnt

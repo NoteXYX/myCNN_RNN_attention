@@ -70,7 +70,7 @@ def main():
     z_nclasses = 5
 
     nsentences = len(train_lex)
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.7)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
     with tf.compat.v1.Session(config=config) as sess:#####################################
         my_model = mymodel.myModel(
@@ -208,10 +208,10 @@ def main():
                         test_best_e = e
                         test_best_res = res_test
                         print('TEST new best:', res_test)
-                        logfile.write('\nTEST new best: ' + str(res_test))
+                        logfile.write('\nTEST new best: ' + str(res_test) + '\n')
                     else:
                         print('TEST new curr:', res_test)
-                        logfile.write('\nTEST new curr: ' + str(res_test))
+                        logfile.write('\nTEST new curr: ' + str(res_test) + '\n')
 
                 # learning rate decay if no improvement in 10 epochs
                 if e - best_e > s['lr_decay_per'] and e - decay_e > s['lr_decay_per']:
