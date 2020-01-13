@@ -43,7 +43,7 @@ def main():
     y_nclasses = 2
     z_nclasses = 5
 
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
     with tf.Session(config=config) as sess:
         my_model = mymodel.myModel(
