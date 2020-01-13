@@ -2,7 +2,7 @@ import tensorflow as tf
 import time
 import os
 import load
-import models.mymodel_CPU_goon as mymodel
+import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
 
 
@@ -29,11 +29,12 @@ def main():
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_CPU_goon', # 模型保存地址
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_GPU_goon', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 3,  #
-        'load_ckpt_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16'
+        'load_ckpt_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16',
+        'again_epoch': 7
     }
 
     data_set_file ='data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
@@ -99,7 +100,7 @@ def main():
         if ckpt and ckpt.model_checkpoint_path:
             # print(ckpt.all_model_checkpoint_paths[4])
             print(ckpt.model_checkpoint_path)
-            logfile.write(str(ckpt.model_checkpoint_path) + '\n')
+            logfile.write('loading ' + str(ckpt.model_checkpoint_path) + '......\n')
             loader.restore(sess, ckpt.model_checkpoint_path)
 
         def train_step(cwords, label_y, label_z):
@@ -124,14 +125,14 @@ def main():
 
         saver = tf.train.Saver(tf.all_variables(), max_to_keep=3)
         # sess.run(tf.global_variables_initializer())
-        best_f = -1
-        best_e = 0
-        decay_e = 0
-        test_best_f = -1
-        test_best_e = 0
+        best_f = 0.32468199323141556
+        best_e = 6
+        decay_e = 6
+        test_best_f = 0.3285848062741426
+        test_best_e = 6
         best_res = None
         test_best_res = None
-        for e in range(7, s['nepochs']):
+        for e in range(s['again_epoch'], s['nepochs']):    ################################################################
             tools.shuffle([train_lex, train_y, train_z], s['seed'])
             t_start = time.time()
             start_num = 0
