@@ -33,8 +33,8 @@ def main():
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
+    data_set_file = 'data/ACL2017/semeval/semeval_t_a_data_set.pkl'
+    emb_file = 'data/ACL2017/semeval/semeval_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -80,13 +80,13 @@ def main():
             sz_pred = sess.run(fetches=fetches, feed_dict=feed)
             return sz_pred
 
-        print("测试结果：")
-        logfile.write("测试结果：\n")
+
         predictions_test = []
         groundtruth_test = []
         start_num = 0
         steps = len(test_lex) // s['batch_size']
         # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
+        print('testing............')
         for step in range(steps):
             # batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
@@ -95,7 +95,11 @@ def main():
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
             start_num += s['batch_size']
+            if step % 100 == 0:
+                print('tested %d batch......' % (step//100))
 
+        print("测试结果：")
+        logfile.write("测试结果：\n")
         res_test = tools.conlleval(predictions_test, groundtruth_test)
         print('all: ', res_test)
         logfile.write('all: ' + str(res_test) + '\n')
