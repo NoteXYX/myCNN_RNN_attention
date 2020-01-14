@@ -37,8 +37,8 @@ def main():
         'display_test_per': 3,  #
     }
 
-    data_set_file ='data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
+    data_set_file ='data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
+    emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -70,7 +70,7 @@ def main():
     z_nclasses = 5
 
     nsentences = len(train_lex)
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
     with tf.Session(config=config) as sess:#####################################
         my_model = mymodel.myModel(
