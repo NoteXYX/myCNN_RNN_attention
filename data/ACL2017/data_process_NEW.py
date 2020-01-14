@@ -46,14 +46,21 @@ def get_dict():
     # test_duc = duc_names[0]
     names = kp20k_names[1:3] + inspec_names + semeval_names + nus_names + krapivin_names + duc_names
     sentence_list = get_train_list(train_kp20k)[0]
+    i = 0
     for name in names:
         sentence_list += get_va_test_list(name)[0]
+        i += 1
+        if i % 10000 == 0:
+            print('loaded %d sentences.........' % i)
 
     # sentence_list = get_va_test_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
     words = []
+    i = 0
     for sentence in sentence_list:
         word_list = nltk.word_tokenize(sentence)
         words.extend(word_list)
+        i += 1
+        print('processed %d sentences.........' % i)
     word_counts = Counter(words)
     words2idx = {word[0]: i+1 for i, word in enumerate(word_counts.most_common())}
     idx2words = {v: k for (k, v) in words2idx.items()}
@@ -238,7 +245,7 @@ if __name__ == '__main__':
     print("total duc test lines: " + str(len(test_set[0])))
 
     # GoogleNews-vectors-negative300.txt为预先训练的词向量
-    w2v_file = '../tweet_data/original_data/GoogleNews-vectors-negative300.bin'
+    w2v_file = '../tweet_data/GoogleNews-vectors-negative300.bin'
     w2v = load_bin_vec(w2v_file, vocab)
     print ("word2vec loaded")
     w2v = add_unknown_words(w2v, vocab)

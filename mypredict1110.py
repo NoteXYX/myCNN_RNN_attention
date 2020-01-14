@@ -33,8 +33,8 @@ def main():
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-    data_set_file = 'data/ACL2017/semeval/semeval_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/semeval/semeval_t_a_embedding.pkl'
+    data_set_file = 'data/ACL2017/inspec/inspec_t_a_data_set.pkl'
+    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
