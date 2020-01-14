@@ -60,7 +60,8 @@ def get_dict():
         word_list = nltk.word_tokenize(sentence)
         words.extend(word_list)
         i += 1
-        print('processed %d sentences.........' % i)
+        if i % 10000 == 0:
+            print('processed %d sentences.........' % i)
     word_counts = Counter(words)
     words2idx = {word[0]: i+1 for i, word in enumerate(word_counts.most_common())}
     idx2words = {v: k for (k, v) in words2idx.items()}
@@ -84,11 +85,15 @@ def get_kp20k_train_valid_test_dicts(filenames, dataset_file, dicts):
 
     """
     train_doc, valid_doc, test_doc = filenames
-
-    # trn_data = get_train_list(train_doc)
-    trn_data = get_va_test_list(train_doc)
-    valid_data = get_va_test_list(valid_doc)
-    test_data = get_va_test_list(test_doc)
+    if train_doc == 'kp20k/kp20k_train.json':
+        trn_data = get_train_list(train_doc)
+        valid_data = get_va_test_list(valid_doc)
+        test_data = get_va_test_list(test_doc)
+    else:
+        # trn_data = get_train_list(train_doc)
+        trn_data = get_va_test_list(train_doc)
+        valid_data = get_va_test_list(valid_doc)
+        test_data = get_va_test_list(test_doc)
 
     trn_sentence_list, trn_tag_list = trn_data
     valid_sentence_list, valid_tag_list = valid_data
