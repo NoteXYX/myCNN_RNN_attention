@@ -34,7 +34,7 @@ def main():
         'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_again', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
-        'display_test_per': 3,  #
+        'display_test_per': 1,  #
     }
 
     data_set_file ='data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
@@ -70,7 +70,7 @@ def main():
     z_nclasses = 5
 
     nsentences = len(train_lex)
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
     with tf.Session(config=config) as sess:#####################################
         my_model = mymodel.myModel(
@@ -139,9 +139,10 @@ def main():
                 print('loss %.6f' % loss,
                       ' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences),
                       'completed in %.2f (sec) <<\r' % (time.time() - t_start))
-                logfile.write('loss %.6f' % loss)
-                logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
-                logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
+                if step % 1000 == 0:
+                    logfile.write('loss %.6f' % loss)
+                    logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
+                    logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
 
             # VALID
             if e >= 0:
