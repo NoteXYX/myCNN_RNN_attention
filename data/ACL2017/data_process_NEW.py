@@ -31,32 +31,38 @@ def get_train_list(filename):
     return datalist, taglist
 
 # build vocabulary
-def get_dict(kp20k_names, inspec_names, semeval_names, nus_names, krapivin_names, duc_names):
+def get_dict():
+    kp20k_names = ['kp20k/kp20k_train.json', 'kp20k/kp20k_valid.json', 'kp20k/kp20k_test.json']
+    inspec_names = ['inspec/inspec_valid.json', 'inspec/inspec_test.json']
+    semeval_names = ['semeval/semeval_valid.json', 'semeval/semeval_test.json']
+    nus_names = ['nus/nus_test.json']
+    krapivin_names = ['krapivin/krapivin_valid.json', 'krapivin/krapivin_test.json']
+    duc_names = ['duc/duc_test.json']
     train_kp20k, vaild_kp20k, test_kp20k = kp20k_names
-    vaild_inspec, test_inspec = inspec_names
-    vaild_semeval, test_semeval = semeval_names
-    test_nus = nus_names[0]
-    vaild_krapivin, test_krapivin = krapivin_names
-    test_duc = duc_names[0]
+    # vaild_inspec, test_inspec = inspec_names
+    # vaild_semeval, test_semeval = semeval_names
+    # test_nus = nus_names[0]
+    # vaild_krapivin, test_krapivin = krapivin_names
+    # test_duc = duc_names[0]
     names = kp20k_names[1:3] + inspec_names + semeval_names + nus_names + krapivin_names + duc_names
     sentence_list = get_train_list(train_kp20k)[0]
     for name in names:
+        sentence_list += get_va_test_list(name)[0]
 
-
-    sentence_list = get_train_list(train_kp20k)[0] + get_va_test_list(vaild_kp20k)[0] + get_va_test_list(test_kp20k)[0] +
     # sentence_list = get_va_test_list(train_f)[0] + get_va_test_list(vaild_f)[0] + get_va_test_list(test_f)[0]
     words = []
     for sentence in sentence_list:
         word_list = nltk.word_tokenize(sentence)
         words.extend(word_list)
     word_counts = Counter(words)
-    words2idx = {word[0]: i + 1 for i, word in enumerate(word_counts.most_common())}
+    words2idx = {word[0]: i+1 for i, word in enumerate(word_counts.most_common())}
     idx2words = {v: k for (k, v) in words2idx.items()}
     labels2idx = {'O': 0, 'B': 1, 'I': 2, 'E': 3, 'S': 4}
     dicts = {'words2idx': words2idx, 'labels2idx': labels2idx, 'idx2words': idx2words}
+    print('dict completed!')
     return dicts
 
-def get_kp20k_train_valid_test_dicts(filenames, dataset_file):
+def get_kp20k_train_valid_test_dicts(filenames, dataset_file, dicts):
     """
     Args:
     filenames:trnTweet,testTweet,tag_id_cnt
@@ -71,14 +77,6 @@ def get_kp20k_train_valid_test_dicts(filenames, dataset_file):
 
     """
     train_doc, valid_doc, test_doc = filenames
-    kp20k_names = ['kp20k/kp20k_train.json', 'kp20k/kp20k_valid.json', 'kp20k/kp20k_test.json']
-    inspec_names = ['inspec/inspec_valid.json', 'inspec/inspec_test.json']
-    semeval_names = ['semeval/semeval_valid.json', 'semeval/semeval_test.json']
-    nus_names = ['nus/nus_test.json']
-    krapivin_names = ['krapivin/krapivin_valid.json', 'krapivin/krapivin_test.json']
-    duc_names = ['duc/duc_test.json']
-    dicts = get_dict(kp20k_names, inspec_names, semeval_names, nus_names, krapivin_names, duc_names)
-    print('dict completed!')
 
     # trn_data = get_train_list(train_doc)
     trn_data = get_va_test_list(train_doc)
@@ -187,22 +185,62 @@ def get_embedding(w2v, words2idx, emb_file, k=300):
 
 
 if __name__ == '__main__':
-    data_folder = ["semeval/semeval_valid.json", "semeval/semeval_valid.json", "semeval/semeval_test.json"]
-    data_set = get_kp20k_train_valid_test_dicts(data_folder, 'semeval/semeval_t_a_data_set.pkl')
-    print("data_set complete!")
-    dicts = data_set[3]
+    kp20k_data_folder = ['kp20k/kp20k_train.json', 'kp20k/kp20k_valid.json', 'kp20k/kp20k_test.json']
+    inspec_data_folder = ['inspec/inspec_valid.json', 'inspec/inspec_valid.json', 'inspec/inspec_test.json']
+    semeval_data_folder = ['semeval/semeval_valid.json', 'semeval/semeval_valid.json', 'semeval/semeval_test.json']
+    nus_data_folder = ['nus/split/nus_valid.json', 'nus/split/nus_valid.json', 'nus/nus_test.json']
+    krapivin_data_folder = ['krapivin/krapivin_valid.json', 'krapivin/krapivin_valid.json', 'krapivin/krapivin_test.json']
+    duc_data_folder = ['duc/split/duc_valid.json', 'duc/split/duc_valid.json', 'duc/duc_test.json']
+    dicts = get_dict()
     vocab = set(dicts['words2idx'].keys())
     print("total num words: " + str(len(vocab)))
-    print("dataset created!")
-    train_set, valid_set, test_set, dicts = data_set
-    print("total train lines: " + str(len(train_set[0])))
-    print("total valid lines: " + str(len(valid_set[0])))
-    print("total test lines: " + str(len(test_set[0])))
+
+    kp20k_data_set = get_kp20k_train_valid_test_dicts(kp20k_data_folder, 'kp20k/kp20k_t_a_allwords_data_set.pkl', dicts)
+    print("kp20k dataset created!")
+    train_set, valid_set, test_set = kp20k_data_set[0:3]
+    print("total kp20k train lines: " + str(len(train_set[0])))
+    print("total kp20k valid lines: " + str(len(valid_set[0])))
+    print("total kp20k test lines: " + str(len(test_set[0])))
+
+    inspec_data_set = get_kp20k_train_valid_test_dicts(inspec_data_folder, 'inspec/inspec_t_a_allwords_data_set.pkl', dicts)
+    print("inspec dataset created!")
+    train_set, valid_set, test_set = inspec_data_set[0:3]
+    print("total inspec train lines: " + str(len(train_set[0])))
+    print("total inspec valid lines: " + str(len(valid_set[0])))
+    print("total inspec test lines: " + str(len(test_set[0])))
+
+    semeval_data_set = get_kp20k_train_valid_test_dicts(semeval_data_folder, 'semeval/semeval_t_a_allwords_data_set.pkl', dicts)
+    print("semeval dataset created!")
+    train_set, valid_set, test_set = semeval_data_set[0:3]
+    print("total semeval train lines: " + str(len(train_set[0])))
+    print("total semeval valid lines: " + str(len(valid_set[0])))
+    print("total semeval test lines: " + str(len(test_set[0])))
+
+    nus_data_set = get_kp20k_train_valid_test_dicts(nus_data_folder, 'nus/nus_t_a_allwords_data_set.pkl', dicts)
+    print("nus dataset created!")
+    train_set, valid_set, test_set = nus_data_set[0:3]
+    print("total nus train lines: " + str(len(train_set[0])))
+    print("total nus valid lines: " + str(len(valid_set[0])))
+    print("total nus test lines: " + str(len(test_set[0])))
+
+    krapivin_data_set = get_kp20k_train_valid_test_dicts(krapivin_data_folder, 'krapivin/krapivin_t_a_allwords_data_set.pkl', dicts)
+    print("krapivin dataset created!")
+    train_set, valid_set, test_set = krapivin_data_set[0:3]
+    print("total krapivin train lines: " + str(len(train_set[0])))
+    print("total krapivin valid lines: " + str(len(valid_set[0])))
+    print("total krapivin test lines: " + str(len(test_set[0])))
+
+    duc_data_set = get_kp20k_train_valid_test_dicts(duc_data_folder, 'duc/duc_t_a_allwords_data_set.pkl', dicts)
+    print("duc dataset created!")
+    train_set, valid_set, test_set = duc_data_set[0:3]
+    print("total duc train lines: " + str(len(train_set[0])))
+    print("total duc valid lines: " + str(len(valid_set[0])))
+    print("total duc test lines: " + str(len(test_set[0])))
 
     # GoogleNews-vectors-negative300.txt为预先训练的词向量
-    w2v_file = '../tweet_data/GoogleNews-vectors-negative300.bin'
-    w2v = load_bin_vec(w2v_file,vocab)
+    w2v_file = '../tweet_data/original_data/GoogleNews-vectors-negative300.bin'
+    w2v = load_bin_vec(w2v_file, vocab)
     print ("word2vec loaded")
     w2v = add_unknown_words(w2v, vocab)
-    embedding=get_embedding(w2v,dicts['words2idx'], 'semeval/semeval_t_a_embedding.pkl')
+    embedding=get_embedding(w2v, dicts['words2idx'], 'ACL2017_t_a_embedding.pkl')
     print ("embedding created")
