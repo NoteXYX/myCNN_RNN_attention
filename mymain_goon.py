@@ -32,13 +32,13 @@ def main():
         'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_GPU_goon', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
-        'display_test_per': 3,  #
-        'load_ckpt_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16',
-        'again_epoch': 7
+        'display_test_per': 1,  #
+        'load_ckpt_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_NEW',
+        'again_epoch': 7    ##############################
     }
 
-    data_set_file ='data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
+    data_set_file ='data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
+    emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -125,10 +125,10 @@ def main():
 
         saver = tf.train.Saver(tf.all_variables(), max_to_keep=3)
         # sess.run(tf.global_variables_initializer())
-        best_f = 0.32468199323141556
+        best_f = 0.32468199323141556    ################################################
         best_e = 6
         decay_e = 6
-        test_best_f = 0.3285848062741426
+        test_best_f = 0.3285848062741426    ###############################################
         test_best_e = 6
         best_res = None
         test_best_res = None
@@ -149,9 +149,10 @@ def main():
                 print('loss %.6f' % loss,
                       ' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences),
                       'completed in %.2f (sec) <<\r' % (time.time() - t_start))
-                logfile.write('loss %.6f' % loss)
-                logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
-                logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
+                if step % 1000 == 0:
+                    logfile.write('loss %.6f' % loss)
+                    logfile.write(' [learning] epoch %i>> %2.2f%%' % (e, s['batch_size'] * step * 100. / nsentences))
+                    logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
 
             # VALID
             if e >= 0:

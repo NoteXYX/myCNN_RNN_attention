@@ -25,16 +25,16 @@ def main():
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 1.0,
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16',
-        'display_test_per': 5,
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_again',
+        'display_test_per': 1,
         'lr_decay_per': 5
     }
 
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-    data_set_file = 'data/ACL2017/inspec/inspec_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
+    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
+    emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -43,7 +43,7 @@ def main():
     y_nclasses = 2
     z_nclasses = 5
 
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
     with tf.Session(config=config) as sess:
         my_model = mymodel.myModel(
