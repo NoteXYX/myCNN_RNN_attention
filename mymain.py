@@ -53,7 +53,7 @@ def main():
     log_dir = s['check_dir']
     if not os.path.exists(log_dir):
         os.mkdir(log_dir)
-    logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8')
+    logfile = open(str(s['check_dir']) + '/log.txt', 'a', encoding='utf-8', buffering=1)
     print('len(train_data) {}'.format(len(train_lex)))
     print('len(valid_data) {}'.format(len(valid_lex)))
     print('len(test_data) {}'.format(len(test_lex)))
