@@ -37,7 +37,7 @@ def main():
         'display_test_per': 1,  #
     }
 
-    data_set_file ='data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
+    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
     emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
