@@ -52,6 +52,7 @@ class Model(object):
         inputs = tf.nn.dropout(inputs, rate=1-self.keep_prob, name='drop_inputs')
 
         #Create the internal multi-layer cell for rnn
+        with tf.device("/gpu:0"):
         if model_cell=='rnn':
             single_cell1=tf.nn.rnn_cell.BasicRNNCell(nh1)
             single_cell2=tf.nn.rnn_cell.BasicRNNCell(nh2)

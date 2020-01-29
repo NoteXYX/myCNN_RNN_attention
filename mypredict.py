@@ -33,7 +33,7 @@ def main():
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-    data_set_file = 'data/ACL2017/semeval/semeval_t_a_allwords_data_set.pkl'
+    data_set_file = 'data/ACL2017/duc/duc_t_a_allwords_data_set.pkl'
     emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
@@ -100,8 +100,8 @@ def main():
 
         print('dataset: ' + data_set_file)
         logfile.write('dataset: ' + data_set_file + '\n')
-        print("result：")
-        logfile.write("result：\n")
+        print("result:")
+        logfile.write("result:\n")
         res_test = tools.conlleval(predictions_test, groundtruth_test)
         print('all: ', res_test)
         logfile.write('all: ' + str(res_test) + '\n')
