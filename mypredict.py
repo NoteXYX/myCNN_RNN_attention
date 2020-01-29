@@ -98,6 +98,8 @@ def main():
             if step % 100 == 0:
                 print('tested %d batch......' % (step//100))
 
+        print('数据集: ' + data_set_file)
+        logfile.write('数据集: ' + data_set_file + '\n')
         print("测试结果：")
         logfile.write("测试结果：\n")
         res_test = tools.conlleval(predictions_test, groundtruth_test)
