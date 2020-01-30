@@ -137,7 +137,7 @@ def main():
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
 
-        saver=tf.train.Saver(tf.all_variables(), max_to_keep=3)
+        saver=tf.train.Saver(tf.all_variables(), max_to_keep=1)
         sess.run(tf.global_variables_initializer())
 
         best_f=-1
