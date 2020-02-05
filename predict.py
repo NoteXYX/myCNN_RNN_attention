@@ -14,16 +14,16 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
-        'lr':0.0001,
+        'lr':0.1,
         'lr_decay':0.5,
         'max_grad_norm':5,
         'seed':345,
-        'nepochs':100,
-        'batch_size':10,
-        'keep_prob':1.0,
-        'check_dir':'./checkpoints/baseline_semeval_checkpoints',
-        'display_test_per':5,
-        'lr_decay_per':10
+        'nepochs':50,
+        'batch_size':16,
+        'keep_prob':0.5,
+        'check_dir':'./checkpoints/kp20k_baseline_0.1_16',
+        'display_test_per':1,
+        'lr_decay_per':5
     }
 
     
