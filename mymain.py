@@ -25,13 +25,13 @@ def main():
         'nh1': 450, # 第1层LSTM的隐藏单元数
         'nh2': 450, # 第2层LSTM的隐藏单元数
         'emb_dimension': 300,   # 词向量维度
-        'lr': 0.0001,  # 初始学习率
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 5,  # 如果训练5次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
+        'lr': 0.001,  # 初始学习率
         'batch_size': 16,   # batch_size=16
-        'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16_NEW', # 模型保存地址
+        'keep_prob': 0.9,   # keep_prob 保留下来的概率
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.001_16_0.9', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 1,  #
@@ -113,7 +113,7 @@ def main():
             sz_pred=sess.run(fetches=fetches,feed_dict=feed)
             return sz_pred
 
-        saver = tf.train.Saver(tf.all_variables(), max_to_keep=3)
+        saver = tf.train.Saver(tf.all_variables(), max_to_keep=2)
         sess.run(tf.global_variables_initializer())
         best_f = -1
         best_e = 0
@@ -192,6 +192,8 @@ def main():
                         start_num += s['batch_size']
 
                     res_test = tools.conlleval(predictions_test, groundtruth_test)
+                    res_test_top5 = tools.conlleval_top(predictions_test, groundtruth_test, 5)
+                    res_test_top10 = tools.conlleval_top(predictions_test, groundtruth_test, 10)
                     del predictions_test
                     del groundtruth_test
                     if res_test['f'] > test_best_f:
@@ -203,6 +205,8 @@ def main():
                     else:
                         print('TEST new curr:', res_test)
                         logfile.write('\nTEST new curr: ' + str(res_test))
+                    print('top5: ', res_test_top5)
+                    print('top10: ', res_test_top10)
 
                 # learning rate decay if no improvement in 10 epochs
                 if e - best_e > s['lr_decay_per'] and e - decay_e > s['lr_decay_per']:
