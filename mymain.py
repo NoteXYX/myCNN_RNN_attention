@@ -206,7 +206,9 @@ def main():
                         print('TEST new curr:', res_test)
                         logfile.write('\nTEST new curr: ' + str(res_test))
                     print('top5: ', res_test_top5)
+                    logfile.write('\ntop5: ' + str(res_test_top5))
                     print('top10: ', res_test_top10)
+                    logfile.write('\ntop10: ' + str(res_test_top10) + '\n')
 
                 # learning rate decay if no improvement in 10 epochs
                 if e - best_e > s['lr_decay_per'] and e - decay_e > s['lr_decay_per']:
