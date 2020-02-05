@@ -111,6 +111,7 @@ def main():
         res_test_top10 = tools.conlleval_top(predictions_test, groundtruth_test, 10)
         print('top10: ', res_test_top10)
         logfile.write('top10: ' + str(res_test_top10) + '\n')
+        logfile.write('-----------------------------------------------------------------------------------------------------------------------' + '\n')
     logfile.close()
 
 if __name__ == '__main__':

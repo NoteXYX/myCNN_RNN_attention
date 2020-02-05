@@ -33,7 +33,7 @@ def main():
 
     
     # load the dataset
-    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
+    data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_allwords_data_set.pkl'
     emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
@@ -51,7 +51,7 @@ def main():
     y_nclasses = 2
     z_nclasses = 5
 
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)
     with tf.Session(config=config) as sess:
 
@@ -121,6 +121,7 @@ def main():
         res_test_top10 = tools.conlleval_top(predictions_test, groundtruth_test, 10)
         print('top10: ', res_test_top10)
         logfile.write('top10: ' + str(res_test_top10) + '\n')
+        logfile.write('-----------------------------------------------------------------------------------------------------------------------' +'\n')
     logfile.close()
 
 if __name__ == '__main__':
