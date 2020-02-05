@@ -6,7 +6,7 @@
 
 import re
 import operator
-import jieba
+import json
 
 debug = False
 test = True
@@ -158,6 +158,21 @@ class Rake(object):
 
         sorted_keywords = dict(sorted(keyword_candidates.items(), key=operator.itemgetter(1), reverse=True))###########################
         return sorted_keywords
+
+def avg_keyphrase_num(file_name):
+    json_file = open(file_name, 'r', encoding='utf-8')
+    num_line = 0.0
+    num_keyphrase = 0.0
+    for line in json_file.readlines():
+        json_data = json.loads(line)
+        num_line += 1
+        # keywords_list = [keyword.strip() for keyword in json_data["keywords"].split(';')]
+        keywords_list = [keyword.strip() for keyword in json_data["keywords"]]
+        num_keyphrase += len(keywords_list)
+    print('num of line: %d' % num_line)
+    print('num of keyphrase: %d' % num_keyphrase)
+    print('avg num of keyphrase: %f' % (num_keyphrase/num_line))
+
 
 
 if test:
