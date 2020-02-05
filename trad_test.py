@@ -166,8 +166,8 @@ def avg_keyphrase_num(file_name):
     for line in json_file.readlines():
         json_data = json.loads(line)
         num_line += 1
-        # keywords_list = [keyword.strip() for keyword in json_data["keywords"].split(';')]
-        keywords_list = [keyword.strip() for keyword in json_data["keywords"]]
+        keywords_list = [keyword.strip() for keyword in json_data["keywords"].split(';')]
+        # keywords_list = [keyword.strip() for keyword in json_data["keywords"]]
         num_keyphrase += len(keywords_list)
     print('num of line: %d' % num_line)
     print('num of keyphrase: %d' % num_keyphrase)
@@ -175,7 +175,7 @@ def avg_keyphrase_num(file_name):
 
 
 if __name__ == '__main__':
-    avg_keyphrase_num('data/ACL2017')
+    avg_keyphrase_num('data/ACL2017/kp20k/kp20k_valid.json')
 # if test:
 #     text = '本发明公开一种具有语音交互功能的声控空调器，通过用户发出的语音指令信息直接对空调器进行控制，并在对空调进行语音控制过程中通过反馈语音指令信息给用户确认，实现用户与空调的语音交互。该技术方案能够完全摆脱遥控器实现对空调的控制，操作方便，同时，语音交互方式具有灵活性，能够满足不同用户个性化的要求，提高了用户的体验。'
 #     # text = "Compatibility of systems of linear constraints over the set of natural numbers. Criteria of compatibility of a system of linear Diophantine equations, strict inequations, and nonstrict inequations are considered. Upper bounds for components of a minimal set of solutions and algorithms of construction of minimal generating sets of solutions for all types of systems are given. These criteria and the corresponding algorithms for constructing a minimal supporting set of solutions can be used in solving all the considered types of systems and systems of mixed types."

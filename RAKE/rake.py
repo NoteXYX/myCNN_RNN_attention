@@ -203,7 +203,7 @@ if test:
 
     totalKeywords = len(sortedKeywords)
     if debug: print(totalKeywords)
-    print(sortedKeywords[0:(totalKeywords / 3)])
+    print(sortedKeywords[0:5])
 
     rake = Rake()
     keywords = rake.run(text)
