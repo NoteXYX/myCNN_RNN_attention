@@ -207,4 +207,4 @@ if test:
 
     rake = Rake()
     keywords = rake.run(text)
-    print(keywords)
+    print(list(keywords.keys()))

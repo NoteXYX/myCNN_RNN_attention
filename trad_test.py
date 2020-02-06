@@ -1,4 +1,5 @@
 import operator
+import nltk
 import json
 from rake import Rake
 
@@ -7,10 +8,29 @@ def rake_keyphrase(file_name, topk):
     for line in json_file.readlines():
         json_data = json.loads(line)
         if file_name == 'data/ACL2017/kp20k/kp20k_train.json':
-            golden_kp = [kp.strip() for kp in json_data['keywords']]
+            golden_list = [kp.strip() for kp in json_data['keywords']]
         else:
-            golden_kp = [kp.strip() for kp in json_data['keywords'].split(';')]
+            golden_list = [kp.strip() for kp in json_data['keywords'].split(';')]
         cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower
+        content_list = nltk.word_tokenize(cur_content)
+        rake = Rake()
+        keywords_dict = rake.run(cur_content)
+        keywords_list = list(keywords_dict.keys())[:topk]
+        for key_index in range(len(keywords_list)):
+            tmp = keywords_list.copy()
+            kp_start = tmp.pop(key_index)
+            for con_index in range(len(content_list)):
+                cur_start = content_list[con_index]
+                if cur_start == kp_start:
+                    for i in range(content_list+1, len(content_list)):
+                        if content_list[i] in tmp:
+
+
+
+
+
+
+
 
 
 def main():
