@@ -22,13 +22,8 @@ def rake_keyphrase(file_name, topk):
             for con_index in range(len(content_list)):
                 cur_start = content_list[con_index]
                 if cur_start == kp_start:
-                    for i in range(content_list+1, len(content_list)):
+                    for i in range(con_index+1, len(content_list)):
                         if content_list[i] in tmp:
-
-
-
-
-
 
 
 
