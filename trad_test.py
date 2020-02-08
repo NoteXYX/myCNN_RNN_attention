@@ -16,8 +16,29 @@ def rake_keyphrase(file_name, topk):
         rake = Rake()
         keywords_dict = rake.run(cur_content)
         keywords_list = list(keywords_dict.keys())[:topk]
-        for key_index in range(len(keywords_list)):
-            tmp = keywords_list.copy()
+        kp_list = []
+        cur_kp = []
+        tmp = keywords_list.copy()
+        con_index = 0
+        while con_index < len(content_list) and len(tmp) > 0:
+            key_index = 0
+            while key_index < len(keywords_list):
+                if content_list[con_index] == keywords_list[key_index]:
+                    # cur_word = keywords_list[key_index]
+                    cur_kp.append(keywords_list[key_index])
+                    break
+            if len(cur_kp) > 1 and con_index+1 < len(content_list):
+                str_kp = ' '.join(cur_kp)
+                kp_list.append(str_kp)
+                for word in cur_kp:
+                    delt = tmp.pop(tmp.index(word))
+                cur_kp = []
+            con_index += 1
+
+
+
+
+        while len(tmp):
             kp_start = tmp.pop(key_index)
             for con_index in range(len(content_list)):
                 cur_start = content_list[con_index]
