@@ -28,10 +28,10 @@ def main():
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 5,  # 如果训练5次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
-        'lr': 0.0005,  # 初始学习率
+        'lr': 0.0003,  # 初始学习率
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # keep_prob 保留下来的概率
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0005_16_0.5', # 模型保存地址
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0003_16_0.5', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 1,  #

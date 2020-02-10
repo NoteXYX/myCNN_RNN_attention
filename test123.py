@@ -43,7 +43,7 @@ def main():
     y_nclasses = 2
     z_nclasses = 5
 
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
     with tf.Session(config=config) as sess:
         my_model = mymodel.myModel(
@@ -89,7 +89,7 @@ def main():
         print('testing............')
         for step in range(1):
             # batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
-            x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
+            x, z = test_batch_putin(test_lex[2:], test_z[2:], start_num=start_num, batch_size=s['batch_size'])
             # x, z = batch
             x = load.pad_sentences(x)
             print(x)
