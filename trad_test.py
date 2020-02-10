@@ -4,6 +4,7 @@ import json
 from rake import Rake
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import CountVectorizer
+from textrank4zh import TextRank4Keyword
 
 
 def get_kp(content_list, keywords_list):
@@ -19,14 +20,15 @@ def get_kp(content_list, keywords_list):
                 str_kp = ' '.join(cur_kp)
                 kp_list.append(str_kp)
             continue
-        elif len(cur_kp) > 1:
+        elif 1 < len(cur_kp) < 6:
             str_kp = ' '.join(cur_kp)
             kp_list.append(str_kp)
             for word in cur_kp:
-                delt = tmp.pop(tmp.index(word))
+                if word in tmp:
+                    delt = tmp.pop(tmp.index(word))
         cur_kp = []
         con_index += 1
-    kp_list = keywords_list.extend(kp_list)
+    kp_list.extend(keywords_list)
     return kp_list
 
 def get_rake_kp(file_name, topk):
@@ -34,7 +36,7 @@ def get_rake_kp(file_name, topk):
     rake_kp = []
     for line in json_file.readlines():
         json_data = json.loads(line)
-        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower
+        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower()
         content_list = nltk.word_tokenize(cur_content)
         rake = Rake()
         keywords_dict = rake.run(cur_content)
@@ -48,65 +50,48 @@ def get_tfidf_kp(file_name, topk):
     json_file = open(file_name, 'r', encoding='utf-8')
     tfidf_kp = []
     corpus = []
-    for line in json_file.readlines():
+    json_lines = json_file.readlines()
+    for line in json_lines:
         json_data = json.loads(line)
         cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower
         corpus.append(cur_content)
-    json_file.close()
     vectorizer = CountVectorizer(lowercase=True)  # 该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
     transformer = TfidfTransformer()  # 该类会统计每个词语的tf-idf权值
     tfidf = transformer.fit_transform(vectorizer.fit_transform(corpus))  # 第一个fit_transform是计算tf-idf，第二个fit_transform是将文本转为词频矩阵
     word = vectorizer.get_feature_names()  # 获取词袋模型中的所有词语
     weight = tfidf.toarray()  # 将tf-idf矩阵抽取出来，元素a[i][j]表示j词在i类文本中的tf-idf权重
+    assert len(weight) == len(json_lines)
     for line_index in range(len(weight)):  # 打印每类文本的tf-idf词语权重，第一个for遍历所有文本，第二个for便利某一类文本下的词语权重
         weight_index = dict()
         for word_index in range(len(word)):
             weight_index[weight[line_index][word_index]] = word_index
         sorted_weight_index = dict(
-            sorted(weight_index.items(), key=operator.itemgetter(0), reverse=True)[0: min(topn, len(word)): 1])
-        line_keywords = list()
+            sorted(weight_index.items(), key=operator.itemgetter(0), reverse=True)[0: min(topk, len(word)): 1])
+        keywords_list = []
         for keyword_weight in sorted_weight_index:
-            line_keywords.append(word[sorted_weight_index[keyword_weight]])
+            keywords_list.append(word[sorted_weight_index[keyword_weight]])
             # print(word[sorted_weight_index[keyword_weight]], keyword_weight)
-        tfidf_keywords[line_index] = line_keywords
+        kp_list = get_kp(corpus[line_index], keywords_list)
+        tfidf_kp.append(kp_list)
+    json_file.close()
+    return tfidf_kp
 
-def mytfidf(test_name, stopwords, keywordstop, topn=20):  # TF-IDF算法，返回字典{index:[关键字1,关键字2...]}
-    corpus = list()
-    tfidf_keywords = dict()
-    with open(test_name, 'r', encoding='utf-8') as test_file:
-        num = 0
-        for test_line in test_file.readlines():
-            line_split = test_line.split(' ::  ')
-            if len(line_split) == 2:
-                content = line_split[1].strip()
-                print('第%d条专利摘要：' % (num + 1))
-                print(content)
-                test_line_words = list(jieba.cut(content))
-                line_words = list()
-                for word in test_line_words:
-                    if word not in stopwords and word not in keywordstop and len(word) > 1 and not word.isdigit():
-                        line_words.append(word)
-                line_str = ' '.join(line_words)
-                corpus.append(line_str)
-                num += 1
-    vectorizer = CountVectorizer(lowercase=False)  # 该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
-    transformer = TfidfTransformer()  # 该类会统计每个词语的tf-idf权值
-    tfidf = transformer.fit_transform(
-        vectorizer.fit_transform(corpus))  # 第一个fit_transform是计算tf-idf，第二个fit_transform是将文本转为词频矩阵
-    word = vectorizer.get_feature_names()  # 获取词袋模型中的所有词语
-    weight = tfidf.toarray()  # 将tf-idf矩阵抽取出来，元素a[i][j]表示j词在i类文本中的tf-idf权重
-    for line_index in range(len(weight)):  # 打印每类文本的tf-idf词语权重，第一个for遍历所有文本，第二个for便利某一类文本下的词语权重
-        weight_index = dict()
-        for word_index in range(len(word)):
-            weight_index[weight[line_index][word_index]] = word_index
-        sorted_weight_index = dict(
-            sorted(weight_index.items(), key=operator.itemgetter(0), reverse=True)[0: min(topn, len(word)): 1])
-        line_keywords = list()
-        for keyword_weight in sorted_weight_index:
-            line_keywords.append(word[sorted_weight_index[keyword_weight]])
-            # print(word[sorted_weight_index[keyword_weight]], keyword_weight)
-        tfidf_keywords[line_index] = line_keywords
-    return tfidf_keywords
+def get_textRank_kp(file_name, topk):
+    json_file = open(file_name, 'r', encoding='utf-8')
+    textRank_kp = []
+    for line in json_file.readlines():
+        json_data = json.loads(line)
+        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower
+        tr4w = TextRank4Keyword()
+        tr4w.analyze(text=cur_content, lower=True, window=2)
+        keywords_list = []
+        for item in tr4w.get_keywords(20, word_min_len=1):
+            keywords_list.append(item.word)
+        kp_list = get_kp(cur_content, keywords_list)
+        # textRank_kp = tr4w.get_keyphrases(keywords_num=20, min_occur_num=2)
+        textRank_kp.append(kp_list)
+    json_file.close()
+    return textRank_kp
 
 def get_golden_kp(file_name):
     golden_kp = []
@@ -121,12 +106,42 @@ def get_golden_kp(file_name):
     json_file.close()
     return golden_kp
 
-
-
-
+def test_f1(kp, golden_kp, topk=5):
+    res={}
+    assert len(kp) == len(golden_kp)
+    true_num = 0.0
+    pre_num = 0.0
+    golden_num = 0.0
+    for line_index in range(len(kp)):
+        cur_pre_kp = kp[line_index][ : min(len(kp[line_index]), topk)]  # list
+        cur_golden_kp = golden_kp[line_index]            #list
+        pre_num += len(cur_pre_kp)
+        golden_num += len(cur_golden_kp)
+        for key in cur_pre_kp:
+            if key in cur_golden_kp:
+                true_num += 1
+    res['p'] = true_num / pre_num * 100
+    res['r'] = true_num / golden_num *100
+    res['f1'] = 2 * res['p'] * res['r'] / (res['p'] + res['r'])
+    return res
 
 def main():
+    file_name = 'data/ACL2017/duc/duc_test.json'
+    topk = 5
+    rake_kp = get_rake_kp(file_name, 20)
+    golden_kp = get_golden_kp(file_name)
+    res = test_f1(rake_kp, golden_kp, topk=topk)
+    print(file_name)
+    print('Precision :{}, Recall :{}, F1 score : {}'.format(res['p'], res['r'], res['f1']))
 
+    # print(golden_kp[9])
+    # print(rake_kp[9])
+    # i = 0
+    # for line in rake_kp:
+    #     i += 1
+    #     if len(line) > 10:
+    #         print(i)
+    #         break
 
 if __name__ == '__main__':
     main()
