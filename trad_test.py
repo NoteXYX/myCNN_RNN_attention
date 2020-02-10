@@ -53,7 +53,7 @@ def get_tfidf_kp(file_name, topk):
     json_lines = json_file.readlines()
     for line in json_lines:
         json_data = json.loads(line)
-        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower
+        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower()
         corpus.append(cur_content)
     vectorizer = CountVectorizer(lowercase=True)  # 该类会将文本中的词语转换为词频矩阵，矩阵元素a[i][j] 表示j词在i类文本下的词频
     transformer = TfidfTransformer()  # 该类会统计每个词语的tf-idf权值
@@ -81,11 +81,11 @@ def get_textRank_kp(file_name, topk):
     textRank_kp = []
     for line in json_file.readlines():
         json_data = json.loads(line)
-        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower
+        cur_content = json_data['title'].strip().lower() + ' ' + json_data['abstract'].strip().lower()
         tr4w = TextRank4Keyword()
         tr4w.analyze(text=cur_content, lower=True, window=2)
         keywords_list = []
-        for item in tr4w.get_keywords(20, word_min_len=1):
+        for item in tr4w.get_keywords(topk, word_min_len=1):
             keywords_list.append(item.word)
         kp_list = get_kp(cur_content, keywords_list)
         # textRank_kp = tr4w.get_keyphrases(keywords_num=20, min_occur_num=2)
@@ -126,13 +126,20 @@ def test_f1(kp, golden_kp, topk=5):
     return res
 
 def main():
-    file_name = 'data/ACL2017/duc/duc_test.json'
+    file_name = 'data/ACL2017/inspec/inspec_test.json'
     topk = 5
+    tfidf_kp = get_tfidf_kp(file_name, 20)
+    textRank_kp = get_textRank_kp(file_name, 20)
     rake_kp = get_rake_kp(file_name, 20)
+
     golden_kp = get_golden_kp(file_name)
-    res = test_f1(rake_kp, golden_kp, topk=topk)
+    tfidf_res = test_f1(tfidf_kp, golden_kp, topk=topk)
+    textRank_res = test_f1(textRank_kp, golden_kp, topk=topk)
+    rake_res = test_f1(rake_kp, golden_kp, topk=topk)
     print(file_name)
-    print('Precision :{}, Recall :{}, F1 score : {}'.format(res['p'], res['r'], res['f1']))
+    print('tf_idf Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(tfidf_res['p'], tfidf_res['r'], tfidf_res['f1']))
+    print('textRank Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(textRank_res['p'], textRank_res['r'],textRank_res['f1']))
+    print('RAKE Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(rake_res['p'], rake_res['r'],rake_res['f1']))
 
     # print(golden_kp[9])
     # print(rake_kp[9])
