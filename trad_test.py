@@ -126,7 +126,7 @@ def test_f1(kp, golden_kp, topk=5):
     return res
 
 def main():
-    file_name = 'data/ACL2017/inspec/inspec_test.json'
+    file_name = 'data/ACL2017/krapivin/krapivin_test.json'
     topk = 5
     tfidf_kp = get_tfidf_kp(file_name, 20)
     textRank_kp = get_textRank_kp(file_name, 20)
@@ -137,6 +137,7 @@ def main():
     textRank_res = test_f1(textRank_kp, golden_kp, topk=topk)
     rake_res = test_f1(rake_kp, golden_kp, topk=topk)
     print(file_name)
+    print('topk = {}'.format(topk))
     print('tf_idf Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(tfidf_res['p'], tfidf_res['r'], tfidf_res['f1']))
     print('textRank Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(textRank_res['p'], textRank_res['r'],textRank_res['f1']))
     print('RAKE Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(rake_res['p'], rake_res['r'],rake_res['f1']))
