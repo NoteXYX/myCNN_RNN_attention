@@ -71,7 +71,7 @@ def main():
 
     nsentences = len(train_lex)
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
-    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
+    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)###########################################
     with tf.Session(config=config) as sess:#####################################
         my_model = mymodel.myModel(
             nh1=s['nh1'],
@@ -145,7 +145,7 @@ def main():
                     logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
 
             # VALID
-            if e >= 0:
+            if e >= 4:
                 print('Validing..............')
                 predictions_valid = []
                 predictions_test = []
