@@ -145,7 +145,7 @@ def main():
                     logfile.write('completed in %.2f (sec) <<\n' % (time.time() - t_start))
 
             # VALID
-            if e >= 4:
+            if e >= 10:
                 print('Validing..............')
                 predictions_valid = []
                 predictions_test = []
