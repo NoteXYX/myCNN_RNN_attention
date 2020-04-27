@@ -31,14 +31,14 @@ def main():
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './checkpoints/GZ_mycps_Adam_0.0001_16/inspec', # 模型保存地址
+        'check_dir': './checkpoints/GZ_mycps_Adam_0.0001_16/semeval', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 1,  #
     }
 
-    data_set_file ='data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
-    emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
+    data_set_file ='data/ACL2017/semeval/semeval_t_a_GZ_data_set.pkl'
+    emb_file = 'data/ACL2017/semeval/semeval_t_a_GZ_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
