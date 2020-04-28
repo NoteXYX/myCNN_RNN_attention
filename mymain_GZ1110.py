@@ -25,13 +25,13 @@ def main():
         'nh1': 450, # 第1层LSTM的隐藏单元数
         'nh2': 450, # 第2层LSTM的隐藏单元数
         'emb_dimension': 300,   # 词向量维度
-        'lr': 0.0001,  # 初始学习率
+        'lr': 0.001,  # 初始学习率
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 5,  # 如果训练5次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # drop out 概率
-        'check_dir': './checkpoints/GZ_mycps_Adam_0.0001_16/krapivin', # 模型保存地址
+        'check_dir': './checkpoints/GZ_mycps_Adam_0.001_16/krapivin', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 1,  #

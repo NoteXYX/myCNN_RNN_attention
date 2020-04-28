@@ -18,14 +18,14 @@ def main():
         'nh2': 450,
         'win': 3,
         'emb_dimension': 300,
-        'lr': 0.0001,
+        'lr': 0.001,
         'lr_decay': 0.5,
         'max_grad_norm': 5,
         'seed': 345,
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 1.0,
-        'check_dir': './checkpoints/GZ_mycps_Adam_0.0001_16/krapivin',
+        'check_dir': './checkpoints/GZ_mycps_Adam_0.001_16/krapivin',
         'display_test_per': 1,
         'lr_decay_per': 5
     }
