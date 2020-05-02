@@ -36,7 +36,7 @@ class Model(object):
                                                 name="input_y")  # input_y.shape = (None,None)
         self.input_z = tf.placeholder(tf.int32, shape=[None, None],
                                                 name='input_z')  # input_z.shape = (None,None)
-        self.keep_prob = tf.placeholder(tf.float32)
+        self.keep_prob = tf.placeholder(tf.float32, name='keep_prob')
 
         self.lr = tf.Variable(lr, dtype=tf.float32)
 
@@ -54,7 +54,7 @@ class Model(object):
 
         # Droupout embedding input
         # inputs=tf.nn.dropout(inputs,keep_prob=self.keep_prob,name='drop_inputs')
-        inputs = tf.nn.dropout(inputs, rate=1 - self.keep_prob, name='drop_inputs')
+        inputs = tf.nn.dropout(inputs, self.keep_prob, name='drop_rnn_conv_inputs')
 
         # Create the internal multi-layer cell for rnn
         with tf.device("/gpu:0"):
