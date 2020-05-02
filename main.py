@@ -35,13 +35,13 @@ def main():
         'nepochs':50,
         'batch_size':16,
         'keep_prob':0.5,
-        'check_dir':'./checkpoints/kp20k_baseline_0.1_16',
+        'check_dir':'./checkpoints/GZ_EMNLP2016_0.1_16/inspec',
         'display_test_per':1,   #
         'lr_decay_per':5       #
     }
 
-    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
-    emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
+    data_set_file = 'data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
+    emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
     print('loading dataset.....')
     # train_set,test_set,dic,embedding = load.atisfold(data_set_file, emb_file)
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -77,7 +77,7 @@ def main():
 
     nsentences = len(train_lex)
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
-    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)  ###########################################
+    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
     with tf.compat.v1.Session(config=config) as sess:  #####################################
         rnn=model.Model(
             nh1=s['nh1'],
