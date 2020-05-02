@@ -22,21 +22,21 @@ def main():
         'nh2': 300,
         'win': 3,
         'emb_dimension': 300,
-        'lr': 0.0001,
+        'lr': 0.001,
         'lr_decay': 0.5,
         'max_grad_norm': 5,
         'seed': 345,
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 1.0,
-        'check_dir': './checkpoints/GZ_EMNLP2016_0.0001_16/inspec',
+        'check_dir': './checkpoints/GZ_EMNLP2016_0.001_16/semeval',
         'display_test_per': 1,
         'lr_decay_per': 5
     }
 
     # load the dataset
-    data_set_file = 'data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
-    emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
+    data_set_file = 'data/ACL2017/semeval/semeval_t_a_GZ_data_set.pkl'
+    emb_file = 'data/ACL2017/semeval/semeval_t_a_GZ_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
