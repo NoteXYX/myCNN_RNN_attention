@@ -2,7 +2,7 @@ import tensorflow as tf
 import time
 import os
 import load
-import models.model as model
+import models.model1110 as model
 import tools
 
 # def batch_putin(train, test, start_num=0, batch_size=16):
