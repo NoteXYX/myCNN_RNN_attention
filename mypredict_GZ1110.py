@@ -25,7 +25,7 @@ def main():
         'nepochs': 50,  # 总共迭代50个epoch
         'batch_size': 16,   # batch_size=16
         'keep_prob': 1.0,
-        'check_dir': './checkpoints/GZ_mycps_Adam_0.001_16/krapivin',
+        'check_dir': './checkpoints/GZ_mycps_Adam_0.001_16/nus',
         'display_test_per': 1,
         'lr_decay_per': 5
     }
@@ -33,8 +33,8 @@ def main():
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-    data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
-    emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
+    data_set_file = 'data/ACL2017/nus/nus_t_a_GZ_data_set.pkl'
+    emb_file = 'data/ACL2017/nus/nus_t_a_GZ_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)

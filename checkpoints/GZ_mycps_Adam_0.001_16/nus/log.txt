@@ -1,0 +1,264 @@
+len(train_data) 123
+len(valid_data) 123
+len(test_data) 161
+len(vocab) 4990
+Train started!
+loss 306.160339 [learning] epoch 0>> 0.00%completed in 3.02 (sec) <<
+loss 65.911629 [learning] epoch 1>> 0.00%completed in 0.99 (sec) <<
+loss 82.095726 [learning] epoch 2>> 0.00%completed in 1.03 (sec) <<
+loss 66.731102 [learning] epoch 3>> 0.00%completed in 0.84 (sec) <<
+loss 41.793228 [learning] epoch 4>> 0.00%completed in 0.99 (sec) <<
+loss 35.714550 [learning] epoch 5>> 0.00%completed in 0.99 (sec) <<
+loss 42.589066 [learning] epoch 6>> 0.00%completed in 0.75 (sec) <<
+loss 48.399929 [learning] epoch 7>> 0.00%completed in 1.24 (sec) <<
+loss 33.549889 [learning] epoch 8>> 0.00%completed in 0.90 (sec) <<
+loss 44.081554 [learning] epoch 9>> 0.00%completed in 0.88 (sec) <<
+loss 31.276714 [learning] epoch 10>> 0.00%completed in 1.23 (sec) <<
+
+VALID new best: {'a': 0.5, 'p': 0.2857142857142857, 'r': 0.08602150537634409, 'f': 0.1322314049586777}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-10
+
+TEST new best: {'a': 0.39375, 'p': 0.27391304347826084, 'r': 0.06158357771260997, 'f': 0.10055865921787709}
+learning rate:0.001000
+loss 24.925350 [learning] epoch 11>> 0.00%completed in 0.95 (sec) <<
+
+VALID new best: {'a': 1.5089285714285714, 'p': 0.449468085106383, 'r': 0.25960061443932414, 'f': 0.3291139240506329}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-11
+
+TEST new best: {'a': 1.2, 'p': 0.42857142857142855, 'r': 0.187683284457478, 'f': 0.2610469068660775}
+learning rate:0.001000
+loss 16.699892 [learning] epoch 12>> 0.00%completed in 0.99 (sec) <<
+
+VALID new best: {'a': 1.9196428571428572, 'p': 0.5429292929292929, 'r': 0.3302611367127496, 'f': 0.41069723018147086}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-12
+
+TEST new best: {'a': 1.5125, 'p': 0.5094736842105263, 'r': 0.23655913978494625, 'f': 0.32309746328437916}
+learning rate:0.001000
+loss 18.696264 [learning] epoch 13>> 0.00%completed in 0.90 (sec) <<
+
+VALID new best: {'a': 3.0982142857142856, 'p': 0.6647509578544061, 'r': 0.533026113671275, 'f': 0.5916453537936914}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-13
+
+TEST new best: {'a': 2.50625, 'p': 0.6150306748466258, 'r': 0.3919843597262952, 'f': 0.4788059701492537}
+learning rate:0.001000
+loss 20.957237 [learning] epoch 14>> 0.00%completed in 0.94 (sec) <<
+
+VALID new best: {'a': 3.642857142857143, 'p': 0.710801393728223, 'r': 0.6267281105990783, 'f': 0.6661224489795919}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-14
+
+TEST new best: {'a': 3.0, 'p': 0.6575342465753424, 'r': 0.46920821114369504, 'f': 0.5476326297775242}
+learning rate:0.001000
+loss 15.434185 [learning] epoch 15>> 0.00%completed in 0.98 (sec) <<
+
+VALID new best: {'a': 4.214285714285714, 'p': 0.7433070866141732, 'r': 0.7250384024577573, 'f': 0.734059097978227}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-15
+
+TEST new best: {'a': 3.4875, 'p': 0.6682634730538922, 'r': 0.5454545454545454, 'f': 0.6006458557588805}
+learning rate:0.001000
+loss 12.115552 [learning] epoch 16>> 0.00%completed in 0.98 (sec) <<
+
+VALID new best: {'a': 4.508928571428571, 'p': 0.7990506329113924, 'r': 0.7757296466973886, 'f': 0.7872174590802805}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-16
+
+TEST new best: {'a': 3.7125, 'p': 0.7148014440433214, 'r': 0.5806451612903226, 'f': 0.6407766990291263}
+learning rate:0.001000
+loss 11.868269 [learning] epoch 17>> 0.00%completed in 0.94 (sec) <<
+
+VALID new best: {'a': 4.723214285714286, 'p': 0.8064024390243902, 'r': 0.8125960061443932, 'f': 0.809487375669472}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-17
+
+TEST new best: {'a': 3.85625, 'p': 0.7141203703703703, 'r': 0.603128054740958, 'f': 0.6539480657127716}
+learning rate:0.001000
+loss 11.563552 [learning] epoch 18>> 0.00%completed in 0.98 (sec) <<
+
+VALID new best: {'a': 4.544642857142857, 'p': 0.8540268456375839, 'r': 0.7818740399385561, 'f': 0.8163592622293505}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-18
+
+TEST new best: {'a': 3.675, 'p': 0.7819148936170213, 'r': 0.5747800586510264, 'f': 0.6625352112676057}
+learning rate:0.001000
+loss 12.206860 [learning] epoch 19>> 0.00%completed in 0.99 (sec) <<
+
+VALID new best: {'a': 5.116071428571429, 'p': 0.8925233644859814, 'r': 0.880184331797235, 'f': 0.8863109048723898}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-19
+
+TEST new best: {'a': 4.175, 'p': 0.8009592326139089, 'r': 0.6529814271749755, 'f': 0.719439956919763}
+learning rate:0.001000
+loss 8.953461 [learning] epoch 20>> 0.00%completed in 0.99 (sec) <<
+
+VALID new best: {'a': 5.160714285714286, 'p': 0.9017160686427457, 'r': 0.8878648233486943, 'f': 0.8947368421052632}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-20
+
+TEST new best: {'a': 4.23125, 'p': 0.7927400468384075, 'r': 0.6617790811339198, 'f': 0.7213638785295685}
+learning rate:0.001000
+loss 6.900648 [learning] epoch 21>> 0.00%completed in 1.24 (sec) <<
+
+VALID new best: {'a': 5.321428571428571, 'p': 0.9183359013867488, 'r': 0.9155145929339478, 'f': 0.9169230769230768}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-21
+
+TEST new best: {'a': 4.38125, 'p': 0.8132250580046404, 'r': 0.6852394916911045, 'f': 0.7437665782493369}
+learning rate:0.001000
+loss 5.857960 [learning] epoch 22>> 0.00%completed in 0.99 (sec) <<
+
+VALID new curr: {'a': 5.1875, 'p': 0.9416531604538088, 'r': 0.8924731182795699, 'f': 0.916403785488959}
+TEST new curr: {'a': 4.25, 'p': 0.8436724565756824, 'r': 0.6647116324535679, 'f': 0.7435757244395844}
+learning rate:0.001000
+loss 5.409234 [learning] epoch 23>> 0.00%completed in 0.99 (sec) <<
+
+VALID new best: {'a': 5.455357142857143, 'p': 0.9546875, 'r': 0.9385560675883257, 'f': 0.9465530596436871}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-23
+
+TEST new best: {'a': 4.475, 'p': 0.8513674197384067, 'r': 0.6999022482893451, 'f': 0.7682403433476396}
+learning rate:0.001000
+loss 5.189768 [learning] epoch 24>> 0.00%completed in 0.75 (sec) <<
+
+VALID new best: {'a': 5.553571428571429, 'p': 0.9539877300613497, 'r': 0.9554531490015361, 'f': 0.9547198772064467}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-24
+
+TEST new curr: {'a': 4.575, 'p': 0.820627802690583, 'r': 0.7155425219941349, 'f': 0.764490861618799}
+learning rate:0.001000
+loss 5.933524 [learning] epoch 25>> 0.00%completed in 1.22 (sec) <<
+
+VALID new best: {'a': 5.544642857142857, 'p': 0.971830985915493, 'r': 0.9539170506912442, 'f': 0.9627906976744186}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-25
+
+TEST new best: {'a': 4.54375, 'p': 0.8654761904761905, 'r': 0.7106549364613881, 'f': 0.7804616210413312}
+learning rate:0.001000
+loss 4.212775 [learning] epoch 26>> 0.00%completed in 0.98 (sec) <<
+
+VALID new best: {'a': 5.660714285714286, 'p': 0.9664634146341463, 'r': 0.9738863287250384, 'f': 0.9701606732976281}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-26
+
+TEST new curr: {'a': 4.65, 'p': 0.8275862068965517, 'r': 0.7272727272727273, 'f': 0.7741935483870968}
+learning rate:0.001000
+loss 4.136365 [learning] epoch 27>> 0.00%completed in 1.24 (sec) <<
+
+VALID new best: {'a': 5.642857142857143, 'p': 0.9813664596273292, 'r': 0.9708141321044547, 'f': 0.976061776061776}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-27
+
+TEST new best: {'a': 4.625, 'p': 0.8505747126436781, 'r': 0.7233626588465298, 'f': 0.7818277865821449}
+learning rate:0.001000
+loss 4.533385 [learning] epoch 28>> 0.00%completed in 1.23 (sec) <<
+
+VALID new best: {'a': 5.723214285714286, 'p': 0.9801223241590215, 'r': 0.9846390168970814, 'f': 0.9823754789272031}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-28
+
+TEST new curr: {'a': 4.7125, 'p': 0.8204570184983678, 'r': 0.7370478983382209, 'f': 0.7765190525231721}
+learning rate:0.001000
+loss 3.595434 [learning] epoch 29>> 0.00%completed in 0.77 (sec) <<
+
+VALID new curr: {'a': 5.455357142857143, 'p': 0.9791666666666666, 'r': 0.9385560675883257, 'f': 0.9584313725490196}
+TEST new curr: {'a': 4.4625, 'p': 0.8814814814814815, 'r': 0.6979472140762464, 'f': 0.7790507364975451}
+learning rate:0.001000
+loss 4.077165 [learning] epoch 30>> 0.00%completed in 0.74 (sec) <<
+
+VALID new best: {'a': 5.705357142857143, 'p': 0.9891640866873065, 'r': 0.9815668202764977, 'f': 0.9853508095605243}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-30
+
+TEST new best: {'a': 4.6625, 'p': 0.8574712643678161, 'r': 0.729227761485826, 'f': 0.7881669307976756}
+learning rate:0.001000
+loss 3.008784 [learning] epoch 31>> 0.00%completed in 1.23 (sec) <<
+
+VALID new curr: {'a': 5.723214285714286, 'p': 0.9846390168970814, 'r': 0.9846390168970814, 'f': 0.9846390168970814}
+TEST new curr: {'a': 4.69375, 'p': 0.8216630196936543, 'r': 0.7341153470185728, 'f': 0.7754259163655136}
+learning rate:0.001000
+loss 3.343489 [learning] epoch 32>> 0.00%completed in 0.94 (sec) <<
+
+VALID new best: {'a': 5.75, 'p': 0.989247311827957, 'r': 0.989247311827957, 'f': 0.989247311827957}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-32
+
+TEST new curr: {'a': 4.69375, 'p': 0.8381696428571429, 'r': 0.7341153470185728, 'f': 0.7826993225638353}
+learning rate:0.001000
+loss 1.783373 [learning] epoch 33>> 0.00%completed in 0.72 (sec) <<
+
+VALID new best: {'a': 5.785714285714286, 'p': 0.9953917050691244, 'r': 0.9953917050691244, 'f': 0.9953917050691244}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-33
+
+TEST new best: {'a': 4.7125, 'p': 0.8577929465301479, 'r': 0.7370478983382209, 'f': 0.7928496319663513}
+learning rate:0.001000
+loss 1.776286 [learning] epoch 34>> 0.00%completed in 0.98 (sec) <<
+
+VALID new best: {'a': 5.803571428571429, 'p': 0.9969325153374233, 'r': 0.9984639016897081, 'f': 0.997697620874904}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-34
+
+TEST new curr: {'a': 4.75625, 'p': 0.8344298245614035, 'r': 0.7438905180840665, 'f': 0.7865633074935401}
+learning rate:0.001000
+loss 2.353861 [learning] epoch 35>> 0.00%completed in 0.76 (sec) <<
+
+VALID new curr: {'a': 5.794642857142857, 'p': 0.9969278033794163, 'r': 0.9969278033794163, 'f': 0.9969278033794163}
+TEST new curr: {'a': 4.74375, 'p': 0.8396017699115044, 'r': 0.7419354838709677, 'f': 0.7877529839128178}
+learning rate:0.001000
+loss 1.797551 [learning] epoch 36>> 0.00%completed in 0.97 (sec) <<
+
+VALID new curr: {'a': 5.785714285714286, 'p': 0.9953917050691244, 'r': 0.9953917050691244, 'f': 0.9953917050691244}
+TEST new curr: {'a': 4.73125, 'p': 0.8429844097995546, 'r': 0.739980449657869, 'f': 0.7881311816762103}
+learning rate:0.001000
+loss 2.044763 [learning] epoch 37>> 0.00%completed in 0.97 (sec) <<
+
+VALID new curr: {'a': 5.794642857142857, 'p': 0.9969278033794163, 'r': 0.9969278033794163, 'f': 0.9969278033794163}
+TEST new best: {'a': 4.7375, 'p': 0.85456595264938, 'r': 0.7409579667644184, 'f': 0.793717277486911}
+learning rate:0.001000
+loss 1.420344 [learning] epoch 38>> 0.00%completed in 0.98 (sec) <<
+
+VALID new best: {'a': 5.8125, 'p': 1.0, 'r': 1.0, 'f': 1.0}
+Save model checkpoint to ./checkpoints/GZ_mycps_Adam_0.001_16/nus\model-38
+
+TEST new best: {'a': 4.7625, 'p': 0.8600451467268623, 'r': 0.7448680351906158, 'f': 0.7983237297014142}
+learning rate:0.001000
+loss 1.689703 [learning] epoch 39>> 0.00%completed in 0.91 (sec) <<
+
+VALID new curr: {'a': 5.767857142857143, 'p': 0.9877675840978594, 'r': 0.9923195084485407, 'f': 0.9900383141762451}
+TEST new curr: {'a': 4.78125, 'p': 0.8155650319829424, 'r': 0.7478005865102639, 'f': 0.7802141764405914}
+learning rate:0.001000
+loss 0.898338 [learning] epoch 40>> 0.00%completed in 0.73 (sec) <<
+
+VALID new curr: {'a': 5.794642857142857, 'p': 0.995398773006135, 'r': 0.9969278033794163, 'f': 0.9961627014581735}
+TEST new curr: {'a': 4.775, 'p': 0.8277356446370531, 'r': 0.7468230694037146, 'f': 0.7852004110996917}
+learning rate:0.001000
+loss 1.428774 [learning] epoch 41>> 0.00%completed in 0.88 (sec) <<
+
+VALID new curr: {'a': 5.785714285714286, 'p': 0.9878048780487805, 'r': 0.9953917050691244, 'f': 0.9915837796480489}
+TEST new curr: {'a': 4.79375, 'p': 0.7989583333333333, 'r': 0.7497556207233627, 'f': 0.7735753908219868}
+learning rate:0.001000
+loss 2.338944 [learning] epoch 42>> 0.00%completed in 0.98 (sec) <<
+
+VALID new curr: {'a': 5.8125, 'p': 0.9923780487804879, 'r': 1.0, 'f': 0.9961744452945678}
+TEST new curr: {'a': 4.775, 'p': 0.8110403397027601, 'r': 0.7468230694037146, 'f': 0.7776081424936387}
+learning rate:0.001000
+loss 1.381593 [learning] epoch 43>> 0.00%completed in 1.23 (sec) <<
+
+VALID new curr: {'a': 5.803571428571429, 'p': 1.0, 'r': 0.9984639016897081, 'f': 0.9992313604919293}
+TEST new curr: {'a': 4.75, 'p': 0.8416389811738649, 'r': 0.7429130009775171, 'f': 0.7892004153686397}
+learning rate:0.001000
+loss 1.198772 [learning] epoch 44>> 0.00%completed in 0.97 (sec) <<
+
+VALID new curr: {'a': 5.803571428571429, 'p': 1.0, 'r': 0.9984639016897081, 'f': 0.9992313604919293}
+TEST new best: {'a': 4.73125, 'p': 0.8731257208765859, 'r': 0.739980449657869, 'f': 0.801058201058201}
+learning rate:0.000500
+loss 1.142014 [learning] epoch 45>> 0.00%completed in 0.94 (sec) <<
+
+VALID new curr: {'a': 5.803571428571429, 'p': 0.9969325153374233, 'r': 0.9984639016897081, 'f': 0.997697620874904}
+TEST new curr: {'a': 4.78125, 'p': 0.8155650319829424, 'r': 0.7478005865102639, 'f': 0.7802141764405914}
+learning rate:0.000500
+loss 0.682867 [learning] epoch 46>> 0.00%completed in 0.90 (sec) <<
+
+VALID new curr: {'a': 5.8125, 'p': 1.0, 'r': 1.0, 'f': 1.0}
+TEST new curr: {'a': 4.73125, 'p': 0.8671248568155785, 'r': 0.739980449657869, 'f': 0.7985232067510548}
+learning rate:0.000500
+loss 1.038860 [learning] epoch 47>> 0.00%completed in 0.98 (sec) <<
+
+VALID new curr: {'a': 5.8125, 'p': 1.0, 'r': 1.0, 'f': 1.0}
+TEST new curr: {'a': 4.7625, 'p': 0.8410596026490066, 'r': 0.7448680351906158, 'f': 0.7900466562986004}
+learning rate:0.000500
+loss 0.790871 [learning] epoch 48>> 0.00%completed in 0.98 (sec) <<
+
+VALID new curr: {'a': 5.8125, 'p': 1.0, 'r': 1.0, 'f': 1.0}
+TEST new curr: {'a': 4.7625, 'p': 0.8466666666666667, 'r': 0.7448680351906158, 'f': 0.7925117004680187}
+learning rate:0.000500
+loss 0.649603 [learning] epoch 49>> 0.00%completed in 0.74 (sec) <<
+
+VALID new curr: {'a': 5.803571428571429, 'p': 0.9984639016897081, 'r': 0.9984639016897081, 'f': 0.9984639016897081}
+TEST new curr: {'a': 4.7375, 'p': 0.85456595264938, 'r': 0.7409579667644184, 'f': 0.793717277486911}
+learning rate:0.000500
+Train finished!
+Valid Best Result: epoch 38:   {'a': 5.8125, 'p': 1.0, 'r': 1.0, 'f': 1.0}
+Test Best Result: epoch 44:   {'a': 4.73125, 'p': 0.8731257208765859, 'r': 0.739980449657869, 'f': 0.801058201058201}
