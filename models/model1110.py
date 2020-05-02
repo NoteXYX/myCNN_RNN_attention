@@ -94,21 +94,21 @@ class Model(object):
                 )
 
             # outputs_y
-            with tf.compat.v1.variable_scope('output_sy'):
-                w_y = tf.compat.v1.get_variable("softmax_w_y", [nh1, ny])  # w_y (300, 2)
-                b_y = tf.compat.v1.get_variable("softmax_b_y", [ny])  # b_y (2, )
+            with tf.variable_scope('output_sy'):
+                w_y = tf.get_variable("softmax_w_y", [nh1, ny])  # w_y (300, 2)
+                b_y = tf.get_variable("softmax_b_y", [ny])  # b_y (2, )
                 outputs1 = tf.reshape(self.outputs1, [-1, nh1])  # outputs1 (?, 300)
-                sy = tf.compat.v1.nn.xw_plus_b(outputs1, w_y, b_y)  # sy (?, 2)
+                sy = tf.nn.xw_plus_b(outputs1, w_y, b_y)  # sy (?, 2)
                 self.sy_pred = tf.reshape(tf.argmax(sy, 1), [self.batch_size, -1])  # sy_pred (16, ?)
             # outputs_z
-            with tf.compat.v1.variable_scope('output_sz'):
+            with tf.variable_scope('output_sz'):
                 w_z = tf.get_variable("softmax_w_z", [nh2, nz])  # w_z (300, 5)
                 b_z = tf.get_variable("softmax_b_z", [nz])  # b_z (5, )
                 outputs2 = tf.reshape(self.outputs2, [-1, nh2])  # outputs2 (?, 300)
-                sz = tf.compat.v1.nn.xw_plus_b(outputs2, w_z, b_z)  # sz (?, 5)
+                sz = tf.nn.xw_plus_b(outputs2, w_z, b_z)  # sz (?, 5)
                 self.sz_pred = tf.reshape(tf.argmax(sz, 1), [self.batch_size, -1])  # sz_pred (16, ?)
             # loss
-            with tf.compat.v1.variable_scope('loss'):
+            with tf.variable_scope('loss'):
                 label_y = tf.reshape(self.input_y, [-1])  # label_y (?, )
                 # label_y = tf.argmax(self.input_y, 1)
                 # loss1 = tf.nn.sparse_softmax_cross_entropy_with_logits(sy, label_y)
@@ -119,9 +119,9 @@ class Model(object):
                 loss2 = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_z, logits=sz)  # loss2 (?, )
                 self.loss = tf.reduce_sum(0.5 * loss1 + 0.5 * loss2) / tf.cast(self.batch_size, tf.float32)
 
-            tvars = tf.compat.v1.trainable_variables()
+            tvars = tf.trainable_variables()
             grads, _ = tf.clip_by_global_norm(tf.gradients(self.loss, tvars), max_gradient_norm)
-            optimizer = tf.compat.v1.train.GradientDescentOptimizer(self.lr)
+            optimizer = tf.train.GradientDescentOptimizer(self.lr)
             # grads_and_vars = optimizer.compute_gradients(self.loss)     ################################
             # self.train_op=optimizer.apply_gradients(list(zip(grads,tvars)))
             self.train_op = optimizer.minimize(self.loss)
