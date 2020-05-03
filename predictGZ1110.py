@@ -1,6 +1,6 @@
 import tensorflow as tf
 import load
-import models.model1110 as model
+import models.mymodel_mutisize_CNN_LSTM_attention1110 as mymodel
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -48,19 +48,18 @@ def main():
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
     with tf.Session(config=config) as sess:
-        rnn = model.Model(
+        my_model = mymodel.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
             ny=y_nclasses,
             nz=z_nclasses,
             de=s['emb_dimension'],
-            cs=s['win'],
             lr=s['lr'],
             lr_decay=s['lr_decay'],
             embedding=embedding,
             max_gradient_norm=s['max_grad_norm'],
             batch_size=s['batch_size'],
-            model_cell='lstm'
+            rnn_model_cell='lstm'
         )
 
         checkpoint_dir = s['check_dir']
@@ -75,11 +74,10 @@ def main():
 
         def dev_step(cwords):
             feed = {
-                rnn.input_x: cwords,
-                rnn.keep_prob: s['keep_prob'],
-                # rnn.batch_size:s['batch_size']
+                my_model.cnn_input_x: cwords,
+                my_model.keep_prob: s['keep_prob']
             }
-            fetches = rnn.sz_pred
+            fetches = my_model.sz_pred
             sz_pred = sess.run(fetches=fetches, feed_dict=feed)
             return sz_pred
 
@@ -95,7 +93,7 @@ def main():
             x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             # x, z = batch
             x = load.pad_sentences(x)
-            x = tools.contextwin_2(x, s['win'])
+            # x = tools.contextwin_2(x, s['win'])
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
             start_num += s['batch_size']
