@@ -252,13 +252,13 @@ if __name__ == '__main__':
     #     test(name)
     # for name in krapivin_names:
     #     test(name)
-    test(duc_names[0])
+    # test(duc_names[0])
 
 
     # inspec_dicts = get_dict(inspec_names)
     # semeval_dicts = get_dict(semeval_names)
     # nus_dicts = get_dict(nus_names)
-    # krapivin_dicts = get_dict(krapivin_names)
+    krapivin_dicts = get_dict(krapivin_names)
     # duc_dicts = get_dict(duc_names)
     #
     # inspec_vocab = set(inspec_dicts['words2idx'].keys())
@@ -267,8 +267,8 @@ if __name__ == '__main__':
     # print("semeval_vocab total num words: " + str(len(semeval_vocab)))
     # nus_vocab = set(nus_dicts['words2idx'].keys())
     # print("nus_vocab total num words: " + str(len(nus_vocab)))
-    # krapivin_vocab = set(krapivin_dicts['words2idx'].keys())
-    # print("krapivin_vocab total num words: " + str(len(krapivin_vocab)))
+    krapivin_vocab = set(krapivin_dicts['words2idx'].keys())
+    print("krapivin_vocab total num words: " + str(len(krapivin_vocab)))
     # duc_vocab = set(duc_dicts['words2idx'].keys())
     # print("duc_vocab total num words: " + str(len(duc_vocab)))
     #
@@ -300,12 +300,12 @@ if __name__ == '__main__':
     # print("total nus valid lines: " + str(len(valid_set[0])))
     # print("total nus test lines: " + str(len(test_set[0])))
     #
-    # krapivin_data_set = get_kp20k_train_valid_test_dicts(krapivin_data_folder, 'krapivin/krapivin_t_a_GZ_data_set.pkl', krapivin_dicts)
-    # print("krapivin dataset created!")
-    # train_set, valid_set, test_set = krapivin_data_set[0:3]
-    # print("total krapivin train lines: " + str(len(train_set[0])))
-    # print("total krapivin valid lines: " + str(len(valid_set[0])))
-    # print("total krapivin test lines: " + str(len(test_set[0])))
+    krapivin_data_set = get_kp20k_train_valid_test_dicts(krapivin_data_folder, 'krapivin/krapivin_t_a_GZ_data_set.pkl', krapivin_dicts)
+    print("krapivin dataset created!")
+    train_set, valid_set, test_set = krapivin_data_set[0:3]
+    print("total krapivin train lines: " + str(len(train_set[0])))
+    print("total krapivin valid lines: " + str(len(valid_set[0])))
+    print("total krapivin test lines: " + str(len(test_set[0])))
     #
     # duc_data_set = get_kp20k_train_valid_test_dicts(duc_data_folder, 'duc/duc_t_a_GZ_data_set.pkl', duc_dicts)
     # print("duc dataset created!")
@@ -315,7 +315,7 @@ if __name__ == '__main__':
     # print("total duc test lines: " + str(len(test_set[0])))
     #
     # # GoogleNews-vectors-negative300.txt为预先训练的词向量
-    # w2v_file = '../tweet_data/GoogleNews-vectors-negative300.bin'
+    w2v_file = '../tweet_data/GoogleNews-vectors-negative300.bin'
     # inspec_w2v = load_bin_vec(w2v_file, inspec_vocab)
     # print ("inspec_word2vec loaded")
     # inspec_w2v = add_unknown_words(inspec_w2v, inspec_vocab)
@@ -334,11 +334,11 @@ if __name__ == '__main__':
     # nus_embedding = get_embedding(nus_w2v, nus_dicts['words2idx'], 'nus/nus_t_a_GZ_embedding.pkl')
     # print("nus_embedding created")
     #
-    # krapivin_w2v = load_bin_vec(w2v_file, krapivin_vocab)
-    # print("krapivin_word2vec loaded")
-    # krapivin_w2v = add_unknown_words(krapivin_w2v, krapivin_vocab)
-    # krapivin_embedding = get_embedding(krapivin_w2v, krapivin_dicts['words2idx'], 'krapivin/krapivin_t_a_GZ_embedding.pkl')
-    # print("krapivin_embedding created")
+    krapivin_w2v = load_bin_vec(w2v_file, krapivin_vocab)
+    print("krapivin_word2vec loaded")
+    krapivin_w2v = add_unknown_words(krapivin_w2v, krapivin_vocab)
+    krapivin_embedding = get_embedding(krapivin_w2v, krapivin_dicts['words2idx'], 'krapivin/krapivin_t_a_GZ_embedding.pkl')
+    print("krapivin_embedding created")
     #
     # duc_w2v = load_bin_vec(w2v_file, duc_vocab)
     # print("duc_word2vec loaded")
