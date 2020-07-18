@@ -54,7 +54,7 @@ def main():
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)
     with tf.Session(config=config) as sess:
-
+    # with tf.Session() as sess:
         rnn = model.Model(
             nh1=s['nh1'],
             nh2=s['nh2'],
