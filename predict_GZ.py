@@ -19,22 +19,24 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
-        'lr':0.1,
+        'lr':0.00005,
         'lr_decay':0.5,
         'max_grad_norm':5,
         'seed':345,
         'nepochs':50,
         'batch_size':16,
         'keep_prob':1.0,
-        'check_dir':'./checkpoints/kp20k_baseline_0.1_16',
+        'check_dir':'./checkpoints/GZ_EMNLP2016/krapivin_0.00005_16',
         'display_test_per':1,
         'lr_decay_per':5
     }
 
     
     # load the dataset
-    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
+    # data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_allwords_data_set.pkl'
+    # emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
+    data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
+    emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -54,7 +56,7 @@ def main():
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.9)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)
     with tf.Session(config=config) as sess:
-    # with tf.Session() as sess:
+
         rnn = model.Model(
             nh1=s['nh1'],
             nh2=s['nh2'],
@@ -71,7 +73,7 @@ def main():
         )
 
         checkpoint_dir = s['check_dir']
-        logfile = open(str(s['check_dir']) + '/predict_log_NEW.txt', 'a', encoding='utf-8')
+        logfile = open(str(s['check_dir']) + '/predict_log.txt', 'a', encoding='utf-8')
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
