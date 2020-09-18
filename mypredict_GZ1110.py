@@ -18,23 +18,25 @@ def main():
         'nh2': 450,
         'win': 3,
         'emb_dimension': 300,
-        'lr': 0.001,
-        'lr_decay': 0.5,
-        'max_grad_norm': 5,
-        'seed': 345,
-        'nepochs': 50,  # 总共迭代50个epoch
-        'batch_size': 16,   # batch_size=16
+        'lr': 0.0001,
+        'lr_decay': 0.5,  #
+        'max_grad_norm': 5,  #
+        'seed': 345,  #
+        'nepochs': 50,
+        'batch_size': 16,
         'keep_prob': 1.0,
-        'check_dir': './checkpoints/GZ_mycps_Adam_0.001_16/nus',
-        'display_test_per': 1,
-        'lr_decay_per': 5
+        'check_dir': './checkpoints/GZ_mycps_Adam_0.0001_16/kp20k',
+        'display_test_per': 1,  #
+        'lr_decay_per': 5  #
     }
 
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-    data_set_file = 'data/ACL2017/nus/nus_t_a_GZ_data_set.pkl'
-    emb_file = 'data/ACL2017/nus/nus_t_a_GZ_embedding.pkl'
+    # data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
+    # emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
+    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
+    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -60,9 +62,8 @@ def main():
             rnn_model_cell='lstm'
         )
 
-
         checkpoint_dir = s['check_dir']
-        logfile = open(str(s['check_dir']) + '/predict_log.txt', 'a', encoding='utf-8')
+        logfile = open(str(s['check_dir']) + '/predict_log_NEW.txt', 'a', encoding='utf-8')
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
@@ -92,12 +93,15 @@ def main():
             x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             # x, z = batch
             x = load.pad_sentences(x)
+            # x = tools.contextwin_2(x, s['win'])
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
             start_num += s['batch_size']
             if step % 100 == 0:
                 print('tested %d batch......' % (step//100))
 
+        print('dataset: ' + data_set_file)
+        logfile.write('dataset: ' + data_set_file + '\n')
         print("测试结果：")
         logfile.write("测试结果：\n")
         res_test = tools.conlleval(predictions_test, groundtruth_test)
@@ -109,6 +113,7 @@ def main():
         res_test_top10 = tools.conlleval_top(predictions_test, groundtruth_test, 10)
         print('top10: ', res_test_top10)
         logfile.write('top10: ' + str(res_test_top10) + '\n')
+        logfile.write('-----------------------------------------------------------------------------------------------------------------------' + '\n')
     logfile.close()
 
 if __name__ == '__main__':

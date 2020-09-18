@@ -1,6 +1,6 @@
 import tensorflow as tf
 import load
-import models.mymodel_mutisize_CNN_LSTM_attention1110 as mymodel
+import models.model1110 as mymodel
 import tools
 
 def batch_putin(train, test, start_num=0, batch_size=16):
@@ -14,18 +14,18 @@ def test_batch_putin(test_lex, test_z, start_num=0, batch_size=16):
 
 def main():
     s = {
-        'nh1': 450,
-        'nh2': 450,
+        'nh1': 300,
+        'nh2': 300,
         'win': 3,
         'emb_dimension': 300,
-        'lr': 0.0001,
+        'lr': 0.001,
         'lr_decay': 0.5,  #
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 1.0,
-        'check_dir': './checkpoints/GZ_mycps_Adam_0.0001_16/kp20k',
+        'check_dir': './checkpoints/GZ_EMNLP2016_0.001_16/semeval',
         'display_test_per': 1,  #
         'lr_decay_per': 5  #
     }
@@ -35,8 +35,8 @@ def main():
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
     # data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
     # emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
-    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/kp20k_t_a_embedding.pkl'
+    data_set_file = 'data/ACL2017/semeval/semeval_t_a_data_set.pkl'
+    emb_file = 'data/ACL2017/semeval/semeval_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -89,11 +89,9 @@ def main():
         # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
         print('testing............')
         for step in range(steps):
-            # batch = batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
-            # x, z = batch
             x = load.pad_sentences(x)
-            # x = tools.contextwin_2(x, s['win'])
+            x = tools.contextwin_2(x, s['win'])
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
             start_num += s['batch_size']
