@@ -1,0 +1,1913 @@
+len(train_data) 470548
+len(valid_data) 18333
+len(test_data) 18334
+len(vocab) 736071
+Train started!
+len(train_data) 470548
+len(valid_data) 18333
+len(test_data) 18334
+len(vocab) 736071
+Train started!
+loss 501.600952 [learning] epoch 0>> 0.00%completed in 3.23 (sec) <<
+loss 44.346771 [learning] epoch 0>> 3.40%completed in 310.70 (sec) <<
+loss 31.209402 [learning] epoch 0>> 6.80%completed in 609.07 (sec) <<
+loss 35.246166 [learning] epoch 0>> 10.20%completed in 904.10 (sec) <<
+loss 36.283512 [learning] epoch 0>> 13.60%completed in 1205.26 (sec) <<
+loss 35.790516 [learning] epoch 0>> 17.00%completed in 1507.77 (sec) <<
+loss 44.837395 [learning] epoch 0>> 20.40%completed in 1807.37 (sec) <<
+loss 39.268734 [learning] epoch 0>> 23.80%completed in 2111.53 (sec) <<
+loss 44.404499 [learning] epoch 0>> 27.20%completed in 2410.22 (sec) <<
+loss 52.053474 [learning] epoch 0>> 30.60%completed in 2707.89 (sec) <<
+loss 28.782763 [learning] epoch 0>> 34.00%completed in 3006.65 (sec) <<
+loss 49.877605 [learning] epoch 0>> 37.40%completed in 3308.97 (sec) <<
+loss 31.965382 [learning] epoch 0>> 40.80%completed in 3620.45 (sec) <<
+loss 36.896072 [learning] epoch 0>> 44.20%completed in 3973.69 (sec) <<
+loss 31.385715 [learning] epoch 0>> 47.60%completed in 4326.25 (sec) <<
+loss 36.145870 [learning] epoch 0>> 51.00%completed in 4675.69 (sec) <<
+loss 27.027063 [learning] epoch 0>> 54.40%completed in 5022.86 (sec) <<
+loss 34.948448 [learning] epoch 0>> 57.80%completed in 5377.12 (sec) <<
+loss 43.724560 [learning] epoch 0>> 61.21%completed in 5728.30 (sec) <<
+loss 41.069653 [learning] epoch 0>> 64.61%completed in 6081.26 (sec) <<
+loss 39.385223 [learning] epoch 0>> 68.01%completed in 6427.59 (sec) <<
+loss 38.317741 [learning] epoch 0>> 71.41%completed in 6771.45 (sec) <<
+loss 33.126301 [learning] epoch 0>> 74.81%completed in 7119.77 (sec) <<
+loss 27.920542 [learning] epoch 0>> 78.21%completed in 7471.04 (sec) <<
+loss 38.303905 [learning] epoch 0>> 81.61%completed in 7826.20 (sec) <<
+loss 45.983124 [learning] epoch 0>> 85.01%completed in 8174.17 (sec) <<
+loss 31.793774 [learning] epoch 0>> 88.41%completed in 8532.05 (sec) <<
+loss 32.488682 [learning] epoch 0>> 91.81%completed in 8880.80 (sec) <<
+loss 40.676285 [learning] epoch 0>> 95.21%completed in 9231.58 (sec) <<
+loss 26.818682 [learning] epoch 0>> 98.61%completed in 9582.93 (sec) <<
+
+VALID new best: {'a': 0.0008187772925764192, 'p': 0.04451038575667656, 'r': 0.00014876082234982596, 'f': 0.0002965305920727489, 'SinglePre': 0.027237354085603113, 'SingleRecall': 0.00016642891107941036, 'SingleF1': 0.00033083630692156817, 'MorePre': 0.1, 'MoreRecall': 0.00013611692443809233, 'MoreF1': 0.00027186379623808475}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-0
+
+TEST new best: {'a': 0.0007096069868995634, 'p': 0.03551912568306011, 'r': 0.00012935194674679854, 'f': 0.0002577651759247326, 'SinglePre': 0.023166023166023165, 'SingleRecall': 0.00014234875444839857, 'SingleF1': 0.000282958805913839, 'MorePre': 0.06542056074766354, 'MoreRecall': 0.00011996366814621857, 'MoreF1': 0.00023948817954770949}
+top5: {'a': 0.0007096069868995634, 'p': 0.03551912568306011, 'r': 0.00012935194674679854, 'f': 0.0002577651759247326, 'SinglePre': 0.023166023166023165, 'SingleRecall': 0.00014234875444839857, 'SingleF1': 0.000282958805913839, 'MorePre': 0.06542056074766354, 'MoreRecall': 0.00011996366814621857, 'MoreF1': 0.00023948817954770949}
+top10: {'a': 0.0007096069868995634, 'p': 0.03551912568306011, 'r': 0.00012935194674679854, 'f': 0.0002577651759247326, 'SinglePre': 0.023166023166023165, 'SingleRecall': 0.00014234875444839857, 'SingleF1': 0.000282958805913839, 'MorePre': 0.06542056074766354, 'MoreRecall': 0.00011996366814621857, 'MoreF1': 0.00023948817954770949}
+
+learning rate:0.000100
+loss 41.466942 [learning] epoch 1>> 0.00%completed in 0.31 (sec) <<
+loss 32.820980 [learning] epoch 1>> 3.40%completed in 351.82 (sec) <<
+loss 34.796429 [learning] epoch 1>> 6.80%completed in 707.06 (sec) <<
+loss 28.544146 [learning] epoch 1>> 10.20%completed in 1055.37 (sec) <<
+loss 41.199360 [learning] epoch 1>> 13.60%completed in 1408.39 (sec) <<
+loss 30.886539 [learning] epoch 1>> 17.00%completed in 1754.46 (sec) <<
+loss 33.787605 [learning] epoch 1>> 20.40%completed in 2110.67 (sec) <<
+loss 38.557556 [learning] epoch 1>> 23.80%completed in 2462.22 (sec) <<
+loss 35.170818 [learning] epoch 1>> 27.20%completed in 2815.07 (sec) <<
+loss 27.679981 [learning] epoch 1>> 30.60%completed in 3169.90 (sec) <<
+loss 35.520523 [learning] epoch 1>> 34.00%completed in 3520.62 (sec) <<
+loss 39.476517 [learning] epoch 1>> 37.40%completed in 3882.93 (sec) <<
+loss 29.777044 [learning] epoch 1>> 40.80%completed in 4236.32 (sec) <<
+loss 31.249859 [learning] epoch 1>> 44.20%completed in 4589.98 (sec) <<
+loss 30.229761 [learning] epoch 1>> 47.60%completed in 4943.91 (sec) <<
+loss 24.615021 [learning] epoch 1>> 51.00%completed in 5298.89 (sec) <<
+loss 34.992714 [learning] epoch 1>> 54.40%completed in 5652.29 (sec) <<
+loss 34.299400 [learning] epoch 1>> 57.80%completed in 6002.64 (sec) <<
+loss 37.626926 [learning] epoch 1>> 61.21%completed in 6355.12 (sec) <<
+loss 37.298279 [learning] epoch 1>> 64.61%completed in 6711.25 (sec) <<
+loss 32.237679 [learning] epoch 1>> 68.01%completed in 7065.98 (sec) <<
+loss 29.659924 [learning] epoch 1>> 71.41%completed in 7420.99 (sec) <<
+loss 21.332430 [learning] epoch 1>> 74.81%completed in 7772.91 (sec) <<
+loss 35.454811 [learning] epoch 1>> 78.21%completed in 8132.17 (sec) <<
+loss 30.778147 [learning] epoch 1>> 81.61%completed in 8483.70 (sec) <<
+loss 25.818254 [learning] epoch 1>> 85.01%completed in 8839.72 (sec) <<
+loss 30.650078 [learning] epoch 1>> 88.41%completed in 9166.15 (sec) <<
+loss 29.297806 [learning] epoch 1>> 91.81%completed in 9469.85 (sec) <<
+loss 27.496008 [learning] epoch 1>> 95.21%completed in 9766.95 (sec) <<
+loss 34.975620 [learning] epoch 1>> 98.61%completed in 10074.47 (sec) <<
+
+VALID new best: {'a': 0.013537117903930132, 'p': 0.07699472213598262, 'r': 0.002459512262850456, 'f': 0.004766755722989986, 'SinglePre': 0.037383177570093455, 'SingleRecall': 0.0019971469329529245, 'SingleF1': 0.003791725912384048, 'MorePre': 0.16837782340862423, 'MoreRecall': 0.0027903969509808927, 'MoreF1': 0.005489815388220329}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-1
+
+TEST new best: {'a': 0.011626637554585153, 'p': 0.0693359375, 'r': 0.0021193818966975453, 'f': 0.004113041043515202, 'SinglePre': 0.031420765027322405, 'SingleRecall': 0.0016370106761565836, 'SingleF1': 0.003111892842646462, 'MorePre': 0.1643835616438356, 'MoreRecall': 0.002467824030436496, 'MoreF1': 0.0048626471035169766}
+top5: {'a': 0.011626637554585153, 'p': 0.0693359375, 'r': 0.0021193818966975453, 'f': 0.004113041043515202, 'SinglePre': 0.031420765027322405, 'SingleRecall': 0.0016370106761565836, 'SingleF1': 0.003111892842646462, 'MorePre': 0.1643835616438356, 'MoreRecall': 0.002467824030436496, 'MoreF1': 0.0048626471035169766}
+top10: {'a': 0.011626637554585153, 'p': 0.0693359375, 'r': 0.0021193818966975453, 'f': 0.004113041043515202, 'SinglePre': 0.031420765027322405, 'SingleRecall': 0.0016370106761565836, 'SingleF1': 0.003111892842646462, 'MorePre': 0.1643835616438356, 'MoreRecall': 0.002467824030436496, 'MoreF1': 0.0048626471035169766}
+
+learning rate:0.000100
+loss 29.758762 [learning] epoch 2>> 0.00%completed in 0.25 (sec) <<
+loss 29.014767 [learning] epoch 2>> 3.40%completed in 300.27 (sec) <<
+loss 22.821426 [learning] epoch 2>> 6.80%completed in 603.63 (sec) <<
+loss 31.556709 [learning] epoch 2>> 10.20%completed in 907.49 (sec) <<
+loss 34.503864 [learning] epoch 2>> 13.60%completed in 1209.83 (sec) <<
+loss 41.671165 [learning] epoch 2>> 17.00%completed in 1511.50 (sec) <<
+loss 23.423820 [learning] epoch 2>> 20.40%completed in 1817.20 (sec) <<
+loss 30.398199 [learning] epoch 2>> 23.80%completed in 2122.20 (sec) <<
+loss 36.868710 [learning] epoch 2>> 27.20%completed in 2473.44 (sec) <<
+loss 23.586185 [learning] epoch 2>> 30.60%completed in 2821.14 (sec) <<
+loss 39.543530 [learning] epoch 2>> 34.00%completed in 3174.79 (sec) <<
+loss 35.137703 [learning] epoch 2>> 37.40%completed in 3524.51 (sec) <<
+loss 34.965187 [learning] epoch 2>> 40.80%completed in 3876.96 (sec) <<
+loss 33.583683 [learning] epoch 2>> 44.20%completed in 4229.71 (sec) <<
+loss 36.133175 [learning] epoch 2>> 47.60%completed in 4585.78 (sec) <<
+loss 27.749344 [learning] epoch 2>> 51.00%completed in 4940.66 (sec) <<
+loss 26.235289 [learning] epoch 2>> 54.40%completed in 5292.65 (sec) <<
+loss 33.207619 [learning] epoch 2>> 57.80%completed in 5645.56 (sec) <<
+loss 38.085682 [learning] epoch 2>> 61.21%completed in 5996.15 (sec) <<
+loss 34.204693 [learning] epoch 2>> 64.61%completed in 6343.98 (sec) <<
+loss 27.714933 [learning] epoch 2>> 68.01%completed in 6697.98 (sec) <<
+loss 25.676014 [learning] epoch 2>> 71.41%completed in 7053.39 (sec) <<
+loss 28.141651 [learning] epoch 2>> 74.81%completed in 7408.71 (sec) <<
+loss 30.478741 [learning] epoch 2>> 78.21%completed in 7764.69 (sec) <<
+loss 25.884584 [learning] epoch 2>> 81.61%completed in 8121.49 (sec) <<
+loss 29.915422 [learning] epoch 2>> 85.01%completed in 8479.32 (sec) <<
+loss 30.417803 [learning] epoch 2>> 88.41%completed in 8829.73 (sec) <<
+loss 33.893139 [learning] epoch 2>> 91.81%completed in 9180.46 (sec) <<
+loss 32.068417 [learning] epoch 2>> 95.21%completed in 9533.71 (sec) <<
+loss 26.040476 [learning] epoch 2>> 98.61%completed in 9889.53 (sec) <<
+
+VALID new best: {'a': 0.02549126637554585, 'p': 0.10496740840638345, 'r': 0.0046314202691579145, 'f': 0.008871412017248913, 'SinglePre': 0.04462691895751517, 'SingleRecall': 0.0029719448407037564, 'SingleF1': 0.005572769220481041, 'MorePre': 0.20752427184466019, 'MoreRecall': 0.005818998519728447, 'MoreF1': 0.011320567352410585}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-2
+
+TEST new best: {'a': 0.023471615720524017, 'p': 0.10223490252020923, 'r': 0.004278564392394105, 'f': 0.00821339547499212, 'SinglePre': 0.03587443946188341, 'SingleRecall': 0.002277580071174377, 'SingleF1': 0.004283228483469415, 'MorePre': 0.21830065359477124, 'MoreRecall': 0.005723980737262429, 'MoreF1': 0.011155458325679263}
+top5: {'a': 0.023471615720524017, 'p': 0.10223490252020923, 'r': 0.004278564392394105, 'f': 0.00821339547499212, 'SinglePre': 0.03587443946188341, 'SingleRecall': 0.002277580071174377, 'SingleF1': 0.004283228483469415, 'MorePre': 0.21830065359477124, 'MoreRecall': 0.005723980737262429, 'MoreF1': 0.011155458325679263}
+top10: {'a': 0.023471615720524017, 'p': 0.10223490252020923, 'r': 0.004278564392394105, 'f': 0.00821339547499212, 'SinglePre': 0.03587443946188341, 'SingleRecall': 0.002277580071174377, 'SingleF1': 0.004283228483469415, 'MorePre': 0.21830065359477124, 'MoreRecall': 0.005723980737262429, 'MoreF1': 0.011155458325679263}
+
+learning rate:0.000100
+loss 28.968018 [learning] epoch 3>> 0.00%completed in 0.37 (sec) <<
+loss 46.558716 [learning] epoch 3>> 3.40%completed in 349.14 (sec) <<
+loss 28.676678 [learning] epoch 3>> 6.80%completed in 701.65 (sec) <<
+loss 32.523125 [learning] epoch 3>> 10.20%completed in 1053.44 (sec) <<
+loss 27.653082 [learning] epoch 3>> 13.60%completed in 1402.47 (sec) <<
+loss 28.310905 [learning] epoch 3>> 17.00%completed in 1750.35 (sec) <<
+loss 23.300117 [learning] epoch 3>> 20.40%completed in 2104.28 (sec) <<
+loss 37.090134 [learning] epoch 3>> 23.80%completed in 2458.17 (sec) <<
+loss 35.272652 [learning] epoch 3>> 27.20%completed in 2810.42 (sec) <<
+loss 33.496529 [learning] epoch 3>> 30.60%completed in 3160.09 (sec) <<
+loss 29.047575 [learning] epoch 3>> 34.00%completed in 3520.37 (sec) <<
+loss 32.080952 [learning] epoch 3>> 37.40%completed in 3864.99 (sec) <<
+loss 30.527849 [learning] epoch 3>> 40.80%completed in 4213.56 (sec) <<
+loss 31.610521 [learning] epoch 3>> 44.20%completed in 4563.15 (sec) <<
+loss 32.220673 [learning] epoch 3>> 47.60%completed in 4914.16 (sec) <<
+loss 32.490814 [learning] epoch 3>> 51.00%completed in 5265.41 (sec) <<
+loss 33.295685 [learning] epoch 3>> 54.40%completed in 5611.92 (sec) <<
+loss 26.382942 [learning] epoch 3>> 57.80%completed in 5966.03 (sec) <<
+loss 27.736292 [learning] epoch 3>> 61.21%completed in 6321.84 (sec) <<
+loss 30.851206 [learning] epoch 3>> 64.61%completed in 6669.85 (sec) <<
+loss 39.160076 [learning] epoch 3>> 68.01%completed in 7017.50 (sec) <<
+loss 39.705166 [learning] epoch 3>> 71.41%completed in 7367.92 (sec) <<
+loss 26.110022 [learning] epoch 3>> 74.81%completed in 7712.95 (sec) <<
+loss 27.603451 [learning] epoch 3>> 78.21%completed in 8065.22 (sec) <<
+loss 28.287342 [learning] epoch 3>> 81.61%completed in 8413.00 (sec) <<
+loss 34.846626 [learning] epoch 3>> 85.01%completed in 8759.84 (sec) <<
+loss 34.665905 [learning] epoch 3>> 88.41%completed in 9106.68 (sec) <<
+loss 25.152016 [learning] epoch 3>> 91.81%completed in 9451.58 (sec) <<
+loss 28.719213 [learning] epoch 3>> 95.21%completed in 9793.14 (sec) <<
+loss 23.447828 [learning] epoch 3>> 98.61%completed in 10142.67 (sec) <<
+
+VALID new best: {'a': 0.04579694323144105, 'p': 0.12318308618411393, 'r': 0.008320688663433598, 'f': 0.01558842109174687, 'SinglePre': 0.047234150037888355, 'SingleRecall': 0.00444602948169282, 'SingleF1': 0.008127077946065755, 'MorePre': 0.22861150070126227, 'MoreRecall': 0.011093529341704524, 'MoreF1': 0.021160243407707908}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-3
+
+TEST new best: {'a': 0.04383187772925764, 'p': 0.1221850273889227, 'r': 0.007989970249052248, 'f': 0.014999112754849497, 'SinglePre': 0.042812662169174884, 'SingleRecall': 0.003914590747330961, 'SingleF1': 0.007173289279193113, 'MorePre': 0.23473142016188372, 'MoreRecall': 0.010933831468183922, 'MoreF1': 0.020894398139809072}
+top5: {'a': 0.04383187772925764, 'p': 0.12224082813213578, 'r': 0.007989970249052248, 'f': 0.014999533015784067, 'SinglePre': 0.04282377368284453, 'SingleRecall': 0.003914590747330961, 'SingleF1': 0.007173445210094993, 'MorePre': 0.2349042709867452, 'MoreRecall': 0.010933831468183922, 'MoreF1': 0.02089508245042331}
+top10: {'a': 0.04383187772925764, 'p': 0.1221850273889227, 'r': 0.007989970249052248, 'f': 0.014999112754849497, 'SinglePre': 0.042812662169174884, 'SingleRecall': 0.003914590747330961, 'SingleF1': 0.007173289279193113, 'MorePre': 0.23473142016188372, 'MoreRecall': 0.010933831468183922, 'MoreF1': 0.020894398139809072}
+
+learning rate:0.000100
+loss 32.128616 [learning] epoch 4>> 0.00%completed in 0.34 (sec) <<
+loss 40.589893 [learning] epoch 4>> 3.40%completed in 344.09 (sec) <<
+loss 30.367731 [learning] epoch 4>> 6.80%completed in 694.13 (sec) <<
+loss 32.909744 [learning] epoch 4>> 10.20%completed in 1041.45 (sec) <<
+loss 28.830559 [learning] epoch 4>> 13.60%completed in 1388.54 (sec) <<
+loss 26.642939 [learning] epoch 4>> 17.00%completed in 1735.23 (sec) <<
+loss 33.768242 [learning] epoch 4>> 20.40%completed in 2047.65 (sec) <<
+loss 31.814140 [learning] epoch 4>> 23.80%completed in 2343.51 (sec) <<
+loss 23.501339 [learning] epoch 4>> 27.20%completed in 2645.17 (sec) <<
+loss 24.983551 [learning] epoch 4>> 30.60%completed in 2947.98 (sec) <<
+loss 28.284235 [learning] epoch 4>> 34.00%completed in 3256.52 (sec) <<
+loss 23.424595 [learning] epoch 4>> 37.40%completed in 3555.93 (sec) <<
+loss 28.629375 [learning] epoch 4>> 40.80%completed in 3860.20 (sec) <<
+loss 37.443184 [learning] epoch 4>> 44.20%completed in 4160.29 (sec) <<
+loss 36.519100 [learning] epoch 4>> 47.60%completed in 4460.17 (sec) <<
+loss 23.774696 [learning] epoch 4>> 51.00%completed in 4766.40 (sec) <<
+loss 43.887306 [learning] epoch 4>> 54.40%completed in 5075.11 (sec) <<
+loss 24.306200 [learning] epoch 4>> 57.80%completed in 5376.84 (sec) <<
+loss 26.833832 [learning] epoch 4>> 61.21%completed in 5680.69 (sec) <<
+loss 27.943218 [learning] epoch 4>> 64.61%completed in 5983.80 (sec) <<
+loss 26.793217 [learning] epoch 4>> 68.01%completed in 6283.79 (sec) <<
+loss 27.271551 [learning] epoch 4>> 71.41%completed in 6586.63 (sec) <<
+loss 27.323223 [learning] epoch 4>> 74.81%completed in 6883.77 (sec) <<
+loss 24.994562 [learning] epoch 4>> 78.21%completed in 7185.01 (sec) <<
+loss 26.332672 [learning] epoch 4>> 81.61%completed in 7486.92 (sec) <<
+loss 30.941849 [learning] epoch 4>> 85.01%completed in 7789.39 (sec) <<
+loss 21.737495 [learning] epoch 4>> 88.41%completed in 8091.91 (sec) <<
+loss 25.640278 [learning] epoch 4>> 91.81%completed in 8392.38 (sec) <<
+loss 27.033108 [learning] epoch 4>> 95.21%completed in 8718.48 (sec) <<
+loss 35.151131 [learning] epoch 4>> 98.61%completed in 9068.76 (sec) <<
+
+VALID new best: {'a': 0.062281659388646285, 'p': 0.1265527950310559, 'r': 0.011315739886743427, 'f': 0.020773971542754142, 'SinglePre': 0.04450402144772118, 'SingleRecall': 0.005920114122681883, 'SingleF1': 0.010450110166824048, 'MorePre': 0.26074247296112246, 'MoreRecall': 0.015177037074847294, 'MoreF1': 0.028684439013409654}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-4
+
+TEST new best: {'a': 0.05944323144104804, 'p': 0.12376406409819297, 'r': 0.010835713077481816, 'f': 0.019926806953339433, 'SinglePre': 0.043462381300219136, 'SingleRecall': 0.00564650059311981, 'SingleF1': 0.00999454079704363, 'MorePre': 0.25609389106229313, 'MoreRecall': 0.014584154513204573, 'MoreF1': 0.02759671822810261}
+top5: {'a': 0.05944323144104804, 'p': 0.12393308296346876, 'r': 0.010835713077481816, 'f': 0.01992899494912525, 'SinglePre': 0.04353393085787452, 'SingleRecall': 0.00564650059311981, 'SingleF1': 0.0099964298464834, 'MorePre': 0.2563253012048193, 'MoreRecall': 0.014584154513204573, 'MoreF1': 0.027598060676817308}
+top10: {'a': 0.05944323144104804, 'p': 0.12376406409819297, 'r': 0.010835713077481816, 'f': 0.019926806953339433, 'SinglePre': 0.043462381300219136, 'SingleRecall': 0.00564650059311981, 'SingleF1': 0.00999454079704363, 'MorePre': 0.25609389106229313, 'MoreRecall': 0.014584154513204573, 'MoreF1': 0.02759671822810261}
+
+learning rate:0.000100
+loss 23.253796 [learning] epoch 5>> 0.00%completed in 0.47 (sec) <<
+loss 33.198978 [learning] epoch 5>> 3.40%completed in 351.30 (sec) <<
+loss 28.069315 [learning] epoch 5>> 6.80%completed in 700.65 (sec) <<
+loss 18.978691 [learning] epoch 5>> 10.20%completed in 1049.49 (sec) <<
+loss 26.050684 [learning] epoch 5>> 13.60%completed in 1396.44 (sec) <<
+loss 29.964899 [learning] epoch 5>> 17.00%completed in 1744.93 (sec) <<
+loss 27.261499 [learning] epoch 5>> 20.40%completed in 2099.22 (sec) <<
+loss 29.250286 [learning] epoch 5>> 23.80%completed in 2451.00 (sec) <<
+loss 28.282238 [learning] epoch 5>> 27.20%completed in 2794.66 (sec) <<
+loss 26.117876 [learning] epoch 5>> 30.60%completed in 3141.33 (sec) <<
+loss 28.787615 [learning] epoch 5>> 34.00%completed in 3494.69 (sec) <<
+loss 30.113682 [learning] epoch 5>> 37.40%completed in 3841.72 (sec) <<
+loss 28.735842 [learning] epoch 5>> 40.80%completed in 4183.97 (sec) <<
+loss 30.547789 [learning] epoch 5>> 44.20%completed in 4537.53 (sec) <<
+loss 25.482700 [learning] epoch 5>> 47.60%completed in 4885.61 (sec) <<
+loss 31.024054 [learning] epoch 5>> 51.00%completed in 5228.37 (sec) <<
+loss 25.281473 [learning] epoch 5>> 54.40%completed in 5577.99 (sec) <<
+loss 28.374596 [learning] epoch 5>> 57.80%completed in 5927.81 (sec) <<
+loss 33.095394 [learning] epoch 5>> 61.21%completed in 6272.38 (sec) <<
+loss 28.451763 [learning] epoch 5>> 64.61%completed in 6619.96 (sec) <<
+loss 28.533632 [learning] epoch 5>> 68.01%completed in 6958.85 (sec) <<
+loss 26.845734 [learning] epoch 5>> 71.41%completed in 7304.45 (sec) <<
+loss 25.995100 [learning] epoch 5>> 74.81%completed in 7649.91 (sec) <<
+loss 24.850174 [learning] epoch 5>> 78.21%completed in 7990.02 (sec) <<
+loss 19.951019 [learning] epoch 5>> 81.61%completed in 8341.29 (sec) <<
+loss 31.527275 [learning] epoch 5>> 85.01%completed in 8689.68 (sec) <<
+loss 32.644951 [learning] epoch 5>> 88.41%completed in 9035.93 (sec) <<
+loss 31.280832 [learning] epoch 5>> 91.81%completed in 9381.25 (sec) <<
+loss 26.381254 [learning] epoch 5>> 95.21%completed in 9730.57 (sec) <<
+loss 23.963499 [learning] epoch 5>> 98.61%completed in 10077.01 (sec) <<
+
+VALID new best: {'a': 0.06643013100436682, 'p': 0.12060251709444059, 'r': 0.012069461386649213, 'f': 0.021942951931051894, 'SinglePre': 0.03936781609195402, 'SingleRecall': 0.006514503090822635, 'SingleF1': 0.011179110567115465, 'MorePre': 0.30118173107633345, 'MoreRecall': 0.01604478246814013, 'MoreF1': 0.03046652881881623}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-5
+
+TEST new best: {'a': 0.06441048034934498, 'p': 0.11883182275931521, 'r': 0.011741176704709406, 'f': 0.02137081073249359, 'SinglePre': 0.03781021897810219, 'SingleRecall': 0.006144721233689205, 'SingleF1': 0.01057142857142857, 'MorePre': 0.29902597402597403, 'MoreRecall': 0.015783791194666757, 'MoreF1': 0.029984861063632365}
+top5: {'a': 0.06441048034934498, 'p': 0.11907164480322906, 'r': 0.011741176704709406, 'f': 0.021374681870465803, 'SinglePre': 0.03790983606557377, 'SingleRecall': 0.006144721233689205, 'SingleF1': 0.010575313380425461, 'MorePre': 0.29922027290448344, 'MoreRecall': 0.015783791194666757, 'MoreF1': 0.0299858373081118}
+top10: {'a': 0.06441048034934498, 'p': 0.11883182275931521, 'r': 0.011741176704709406, 'f': 0.02137081073249359, 'SinglePre': 0.03781021897810219, 'SingleRecall': 0.006144721233689205, 'SingleF1': 0.01057142857142857, 'MorePre': 0.29902597402597403, 'MoreRecall': 0.015783791194666757, 'MoreF1': 0.029984861063632365}
+
+learning rate:0.000100
+loss 22.696323 [learning] epoch 6>> 0.00%completed in 0.35 (sec) <<
+loss 24.521873 [learning] epoch 6>> 3.40%completed in 345.60 (sec) <<
+loss 26.101101 [learning] epoch 6>> 6.80%completed in 696.58 (sec) <<
+loss 33.738873 [learning] epoch 6>> 10.20%completed in 1039.11 (sec) <<
+loss 29.861542 [learning] epoch 6>> 13.60%completed in 1363.21 (sec) <<
+loss 38.001965 [learning] epoch 6>> 17.00%completed in 1662.14 (sec) <<
+loss 28.009369 [learning] epoch 6>> 20.40%completed in 1964.55 (sec) <<
+loss 25.124262 [learning] epoch 6>> 23.80%completed in 2263.08 (sec) <<
+loss 24.533670 [learning] epoch 6>> 27.20%completed in 2562.07 (sec) <<
+loss 27.132517 [learning] epoch 6>> 30.60%completed in 2863.81 (sec) <<
+loss 33.159065 [learning] epoch 6>> 34.00%completed in 3169.55 (sec) <<
+loss 31.022333 [learning] epoch 6>> 37.40%completed in 3471.86 (sec) <<
+loss 28.356451 [learning] epoch 6>> 40.80%completed in 3776.72 (sec) <<
+loss 24.830967 [learning] epoch 6>> 44.20%completed in 4077.81 (sec) <<
+loss 27.338356 [learning] epoch 6>> 47.60%completed in 4382.09 (sec) <<
+loss 25.584150 [learning] epoch 6>> 51.00%completed in 4691.44 (sec) <<
+loss 20.867352 [learning] epoch 6>> 54.40%completed in 5027.68 (sec) <<
+loss 28.761782 [learning] epoch 6>> 57.80%completed in 5371.30 (sec) <<
+loss 27.761709 [learning] epoch 6>> 61.21%completed in 5725.47 (sec) <<
+loss 23.331310 [learning] epoch 6>> 64.61%completed in 6069.95 (sec) <<
+loss 30.064547 [learning] epoch 6>> 68.01%completed in 6419.19 (sec) <<
+loss 22.823744 [learning] epoch 6>> 71.41%completed in 6759.93 (sec) <<
+loss 29.031460 [learning] epoch 6>> 74.81%completed in 7111.08 (sec) <<
+loss 38.761898 [learning] epoch 6>> 78.21%completed in 7465.25 (sec) <<
+loss 26.919155 [learning] epoch 6>> 81.61%completed in 7819.05 (sec) <<
+loss 25.551100 [learning] epoch 6>> 85.01%completed in 8178.83 (sec) <<
+loss 28.273220 [learning] epoch 6>> 88.41%completed in 8533.28 (sec) <<
+loss 32.566677 [learning] epoch 6>> 91.81%completed in 8883.18 (sec) <<
+loss 30.408787 [learning] epoch 6>> 95.21%completed in 9236.37 (sec) <<
+loss 29.930302 [learning] epoch 6>> 98.61%completed in 9582.74 (sec) <<
+
+VALID new best: {'a': 0.0872816593886463, 'p': 0.12576687116564417, 'r': 0.015857903662491447, 'f': 0.028164548601019843, 'SinglePre': 0.03533916849015317, 'SingleRecall': 0.007679505468378507, 'SingleF1': 0.012617187500000002, 'MorePre': 0.3570229434806939, 'MoreRecall': 0.021710649447875725, 'MoreF1': 0.04093220203057084}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-6
+
+TEST new best: {'a': 0.08842794759825327, 'p': 0.12937230474365116, 'r': 0.016119242594601048, 'f': 0.028666731550215444, 'SinglePre': 0.03646064917741218, 'SingleRecall': 0.007781731909845789, 'SingleF1': 0.012826027450827044, 'MorePre': 0.3664208735110607, 'MoreRecall': 0.02214186560641634, 'MoreF1': 0.04176026633482554}
+top5: {'a': 0.08826419213973799, 'p': 0.12973363286264442, 'r': 0.016089392145351787, 'f': 0.028628336210330632, 'SinglePre': 0.03665213990389988, 'SingleRecall': 0.007781731909845789, 'SingleF1': 0.012837824614963111, 'MorePre': 0.3667140825035562, 'MoreRecall': 0.022090452605782247, 'MoreF1': 0.041670707658487696}
+top10: {'a': 0.08842794759825327, 'p': 0.12937230474365116, 'r': 0.016119242594601048, 'f': 0.028666731550215444, 'SinglePre': 0.03646064917741218, 'SingleRecall': 0.007781731909845789, 'SingleF1': 0.012826027450827044, 'MorePre': 0.3664208735110607, 'MoreRecall': 0.02214186560641634, 'MoreF1': 0.04176026633482554}
+
+learning rate:0.000100
+loss 23.841888 [learning] epoch 7>> 0.00%completed in 0.36 (sec) <<
+loss 32.988377 [learning] epoch 7>> 3.40%completed in 362.89 (sec) <<
+loss 24.349529 [learning] epoch 7>> 6.80%completed in 714.14 (sec) <<
+loss 31.716097 [learning] epoch 7>> 10.20%completed in 1065.19 (sec) <<
+loss 38.583065 [learning] epoch 7>> 13.60%completed in 1419.14 (sec) <<
+loss 30.099697 [learning] epoch 7>> 17.00%completed in 1777.94 (sec) <<
+loss 28.296089 [learning] epoch 7>> 20.40%completed in 2132.08 (sec) <<
+loss 27.834932 [learning] epoch 7>> 23.80%completed in 2489.33 (sec) <<
+loss 27.116953 [learning] epoch 7>> 27.20%completed in 2843.84 (sec) <<
+loss 26.037333 [learning] epoch 7>> 30.60%completed in 3200.79 (sec) <<
+loss 23.795015 [learning] epoch 7>> 34.00%completed in 3554.88 (sec) <<
+loss 24.090244 [learning] epoch 7>> 37.40%completed in 3908.53 (sec) <<
+loss 25.869133 [learning] epoch 7>> 40.80%completed in 4268.26 (sec) <<
+loss 24.004461 [learning] epoch 7>> 44.20%completed in 4619.51 (sec) <<
+loss 26.190804 [learning] epoch 7>> 47.60%completed in 4968.39 (sec) <<
+loss 28.844784 [learning] epoch 7>> 51.00%completed in 5317.21 (sec) <<
+loss 29.112299 [learning] epoch 7>> 54.40%completed in 5675.08 (sec) <<
+loss 34.831718 [learning] epoch 7>> 57.80%completed in 6023.66 (sec) <<
+loss 26.508335 [learning] epoch 7>> 61.21%completed in 6372.96 (sec) <<
+loss 36.800949 [learning] epoch 7>> 64.61%completed in 6728.14 (sec) <<
+loss 23.453943 [learning] epoch 7>> 68.01%completed in 7080.84 (sec) <<
+loss 22.972672 [learning] epoch 7>> 71.41%completed in 7436.56 (sec) <<
+loss 26.150711 [learning] epoch 7>> 74.81%completed in 7794.60 (sec) <<
+loss 24.683769 [learning] epoch 7>> 78.21%completed in 8149.22 (sec) <<
+loss 25.250853 [learning] epoch 7>> 81.61%completed in 8499.79 (sec) <<
+loss 30.659840 [learning] epoch 7>> 85.01%completed in 8844.73 (sec) <<
+loss 23.896217 [learning] epoch 7>> 88.41%completed in 9196.57 (sec) <<
+loss 32.909111 [learning] epoch 7>> 91.81%completed in 9549.40 (sec) <<
+loss 28.571316 [learning] epoch 7>> 95.21%completed in 9901.84 (sec) <<
+loss 23.757854 [learning] epoch 7>> 98.61%completed in 10252.56 (sec) <<
+
+VALID new best: {'a': 0.11506550218340611, 'p': 0.1486391200112819, 'r': 0.020905854234228874, 'f': 0.03665608833630395, 'SinglePre': 0.034319168264863226, 'SingleRecall': 0.008083689966714217, 'SingleF1': 0.013085227163392152, 'MorePre': 0.4135672514619883, 'MoreRecall': 0.030081840300818403, 'MoreF1': 0.05608425326735186}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-7
+
+TEST new best: {'a': 0.11626637554585152, 'p': 0.14995775837792172, 'r': 0.021193818966975454, 'f': 0.03713874722113247, 'SinglePre': 0.036484740033800575, 'SingleRecall': 0.008706998813760379, 'SingleF1': 0.014058878737382444, 'MorePre': 0.4253317249698432, 'MoreRecall': 0.03021370670596905, 'MoreF1': 0.05641961085509472}
+top5: {'a': 0.11577510917030567, 'p': 0.1505002483502448, 'r': 0.02110426761922767, 'f': 0.03701764490287449, 'SinglePre': 0.03680673954467957, 'SingleRecall': 0.008706998813760379, 'SingleF1': 0.014082615452504747, 'MorePre': 0.4255215914604561, 'MoreRecall': 0.03005946770406677, 'MoreF1': 0.056152257775358955}
+top10: {'a': 0.11626637554585152, 'p': 0.14995775837792172, 'r': 0.021193818966975454, 'f': 0.03713874722113247, 'SinglePre': 0.036484740033800575, 'SingleRecall': 0.008706998813760379, 'SingleF1': 0.014058878737382444, 'MorePre': 0.4253317249698432, 'MoreRecall': 0.03021370670596905, 'MoreF1': 0.05641961085509472}
+
+learning rate:0.000100
+loss 30.817366 [learning] epoch 8>> 0.00%completed in 0.39 (sec) <<
+loss 22.397381 [learning] epoch 8>> 3.40%completed in 345.16 (sec) <<
+loss 26.450981 [learning] epoch 8>> 6.80%completed in 698.15 (sec) <<
+loss 23.265476 [learning] epoch 8>> 10.20%completed in 1054.59 (sec) <<
+loss 35.503571 [learning] epoch 8>> 13.60%completed in 1407.09 (sec) <<
+loss 28.133802 [learning] epoch 8>> 17.00%completed in 1759.62 (sec) <<
+loss 29.192471 [learning] epoch 8>> 20.40%completed in 2114.02 (sec) <<
+loss 24.796400 [learning] epoch 8>> 23.80%completed in 2463.53 (sec) <<
+loss 32.621040 [learning] epoch 8>> 27.20%completed in 2812.46 (sec) <<
+loss 23.584278 [learning] epoch 8>> 30.60%completed in 3157.10 (sec) <<
+loss 26.818336 [learning] epoch 8>> 34.00%completed in 3510.65 (sec) <<
+loss 32.141441 [learning] epoch 8>> 37.40%completed in 3861.69 (sec) <<
+loss 27.385441 [learning] epoch 8>> 40.80%completed in 4216.55 (sec) <<
+loss 23.679199 [learning] epoch 8>> 44.20%completed in 4567.55 (sec) <<
+loss 29.877953 [learning] epoch 8>> 47.60%completed in 4925.51 (sec) <<
+loss 22.183569 [learning] epoch 8>> 51.00%completed in 5287.15 (sec) <<
+loss 32.483261 [learning] epoch 8>> 54.40%completed in 5643.50 (sec) <<
+loss 26.802439 [learning] epoch 8>> 57.80%completed in 6003.84 (sec) <<
+loss 28.808537 [learning] epoch 8>> 61.21%completed in 6361.82 (sec) <<
+loss 27.227814 [learning] epoch 8>> 64.61%completed in 6708.38 (sec) <<
+loss 21.197577 [learning] epoch 8>> 68.01%completed in 7057.22 (sec) <<
+loss 25.214087 [learning] epoch 8>> 71.41%completed in 7405.09 (sec) <<
+loss 24.832417 [learning] epoch 8>> 74.81%completed in 7752.48 (sec) <<
+loss 25.589218 [learning] epoch 8>> 78.21%completed in 8105.69 (sec) <<
+loss 25.217144 [learning] epoch 8>> 81.61%completed in 8456.92 (sec) <<
+loss 29.543737 [learning] epoch 8>> 85.01%completed in 8804.55 (sec) <<
+loss 38.238087 [learning] epoch 8>> 88.41%completed in 9153.59 (sec) <<
+loss 24.536022 [learning] epoch 8>> 91.81%completed in 9505.10 (sec) <<
+loss 25.369211 [learning] epoch 8>> 95.21%completed in 9858.28 (sec) <<
+loss 26.445879 [learning] epoch 8>> 98.61%completed in 10212.81 (sec) <<
+
+VALID new best: {'a': 0.12221615720524018, 'p': 0.16455975305012494, 'r': 0.022205032082750688, 'f': 0.039130016864879984, 'SinglePre': 0.0344418052256532, 'SingleRecall': 0.007584403233475987, 'SingleF1': 0.012431316004832235, 'MorePre': 0.4419889502762431, 'MoreRecall': 0.03266806186514216, 'MoreF1': 0.060839393507295975}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-8
+
+TEST new best: {'a': 0.1216703056768559, 'p': 0.1658235381639637, 'r': 0.022178883792201072, 'f': 0.039124825570680075, 'SinglePre': 0.03490648107872988, 'SingleRecall': 0.0076156583629893235, 'SingleF1': 0.012503408249912357, 'MorePre': 0.4493641073951955, 'MoreRecall': 0.03269866840328358, 'MoreF1': 0.06096138792593895}
+top5: {'a': 0.1212882096069869, 'p': 0.166242705371839, 'r': 0.022109232743952798, 'f': 0.03902798879394381, 'SinglePre': 0.03513572679509632, 'SingleRecall': 0.0076156583629893235, 'SingleF1': 0.012518036111219436, 'MorePre': 0.4494089834515366, 'MoreRecall': 0.03257870473513736, 'MoreF1': 0.06075326377015388}
+top10: {'a': 0.1216703056768559, 'p': 0.1658235381639637, 'r': 0.022178883792201072, 'f': 0.039124825570680075, 'SinglePre': 0.03490648107872988, 'SingleRecall': 0.0076156583629893235, 'SingleF1': 0.012503408249912357, 'MorePre': 0.4493641073951955, 'MoreRecall': 0.03269866840328358, 'MoreF1': 0.06096138792593895}
+
+learning rate:0.000100
+loss 29.203423 [learning] epoch 9>> 0.00%completed in 0.32 (sec) <<
+loss 20.763992 [learning] epoch 9>> 3.40%completed in 354.03 (sec) <<
+loss 23.716969 [learning] epoch 9>> 6.80%completed in 708.92 (sec) <<
+loss 27.111946 [learning] epoch 9>> 10.20%completed in 1065.83 (sec) <<
+loss 28.065718 [learning] epoch 9>> 13.60%completed in 1421.17 (sec) <<
+loss 26.853754 [learning] epoch 9>> 17.00%completed in 1773.09 (sec) <<
+loss 27.772280 [learning] epoch 9>> 20.40%completed in 2124.45 (sec) <<
+loss 24.665396 [learning] epoch 9>> 23.80%completed in 2476.14 (sec) <<
+loss 22.086740 [learning] epoch 9>> 27.20%completed in 2826.35 (sec) <<
+loss 26.714392 [learning] epoch 9>> 30.60%completed in 3179.48 (sec) <<
+loss 26.023521 [learning] epoch 9>> 34.00%completed in 3528.70 (sec) <<
+loss 20.608377 [learning] epoch 9>> 37.40%completed in 3882.39 (sec) <<
+loss 34.669876 [learning] epoch 9>> 40.80%completed in 4233.82 (sec) <<
+loss 27.837702 [learning] epoch 9>> 44.20%completed in 4590.10 (sec) <<
+loss 34.444164 [learning] epoch 9>> 47.60%completed in 4942.57 (sec) <<
+loss 23.372881 [learning] epoch 9>> 51.00%completed in 5288.67 (sec) <<
+loss 24.506325 [learning] epoch 9>> 54.40%completed in 5638.82 (sec) <<
+loss 30.433069 [learning] epoch 9>> 57.80%completed in 5983.96 (sec) <<
+loss 24.157110 [learning] epoch 9>> 61.21%completed in 6325.62 (sec) <<
+loss 30.619230 [learning] epoch 9>> 64.61%completed in 6670.77 (sec) <<
+loss 21.621883 [learning] epoch 9>> 68.01%completed in 7011.12 (sec) <<
+loss 25.067251 [learning] epoch 9>> 71.41%completed in 7352.88 (sec) <<
+loss 21.609818 [learning] epoch 9>> 74.81%completed in 7690.20 (sec) <<
+loss 29.475565 [learning] epoch 9>> 78.21%completed in 8027.71 (sec) <<
+loss 22.081577 [learning] epoch 9>> 81.61%completed in 8373.21 (sec) <<
+loss 25.048466 [learning] epoch 9>> 85.01%completed in 8716.49 (sec) <<
+loss 21.545439 [learning] epoch 9>> 88.41%completed in 9060.32 (sec) <<
+loss 26.360710 [learning] epoch 9>> 91.81%completed in 9406.28 (sec) <<
+loss 19.543627 [learning] epoch 9>> 95.21%completed in 9743.96 (sec) <<
+loss 29.962852 [learning] epoch 9>> 98.61%completed in 10084.89 (sec) <<
+
+VALID new best: {'a': 0.14263100436681223, 'p': 0.1782522682311208, 'r': 0.02591413525333968, 'f': 0.045249887438090955, 'SinglePre': 0.037267080745341616, 'SingleRecall': 0.008559201141226819, 'SingleF1': 0.013921113689095129, 'MorePre': 0.45069013802760555, 'MoreRecall': 0.03833392884487775, 'MoreF1': 0.07065796901461456}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-9
+
+TEST new best: {'a': 0.1412117903930131, 'p': 0.1774470128266685, 'r': 0.02574103740261291, 'f': 0.04496002780674314, 'SinglePre': 0.03540097017236041, 'SingleRecall': 0.008137603795966786, 'SingleF1': 0.013233279962962249, 'MorePre': 0.4588957055214724, 'MoreRecall': 0.038456924474302066, 'MoreF1': 0.07096661975617084}
+top5: {'a': 0.1404475982532751, 'p': 0.17760751018154208, 'r': 0.02560173530611636, 'f': 0.044752495912616964, 'SinglePre': 0.03564006650041563, 'SingleRecall': 0.008137603795966786, 'SingleF1': 0.013249893769073281, 'MorePre': 0.4585646720131606, 'MoreRecall': 0.038216997138009634, 'MoreF1': 0.07055399120448001}
+top10: {'a': 0.1412117903930131, 'p': 0.1774470128266685, 'r': 0.02574103740261291, 'f': 0.04496002780674314, 'SinglePre': 0.03540097017236041, 'SingleRecall': 0.008137603795966786, 'SingleF1': 0.013233279962962249, 'MorePre': 0.4588957055214724, 'MoreRecall': 0.038456924474302066, 'MoreF1': 0.07096661975617084}
+
+learning rate:0.000100
+loss 22.323069 [learning] epoch 10>> 0.00%completed in 0.33 (sec) <<
+loss 23.660870 [learning] epoch 10>> 3.40%completed in 338.97 (sec) <<
+loss 25.934765 [learning] epoch 10>> 6.80%completed in 673.49 (sec) <<
+loss 29.016060 [learning] epoch 10>> 10.20%completed in 1020.39 (sec) <<
+loss 34.791023 [learning] epoch 10>> 13.60%completed in 1363.01 (sec) <<
+loss 29.198071 [learning] epoch 10>> 17.00%completed in 1707.92 (sec) <<
+loss 23.868048 [learning] epoch 10>> 20.40%completed in 2051.81 (sec) <<
+loss 39.221100 [learning] epoch 10>> 23.80%completed in 2398.78 (sec) <<
+loss 26.832821 [learning] epoch 10>> 27.20%completed in 2745.35 (sec) <<
+loss 27.619499 [learning] epoch 10>> 30.60%completed in 3092.00 (sec) <<
+loss 28.261059 [learning] epoch 10>> 34.00%completed in 3438.87 (sec) <<
+loss 21.321075 [learning] epoch 10>> 37.40%completed in 3790.20 (sec) <<
+loss 32.029617 [learning] epoch 10>> 40.80%completed in 4142.49 (sec) <<
+loss 32.512192 [learning] epoch 10>> 44.20%completed in 4492.06 (sec) <<
+loss 34.037979 [learning] epoch 10>> 47.60%completed in 4842.77 (sec) <<
+loss 21.993820 [learning] epoch 10>> 51.00%completed in 5192.48 (sec) <<
+loss 26.244549 [learning] epoch 10>> 54.40%completed in 5537.88 (sec) <<
+loss 24.094152 [learning] epoch 10>> 57.80%completed in 5891.00 (sec) <<
+loss 34.432404 [learning] epoch 10>> 61.21%completed in 6236.94 (sec) <<
+loss 29.155224 [learning] epoch 10>> 64.61%completed in 6589.96 (sec) <<
+loss 30.768972 [learning] epoch 10>> 68.01%completed in 6946.80 (sec) <<
+loss 25.355478 [learning] epoch 10>> 71.41%completed in 7302.79 (sec) <<
+loss 18.015656 [learning] epoch 10>> 74.81%completed in 7659.54 (sec) <<
+loss 26.193005 [learning] epoch 10>> 78.21%completed in 8014.17 (sec) <<
+loss 40.059757 [learning] epoch 10>> 81.61%completed in 8368.00 (sec) <<
+loss 27.882086 [learning] epoch 10>> 85.01%completed in 8716.15 (sec) <<
+loss 26.095291 [learning] epoch 10>> 88.41%completed in 9068.83 (sec) <<
+loss 22.404634 [learning] epoch 10>> 91.81%completed in 9421.21 (sec) <<
+loss 23.493149 [learning] epoch 10>> 95.21%completed in 9775.31 (sec) <<
+loss 27.704296 [learning] epoch 10>> 98.61%completed in 10124.48 (sec) <<
+
+VALID new best: {'a': 0.16970524017467248, 'p': 0.18825310323947927, 'r': 0.03083315977904059, 'f': 0.05298769471997819, 'SinglePre': 0.03867298578199052, 'SingleRecall': 0.009700427960057061, 'SingleF1': 0.015510359247291388, 'MorePre': 0.45280804694048615, 'MoreRecall': 0.04595647661341092, 'MoreF1': 0.08344403596033241}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-10
+
+TEST new best: {'a': 0.16888646288209608, 'p': 0.18756062075654703, 'r': 0.030785763325738052, 'f': 0.052890245049018354, 'SinglePre': 0.03741400433512393, 'SingleRecall': 0.009418742586002372, 'SingleF1': 0.015048994522469248, 'MorePre': 0.45828377230246387, 'MoreRecall': 0.046220287570050214, 'MoreF1': 0.08397160470764056}
+top5: {'a': 0.16746724890829695, 'p': 0.18800171579140879, 'r': 0.030527059432244454, 'f': 0.052525252525252523, 'SinglePre': 0.03766568131972919, 'SingleRecall': 0.00937129300118624, 'SingleF1': 0.015008454129224687, 'MorePre': 0.4583333333333333, 'MoreRecall': 0.045808983564977465, 'MoreF1': 0.08329308383839958}
+top10: {'a': 0.16888646288209608, 'p': 0.18757199151257958, 'r': 0.030785763325738052, 'f': 0.05289069711785018, 'SinglePre': 0.037417530631479734, 'SingleRecall': 0.009418742586002372, 'SingleF1': 0.015049279757391962, 'MorePre': 0.45828377230246387, 'MoreRecall': 0.046220287570050214, 'MoreF1': 0.08397160470764056}
+
+learning rate:0.000100
+loss 35.260708 [learning] epoch 11>> 0.00%completed in 0.41 (sec) <<
+loss 28.878761 [learning] epoch 11>> 3.40%completed in 354.40 (sec) <<
+loss 24.629860 [learning] epoch 11>> 6.80%completed in 702.32 (sec) <<
+loss 25.159466 [learning] epoch 11>> 10.20%completed in 1061.94 (sec) <<
+loss 26.278040 [learning] epoch 11>> 13.60%completed in 1410.69 (sec) <<
+loss 29.553478 [learning] epoch 11>> 17.00%completed in 1754.87 (sec) <<
+loss 27.720783 [learning] epoch 11>> 20.40%completed in 2110.43 (sec) <<
+loss 31.289761 [learning] epoch 11>> 23.80%completed in 2467.53 (sec) <<
+loss 29.524399 [learning] epoch 11>> 27.20%completed in 2819.58 (sec) <<
+loss 25.744526 [learning] epoch 11>> 30.60%completed in 3168.92 (sec) <<
+loss 24.582691 [learning] epoch 11>> 34.00%completed in 3523.96 (sec) <<
+loss 25.108536 [learning] epoch 11>> 37.40%completed in 3875.43 (sec) <<
+loss 27.324984 [learning] epoch 11>> 40.80%completed in 4232.19 (sec) <<
+loss 27.566391 [learning] epoch 11>> 44.20%completed in 4586.03 (sec) <<
+loss 25.309483 [learning] epoch 11>> 47.60%completed in 4943.47 (sec) <<
+loss 29.313173 [learning] epoch 11>> 51.00%completed in 5302.90 (sec) <<
+loss 27.780960 [learning] epoch 11>> 54.40%completed in 5655.64 (sec) <<
+loss 22.737537 [learning] epoch 11>> 57.80%completed in 6011.43 (sec) <<
+loss 34.227158 [learning] epoch 11>> 61.21%completed in 6374.09 (sec) <<
+loss 23.281721 [learning] epoch 11>> 64.61%completed in 6723.62 (sec) <<
+loss 18.931568 [learning] epoch 11>> 68.01%completed in 7080.07 (sec) <<
+loss 26.431372 [learning] epoch 11>> 71.41%completed in 7429.84 (sec) <<
+loss 27.924271 [learning] epoch 11>> 74.81%completed in 7777.92 (sec) <<
+loss 29.029600 [learning] epoch 11>> 78.21%completed in 8129.23 (sec) <<
+loss 22.253515 [learning] epoch 11>> 81.61%completed in 8475.66 (sec) <<
+loss 36.034111 [learning] epoch 11>> 85.01%completed in 8817.44 (sec) <<
+loss 31.853712 [learning] epoch 11>> 88.41%completed in 9172.59 (sec) <<
+loss 31.397627 [learning] epoch 11>> 91.81%completed in 9517.97 (sec) <<
+loss 23.732313 [learning] epoch 11>> 95.21%completed in 9860.94 (sec) <<
+loss 28.909010 [learning] epoch 11>> 98.61%completed in 10206.32 (sec) <<
+
+VALID new best: {'a': 0.19929039301310045, 'p': 0.19743672939649579, 'r': 0.036208384159947635, 'f': 0.06119421747328724, 'SinglePre': 0.03997550734779566, 'SingleRecall': 0.010865430337612935, 'SingleF1': 0.01708666716518358, 'MorePre': 0.45240793201133145, 'MoreRecall': 0.05434468208190836, 'MoreF1': 0.09703340270077317}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-11
+
+TEST new best: {'a': 0.19448689956331877, 'p': 0.19461437622897093, 'r': 0.035452383558372554, 'f': 0.059978621148229515, 'SinglePre': 0.03837709668920699, 'SingleRecall': 0.01036773428232503, 'SingleF1': 0.01632515830173525, 'MorePre': 0.4516688339835284, 'MoreRecall': 0.053572346660725606, 'MoreF1': 0.09578379703395022}
+top5: {'a': 0.19110262008733625, 'p': 0.19480302693078122, 'r': 0.03483547427388782, 'f': 0.059102073890253466, 'SinglePre': 0.03890180647469147, 'SingleRecall': 0.010320284697508897, 'SingleF1': 0.016312907822695566, 'MorePre': 0.4515463917525773, 'MoreRecall': 0.052544086648043734, 'MoreF1': 0.09413426259959165}
+top10: {'a': 0.19448689956331877, 'p': 0.19468881481886235, 'r': 0.035452383558372554, 'f': 0.05998215518257269, 'SinglePre': 0.038397328881469114, 'SingleRecall': 0.01036773428232503, 'SingleF1': 0.016326988100353067, 'MorePre': 0.45173410404624276, 'MoreRecall': 0.053572346660725606, 'MoreF1': 0.09578526451257066}
+
+learning rate:0.000100
+loss 56.098587 [learning] epoch 12>> 0.00%completed in 0.37 (sec) <<
+loss 25.862055 [learning] epoch 12>> 3.40%completed in 341.49 (sec) <<
+loss 40.425079 [learning] epoch 12>> 6.80%completed in 686.81 (sec) <<
+loss 23.387020 [learning] epoch 12>> 10.20%completed in 1036.61 (sec) <<
+loss 25.791119 [learning] epoch 12>> 13.60%completed in 1380.00 (sec) <<
+loss 20.852232 [learning] epoch 12>> 17.00%completed in 1726.13 (sec) <<
+loss 27.160461 [learning] epoch 12>> 20.40%completed in 2070.61 (sec) <<
+loss 27.970144 [learning] epoch 12>> 23.80%completed in 2418.54 (sec) <<
+loss 27.214577 [learning] epoch 12>> 27.20%completed in 2772.16 (sec) <<
+loss 26.930584 [learning] epoch 12>> 30.60%completed in 3120.13 (sec) <<
+loss 22.517817 [learning] epoch 12>> 34.00%completed in 3469.86 (sec) <<
+loss 25.739855 [learning] epoch 12>> 37.40%completed in 3819.86 (sec) <<
+loss 28.248034 [learning] epoch 12>> 40.80%completed in 4169.28 (sec) <<
+loss 29.754906 [learning] epoch 12>> 44.20%completed in 4518.01 (sec) <<
+loss 23.553062 [learning] epoch 12>> 47.60%completed in 4868.22 (sec) <<
+loss 27.523954 [learning] epoch 12>> 51.00%completed in 5220.58 (sec) <<
+loss 24.056353 [learning] epoch 12>> 54.40%completed in 5572.48 (sec) <<
+loss 25.717205 [learning] epoch 12>> 57.80%completed in 5918.84 (sec) <<
+loss 21.087027 [learning] epoch 12>> 61.21%completed in 6261.73 (sec) <<
+loss 24.632961 [learning] epoch 12>> 64.61%completed in 6606.17 (sec) <<
+loss 29.242786 [learning] epoch 12>> 68.01%completed in 6956.69 (sec) <<
+loss 21.441704 [learning] epoch 12>> 71.41%completed in 7308.62 (sec) <<
+loss 36.452213 [learning] epoch 12>> 74.81%completed in 7657.73 (sec) <<
+loss 36.246243 [learning] epoch 12>> 78.21%completed in 8010.02 (sec) <<
+loss 28.010368 [learning] epoch 12>> 81.61%completed in 8360.06 (sec) <<
+loss 29.507242 [learning] epoch 12>> 85.01%completed in 8708.57 (sec) <<
+loss 28.118570 [learning] epoch 12>> 88.41%completed in 9058.54 (sec) <<
+loss 25.681187 [learning] epoch 12>> 91.81%completed in 9407.83 (sec) <<
+loss 29.751207 [learning] epoch 12>> 95.21%completed in 9751.65 (sec) <<
+loss 26.823805 [learning] epoch 12>> 98.61%completed in 10096.03 (sec) <<
+
+VALID new curr: {'a': 0.17434497816593886, 'p': 0.2058652916532388, 'r': 0.03167613777235627, 'f': 0.054904252758964475, 'SinglePre': 0.04424872665534805, 'SingleRecall': 0.009914407988587733, 'SingleF1': 0.016199207520783156, 'MorePre': 0.45591856837957645, 'MoreRecall': 0.0472495873955728, 'MoreF1': 0.0856253083374445}
+TEST new curr: {'a': 0.17117903930131004, 'p': 0.2033986249837852, 'r': 0.03120366961522771, 'f': 0.05410674695261346, 'SinglePre': 0.041724028380811184, 'SingleRecall': 0.009347568208778172, 'SingleF1': 0.015273389800941986, 'MorePre': 0.4589121338912134, 'MoreRecall': 0.046991482579561615, 'MoreF1': 0.08525324130211734}
+top5: {'a': 0.1701419213973799, 'p': 0.2038320690557154, 'r': 0.03101461676998239, 'f': 0.05383745131398271, 'SinglePre': 0.04208952035038992, 'SingleRecall': 0.009347568208778172, 'SingleF1': 0.015297703403156606, 'MorePre': 0.4591131343786882, 'MoreRecall': 0.04666586690887903, 'MoreF1': 0.08472045051491865}
+top10: {'a': 0.17117903930131004, 'p': 0.203425012973534, 'r': 0.03120366961522771, 'f': 0.05410768049552697, 'SinglePre': 0.04173286728100837, 'SingleRecall': 0.009347568208778172, 'SingleF1': 0.015273981896067143, 'MorePre': 0.4589121338912134, 'MoreRecall': 0.046991482579561615, 'MoreF1': 0.08525324130211734}
+
+learning rate:0.000100
+loss 26.968628 [learning] epoch 13>> 0.00%completed in 0.31 (sec) <<
+loss 33.250252 [learning] epoch 13>> 3.40%completed in 350.43 (sec) <<
+loss 25.540564 [learning] epoch 13>> 6.80%completed in 696.64 (sec) <<
+loss 21.695925 [learning] epoch 13>> 10.20%completed in 1042.25 (sec) <<
+loss 31.191952 [learning] epoch 13>> 13.60%completed in 1385.73 (sec) <<
+loss 30.141439 [learning] epoch 13>> 17.00%completed in 1730.19 (sec) <<
+loss 30.197670 [learning] epoch 13>> 20.40%completed in 2082.50 (sec) <<
+loss 22.749638 [learning] epoch 13>> 23.80%completed in 2424.38 (sec) <<
+loss 25.263050 [learning] epoch 13>> 27.20%completed in 2771.43 (sec) <<
+loss 26.438000 [learning] epoch 13>> 30.60%completed in 3116.59 (sec) <<
+loss 18.929647 [learning] epoch 13>> 34.00%completed in 3449.42 (sec) <<
+loss 21.969584 [learning] epoch 13>> 37.40%completed in 3752.73 (sec) <<
+loss 24.674755 [learning] epoch 13>> 40.80%completed in 4055.88 (sec) <<
+loss 23.164701 [learning] epoch 13>> 44.20%completed in 4363.26 (sec) <<
+loss 34.640953 [learning] epoch 13>> 47.60%completed in 4664.85 (sec) <<
+loss 30.495903 [learning] epoch 13>> 51.00%completed in 4968.94 (sec) <<
+loss 20.908051 [learning] epoch 13>> 54.40%completed in 5274.88 (sec) <<
+loss 24.210308 [learning] epoch 13>> 57.80%completed in 5577.38 (sec) <<
+loss 29.833742 [learning] epoch 13>> 61.21%completed in 5878.85 (sec) <<
+loss 25.617672 [learning] epoch 13>> 64.61%completed in 6180.97 (sec) <<
+loss 25.764168 [learning] epoch 13>> 68.01%completed in 6487.38 (sec) <<
+loss 20.484802 [learning] epoch 13>> 71.41%completed in 6790.31 (sec) <<
+loss 24.110041 [learning] epoch 13>> 74.81%completed in 7108.69 (sec) <<
+loss 24.462540 [learning] epoch 13>> 78.21%completed in 7457.10 (sec) <<
+loss 25.846699 [learning] epoch 13>> 81.61%completed in 7805.63 (sec) <<
+loss 23.289848 [learning] epoch 13>> 85.01%completed in 8157.11 (sec) <<
+loss 22.316353 [learning] epoch 13>> 88.41%completed in 8503.86 (sec) <<
+loss 24.274498 [learning] epoch 13>> 91.81%completed in 8852.46 (sec) <<
+loss 30.083508 [learning] epoch 13>> 95.21%completed in 9206.30 (sec) <<
+loss 21.680899 [learning] epoch 13>> 98.61%completed in 9557.82 (sec) <<
+
+VALID new best: {'a': 0.2160480349344978, 'p': 0.21706701765931777, 'r': 0.03925302232404074, 'f': 0.06648357647375007, 'SinglePre': 0.04849560829751448, 'SingleRecall': 0.012339514978601997, 'SingleF1': 0.01967324968727493, 'MorePre': 0.4565852363250133, 'MoreRecall': 0.058513262892824935, 'MoreF1': 0.10373275016967046}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-13
+
+TEST new best: {'a': 0.20933406113537117, 'p': 0.2116913225877677, 'r': 0.03815882429030557, 'f': 0.06466189500661794, 'SinglePre': 0.04555638536221061, 'SingleRecall': 0.011577698695136418, 'SingleF1': 0.01846316824940411, 'MorePre': 0.452052944354403, 'MoreRecall': 0.05735977104077051, 'MoreF1': 0.10180214432362558}
+top5: {'a': 0.2062227074235808, 'p': 0.21173569467017878, 'r': 0.037591665754569605, 'f': 0.06384776583519232, 'SinglePre': 0.046161137440758296, 'SingleRecall': 0.01155397390272835, 'SingleF1': 0.0184819734345351, 'MorePre': 0.45125462772521596, 'MoreRecall': 0.05640006169560076, 'MoreF1': 0.10026811285113643}
+top10: {'a': 0.20933406113537117, 'p': 0.21172638436482086, 'r': 0.03815882429030557, 'f': 0.06466353044328664, 'SinglePre': 0.0455691474460734, 'SingleRecall': 0.011577698695136418, 'SingleF1': 0.01846421612213625, 'MorePre': 0.452052944354403, 'MoreRecall': 0.05735977104077051, 'MoreF1': 0.10180214432362558}
+
+learning rate:0.000100
+loss 28.615753 [learning] epoch 14>> 0.00%completed in 0.29 (sec) <<
+loss 21.066931 [learning] epoch 14>> 3.40%completed in 342.72 (sec) <<
+loss 22.986139 [learning] epoch 14>> 6.80%completed in 694.46 (sec) <<
+loss 20.299625 [learning] epoch 14>> 10.20%completed in 1040.26 (sec) <<
+loss 23.122267 [learning] epoch 14>> 13.60%completed in 1389.54 (sec) <<
+loss 20.011520 [learning] epoch 14>> 17.00%completed in 1739.29 (sec) <<
+loss 28.572117 [learning] epoch 14>> 20.40%completed in 2086.62 (sec) <<
+loss 33.159306 [learning] epoch 14>> 23.80%completed in 2426.03 (sec) <<
+loss 28.554840 [learning] epoch 14>> 27.20%completed in 2771.64 (sec) <<
+loss 30.270424 [learning] epoch 14>> 30.60%completed in 3118.69 (sec) <<
+loss 26.401247 [learning] epoch 14>> 34.00%completed in 3460.66 (sec) <<
+loss 23.483072 [learning] epoch 14>> 37.40%completed in 3806.60 (sec) <<
+loss 23.059277 [learning] epoch 14>> 40.80%completed in 4120.93 (sec) <<
+loss 29.833849 [learning] epoch 14>> 44.20%completed in 4425.62 (sec) <<
+loss 40.189991 [learning] epoch 14>> 47.60%completed in 4723.80 (sec) <<
+loss 24.953651 [learning] epoch 14>> 51.00%completed in 5028.33 (sec) <<
+loss 29.081524 [learning] epoch 14>> 54.40%completed in 5331.36 (sec) <<
+loss 21.953251 [learning] epoch 14>> 57.80%completed in 5632.48 (sec) <<
+loss 23.537872 [learning] epoch 14>> 61.21%completed in 5930.28 (sec) <<
+loss 28.566748 [learning] epoch 14>> 64.61%completed in 6231.89 (sec) <<
+loss 23.055628 [learning] epoch 14>> 68.01%completed in 6535.33 (sec) <<
+loss 26.007460 [learning] epoch 14>> 71.41%completed in 6842.54 (sec) <<
+loss 27.752640 [learning] epoch 14>> 74.81%completed in 7139.23 (sec) <<
+loss 26.833487 [learning] epoch 14>> 78.21%completed in 7443.13 (sec) <<
+loss 29.611748 [learning] epoch 14>> 81.61%completed in 7745.35 (sec) <<
+loss 31.400759 [learning] epoch 14>> 85.01%completed in 8051.40 (sec) <<
+loss 29.974907 [learning] epoch 14>> 88.41%completed in 8353.90 (sec) <<
+loss 26.825586 [learning] epoch 14>> 91.81%completed in 8658.11 (sec) <<
+loss 42.828671 [learning] epoch 14>> 95.21%completed in 8962.62 (sec) <<
+loss 26.506424 [learning] epoch 14>> 98.61%completed in 9267.06 (sec) <<
+
+VALID new best: {'a': 0.237117903930131, 'p': 0.22733933431023656, 'r': 0.043081134152509595, 'f': 0.07243561417697035, 'SinglePre': 0.06264123655428003, 'SingleRecall': 0.016476462196861625, 'SingleF1': 0.026090393991303203, 'MorePre': 0.453822249844624, 'MoreRecall': 0.062120361390434385, 'MoreF1': 0.10928193001885719}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-14
+
+TEST new best: {'a': 0.23040393013100435, 'p': 0.2227558182489841, 'r': 0.04199958209371051, 'f': 0.07067392214315613, 'SinglePre': 0.06148282097649186, 'SingleRecall': 0.01613285883748517, 'SingleF1': 0.025559105431309903, 'MorePre': 0.44885283305868934, 'MoreRecall': 0.060684478415108566, 'MoreF1': 0.10691425120772947}
+top5: {'a': 0.2262008733624454, 'p': 0.22252053911829459, 'r': 0.041233420562979475, 'f': 0.06957456096168699, 'SinglePre': 0.061729530818767246, 'SingleRecall': 0.015919335705812575, 'SingleF1': 0.025311203319502075, 'MorePre': 0.4479556300786792, 'MoreRecall': 0.05951911706740244, 'MoreF1': 0.1050768486022026}
+top10: {'a': 0.23034934497816595, 'p': 0.2227383088778634, 'r': 0.041989631943960756, 'f': 0.07065895334332382, 'SinglePre': 0.061493941038162414, 'SingleRecall': 0.01613285883748517, 'SingleF1': 0.025560066155465345, 'MorePre': 0.4487829614604463, 'MoreRecall': 0.06066734074823053, 'MoreF1': 0.10688567158320626}
+
+learning rate:0.000100
+loss 25.078876 [learning] epoch 15>> 0.00%completed in 0.24 (sec) <<
+loss 25.804100 [learning] epoch 15>> 3.40%completed in 302.78 (sec) <<
+loss 22.958921 [learning] epoch 15>> 6.80%completed in 617.05 (sec) <<
+loss 25.666655 [learning] epoch 15>> 10.20%completed in 962.08 (sec) <<
+loss 28.017529 [learning] epoch 15>> 13.60%completed in 1315.09 (sec) <<
+loss 23.544647 [learning] epoch 15>> 17.00%completed in 1661.56 (sec) <<
+loss 31.345402 [learning] epoch 15>> 20.40%completed in 2009.98 (sec) <<
+loss 25.170538 [learning] epoch 15>> 23.80%completed in 2361.98 (sec) <<
+loss 31.880552 [learning] epoch 15>> 27.20%completed in 2714.70 (sec) <<
+loss 26.850857 [learning] epoch 15>> 30.60%completed in 3061.28 (sec) <<
+loss 25.621668 [learning] epoch 15>> 34.00%completed in 3414.07 (sec) <<
+loss 23.667768 [learning] epoch 15>> 37.40%completed in 3724.83 (sec) <<
+loss 23.564587 [learning] epoch 15>> 40.80%completed in 4026.25 (sec) <<
+loss 22.424410 [learning] epoch 15>> 44.20%completed in 4327.71 (sec) <<
+loss 33.840614 [learning] epoch 15>> 47.60%completed in 4627.05 (sec) <<
+loss 24.583580 [learning] epoch 15>> 51.00%completed in 4930.32 (sec) <<
+loss 21.046858 [learning] epoch 15>> 54.40%completed in 5234.05 (sec) <<
+loss 27.329958 [learning] epoch 15>> 57.80%completed in 5536.37 (sec) <<
+loss 26.285406 [learning] epoch 15>> 61.21%completed in 5842.66 (sec) <<
+loss 24.170685 [learning] epoch 15>> 64.61%completed in 6149.31 (sec) <<
+loss 28.945648 [learning] epoch 15>> 68.01%completed in 6450.80 (sec) <<
+loss 24.872511 [learning] epoch 15>> 71.41%completed in 6753.10 (sec) <<
+loss 28.197487 [learning] epoch 15>> 74.81%completed in 7056.63 (sec) <<
+loss 21.629360 [learning] epoch 15>> 78.21%completed in 7393.56 (sec) <<
+loss 32.169804 [learning] epoch 15>> 81.61%completed in 7740.29 (sec) <<
+loss 18.991371 [learning] epoch 15>> 85.01%completed in 8084.53 (sec) <<
+loss 29.932491 [learning] epoch 15>> 88.41%completed in 8435.67 (sec) <<
+loss 29.380714 [learning] epoch 15>> 91.81%completed in 8782.59 (sec) <<
+loss 36.915222 [learning] epoch 15>> 95.21%completed in 9126.92 (sec) <<
+loss 24.942333 [learning] epoch 15>> 98.61%completed in 9476.37 (sec) <<
+
+VALID new curr: {'a': 0.212882096069869, 'p': 0.2307282730876176, 'r': 0.038677813810954746, 'f': 0.06624991506421146, 'SinglePre': 0.05921393757129524, 'SingleRecall': 0.01357584403233476, 'SingleF1': 0.022087693170609053, 'MorePre': 0.45853994490358124, 'MoreRecall': 0.05664165518180117, 'MoreF1': 0.10082837369194192}
+TEST new curr: {'a': 0.20791484716157205, 'p': 0.22767483562462643, 'r': 0.037900120396811975, 'f': 0.06498281171362524, 'SinglePre': 0.05801621958827199, 'SingleRecall': 0.013238434163701067, 'SingleF1': 0.021557719054242003, 'MorePre': 0.4571147356580427, 'MoreRecall': 0.05571455502047951, 'MoreF1': 0.09932328185387165}
+top5: {'a': 0.2056222707423581, 'p': 0.22773713802067588, 'r': 0.03748221410732232, 'f': 0.06437005519386203, 'SinglePre': 0.058124868614673114, 'SingleRecall': 0.013119810201660736, 'SingleF1': 0.021407556519046144, 'MorePre': 0.4573786822257009, 'MoreRecall': 0.05508046134599236, 'MoreF1': 0.09832053596010892}
+top10: {'a': 0.20791484716157205, 'p': 0.22767483562462643, 'r': 0.037900120396811975, 'f': 0.06498281171362524, 'SinglePre': 0.05801621958827199, 'SingleRecall': 0.013238434163701067, 'SingleF1': 0.021557719054242003, 'MorePre': 0.4571147356580427, 'MoreRecall': 0.05571455502047951, 'MoreF1': 0.09932328185387165}
+
+learning rate:0.000100
+loss 23.066217 [learning] epoch 16>> 0.00%completed in 0.29 (sec) <<
+loss 26.453749 [learning] epoch 16>> 3.40%completed in 343.39 (sec) <<
+loss 31.291546 [learning] epoch 16>> 6.80%completed in 693.23 (sec) <<
+loss 24.718103 [learning] epoch 16>> 10.20%completed in 1039.05 (sec) <<
+loss 26.340460 [learning] epoch 16>> 13.60%completed in 1389.63 (sec) <<
+loss 30.006178 [learning] epoch 16>> 17.00%completed in 1738.35 (sec) <<
+loss 29.834190 [learning] epoch 16>> 20.40%completed in 2085.66 (sec) <<
+loss 31.051044 [learning] epoch 16>> 23.80%completed in 2432.49 (sec) <<
+loss 19.930349 [learning] epoch 16>> 27.20%completed in 2780.83 (sec) <<
+loss 25.319286 [learning] epoch 16>> 30.60%completed in 3123.13 (sec) <<
+loss 31.009216 [learning] epoch 16>> 34.00%completed in 3467.99 (sec) <<
+loss 23.788776 [learning] epoch 16>> 37.40%completed in 3814.11 (sec) <<
+loss 20.804218 [learning] epoch 16>> 40.80%completed in 4158.48 (sec) <<
+loss 31.880037 [learning] epoch 16>> 44.20%completed in 4508.78 (sec) <<
+loss 36.093342 [learning] epoch 16>> 47.60%completed in 4857.75 (sec) <<
+loss 25.323185 [learning] epoch 16>> 51.00%completed in 5207.49 (sec) <<
+loss 26.104490 [learning] epoch 16>> 54.40%completed in 5552.95 (sec) <<
+loss 36.761902 [learning] epoch 16>> 57.80%completed in 5904.43 (sec) <<
+loss 29.468952 [learning] epoch 16>> 61.21%completed in 6254.95 (sec) <<
+loss 24.497023 [learning] epoch 16>> 64.61%completed in 6616.14 (sec) <<
+loss 21.509178 [learning] epoch 16>> 68.01%completed in 6962.32 (sec) <<
+loss 24.934595 [learning] epoch 16>> 71.41%completed in 7313.25 (sec) <<
+loss 28.986197 [learning] epoch 16>> 74.81%completed in 7664.06 (sec) <<
+loss 31.031797 [learning] epoch 16>> 78.21%completed in 8017.04 (sec) <<
+loss 33.165215 [learning] epoch 16>> 81.61%completed in 8367.46 (sec) <<
+loss 28.318670 [learning] epoch 16>> 85.01%completed in 8713.75 (sec) <<
+loss 19.099216 [learning] epoch 16>> 88.41%completed in 9064.41 (sec) <<
+loss 21.576958 [learning] epoch 16>> 91.81%completed in 9415.58 (sec) <<
+loss 18.530659 [learning] epoch 16>> 95.21%completed in 9768.15 (sec) <<
+loss 24.220627 [learning] epoch 16>> 98.61%completed in 10117.52 (sec) <<
+
+VALID new best: {'a': 0.25813318777292577, 'p': 0.23679335035801913, 'r': 0.046899328592821796, 'f': 0.07829210953279693, 'SinglePre': 0.059208103130755065, 'SingleRecall': 0.015287684260580124, 'SingleF1': 0.024300831443688584, 'MorePre': 0.4484688837668752, 'MoreRecall': 0.06952171915675566, 'MoreF1': 0.12038182782393496}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-16
+
+TEST new best: {'a': 0.25163755458515286, 'p': 0.23197302873245107, 'r': 0.04587019034636471, 'f': 0.07659461345473276, 'SinglePre': 0.056893382352941176, 'SingleRecall': 0.01468564650059312, 'SingleF1': 0.02334527625872148, 'MorePre': 0.4437896141443345, 'MoreRecall': 0.06839642851022262, 'MoreF1': 0.11852577809455928}
+top5: {'a': 0.24563318777292575, 'p': 0.23162445954292774, 'r': 0.0447756738738918, 'f': 0.07504440127075186, 'SinglePre': 0.05726624108148704, 'SingleRecall': 0.014472123368920523, 'SingleF1': 0.023105185409643573, 'MorePre': 0.4432543299908842, 'MoreRecall': 0.06666552415554146, 'MoreF1': 0.11589971248528906}
+top10: {'a': 0.2515829694323144, 'p': 0.2320161087339542, 'r': 0.04586024019661496, 'f': 0.07658308824751175, 'SinglePre': 0.05691954022988506, 'SingleRecall': 0.01468564650059312, 'SingleF1': 0.023347477604903348, 'MorePre': 0.44382647385984425, 'MoreRecall': 0.06837929084334458, 'MoreF1': 0.11850135875618123}
+
+learning rate:0.000100
+loss 23.744705 [learning] epoch 17>> 0.00%completed in 0.48 (sec) <<
+loss 20.103390 [learning] epoch 17>> 3.40%completed in 347.89 (sec) <<
+loss 28.648159 [learning] epoch 17>> 6.80%completed in 696.74 (sec) <<
+loss 23.485470 [learning] epoch 17>> 10.20%completed in 1042.59 (sec) <<
+loss 24.511402 [learning] epoch 17>> 13.60%completed in 1393.91 (sec) <<
+loss 23.730822 [learning] epoch 17>> 17.00%completed in 1748.50 (sec) <<
+loss 19.860373 [learning] epoch 17>> 20.40%completed in 2096.08 (sec) <<
+loss 22.819557 [learning] epoch 17>> 23.80%completed in 2445.99 (sec) <<
+loss 28.288525 [learning] epoch 17>> 27.20%completed in 2797.23 (sec) <<
+loss 36.976082 [learning] epoch 17>> 30.60%completed in 3149.65 (sec) <<
+loss 25.436842 [learning] epoch 17>> 34.00%completed in 3498.01 (sec) <<
+loss 25.714005 [learning] epoch 17>> 37.40%completed in 3845.93 (sec) <<
+loss 25.128098 [learning] epoch 17>> 40.80%completed in 4200.61 (sec) <<
+loss 25.368572 [learning] epoch 17>> 44.20%completed in 4555.04 (sec) <<
+loss 32.692875 [learning] epoch 17>> 47.60%completed in 4912.53 (sec) <<
+loss 30.986584 [learning] epoch 17>> 51.00%completed in 5269.16 (sec) <<
+loss 22.959396 [learning] epoch 17>> 54.40%completed in 5624.66 (sec) <<
+loss 24.930058 [learning] epoch 17>> 57.80%completed in 5980.36 (sec) <<
+loss 30.007612 [learning] epoch 17>> 61.21%completed in 6330.21 (sec) <<
+loss 26.584841 [learning] epoch 17>> 64.61%completed in 6688.69 (sec) <<
+loss 29.432394 [learning] epoch 17>> 68.01%completed in 7041.90 (sec) <<
+loss 24.440418 [learning] epoch 17>> 71.41%completed in 7404.24 (sec) <<
+loss 26.858406 [learning] epoch 17>> 74.81%completed in 7759.67 (sec) <<
+loss 37.025646 [learning] epoch 17>> 78.21%completed in 8118.52 (sec) <<
+loss 21.380846 [learning] epoch 17>> 81.61%completed in 8474.55 (sec) <<
+loss 29.727592 [learning] epoch 17>> 85.01%completed in 8831.51 (sec) <<
+loss 27.242863 [learning] epoch 17>> 88.41%completed in 9191.13 (sec) <<
+loss 25.663887 [learning] epoch 17>> 91.81%completed in 9544.62 (sec) <<
+loss 26.871775 [learning] epoch 17>> 95.21%completed in 9900.46 (sec) <<
+loss 25.016624 [learning] epoch 17>> 98.61%completed in 10257.11 (sec) <<
+
+VALID new curr: {'a': 0.24617903930131005, 'p': 0.24631348989623156, 'r': 0.044727420586514334, 'f': 0.07570734327656681, 'SinglePre': 0.07610081396489163, 'SingleRecall': 0.01844983357108892, 'SingleF1': 0.029699370419273972, 'MorePre': 0.4602489831135215, 'MoreRecall': 0.06353257448147959, 'MoreF1': 0.11165266273958675}
+TEST new curr: {'a': 0.23831877729257642, 'p': 0.2404317418360042, 'r': 0.043442353807424804, 'f': 0.07358840384291254, 'SinglePre': 0.07289115313020476, 'SingleRecall': 0.017651245551601424, 'SingleF1': 0.028420268540978285, 'MorePre': 0.45548289738430586, 'MoreRecall': 0.0620726294322291, 'MoreF1': 0.10925599143326847}
+top5: {'a': 0.2335698689956332, 'p': 0.2400561009817672, 'r': 0.04257669077919623, 'f': 0.07232560891097477, 'SinglePre': 0.07312942114177542, 'SingleRecall': 0.017413997627520758, 'SingleF1': 0.02812961082261866, 'MorePre': 0.4551874678993323, 'MoreRecall': 0.060753029082620695, 'MoreF1': 0.1071984759370417}
+top10: {'a': 0.23831877729257642, 'p': 0.24047146948667109, 'r': 0.043442353807424804, 'f': 0.0735902643754688, 'SinglePre': 0.07291258330066641, 'SingleRecall': 0.017651245551601424, 'SingleF1': 0.02842189708522749, 'MorePre': 0.45548289738430586, 'MoreRecall': 0.0620726294322291, 'MoreF1': 0.10925599143326847}
+
+learning rate:0.000100
+loss 26.160248 [learning] epoch 18>> 0.00%completed in 0.44 (sec) <<
+loss 23.203667 [learning] epoch 18>> 3.40%completed in 353.01 (sec) <<
+loss 27.939993 [learning] epoch 18>> 6.80%completed in 705.23 (sec) <<
+loss 26.915562 [learning] epoch 18>> 10.20%completed in 1065.52 (sec) <<
+loss 24.627640 [learning] epoch 18>> 13.60%completed in 1423.61 (sec) <<
+loss 25.192280 [learning] epoch 18>> 17.00%completed in 1780.04 (sec) <<
+loss 28.219950 [learning] epoch 18>> 20.40%completed in 2135.66 (sec) <<
+loss 24.867502 [learning] epoch 18>> 23.80%completed in 2494.86 (sec) <<
+loss 26.080292 [learning] epoch 18>> 27.20%completed in 2850.29 (sec) <<
+loss 28.487719 [learning] epoch 18>> 30.60%completed in 3207.11 (sec) <<
+loss 24.031158 [learning] epoch 18>> 34.00%completed in 3559.80 (sec) <<
+loss 23.776695 [learning] epoch 18>> 37.40%completed in 3916.34 (sec) <<
+loss 28.288023 [learning] epoch 18>> 40.80%completed in 4269.95 (sec) <<
+loss 23.633587 [learning] epoch 18>> 44.20%completed in 4620.25 (sec) <<
+loss 25.982042 [learning] epoch 18>> 47.60%completed in 4974.08 (sec) <<
+loss 22.918999 [learning] epoch 18>> 51.00%completed in 5335.02 (sec) <<
+loss 29.917042 [learning] epoch 18>> 54.40%completed in 5689.14 (sec) <<
+loss 20.021173 [learning] epoch 18>> 57.80%completed in 6043.44 (sec) <<
+loss 24.700869 [learning] epoch 18>> 61.21%completed in 6396.55 (sec) <<
+loss 37.827225 [learning] epoch 18>> 64.61%completed in 6748.76 (sec) <<
+loss 24.548983 [learning] epoch 18>> 68.01%completed in 7102.39 (sec) <<
+loss 27.843353 [learning] epoch 18>> 71.41%completed in 7456.18 (sec) <<
+loss 26.923107 [learning] epoch 18>> 74.81%completed in 7813.14 (sec) <<
+loss 26.025305 [learning] epoch 18>> 78.21%completed in 8164.18 (sec) <<
+loss 32.325726 [learning] epoch 18>> 81.61%completed in 8522.54 (sec) <<
+loss 37.878414 [learning] epoch 18>> 85.01%completed in 8879.42 (sec) <<
+loss 26.344513 [learning] epoch 18>> 88.41%completed in 9233.83 (sec) <<
+loss 25.102015 [learning] epoch 18>> 91.81%completed in 9584.50 (sec) <<
+loss 20.413757 [learning] epoch 18>> 95.21%completed in 9938.35 (sec) <<
+loss 29.685146 [learning] epoch 18>> 98.61%completed in 10297.90 (sec) <<
+
+VALID new best: {'a': 0.27347161572052403, 'p': 0.2506754728309817, 'r': 0.049686114664841866, 'f': 0.08293397561641795, 'SinglePre': 0.07517810273715786, 'SingleRecall': 0.019067998097955303, 'SingleF1': 0.030420270065240482, 'MorePre': 0.4515990555913286, 'MoreRecall': 0.07159750225443656, 'MoreF1': 0.12359930093551279}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-18
+
+TEST new best: {'a': 0.2652292576419214, 'p': 0.24451489533011272, 'r': 0.048347777634053395, 'f': 0.08073239015393818, 'SinglePre': 0.0701264880952381, 'SingleRecall': 0.01788849347568209, 'SingleF1': 0.02850553854296624, 'MorePre': 0.45010964912280704, 'MoreRecall': 0.07035012253431817, 'MoreF1': 0.12168190778260289}
+top5: {'a': 0.25889737991266376, 'p': 0.24391874517870918, 'r': 0.04719356026308196, 'f': 0.07908558851483169, 'SinglePre': 0.07037037037037037, 'SingleRecall': 0.017580071174377224, 'SingleF1': 0.028132118451025055, 'MorePre': 0.4489063376332025, 'MoreRecall': 0.06858494284588096, 'MoreF1': 0.11899027740611898}
+top10: {'a': 0.2652292576419214, 'p': 0.24457643328132078, 'r': 0.048347777634053395, 'f': 0.08073574371926093, 'SinglePre': 0.07015258652772609, 'SingleRecall': 0.01788849347568209, 'SingleF1': 0.028507694052705205, 'MorePre': 0.4501590086632306, 'MoreRecall': 0.07035012253431817, 'MoreF1': 0.12168371127908699}
+
+learning rate:0.000100
+loss 24.066879 [learning] epoch 19>> 0.00%completed in 0.29 (sec) <<
+loss 19.714890 [learning] epoch 19>> 3.40%completed in 356.77 (sec) <<
+loss 26.913143 [learning] epoch 19>> 6.80%completed in 709.23 (sec) <<
+loss 24.887997 [learning] epoch 19>> 10.20%completed in 1064.96 (sec) <<
+loss 30.184927 [learning] epoch 19>> 13.60%completed in 1422.12 (sec) <<
+loss 26.251682 [learning] epoch 19>> 17.00%completed in 1782.52 (sec) <<
+loss 21.610210 [learning] epoch 19>> 20.40%completed in 2140.81 (sec) <<
+loss 23.713554 [learning] epoch 19>> 23.80%completed in 2499.17 (sec) <<
+loss 28.979563 [learning] epoch 19>> 27.20%completed in 2854.69 (sec) <<
+loss 27.677649 [learning] epoch 19>> 30.60%completed in 3210.98 (sec) <<
+loss 21.742922 [learning] epoch 19>> 34.00%completed in 3568.58 (sec) <<
+loss 25.445801 [learning] epoch 19>> 37.40%completed in 3925.07 (sec) <<
+loss 25.964642 [learning] epoch 19>> 40.80%completed in 4284.84 (sec) <<
+loss 26.961647 [learning] epoch 19>> 44.20%completed in 4644.79 (sec) <<
+loss 27.040335 [learning] epoch 19>> 47.60%completed in 4995.84 (sec) <<
+loss 30.141819 [learning] epoch 19>> 51.00%completed in 5352.30 (sec) <<
+loss 26.469246 [learning] epoch 19>> 54.40%completed in 5703.67 (sec) <<
+loss 32.510693 [learning] epoch 19>> 57.80%completed in 6057.62 (sec) <<
+loss 22.050261 [learning] epoch 19>> 61.21%completed in 6415.35 (sec) <<
+loss 31.270767 [learning] epoch 19>> 64.61%completed in 6764.17 (sec) <<
+loss 25.062229 [learning] epoch 19>> 68.01%completed in 7128.20 (sec) <<
+loss 27.623322 [learning] epoch 19>> 71.41%completed in 7478.75 (sec) <<
+loss 28.294922 [learning] epoch 19>> 74.81%completed in 7835.81 (sec) <<
+loss 29.716038 [learning] epoch 19>> 78.21%completed in 8193.44 (sec) <<
+loss 22.682034 [learning] epoch 19>> 81.61%completed in 8547.01 (sec) <<
+loss 24.037558 [learning] epoch 19>> 85.01%completed in 8908.82 (sec) <<
+loss 25.523781 [learning] epoch 19>> 88.41%completed in 9265.60 (sec) <<
+loss 26.144049 [learning] epoch 19>> 91.81%completed in 9620.84 (sec) <<
+loss 25.692619 [learning] epoch 19>> 95.21%completed in 9979.72 (sec) <<
+loss 30.160788 [learning] epoch 19>> 98.61%completed in 10332.85 (sec) <<
+
+VALID new best: {'a': 0.28171397379912666, 'p': 0.25568491454050035, 'r': 0.05118364027649678, 'f': 0.08529309689467682, 'SinglePre': 0.07263047818233673, 'SingleRecall': 0.01816452686638136, 'SingleF1': 0.02906103197093897, 'MorePre': 0.4548934409269605, 'MoreRecall': 0.07481326459428649, 'MoreF1': 0.12849398734639605}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-19
+
+TEST new best: {'a': 0.27259825327510917, 'p': 0.2490524635946539, 'r': 0.04969104785027015, 'f': 0.08285152588488051, 'SinglePre': 0.06802721088435375, 'SingleRecall': 0.01708185053380783, 'SingleF1': 0.027306860848788264, 'MorePre': 0.45141529362061683, 'MoreRecall': 0.07324638823670546, 'MoreF1': 0.12604137483596042}
+top5: {'a': 0.26610262008733626, 'p': 0.2488641584562765, 'r': 0.048506980030049454, 'f': 0.08118910816887334, 'SinglePre': 0.06838846972335075, 'SingleRecall': 0.016773428232502965, 'SingleF1': 0.02693949093126048, 'MorePre': 0.45054588693114256, 'MoreRecall': 0.07142979554763415, 'MoreF1': 0.1233099612437502}
+top10: {'a': 0.27254366812227077, 'p': 0.24907712261797865, 'r': 0.04968109770052039, 'f': 0.08283905862443695, 'SinglePre': 0.06805293005671077, 'SingleRecall': 0.01708185053380783, 'SingleF1': 0.02730893229660535, 'MorePre': 0.4514050285231354, 'MoreRecall': 0.07322925056982742, 'MoreF1': 0.12601560080805696}
+
+learning rate:0.000100
+loss 34.695301 [learning] epoch 20>> 0.00%completed in 0.35 (sec) <<
+loss 19.570169 [learning] epoch 20>> 3.40%completed in 344.17 (sec) <<
+loss 25.711609 [learning] epoch 20>> 6.80%completed in 696.36 (sec) <<
+loss 25.929668 [learning] epoch 20>> 10.20%completed in 1048.75 (sec) <<
+loss 26.964813 [learning] epoch 20>> 13.60%completed in 1398.32 (sec) <<
+loss 23.627213 [learning] epoch 20>> 17.00%completed in 1746.32 (sec) <<
+loss 24.333073 [learning] epoch 20>> 20.40%completed in 2098.51 (sec) <<
+loss 27.890955 [learning] epoch 20>> 23.80%completed in 2446.47 (sec) <<
+loss 33.150742 [learning] epoch 20>> 27.20%completed in 2800.43 (sec) <<
+loss 23.247225 [learning] epoch 20>> 30.60%completed in 3151.75 (sec) <<
+loss 20.198668 [learning] epoch 20>> 34.00%completed in 3505.47 (sec) <<
+loss 29.205570 [learning] epoch 20>> 37.40%completed in 3859.20 (sec) <<
+loss 25.910410 [learning] epoch 20>> 40.80%completed in 4206.27 (sec) <<
+loss 22.189917 [learning] epoch 20>> 44.20%completed in 4552.82 (sec) <<
+loss 26.269924 [learning] epoch 20>> 47.60%completed in 4903.85 (sec) <<
+loss 28.567196 [learning] epoch 20>> 51.00%completed in 5251.32 (sec) <<
+loss 24.296814 [learning] epoch 20>> 54.40%completed in 5598.97 (sec) <<
+loss 25.154703 [learning] epoch 20>> 57.80%completed in 5950.94 (sec) <<
+loss 26.940920 [learning] epoch 20>> 61.21%completed in 6306.84 (sec) <<
+loss 27.440411 [learning] epoch 20>> 64.61%completed in 6657.88 (sec) <<
+loss 26.314957 [learning] epoch 20>> 68.01%completed in 7009.10 (sec) <<
+loss 34.480927 [learning] epoch 20>> 71.41%completed in 7358.64 (sec) <<
+loss 21.171064 [learning] epoch 20>> 74.81%completed in 7704.95 (sec) <<
+loss 26.418997 [learning] epoch 20>> 78.21%completed in 8055.43 (sec) <<
+loss 25.921865 [learning] epoch 20>> 81.61%completed in 8406.52 (sec) <<
+loss 23.522804 [learning] epoch 20>> 85.01%completed in 8750.57 (sec) <<
+loss 27.410625 [learning] epoch 20>> 88.41%completed in 9105.96 (sec) <<
+loss 32.438732 [learning] epoch 20>> 91.81%completed in 9449.01 (sec) <<
+loss 26.098455 [learning] epoch 20>> 95.21%completed in 9802.52 (sec) <<
+loss 20.931030 [learning] epoch 20>> 98.61%completed in 10149.90 (sec) <<
+
+VALID new curr: {'a': 0.2754366812227074, 'p': 0.26452086391276997, 'r': 0.05004314063848145, 'f': 0.08416382423337697, 'SinglePre': 0.10245392915115058, 'SingleRecall': 0.025511174512601046, 'SingleF1': 0.04085051301086935, 'MorePre': 0.4618156457049866, 'MoreRecall': 0.0675990675990676, 'MoreF1': 0.11793516979339824}
+TEST new curr: {'a': 0.2679585152838428, 'p': 0.26012081390419667, 'r': 0.04884528512154108, 'f': 0.0822464041282367, 'SinglePre': 0.09935928086449268, 'SingleRecall': 0.02465005931198102, 'SingleF1': 0.03950044670861292, 'MorePre': 0.45989304812834225, 'MoreRecall': 0.06632277081798084, 'MoreF1': 0.11592726837012851}
+top5: {'a': 0.2625545851528384, 'p': 0.25967715812773307, 'r': 0.04786022029631546, 'f': 0.08082403548864094, 'SinglePre': 0.09825519056438249, 'SingleRecall': 0.02391459074733096, 'SingleF1': 0.03846667557098971, 'MorePre': 0.4600677637947725, 'MoreRecall': 0.06515740947027472, 'MoreF1': 0.11414846506042182}
+top10: {'a': 0.2679585152838428, 'p': 0.2601621707562669, 'r': 0.04884528512154108, 'f': 0.08224847114015248, 'SinglePre': 0.09937828790052607, 'SingleRecall': 0.02465005931198102, 'SingleF1': 0.03950194848398442, 'MorePre': 0.4599477062039458, 'MoreRecall': 0.06632277081798084, 'MoreF1': 0.11592900471804089}
+
+learning rate:0.000100
+loss 25.340843 [learning] epoch 21>> 0.00%completed in 0.29 (sec) <<
+loss 27.998764 [learning] epoch 21>> 3.40%completed in 346.01 (sec) <<
+loss 24.140739 [learning] epoch 21>> 6.80%completed in 696.24 (sec) <<
+loss 21.117594 [learning] epoch 21>> 10.20%completed in 1045.22 (sec) <<
+loss 23.400749 [learning] epoch 21>> 13.60%completed in 1397.36 (sec) <<
+loss 32.888443 [learning] epoch 21>> 17.00%completed in 1743.22 (sec) <<
+loss 22.014145 [learning] epoch 21>> 20.40%completed in 2091.46 (sec) <<
+loss 25.673590 [learning] epoch 21>> 23.80%completed in 2438.21 (sec) <<
+loss 26.062679 [learning] epoch 21>> 27.20%completed in 2789.09 (sec) <<
+loss 27.449636 [learning] epoch 21>> 30.60%completed in 3138.23 (sec) <<
+loss 25.999531 [learning] epoch 21>> 34.00%completed in 3483.59 (sec) <<
+loss 26.801165 [learning] epoch 21>> 37.40%completed in 3832.03 (sec) <<
+loss 26.274281 [learning] epoch 21>> 40.80%completed in 4176.66 (sec) <<
+loss 29.045898 [learning] epoch 21>> 44.20%completed in 4524.66 (sec) <<
+loss 27.683498 [learning] epoch 21>> 47.60%completed in 4880.21 (sec) <<
+loss 29.452435 [learning] epoch 21>> 51.00%completed in 5226.77 (sec) <<
+loss 31.764359 [learning] epoch 21>> 54.40%completed in 5575.96 (sec) <<
+loss 21.178743 [learning] epoch 21>> 57.80%completed in 5916.05 (sec) <<
+loss 33.889072 [learning] epoch 21>> 61.21%completed in 6263.58 (sec) <<
+loss 22.455732 [learning] epoch 21>> 64.61%completed in 6610.40 (sec) <<
+loss 27.634493 [learning] epoch 21>> 68.01%completed in 6962.22 (sec) <<
+loss 27.122753 [learning] epoch 21>> 71.41%completed in 7312.55 (sec) <<
+loss 20.886856 [learning] epoch 21>> 74.81%completed in 7659.98 (sec) <<
+loss 24.313120 [learning] epoch 21>> 78.21%completed in 8007.85 (sec) <<
+loss 23.786303 [learning] epoch 21>> 81.61%completed in 8357.47 (sec) <<
+loss 20.448750 [learning] epoch 21>> 85.01%completed in 8699.00 (sec) <<
+loss 29.007282 [learning] epoch 21>> 88.41%completed in 9055.05 (sec) <<
+loss 20.555956 [learning] epoch 21>> 91.81%completed in 9402.37 (sec) <<
+loss 25.524155 [learning] epoch 21>> 95.21%completed in 9751.85 (sec) <<
+loss 29.962912 [learning] epoch 21>> 98.61%completed in 10097.70 (sec) <<
+
+VALID new best: {'a': 0.32336244541484715, 'p': 0.26303170233549417, 'r': 0.058750607440024596, 'f': 0.09604799156904868, 'SinglePre': 0.08457281217571774, 'SingleRecall': 0.02325249643366619, 'SingleF1': 0.03647620468446964, 'MorePre': 0.45135973717831723, 'MoreRecall': 0.08415428853385058, 'MoreF1': 0.14185943124291922}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-21
+
+TEST new best: {'a': 0.31451965065502185, 'p': 0.2584204153025071, 'r': 0.05733276285808101, 'f': 0.09384517663154122, 'SinglePre': 0.08257358687158114, 'SingleRecall': 0.022562277580071174, 'SingleF1': 0.03544077365979093, 'MorePre': 0.44628942486085343, 'MoreRecall': 0.08244931535020822, 'MoreF1': 0.13918502553123777}
+top5: {'a': 0.3030021834061135, 'p': 0.2573601001437248, 'r': 0.05523328126088298, 'f': 0.09094781682641107, 'SinglePre': 0.08263944847345331, 'SingleRecall': 0.021897983392645315, 'SingleF1': 0.03462180460998893, 'MorePre': 0.445, 'MoreRecall': 0.07931312231152851, 'MoreF1': 0.13463076900699628}
+top10: {'a': 0.31435589519650653, 'p': 0.25854096520763187, 'r': 0.05730291240883175, 'f': 0.09381312308594514, 'SinglePre': 0.08265252911524422, 'SingleRecall': 0.022562277580071174, 'SingleF1': 0.035448039361860736, 'MorePre': 0.4464667100009286, 'MoreRecall': 0.08239790234957413, 'MoreF1': 0.13912037037037037}
+
+learning rate:0.000100
+loss 28.421743 [learning] epoch 22>> 0.00%completed in 0.37 (sec) <<
+loss 20.633438 [learning] epoch 22>> 3.40%completed in 340.07 (sec) <<
+loss 28.994986 [learning] epoch 22>> 6.80%completed in 680.77 (sec) <<
+loss 37.225494 [learning] epoch 22>> 10.20%completed in 1020.53 (sec) <<
+loss 23.258734 [learning] epoch 22>> 13.60%completed in 1373.24 (sec) <<
+loss 18.510870 [learning] epoch 22>> 17.00%completed in 1713.28 (sec) <<
+loss 32.643482 [learning] epoch 22>> 20.40%completed in 2059.59 (sec) <<
+loss 36.946842 [learning] epoch 22>> 23.80%completed in 2402.36 (sec) <<
+loss 24.432198 [learning] epoch 22>> 27.20%completed in 2747.62 (sec) <<
+loss 23.498661 [learning] epoch 22>> 30.60%completed in 3090.15 (sec) <<
+loss 29.203409 [learning] epoch 22>> 34.00%completed in 3439.16 (sec) <<
+loss 34.700050 [learning] epoch 22>> 37.40%completed in 3787.77 (sec) <<
+loss 25.281397 [learning] epoch 22>> 40.80%completed in 4134.71 (sec) <<
+loss 24.809414 [learning] epoch 22>> 44.20%completed in 4478.99 (sec) <<
+loss 26.188269 [learning] epoch 22>> 47.60%completed in 4829.54 (sec) <<
+loss 19.913847 [learning] epoch 22>> 51.00%completed in 5179.47 (sec) <<
+loss 20.298105 [learning] epoch 22>> 54.40%completed in 5502.26 (sec) <<
+loss 26.005611 [learning] epoch 22>> 57.80%completed in 5807.01 (sec) <<
+loss 20.276199 [learning] epoch 22>> 61.21%completed in 6111.58 (sec) <<
+loss 35.181816 [learning] epoch 22>> 64.61%completed in 6412.66 (sec) <<
+loss 26.571445 [learning] epoch 22>> 68.01%completed in 6715.77 (sec) <<
+loss 20.452158 [learning] epoch 22>> 71.41%completed in 7021.50 (sec) <<
+loss 27.153688 [learning] epoch 22>> 74.81%completed in 7324.09 (sec) <<
+loss 27.353313 [learning] epoch 22>> 78.21%completed in 7627.58 (sec) <<
+loss 22.371317 [learning] epoch 22>> 81.61%completed in 7927.58 (sec) <<
+loss 29.560856 [learning] epoch 22>> 85.01%completed in 8225.26 (sec) <<
+loss 25.134510 [learning] epoch 22>> 88.41%completed in 8529.64 (sec) <<
+loss 33.601109 [learning] epoch 22>> 91.81%completed in 8833.66 (sec) <<
+loss 27.824991 [learning] epoch 22>> 95.21%completed in 9156.14 (sec) <<
+loss 30.912615 [learning] epoch 22>> 98.61%completed in 9502.90 (sec) <<
+
+VALID new curr: {'a': 0.32057860262008736, 'p': 0.2667847733260652, 'r': 0.05824482064403519, 'f': 0.09561487053000887, 'SinglePre': 0.09492407809110628, 'SingleRecall': 0.026010461245839278, 'SingleF1': 0.0408323224783055, 'MorePre': 0.4556201735151111, 'MoreRecall': 0.0813128477362054, 'MoreF1': 0.137997747682712}
+TEST new curr: {'a': 0.31162663755458514, 'p': 0.2622777599117931, 'r': 0.05680540492134407, 'f': 0.09338502306408873, 'SinglePre': 0.09254566110285764, 'SingleRecall': 0.025124555160142347, 'SingleF1': 0.039520086578471066, 'MorePre': 0.45040681906237895, 'MoreRecall': 0.0796901509828452, 'MoreF1': 0.13542045868219876}
+top5: {'a': 0.2998908296943231, 'p': 0.260465557293889, 'r': 0.054666122725147016, 'f': 0.0903663009687978, 'SinglePre': 0.09183489545782264, 'SingleRecall': 0.02417556346381969, 'SingleF1': 0.03827517560004508, 'MorePre': 0.4476342902870861, 'MoreRecall': 0.07669105927918973, 'MoreF1': 0.1309475039503716}
+top10: {'a': 0.3115174672489083, 'p': 0.2623787412073008, 'r': 0.056785504621844556, 'f': 0.09336452573373032, 'SinglePre': 0.09263470958712386, 'SingleRecall': 0.025124555160142347, 'SingleF1': 0.039528199768579, 'MorePre': 0.4504312433375327, 'MoreRecall': 0.07965587564908913, 'MoreF1': 0.13537206931702342}
+
+learning rate:0.000100
+loss 28.076836 [learning] epoch 23>> 0.00%completed in 0.38 (sec) <<
+loss 28.207233 [learning] epoch 23>> 3.40%completed in 339.10 (sec) <<
+loss 27.945827 [learning] epoch 23>> 6.80%completed in 688.01 (sec) <<
+loss 23.064110 [learning] epoch 23>> 10.20%completed in 1037.85 (sec) <<
+loss 27.875469 [learning] epoch 23>> 13.60%completed in 1391.06 (sec) <<
+loss 23.020163 [learning] epoch 23>> 17.00%completed in 1735.12 (sec) <<
+loss 30.940151 [learning] epoch 23>> 20.40%completed in 2082.35 (sec) <<
+loss 27.060440 [learning] epoch 23>> 23.80%completed in 2437.10 (sec) <<
+loss 22.029072 [learning] epoch 23>> 27.20%completed in 2787.35 (sec) <<
+loss 28.683466 [learning] epoch 23>> 30.60%completed in 3133.29 (sec) <<
+loss 23.304323 [learning] epoch 23>> 34.00%completed in 3492.30 (sec) <<
+loss 33.153267 [learning] epoch 23>> 37.40%completed in 3847.65 (sec) <<
+loss 29.669456 [learning] epoch 23>> 40.80%completed in 4194.60 (sec) <<
+loss 24.077972 [learning] epoch 23>> 44.20%completed in 4544.99 (sec) <<
+loss 26.378588 [learning] epoch 23>> 47.60%completed in 4897.88 (sec) <<
+loss 24.822538 [learning] epoch 23>> 51.00%completed in 5249.99 (sec) <<
+loss 24.956285 [learning] epoch 23>> 54.40%completed in 5602.51 (sec) <<
+loss 26.527739 [learning] epoch 23>> 57.80%completed in 5950.73 (sec) <<
+loss 21.963081 [learning] epoch 23>> 61.21%completed in 6297.14 (sec) <<
+loss 24.771994 [learning] epoch 23>> 64.61%completed in 6646.07 (sec) <<
+loss 25.314444 [learning] epoch 23>> 68.01%completed in 6996.95 (sec) <<
+loss 22.794426 [learning] epoch 23>> 71.41%completed in 7343.55 (sec) <<
+loss 31.983513 [learning] epoch 23>> 74.81%completed in 7693.16 (sec) <<
+loss 31.350224 [learning] epoch 23>> 78.21%completed in 8041.61 (sec) <<
+loss 29.597797 [learning] epoch 23>> 81.61%completed in 8394.64 (sec) <<
+loss 27.385710 [learning] epoch 23>> 85.01%completed in 8739.70 (sec) <<
+loss 25.455431 [learning] epoch 23>> 88.41%completed in 9087.82 (sec) <<
+loss 29.022232 [learning] epoch 23>> 91.81%completed in 9435.28 (sec) <<
+loss 25.234711 [learning] epoch 23>> 95.21%completed in 9748.40 (sec) <<
+loss 21.514441 [learning] epoch 23>> 98.61%completed in 10052.26 (sec) <<
+
+VALID new curr: {'a': 0.3193231441048035, 'p': 0.27028275734614676, 'r': 0.05801672071643212, 'f': 0.09552813997730188, 'SinglePre': 0.09077006117308384, 'SingleRecall': 0.02398953875416072, 'SingleF1': 0.037949450880096276, 'MorePre': 0.45982142857142855, 'MoreRecall': 0.08236775390060061, 'MoreF1': 0.13970938370297686}
+TEST new curr: {'a': 0.3089519650655022, 'p': 0.2629256282807637, 'r': 0.05631784758360613, 'f': 0.09276559478152556, 'SinglePre': 0.08515421275065192, 'SingleRecall': 0.022467378410438908, 'SingleF1': 0.035554053800379196, 'MorePre': 0.45291178166442436, 'MoreRecall': 0.08076982399616116, 'MoreF1': 0.137091496138575}
+top5: {'a': 0.29737991266375546, 'p': 0.26110711718188356, 'r': 0.05420841583665834, 'f': 0.08977802679498376, 'SinglePre': 0.08498426217367154, 'SingleRecall': 0.021779359430604984, 'SingleF1': 0.03467291131590875, 'MorePre': 0.45016396700785055, 'MoreRecall': 0.07763363095748145, 'MoreF1': 0.13242903499283773}
+top10: {'a': 0.30884279475982535, 'p': 0.2630404463040446, 'r': 0.05629794728410663, 'f': 0.0927457360401931, 'SinglePre': 0.08523085230852309, 'SingleRecall': 0.022467378410438908, 'SingleF1': 0.035560729239030434, 'MorePre': 0.4530243292624291, 'MoreRecall': 0.0807355486624051, 'MoreF1': 0.1370472727272727}
+
+learning rate:0.000100
+loss 27.275341 [learning] epoch 24>> 0.00%completed in 0.28 (sec) <<
+loss 26.613956 [learning] epoch 24>> 3.40%completed in 311.07 (sec) <<
+loss 21.671173 [learning] epoch 24>> 6.80%completed in 624.43 (sec) <<
+loss 25.362135 [learning] epoch 24>> 10.20%completed in 936.80 (sec) <<
+loss 19.955053 [learning] epoch 24>> 13.60%completed in 1257.33 (sec) <<
+loss 26.864876 [learning] epoch 24>> 17.00%completed in 1571.43 (sec) <<
+loss 24.952484 [learning] epoch 24>> 20.40%completed in 1889.84 (sec) <<
+loss 24.985201 [learning] epoch 24>> 23.80%completed in 2201.71 (sec) <<
+loss 26.816090 [learning] epoch 24>> 27.20%completed in 2510.91 (sec) <<
+loss 23.263409 [learning] epoch 24>> 30.60%completed in 2822.74 (sec) <<
+loss 23.184443 [learning] epoch 24>> 34.00%completed in 3135.28 (sec) <<
+loss 37.851051 [learning] epoch 24>> 37.40%completed in 3451.07 (sec) <<
+loss 27.954676 [learning] epoch 24>> 40.80%completed in 3769.94 (sec) <<
+loss 18.323017 [learning] epoch 24>> 44.20%completed in 4091.72 (sec) <<
+loss 24.575455 [learning] epoch 24>> 47.60%completed in 4403.04 (sec) <<
+loss 30.555420 [learning] epoch 24>> 51.00%completed in 4716.20 (sec) <<
+loss 27.678070 [learning] epoch 24>> 54.40%completed in 5077.91 (sec) <<
+loss 23.857658 [learning] epoch 24>> 57.80%completed in 5436.13 (sec) <<
+loss 26.803711 [learning] epoch 24>> 61.21%completed in 5789.74 (sec) <<
+loss 29.633217 [learning] epoch 24>> 64.61%completed in 6148.31 (sec) <<
+loss 26.498323 [learning] epoch 24>> 68.01%completed in 6502.18 (sec) <<
+loss 26.797924 [learning] epoch 24>> 71.41%completed in 6853.75 (sec) <<
+loss 26.096416 [learning] epoch 24>> 74.81%completed in 7209.59 (sec) <<
+loss 24.842829 [learning] epoch 24>> 78.21%completed in 7561.26 (sec) <<
+loss 24.153141 [learning] epoch 24>> 81.61%completed in 7914.12 (sec) <<
+loss 21.217949 [learning] epoch 24>> 85.01%completed in 8268.41 (sec) <<
+loss 25.313683 [learning] epoch 24>> 88.41%completed in 8616.59 (sec) <<
+loss 23.035646 [learning] epoch 24>> 91.81%completed in 8966.58 (sec) <<
+loss 26.204609 [learning] epoch 24>> 95.21%completed in 9316.22 (sec) <<
+loss 26.890995 [learning] epoch 24>> 98.61%completed in 9676.88 (sec) <<
+
+VALID new best: {'a': 0.34399563318777293, 'p': 0.27898534685023685, 'r': 0.062499380163240206, 'f': 0.10212117774788937, 'SinglePre': 0.1216260970359331, 'SingleRecall': 0.034926295767950546, 'SingleF1': 0.05426872067678894, 'MorePre': 0.4598040148415945, 'MoreRecall': 0.08223163697616252, 'MoreF1': 0.13951273021188154}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-24
+
+TEST new best: {'a': 0.3330786026200873, 'p': 0.2726297917969797, 'r': 0.060715813772997285, 'f': 0.09931398159224629, 'SinglePre': 0.11562759767248545, 'SingleRecall': 0.0330011862396204, 'SingleF1': 0.05134736064968623, 'MorePre': 0.45508114374034003, 'MoreRecall': 0.0807355486624051, 'MoreF1': 0.13714102732049546}
+top5: {'a': 0.31921397379912664, 'p': 0.2701529080242066, 'r': 0.05818847573655984, 'f': 0.09575269345384288, 'SinglePre': 0.11257423186160599, 'SingleRecall': 0.03103202846975089, 'SingleF1': 0.04865256932433187, 'MorePre': 0.45273234942161944, 'MoreRecall': 0.07780500762626176, 'MoreF1': 0.13278930665847702}
+top10: {'a': 0.33286026200873364, 'p': 0.2727069451276777, 'r': 0.06067601317399827, 'f': 0.09926584297830085, 'SinglePre': 0.11560549313358302, 'SingleRecall': 0.03295373665480427, 'SingleF1': 0.05128773193021324, 'MorePre': 0.4551517494683936, 'MoreRecall': 0.08070127332864904, 'MoreF1': 0.1370947785201683}
+
+learning rate:0.000100
+loss 25.037170 [learning] epoch 25>> 0.00%completed in 0.27 (sec) <<
+loss 22.649437 [learning] epoch 25>> 3.40%completed in 351.17 (sec) <<
+loss 31.124531 [learning] epoch 25>> 6.80%completed in 701.19 (sec) <<
+loss 35.235924 [learning] epoch 25>> 10.20%completed in 1056.51 (sec) <<
+loss 23.051640 [learning] epoch 25>> 13.60%completed in 1416.60 (sec) <<
+loss 25.055569 [learning] epoch 25>> 17.00%completed in 1771.23 (sec) <<
+loss 25.106226 [learning] epoch 25>> 20.40%completed in 2127.62 (sec) <<
+loss 22.625120 [learning] epoch 25>> 23.80%completed in 2478.67 (sec) <<
+loss 26.261412 [learning] epoch 25>> 27.20%completed in 2829.13 (sec) <<
+loss 24.595287 [learning] epoch 25>> 30.60%completed in 3184.15 (sec) <<
+loss 24.359076 [learning] epoch 25>> 34.00%completed in 3537.77 (sec) <<
+loss 22.963127 [learning] epoch 25>> 37.40%completed in 3887.41 (sec) <<
+loss 27.694862 [learning] epoch 25>> 40.80%completed in 4237.21 (sec) <<
+loss 30.798603 [learning] epoch 25>> 44.20%completed in 4592.70 (sec) <<
+loss 29.852211 [learning] epoch 25>> 47.60%completed in 4943.65 (sec) <<
+loss 27.587908 [learning] epoch 25>> 51.00%completed in 5297.02 (sec) <<
+loss 39.617142 [learning] epoch 25>> 54.40%completed in 5648.50 (sec) <<
+loss 20.247551 [learning] epoch 25>> 57.80%completed in 6002.38 (sec) <<
+loss 25.448505 [learning] epoch 25>> 61.21%completed in 6355.88 (sec) <<
+loss 22.780390 [learning] epoch 25>> 64.61%completed in 6707.61 (sec) <<
+loss 19.233723 [learning] epoch 25>> 68.01%completed in 7064.97 (sec) <<
+loss 28.140301 [learning] epoch 25>> 71.41%completed in 7420.51 (sec) <<
+loss 23.688507 [learning] epoch 25>> 74.81%completed in 7780.78 (sec) <<
+loss 26.319500 [learning] epoch 25>> 78.21%completed in 8134.92 (sec) <<
+loss 20.721403 [learning] epoch 25>> 81.61%completed in 8488.55 (sec) <<
+loss 26.819765 [learning] epoch 25>> 85.01%completed in 8844.13 (sec) <<
+loss 23.593166 [learning] epoch 25>> 88.41%completed in 9199.45 (sec) <<
+loss 29.044222 [learning] epoch 25>> 91.81%completed in 9564.76 (sec) <<
+loss 20.986658 [learning] epoch 25>> 95.21%completed in 9923.81 (sec) <<
+loss 20.431173 [learning] epoch 25>> 98.61%completed in 10279.02 (sec) <<
+
+VALID new curr: {'a': 0.33024017467248906, 'p': 0.27317469634713504, 'r': 0.060000198347763135, 'f': 0.09838998211091234, 'SinglePre': 0.08936672110324805, 'SingleRecall': 0.0234189253447456, 'SingleF1': 0.037112392147997435, 'MorePre': 0.4552808988764045, 'MoreRecall': 0.0861790277848672, 'MoreF1': 0.14492546281724797}
+TEST new curr: {'a': 0.32030567685589517, 'p': 0.26718878062107276, 'r': 0.058387478731554907, 'f': 0.09583302711839493, 'SinglePre': 0.08596873864049437, 'SingleRecall': 0.022443653618030843, 'SingleF1': 0.035594687135493096, 'MorePre': 0.4491695564884103, 'MoreRecall': 0.0843515963736697, 'MoreF1': 0.1420306165144498}
+top5: {'a': 0.3087882096069869, 'p': 0.2657240828596928, 'r': 0.05628799713435687, 'f': 0.09289761064126775, 'SinglePre': 0.08586661678046956, 'SingleRecall': 0.021779359430604984, 'SingleF1': 0.034745746673984224, 'MorePre': 0.4471598414795244, 'MoreRecall': 0.08121540333498997, 'MoreF1': 0.13746392260946497}
+top10: {'a': 0.32025109170305677, 'p': 0.2672892938496583, 'r': 0.05837752858180516, 'f': 0.09582608553625532, 'SinglePre': 0.08601563920712857, 'SingleRecall': 0.022443653618030843, 'SingleF1': 0.03559870550161812, 'MorePre': 0.44932432432432434, 'MoreRecall': 0.08433445870679165, 'MoreF1': 0.14201405422564678}
+
+learning rate:0.000100
+loss 27.496141 [learning] epoch 26>> 0.00%completed in 0.35 (sec) <<
+loss 28.879206 [learning] epoch 26>> 3.40%completed in 349.61 (sec) <<
+loss 32.906570 [learning] epoch 26>> 6.80%completed in 707.34 (sec) <<
+loss 25.780476 [learning] epoch 26>> 10.20%completed in 1058.98 (sec) <<
+loss 24.016125 [learning] epoch 26>> 13.60%completed in 1411.15 (sec) <<
+loss 23.882090 [learning] epoch 26>> 17.00%completed in 1766.48 (sec) <<
+loss 31.412870 [learning] epoch 26>> 20.40%completed in 2126.10 (sec) <<
+loss 29.238653 [learning] epoch 26>> 23.80%completed in 2479.73 (sec) <<
+loss 26.260948 [learning] epoch 26>> 27.20%completed in 2838.57 (sec) <<
+loss 30.401173 [learning] epoch 26>> 30.60%completed in 3192.33 (sec) <<
+loss 20.288704 [learning] epoch 26>> 34.00%completed in 3553.04 (sec) <<
+loss 26.290209 [learning] epoch 26>> 37.40%completed in 3914.63 (sec) <<
+loss 23.359837 [learning] epoch 26>> 40.80%completed in 4273.26 (sec) <<
+loss 22.159130 [learning] epoch 26>> 44.20%completed in 4632.88 (sec) <<
+loss 32.936165 [learning] epoch 26>> 47.60%completed in 4989.34 (sec) <<
+loss 23.395451 [learning] epoch 26>> 51.00%completed in 5356.42 (sec) <<
+loss 22.184000 [learning] epoch 26>> 54.40%completed in 5716.43 (sec) <<
+loss 19.135160 [learning] epoch 26>> 57.80%completed in 6074.82 (sec) <<
+loss 25.770561 [learning] epoch 26>> 61.21%completed in 6430.31 (sec) <<
+loss 20.430670 [learning] epoch 26>> 64.61%completed in 6787.85 (sec) <<
+loss 32.515617 [learning] epoch 26>> 68.01%completed in 7150.63 (sec) <<
+loss 20.185942 [learning] epoch 26>> 71.41%completed in 7505.94 (sec) <<
+loss 28.848982 [learning] epoch 26>> 74.81%completed in 7866.33 (sec) <<
+loss 29.224747 [learning] epoch 26>> 78.21%completed in 8232.23 (sec) <<
+loss 30.402582 [learning] epoch 26>> 81.61%completed in 8584.79 (sec) <<
+loss 26.536766 [learning] epoch 26>> 85.01%completed in 8953.21 (sec) <<
+loss 24.743704 [learning] epoch 26>> 88.41%completed in 9318.36 (sec) <<
+loss 22.765915 [learning] epoch 26>> 91.81%completed in 9672.31 (sec) <<
+loss 23.562452 [learning] epoch 26>> 95.21%completed in 10036.39 (sec) <<
+loss 26.815392 [learning] epoch 26>> 98.61%completed in 10392.83 (sec) <<
+
+VALID new curr: {'a': 0.3270196506550218, 'p': 0.2785475172029013, 'r': 0.05941507244652049, 'f': 0.09793936619775873, 'SinglePre': 0.09822671989601708, 'SingleRecall': 0.025154541131716595, 'SingleF1': 0.04005224205485416, 'MorePre': 0.4594393219707553, 'MoreRecall': 0.08393309853163868, 'MoreF1': 0.14193641202704646}
+TEST new curr: {'a': 0.31768558951965065, 'p': 0.2737664048167835, 'r': 0.05790987154356673, 'f': 0.09559789750328514, 'SinglePre': 0.09317990457479652, 'SingleRecall': 0.023629893238434164, 'SingleF1': 0.03769942655992733, 'MorePre': 0.4563859981078524, 'MoreRecall': 0.08267210501962263, 'MoreF1': 0.13998636119615213}
+top5: {'a': 0.30775109170305676, 'p': 0.2727492622514634, 'r': 0.05609894428911155, 'f': 0.09305780213250586, 'SinglePre': 0.0926904235904332, 'SingleRecall': 0.022894424673784105, 'SingleF1': 0.036719240501512526, 'MorePre': 0.455458089668616, 'MoreRecall': 0.08008431732103992, 'MoreF1': 0.1362172246432788}
+top10: {'a': 0.31768558951965065, 'p': 0.27389524212904137, 'r': 0.05790987154356673, 'f': 0.09560574948665296, 'SinglePre': 0.09321478708469817, 'SingleRecall': 0.023629893238434164, 'SingleF1': 0.037702280685151884, 'MorePre': 0.45664521014767134, 'MoreRecall': 0.08267210501962263, 'MoreF1': 0.13999854893709643}
+
+learning rate:0.000100
+loss 26.180103 [learning] epoch 27>> 0.00%completed in 0.36 (sec) <<
+loss 27.903074 [learning] epoch 27>> 3.40%completed in 356.89 (sec) <<
+loss 27.629765 [learning] epoch 27>> 6.80%completed in 713.62 (sec) <<
+loss 26.586435 [learning] epoch 27>> 10.20%completed in 1072.51 (sec) <<
+loss 32.459930 [learning] epoch 27>> 13.60%completed in 1431.12 (sec) <<
+loss 23.022717 [learning] epoch 27>> 17.00%completed in 1791.40 (sec) <<
+loss 29.323753 [learning] epoch 27>> 20.40%completed in 2147.75 (sec) <<
+loss 28.594124 [learning] epoch 27>> 23.80%completed in 2502.61 (sec) <<
+loss 27.374269 [learning] epoch 27>> 27.20%completed in 2862.50 (sec) <<
+loss 26.916151 [learning] epoch 27>> 30.60%completed in 3222.53 (sec) <<
+loss 26.911652 [learning] epoch 27>> 34.00%completed in 3584.95 (sec) <<
+loss 25.675873 [learning] epoch 27>> 37.40%completed in 3945.58 (sec) <<
+loss 25.966114 [learning] epoch 27>> 40.80%completed in 4310.44 (sec) <<
+loss 18.463512 [learning] epoch 27>> 44.20%completed in 4669.66 (sec) <<
+loss 30.493505 [learning] epoch 27>> 47.60%completed in 5028.93 (sec) <<
+loss 28.454882 [learning] epoch 27>> 51.00%completed in 5388.21 (sec) <<
+loss 22.310932 [learning] epoch 27>> 54.40%completed in 5746.56 (sec) <<
+loss 18.559561 [learning] epoch 27>> 57.80%completed in 6104.62 (sec) <<
+loss 24.819872 [learning] epoch 27>> 61.21%completed in 6460.60 (sec) <<
+loss 23.920967 [learning] epoch 27>> 64.61%completed in 6824.31 (sec) <<
+loss 24.984272 [learning] epoch 27>> 68.01%completed in 7183.71 (sec) <<
+loss 25.283607 [learning] epoch 27>> 71.41%completed in 7542.31 (sec) <<
+loss 21.588430 [learning] epoch 27>> 74.81%completed in 7903.80 (sec) <<
+loss 26.403730 [learning] epoch 27>> 78.21%completed in 8263.03 (sec) <<
+loss 27.257858 [learning] epoch 27>> 81.61%completed in 8618.99 (sec) <<
+loss 24.746843 [learning] epoch 27>> 85.01%completed in 8968.78 (sec) <<
+loss 25.593018 [learning] epoch 27>> 88.41%completed in 9335.18 (sec) <<
+loss 27.935125 [learning] epoch 27>> 91.81%completed in 9689.58 (sec) <<
+loss 23.807245 [learning] epoch 27>> 95.21%completed in 10055.04 (sec) <<
+loss 23.903841 [learning] epoch 27>> 98.61%completed in 10421.04 (sec) <<
+
+VALID new best: {'a': 0.3811135371179039, 'p': 0.28136207938746727, 'r': 0.06924320410976566, 'f': 0.11113587164141095, 'SinglePre': 0.12110134557050634, 'SingleRecall': 0.03701854493580599, 'SingleF1': 0.05670375293624925, 'MorePre': 0.4536711824719853, 'MoreRecall': 0.09230428938458135, 'MoreF1': 0.153398085704995}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-27
+
+TEST new best: {'a': 0.3723799126637555, 'p': 0.27833537331701347, 'r': 0.06787992159281997, 'f': 0.10914239546919871, 'SinglePre': 0.12017336485421592, 'SingleRecall': 0.036180308422301306, 'SingleF1': 0.05561633843909555, 'MorePre': 0.4481387478849408, 'MoreRecall': 0.09077822145293139, 'MoreF1': 0.15097404910860612}
+top5: {'a': 0.3544213973799127, 'p': 0.2756644306699499, 'r': 0.064606322325151, 'f': 0.10467937608318892, 'SinglePre': 0.11715995736656555, 'SingleRecall': 0.033902728351126926, 'SingleF1': 0.052587999337589925, 'MorePre': 0.4458924011622788, 'MoreRecall': 0.08678514507035012, 'MoreF1': 0.1452917886038905}
+top10: {'a': 0.3719978165938865, 'p': 0.27848152991173586, 'r': 0.0678102705445717, 'f': 0.10906355772846935, 'SinglePre': 0.1201452478686454, 'SingleRecall': 0.0361091340450771, 'SingleF1': 0.0555292057353424, 'MorePre': 0.44840731955269403, 'MoreRecall': 0.09070967078541928, 'MoreF1': 0.15089444800798232}
+
+learning rate:0.000100
+loss 21.498688 [learning] epoch 28>> 0.00%completed in 0.30 (sec) <<
+loss 24.660599 [learning] epoch 28>> 3.40%completed in 355.96 (sec) <<
+loss 30.956745 [learning] epoch 28>> 6.80%completed in 711.67 (sec) <<
+loss 27.884596 [learning] epoch 28>> 10.20%completed in 1066.37 (sec) <<
+loss 23.537903 [learning] epoch 28>> 13.60%completed in 1421.73 (sec) <<
+loss 25.468796 [learning] epoch 28>> 17.00%completed in 1776.17 (sec) <<
+loss 26.388451 [learning] epoch 28>> 20.40%completed in 2129.34 (sec) <<
+loss 24.885719 [learning] epoch 28>> 23.80%completed in 2484.14 (sec) <<
+loss 25.541950 [learning] epoch 28>> 27.20%completed in 2841.97 (sec) <<
+loss 30.458158 [learning] epoch 28>> 30.60%completed in 3193.83 (sec) <<
+loss 28.790178 [learning] epoch 28>> 34.00%completed in 3540.98 (sec) <<
+loss 30.001442 [learning] epoch 28>> 37.40%completed in 3890.52 (sec) <<
+loss 27.958315 [learning] epoch 28>> 40.80%completed in 4242.01 (sec) <<
+loss 27.416449 [learning] epoch 28>> 44.20%completed in 4598.47 (sec) <<
+loss 27.456530 [learning] epoch 28>> 47.60%completed in 4961.33 (sec) <<
+loss 23.960110 [learning] epoch 28>> 51.00%completed in 5314.01 (sec) <<
+loss 42.557716 [learning] epoch 28>> 54.40%completed in 5665.72 (sec) <<
+loss 27.759045 [learning] epoch 28>> 57.80%completed in 6021.93 (sec) <<
+loss 19.772156 [learning] epoch 28>> 61.21%completed in 6372.75 (sec) <<
+loss 21.410782 [learning] epoch 28>> 64.61%completed in 6727.12 (sec) <<
+loss 25.655712 [learning] epoch 28>> 68.01%completed in 7079.19 (sec) <<
+loss 32.147415 [learning] epoch 28>> 71.41%completed in 7424.66 (sec) <<
+loss 23.988625 [learning] epoch 28>> 74.81%completed in 7777.01 (sec) <<
+loss 18.691700 [learning] epoch 28>> 78.21%completed in 8136.65 (sec) <<
+loss 25.786482 [learning] epoch 28>> 81.61%completed in 8492.01 (sec) <<
+loss 23.130556 [learning] epoch 28>> 85.01%completed in 8844.57 (sec) <<
+loss 25.770885 [learning] epoch 28>> 88.41%completed in 9199.90 (sec) <<
+loss 23.679796 [learning] epoch 28>> 91.81%completed in 9557.43 (sec) <<
+loss 29.895304 [learning] epoch 28>> 95.21%completed in 9913.16 (sec) <<
+loss 20.070097 [learning] epoch 28>> 98.61%completed in 10265.13 (sec) <<
+
+VALID new curr: {'a': 0.36299126637554585, 'p': 0.28313535147102653, 'r': 0.06595063124175617, 'f': 0.10698198198198199, 'SinglePre': 0.1145842039281237, 'SingleRecall': 0.0325962910128388, 'SingleF1': 0.050754280425728826, 'MorePre': 0.45816698489845514, 'MoreRecall': 0.08982015551358617, 'MoreF1': 0.15019560423927733}
+TEST new curr: {'a': 0.3555676855895197, 'p': 0.28080006897146303, 'r': 0.06481527546989582, 'f': 0.10532017235385895, 'SinglePre': 0.11210384356035064, 'SingleRecall': 0.03155397390272835, 'SingleF1': 0.049246491650312876, 'MorePre': 0.45738485971413445, 'MoreRecall': 0.08884166509571387, 'MoreF1': 0.14878381287221065}
+top5: {'a': 0.3423580786026201, 'p': 0.2790656284760845, 'r': 0.06240733923045542, 'f': 0.10200364298724952, 'SinglePre': 0.10981450840372725, 'SingleRecall': 0.029916963226571766, 'SingleF1': 0.04702328790110566, 'MorePre': 0.45587700145560406, 'MoreRecall': 0.08587684872581447, 'MoreF1': 0.14452792639487763}
+top10: {'a': 0.3552947598253275, 'p': 0.2808508802209182, 'r': 0.06476552472114705, 'f': 0.1052580512140495, 'SinglePre': 0.11213297333783327, 'SingleRecall': 0.031530249110320284, 'SingleF1': 0.049220399244472426, 'MorePre': 0.4574355351465913, 'MoreRecall': 0.08877311442820174, 'MoreF1': 0.14869034804449227}
+
+learning rate:0.000100
+loss 21.583244 [learning] epoch 29>> 0.00%completed in 0.31 (sec) <<
+loss 23.077766 [learning] epoch 29>> 3.40%completed in 353.38 (sec) <<
+loss 20.659704 [learning] epoch 29>> 6.80%completed in 710.34 (sec) <<
+loss 23.326046 [learning] epoch 29>> 10.20%completed in 1065.39 (sec) <<
+loss 25.544075 [learning] epoch 29>> 13.60%completed in 1422.04 (sec) <<
+loss 24.858835 [learning] epoch 29>> 17.00%completed in 1775.41 (sec) <<
+loss 22.555212 [learning] epoch 29>> 20.40%completed in 2122.74 (sec) <<
+loss 28.510830 [learning] epoch 29>> 23.80%completed in 2472.60 (sec) <<
+loss 25.616873 [learning] epoch 29>> 27.20%completed in 2831.70 (sec) <<
+loss 22.609715 [learning] epoch 29>> 30.60%completed in 3181.47 (sec) <<
+loss 32.936005 [learning] epoch 29>> 34.00%completed in 3533.78 (sec) <<
+loss 27.535389 [learning] epoch 29>> 37.40%completed in 3882.74 (sec) <<
+loss 20.504259 [learning] epoch 29>> 40.80%completed in 4236.88 (sec) <<
+loss 23.721371 [learning] epoch 29>> 44.20%completed in 4585.61 (sec) <<
+loss 29.469809 [learning] epoch 29>> 47.60%completed in 4938.79 (sec) <<
+loss 27.649490 [learning] epoch 29>> 51.00%completed in 5295.15 (sec) <<
+loss 34.516708 [learning] epoch 29>> 54.40%completed in 5645.24 (sec) <<
+loss 25.266031 [learning] epoch 29>> 57.80%completed in 5998.58 (sec) <<
+loss 27.973295 [learning] epoch 29>> 61.21%completed in 6352.63 (sec) <<
+loss 23.951033 [learning] epoch 29>> 64.61%completed in 6708.99 (sec) <<
+loss 24.799397 [learning] epoch 29>> 68.01%completed in 7067.08 (sec) <<
+loss 24.167336 [learning] epoch 29>> 71.41%completed in 7422.41 (sec) <<
+loss 21.325584 [learning] epoch 29>> 74.81%completed in 7775.87 (sec) <<
+loss 19.328400 [learning] epoch 29>> 78.21%completed in 8132.92 (sec) <<
+loss 23.522291 [learning] epoch 29>> 81.61%completed in 8490.69 (sec) <<
+loss 22.614779 [learning] epoch 29>> 85.01%completed in 8857.68 (sec) <<
+loss 26.929363 [learning] epoch 29>> 88.41%completed in 9219.18 (sec) <<
+loss 26.091448 [learning] epoch 29>> 91.81%completed in 9573.77 (sec) <<
+loss 30.147125 [learning] epoch 29>> 95.21%completed in 9925.65 (sec) <<
+loss 36.283161 [learning] epoch 29>> 98.61%completed in 10276.95 (sec) <<
+
+VALID new curr: {'a': 0.35911572052401747, 'p': 0.279137850566422, 'r': 0.06524649668263366, 'f': 0.10577000369768974, 'SinglePre': 0.10231969633066217, 'SingleRecall': 0.028839752734189254, 'SingleF1': 0.04499675415005101, 'MorePre': 0.4580843435205737, 'MoreRecall': 0.09130042706685043, 'MoreF1': 0.15225502574942898}
+TEST new curr: {'a': 0.35322052401746723, 'p': 0.2780116858566764, 'r': 0.06438741903065641, 'f': 0.1045590053079328, 'SinglePre': 0.10163230240549828, 'SingleRecall': 0.028066429418742586, 'SingleF1': 0.04398587097973602, 'MorePre': 0.4544517016156755, 'MoreRecall': 0.09062398245102912, 'MoreF1': 0.15111377827310787}
+top5: {'a': 0.3388100436681223, 'p': 0.27613666696325295, 'r': 0.061760579496721424, 'f': 0.10094406362061815, 'SinglePre': 0.10061273421543379, 'SingleRecall': 0.026880189798339265, 'SingleF1': 0.04242571754881954, 'MorePre': 0.4523491129535526, 'MoreRecall': 0.08695652173913043, 'MoreF1': 0.14587166513339467}
+top10: {'a': 0.3529475982532751, 'p': 0.278071646669247, 'r': 0.06433766828190764, 'f': 0.1044976323997608, 'SinglePre': 0.10172843752687247, 'SingleRecall': 0.028066429418742586, 'SingleF1': 0.04399486788523402, 'MorePre': 0.45449070887818305, 'MoreRecall': 0.09053829411663897, 'MoreF1': 0.1509967845659164}
+
+learning rate:0.000100
+loss 27.033377 [learning] epoch 30>> 0.00%completed in 0.31 (sec) <<
+loss 23.839577 [learning] epoch 30>> 3.40%completed in 356.36 (sec) <<
+loss 32.551682 [learning] epoch 30>> 6.80%completed in 707.53 (sec) <<
+loss 20.436394 [learning] epoch 30>> 10.20%completed in 1056.53 (sec) <<
+loss 26.275738 [learning] epoch 30>> 13.60%completed in 1415.54 (sec) <<
+loss 25.448027 [learning] epoch 30>> 17.00%completed in 1767.88 (sec) <<
+loss 24.515236 [learning] epoch 30>> 20.40%completed in 2123.05 (sec) <<
+loss 20.212381 [learning] epoch 30>> 23.80%completed in 2474.67 (sec) <<
+loss 22.881392 [learning] epoch 30>> 27.20%completed in 2827.53 (sec) <<
+loss 26.168098 [learning] epoch 30>> 30.60%completed in 3174.73 (sec) <<
+loss 27.723845 [learning] epoch 30>> 34.00%completed in 3533.64 (sec) <<
+loss 30.977556 [learning] epoch 30>> 37.40%completed in 3879.96 (sec) <<
+loss 24.104172 [learning] epoch 30>> 40.80%completed in 4234.12 (sec) <<
+loss 22.669977 [learning] epoch 30>> 44.20%completed in 4586.03 (sec) <<
+loss 24.538610 [learning] epoch 30>> 47.60%completed in 4942.37 (sec) <<
+loss 25.644400 [learning] epoch 30>> 51.00%completed in 5297.63 (sec) <<
+loss 30.791485 [learning] epoch 30>> 54.40%completed in 5654.86 (sec) <<
+loss 23.900116 [learning] epoch 30>> 57.80%completed in 6005.69 (sec) <<
+loss 32.001472 [learning] epoch 30>> 61.21%completed in 6360.55 (sec) <<
+loss 22.139593 [learning] epoch 30>> 64.61%completed in 6716.94 (sec) <<
+loss 22.935291 [learning] epoch 30>> 68.01%completed in 7076.33 (sec) <<
+loss 29.999075 [learning] epoch 30>> 71.41%completed in 7425.69 (sec) <<
+loss 26.410366 [learning] epoch 30>> 74.81%completed in 7778.95 (sec) <<
+loss 26.749887 [learning] epoch 30>> 78.21%completed in 8131.28 (sec) <<
+loss 27.981144 [learning] epoch 30>> 81.61%completed in 8482.34 (sec) <<
+loss 24.450163 [learning] epoch 30>> 85.01%completed in 8837.03 (sec) <<
+loss 29.545660 [learning] epoch 30>> 88.41%completed in 9190.02 (sec) <<
+loss 26.536753 [learning] epoch 30>> 91.81%completed in 9546.03 (sec) <<
+loss 24.676090 [learning] epoch 30>> 95.21%completed in 9900.11 (sec) <<
+loss 23.799572 [learning] epoch 30>> 98.61%completed in 10251.73 (sec) <<
+
+VALID new curr: {'a': 0.35906113537117906, 'p': 0.2863485982935748, 'r': 0.065236579294477, 'f': 0.10626388271879164, 'SinglePre': 0.11311009727124043, 'SingleRecall': 0.031241084165477887, 'SingleF1': 0.04895951711161205, 'MorePre': 0.46358432408630557, 'MoreRecall': 0.08956493628026475, 'MoreF1': 0.15012548482774357}
+TEST new curr: {'a': 0.3501637554585153, 'p': 0.2821640642181658, 'r': 0.0638302106446702, 'f': 0.10410918887338115, 'SinglePre': 0.11096639749934879, 'SingleRecall': 0.030320284697508897, 'SingleF1': 0.047627033372463524, 'MorePre': 0.45792476377250846, 'MoreRecall': 0.0880361947524464, 'MoreF1': 0.14768071986085754}
+top5: {'a': 0.3361353711790393, 'p': 0.2799981812394853, 'r': 0.06127302215898349, 'f': 0.1005437000995967, 'SinglePre': 0.10892777030058322, 'SingleRecall': 0.028801897983392645, 'SingleF1': 0.045557744628952054, 'MorePre': 0.4557522123893805, 'MoreRecall': 0.08472862504498638, 'MoreF1': 0.14289223832714346}
+top10: {'a': 0.34989082969432317, 'p': 0.2822048076076429, 'r': 0.06378045989592143, 'f': 0.104045773647689, 'SinglePre': 0.11091794158553546, 'SingleRecall': 0.030272835112692763, 'SingleF1': 0.047564021321802666, 'MorePre': 0.4579839429081177, 'MoreRecall': 0.0879847817518123, 'MoreF1': 0.14761144894409223}
+
+learning rate:0.000100
+loss 25.246685 [learning] epoch 31>> 0.00%completed in 0.31 (sec) <<
+loss 23.458517 [learning] epoch 31>> 3.40%completed in 352.71 (sec) <<
+loss 25.900013 [learning] epoch 31>> 6.80%completed in 704.56 (sec) <<
+loss 29.542713 [learning] epoch 31>> 10.20%completed in 1062.38 (sec) <<
+loss 23.558296 [learning] epoch 31>> 13.60%completed in 1415.11 (sec) <<
+loss 21.886459 [learning] epoch 31>> 17.00%completed in 1770.72 (sec) <<
+loss 22.960276 [learning] epoch 31>> 20.40%completed in 2129.12 (sec) <<
+loss 23.370348 [learning] epoch 31>> 23.80%completed in 2476.35 (sec) <<
+loss 23.752504 [learning] epoch 31>> 27.20%completed in 2830.78 (sec) <<
+loss 23.738251 [learning] epoch 31>> 30.60%completed in 3182.81 (sec) <<
+loss 28.799168 [learning] epoch 31>> 34.00%completed in 3540.72 (sec) <<
+loss 27.038971 [learning] epoch 31>> 37.40%completed in 3893.03 (sec) <<
+loss 28.945704 [learning] epoch 31>> 40.80%completed in 4251.18 (sec) <<
+loss 26.043297 [learning] epoch 31>> 44.20%completed in 4602.61 (sec) <<
+loss 22.397976 [learning] epoch 31>> 47.60%completed in 4962.53 (sec) <<
+loss 28.275299 [learning] epoch 31>> 51.00%completed in 5316.09 (sec) <<
+loss 21.129862 [learning] epoch 31>> 54.40%completed in 5671.97 (sec) <<
+loss 31.223719 [learning] epoch 31>> 57.80%completed in 6026.85 (sec) <<
+loss 25.758278 [learning] epoch 31>> 61.21%completed in 6384.23 (sec) <<
+loss 21.340693 [learning] epoch 31>> 64.61%completed in 6739.14 (sec) <<
+loss 24.938030 [learning] epoch 31>> 68.01%completed in 7089.01 (sec) <<
+loss 28.781101 [learning] epoch 31>> 71.41%completed in 7447.21 (sec) <<
+loss 27.628300 [learning] epoch 31>> 74.81%completed in 7802.31 (sec) <<
+loss 20.994347 [learning] epoch 31>> 78.21%completed in 8160.27 (sec) <<
+loss 22.269211 [learning] epoch 31>> 81.61%completed in 8510.51 (sec) <<
+loss 25.817318 [learning] epoch 31>> 85.01%completed in 8861.11 (sec) <<
+loss 25.796755 [learning] epoch 31>> 88.41%completed in 9217.56 (sec) <<
+loss 26.248360 [learning] epoch 31>> 91.81%completed in 9571.36 (sec) <<
+loss 28.980221 [learning] epoch 31>> 95.21%completed in 9925.53 (sec) <<
+loss 19.333706 [learning] epoch 31>> 98.61%completed in 10279.95 (sec) <<
+
+VALID new curr: {'a': 0.3147379912663755, 'p': 0.29163926963734765, 'r': 0.05718366011127309, 'f': 0.09561871911379391, 'SinglePre': 0.13607653724688834, 'SingleRecall': 0.034831193533048026, 'SingleF1': 0.05546511187672736, 'MorePre': 0.477623542476402, 'MoreRecall': 0.07317986150102938, 'MoreF1': 0.12691433798577711}
+TEST new curr: {'a': 0.3072052401746725, 'p': 0.2904324491691609, 'r': 0.055999442791614014, 'f': 0.09389467713277555, 'SinglePre': 0.13535046950583327, 'SingleRecall': 0.033855278766310795, 'SingleF1': 0.05416279202171066, 'MorePre': 0.4754951895868704, 'MoreRecall': 0.07199533855460917, 'MoreF1': 0.12505581519959513}
+top5: {'a': 0.29819868995633186, 'p': 0.2889253226147662, 'r': 0.054357668082904646, 'f': 0.09150064065522699, 'SinglePre': 0.13250780031201248, 'SingleRecall': 0.03224199288256228, 'SingleF1': 0.05186429034843339, 'MorePre': 0.47434119278779474, 'MoreRecall': 0.07033298486744015, 'MoreF1': 0.12250197752339448}
+top10: {'a': 0.30698689956331876, 'p': 0.2904658609647764, 'r': 0.055959642192615, 'f': 0.09384046786748203, 'SinglePre': 0.13513770180436846, 'SingleRecall': 0.033760379596678526, 'SingleF1': 0.05402429764616552, 'MorePre': 0.4756567028985507, 'MoreRecall': 0.07199533855460917, 'MoreF1': 0.1250613994611732}
+
+learning rate:0.000100
+loss 25.173965 [learning] epoch 32>> 0.00%completed in 0.54 (sec) <<
+loss 17.233017 [learning] epoch 32>> 3.40%completed in 346.82 (sec) <<
+loss 26.614244 [learning] epoch 32>> 6.80%completed in 675.19 (sec) <<
+loss 24.458664 [learning] epoch 32>> 10.20%completed in 989.31 (sec) <<
+loss 29.544207 [learning] epoch 32>> 13.60%completed in 1308.83 (sec) <<
+loss 21.477148 [learning] epoch 32>> 17.00%completed in 1623.58 (sec) <<
+loss 24.855310 [learning] epoch 32>> 20.40%completed in 1938.20 (sec) <<
+loss 22.021505 [learning] epoch 32>> 23.80%completed in 2254.49 (sec) <<
+loss 25.583218 [learning] epoch 32>> 27.20%completed in 2566.74 (sec) <<
+loss 24.949829 [learning] epoch 32>> 30.60%completed in 2886.18 (sec) <<
+loss 18.278818 [learning] epoch 32>> 34.00%completed in 3205.36 (sec) <<
+loss 35.537849 [learning] epoch 32>> 37.40%completed in 3525.14 (sec) <<
+loss 19.367464 [learning] epoch 32>> 40.80%completed in 3841.07 (sec) <<
+loss 28.271694 [learning] epoch 32>> 44.20%completed in 4170.52 (sec) <<
+loss 27.852608 [learning] epoch 32>> 47.60%completed in 4528.69 (sec) <<
+loss 20.554386 [learning] epoch 32>> 51.00%completed in 4888.27 (sec) <<
+loss 24.121655 [learning] epoch 32>> 54.40%completed in 5252.60 (sec) <<
+loss 23.668030 [learning] epoch 32>> 57.80%completed in 5609.06 (sec) <<
+loss 23.643589 [learning] epoch 32>> 61.21%completed in 5967.14 (sec) <<
+loss 25.603394 [learning] epoch 32>> 64.61%completed in 6332.54 (sec) <<
+loss 18.810917 [learning] epoch 32>> 68.01%completed in 6691.82 (sec) <<
+loss 33.731739 [learning] epoch 32>> 71.41%completed in 7053.10 (sec) <<
+loss 26.669296 [learning] epoch 32>> 74.81%completed in 7415.75 (sec) <<
+loss 25.755833 [learning] epoch 32>> 78.21%completed in 7773.57 (sec) <<
+loss 29.732998 [learning] epoch 32>> 81.61%completed in 8135.69 (sec) <<
+loss 33.445511 [learning] epoch 32>> 85.01%completed in 8497.62 (sec) <<
+loss 25.145250 [learning] epoch 32>> 88.41%completed in 8857.57 (sec) <<
+loss 21.799448 [learning] epoch 32>> 91.81%completed in 9215.23 (sec) <<
+loss 29.234392 [learning] epoch 32>> 95.21%completed in 9578.78 (sec) <<
+loss 32.325600 [learning] epoch 32>> 98.61%completed in 9936.73 (sec) <<
+
+VALID new curr: {'a': 0.3710698689956332, 'p': 0.2980925235693927, 'r': 0.06741840468894111, 'f': 0.10996619162393437, 'SinglePre': 0.14917438582360049, 'SingleRecall': 0.044032334759866856, 'SingleF1': 0.06799449288664525, 'MorePre': 0.47603464870067375, 'MoreRecall': 0.08415428853385058, 'MoreF1': 0.14302444948888857}
+TEST new curr: {'a': 0.3604803493449782, 'p': 0.2937069157215922, 'r': 0.06571078894737366, 'f': 0.10739433756687754, 'SinglePre': 0.14559449721585327, 'SingleRecall': 0.04218268090154211, 'SingleF1': 0.06541334020087561, 'MorePre': 0.46977513871313153, 'MoreRecall': 0.0827063803533787, 'MoreF1': 0.1406505012823502}
+top5: {'a': 0.3456331877729258, 'p': 0.2913273521969174, 'r': 0.06300434821544064, 'f': 0.10360286658594849, 'SinglePre': 0.14091218515997278, 'SingleRecall': 0.03928825622775801, 'SingleF1': 0.06144484434714853, 'MorePre': 0.4683962736652309, 'MoreRecall': 0.08013573032167401, 'MoreF1': 0.13685720139315713}
+top10: {'a': 0.359825327510917, 'p': 0.2936041332620702, 'r': 0.06559138715037661, 'f': 0.10722796515741788, 'SinglePre': 0.1450845232233711, 'SingleRecall': 0.04194543297746145, 'SingleF1': 0.06507656065959953, 'MorePre': 0.46990064289888955, 'MoreRecall': 0.08267210501962263, 'MoreF1': 0.14060655522683885}
+
+learning rate:0.000100
+loss 26.822371 [learning] epoch 33>> 0.00%completed in 0.46 (sec) <<
+loss 21.935392 [learning] epoch 33>> 3.40%completed in 366.54 (sec) <<
+loss 26.788586 [learning] epoch 33>> 6.80%completed in 728.48 (sec) <<
+loss 29.878754 [learning] epoch 33>> 10.20%completed in 1083.72 (sec) <<
+loss 22.865999 [learning] epoch 33>> 13.60%completed in 1445.40 (sec) <<
+loss 23.100246 [learning] epoch 33>> 17.00%completed in 1800.68 (sec) <<
+loss 19.433353 [learning] epoch 33>> 20.40%completed in 2153.59 (sec) <<
+loss 28.876215 [learning] epoch 33>> 23.80%completed in 2509.43 (sec) <<
+loss 22.657301 [learning] epoch 33>> 27.20%completed in 2872.12 (sec) <<
+loss 24.727612 [learning] epoch 33>> 30.60%completed in 3227.55 (sec) <<
+loss 21.365730 [learning] epoch 33>> 34.00%completed in 3581.19 (sec) <<
+loss 24.729473 [learning] epoch 33>> 37.40%completed in 3932.54 (sec) <<
+loss 22.302197 [learning] epoch 33>> 40.80%completed in 4286.26 (sec) <<
+loss 23.197813 [learning] epoch 33>> 44.20%completed in 4653.19 (sec) <<
+loss 26.866478 [learning] epoch 33>> 47.60%completed in 5012.62 (sec) <<
+loss 28.022800 [learning] epoch 33>> 51.00%completed in 5367.27 (sec) <<
+loss 29.451963 [learning] epoch 33>> 54.40%completed in 5729.94 (sec) <<
+loss 22.924406 [learning] epoch 33>> 57.80%completed in 6090.53 (sec) <<
+loss 30.862980 [learning] epoch 33>> 61.21%completed in 6448.20 (sec) <<
+loss 19.180880 [learning] epoch 33>> 64.61%completed in 6813.33 (sec) <<
+loss 29.059811 [learning] epoch 33>> 68.01%completed in 7169.13 (sec) <<
+loss 24.878437 [learning] epoch 33>> 71.41%completed in 7526.01 (sec) <<
+loss 25.146263 [learning] epoch 33>> 74.81%completed in 7891.61 (sec) <<
+loss 22.766506 [learning] epoch 33>> 78.21%completed in 8252.07 (sec) <<
+loss 24.623856 [learning] epoch 33>> 81.61%completed in 8607.37 (sec) <<
+loss 24.208731 [learning] epoch 33>> 85.01%completed in 8970.61 (sec) <<
+loss 22.887672 [learning] epoch 33>> 88.41%completed in 9326.30 (sec) <<
+loss 21.064510 [learning] epoch 33>> 91.81%completed in 9686.08 (sec) <<
+loss 19.087948 [learning] epoch 33>> 95.21%completed in 10056.19 (sec) <<
+loss 23.163004 [learning] epoch 33>> 98.61%completed in 10414.26 (sec) <<
+
+VALID new curr: {'a': 0.35911572052401747, 'p': 0.29318181818181815, 'r': 0.06524649668263366, 'f': 0.10673870190552676, 'SinglePre': 0.11675579322638147, 'SingleRecall': 0.03114598193057537, 'SingleF1': 0.04917417417417417, 'MorePre': 0.4696078431372549, 'MoreRecall': 0.08965000935803856, 'MoreF1': 0.15055791293415055}
+TEST new curr: {'a': 0.35262008733624456, 'p': 0.28966012016859477, 'r': 0.06427796738340912, 'f': 0.1052091561281076, 'SinglePre': 0.11474381941956288, 'SingleRecall': 0.030391459074733097, 'SingleF1': 0.048054919908466824, 'MorePre': 0.4649847369366134, 'MoreRecall': 0.08875597676132371, 'MoreF1': 0.14905956338413276}
+top5: {'a': 0.33930131004366815, 'p': 0.28779110143988146, 'r': 0.061850130844469206, 'f': 0.10181818181818181, 'SinglePre': 0.11265389243728594, 'SingleRecall': 0.028873072360616845, 'SingleF1': 0.045965289974128, 'MorePre': 0.46304186735828085, 'MoreRecall': 0.0856711967232781, 'MoreF1': 0.14459051007274357}
+top10: {'a': 0.35245633187772923, 'p': 0.2897074659009332, 'r': 0.06424811693415985, 'f': 0.10517228741988288, 'SinglePre': 0.11472618087299453, 'SingleRecall': 0.03036773428232503, 'SingleF1': 0.04802371170765565, 'MorePre': 0.4650974755188213, 'MoreRecall': 0.08872170142756765, 'MoreF1': 0.14901701160012665}
+
+learning rate:0.000050
+loss 20.849478 [learning] epoch 34>> 0.00%completed in 0.47 (sec) <<
+loss 34.706646 [learning] epoch 34>> 3.40%completed in 356.95 (sec) <<
+loss 21.453953 [learning] epoch 34>> 6.80%completed in 712.35 (sec) <<
+loss 27.865137 [learning] epoch 34>> 10.20%completed in 1070.68 (sec) <<
+loss 23.625792 [learning] epoch 34>> 13.60%completed in 1423.06 (sec) <<
+loss 41.936470 [learning] epoch 34>> 17.00%completed in 1785.77 (sec) <<
+loss 28.925882 [learning] epoch 34>> 20.40%completed in 2147.97 (sec) <<
+loss 28.837870 [learning] epoch 34>> 23.80%completed in 2503.63 (sec) <<
+loss 30.862919 [learning] epoch 34>> 27.20%completed in 2866.91 (sec) <<
+loss 30.395096 [learning] epoch 34>> 30.60%completed in 3222.55 (sec) <<
+loss 24.566406 [learning] epoch 34>> 34.00%completed in 3584.93 (sec) <<
+loss 25.648397 [learning] epoch 34>> 37.40%completed in 3950.23 (sec) <<
+loss 21.970470 [learning] epoch 34>> 40.80%completed in 4307.37 (sec) <<
+loss 30.249006 [learning] epoch 34>> 44.20%completed in 4671.60 (sec) <<
+loss 28.181477 [learning] epoch 34>> 47.60%completed in 5037.04 (sec) <<
+loss 31.960716 [learning] epoch 34>> 51.00%completed in 5397.99 (sec) <<
+loss 22.972696 [learning] epoch 34>> 54.40%completed in 5755.34 (sec) <<
+loss 36.710560 [learning] epoch 34>> 57.80%completed in 6120.25 (sec) <<
+loss 26.940327 [learning] epoch 34>> 61.21%completed in 6475.51 (sec) <<
+loss 30.880909 [learning] epoch 34>> 64.61%completed in 6842.60 (sec) <<
+loss 31.593330 [learning] epoch 34>> 68.01%completed in 7211.31 (sec) <<
+loss 23.346348 [learning] epoch 34>> 71.41%completed in 7571.29 (sec) <<
+loss 26.046734 [learning] epoch 34>> 74.81%completed in 7935.28 (sec) <<
+loss 25.123444 [learning] epoch 34>> 78.21%completed in 8286.94 (sec) <<
+loss 28.717281 [learning] epoch 34>> 81.61%completed in 8648.81 (sec) <<
+loss 30.628874 [learning] epoch 34>> 85.01%completed in 9006.39 (sec) <<
+loss 25.621731 [learning] epoch 34>> 88.41%completed in 9362.55 (sec) <<
+loss 27.320358 [learning] epoch 34>> 91.81%completed in 9722.42 (sec) <<
+loss 32.891586 [learning] epoch 34>> 95.21%completed in 10077.01 (sec) <<
+loss 25.740290 [learning] epoch 34>> 98.61%completed in 10435.14 (sec) <<
+
+VALID new curr: {'a': 0.3462882096069869, 'p': 0.2935406255783824, 'r': 0.06291591046581972, 'f': 0.10362203438278411, 'SinglePre': 0.12606990014265335, 'SingleRecall': 0.033618640038040895, 'SingleF1': 0.05308206321795931, 'MorePre': 0.47422085417468257, 'MoreRecall': 0.0838820546849744, 'MoreF1': 0.14254940797177929}
+TEST new curr: {'a': 0.33717248908296943, 'p': 0.2893072923984825, 'r': 0.06146207500422882, 'f': 0.10138528706955978, 'SinglePre': 0.12515802781289506, 'SingleRecall': 0.032882562277580074, 'SingleF1': 0.05208176762362844, 'MorePre': 0.4661866303395933, 'MoreRecall': 0.0821065620126476, 'MoreF1': 0.13962231159293584}
+top5: {'a': 0.3251637554585153, 'p': 0.2877638761412492, 'r': 0.05927304205928299, 'f': 0.09829870794211318, 'SinglePre': 0.12310994959865597, 'SingleRecall': 0.03129300118623962, 'SingleF1': 0.04990163438256659, 'MorePre': 0.464403724842295, 'MoreRecall': 0.07948449898030882, 'MoreF1': 0.13573707161462142}
+top10: {'a': 0.33679039301310043, 'p': 0.28926394749179557, 'r': 0.06139242395598054, 'f': 0.10128784956209831, 'SinglePre': 0.1247852427886789, 'SingleRecall': 0.032740213523131674, 'SingleF1': 0.051870924091788985, 'MorePre': 0.4663616006231136, 'MoreRecall': 0.08208942434576957, 'MoreF1': 0.13960537436973566}
+
+learning rate:0.000050
+loss 25.568861 [learning] epoch 35>> 0.00%completed in 0.28 (sec) <<
+loss 27.425968 [learning] epoch 35>> 3.40%completed in 361.39 (sec) <<
+loss 26.391285 [learning] epoch 35>> 6.80%completed in 719.05 (sec) <<
+loss 19.658127 [learning] epoch 35>> 10.20%completed in 1081.59 (sec) <<
+loss 23.005274 [learning] epoch 35>> 13.60%completed in 1439.62 (sec) <<
+loss 22.104593 [learning] epoch 35>> 17.00%completed in 1799.15 (sec) <<
+loss 22.716112 [learning] epoch 35>> 20.40%completed in 2157.63 (sec) <<
+loss 25.174261 [learning] epoch 35>> 23.80%completed in 2511.92 (sec) <<
+loss 28.433857 [learning] epoch 35>> 27.20%completed in 2875.38 (sec) <<
+loss 29.190275 [learning] epoch 35>> 30.60%completed in 3239.60 (sec) <<
+loss 25.375801 [learning] epoch 35>> 34.00%completed in 3592.88 (sec) <<
+loss 30.558270 [learning] epoch 35>> 37.40%completed in 3947.43 (sec) <<
+loss 26.299089 [learning] epoch 35>> 40.80%completed in 4306.32 (sec) <<
+loss 27.516598 [learning] epoch 35>> 44.20%completed in 4666.11 (sec) <<
+loss 24.614435 [learning] epoch 35>> 47.60%completed in 5022.40 (sec) <<
+loss 27.560556 [learning] epoch 35>> 51.00%completed in 5380.77 (sec) <<
+loss 22.022938 [learning] epoch 35>> 54.40%completed in 5742.01 (sec) <<
+loss 24.612585 [learning] epoch 35>> 57.80%completed in 6095.09 (sec) <<
+loss 22.295992 [learning] epoch 35>> 61.21%completed in 6456.28 (sec) <<
+loss 21.784615 [learning] epoch 35>> 64.61%completed in 6821.38 (sec) <<
+loss 39.173485 [learning] epoch 35>> 68.01%completed in 7177.13 (sec) <<
+loss 23.512455 [learning] epoch 35>> 71.41%completed in 7534.13 (sec) <<
+loss 23.095974 [learning] epoch 35>> 74.81%completed in 7894.39 (sec) <<
+loss 26.919334 [learning] epoch 35>> 78.21%completed in 8259.40 (sec) <<
+loss 22.898169 [learning] epoch 35>> 81.61%completed in 8619.67 (sec) <<
+loss 19.842676 [learning] epoch 35>> 85.01%completed in 8978.52 (sec) <<
+loss 40.548893 [learning] epoch 35>> 88.41%completed in 9337.56 (sec) <<
+loss 27.793255 [learning] epoch 35>> 91.81%completed in 9696.17 (sec) <<
+loss 28.384098 [learning] epoch 35>> 95.21%completed in 10057.60 (sec) <<
+loss 23.679089 [learning] epoch 35>> 98.61%completed in 10412.49 (sec) <<
+
+VALID new curr: {'a': 0.35191048034934497, 'p': 0.29581536202624575, 'r': 0.0639374014459552, 'f': 0.10514813214055632, 'SinglePre': 0.13176326387672913, 'SingleRecall': 0.035782215882073226, 'SingleF1': 0.05628061777794398, 'MorePre': 0.47647512533744696, 'MoreRecall': 0.08408623007163153, 'MoreF1': 0.1429459830790368}
+TEST new curr: {'a': 0.3429585152838428, 'p': 0.29170342170017177, 'r': 0.0625167908777027, 'f': 0.10296624057686003, 'SinglePre': 0.13157197137050455, 'SingleRecall': 0.03532621589561091, 'SingleF1': 0.055697907120279805, 'MorePre': 0.4689884562707885, 'MoreRecall': 0.08215797501328169, 'MoreF1': 0.13982179575051407}
+top5: {'a': 0.33024017467248906, 'p': 0.28983424355657755, 'r': 0.06019840598601009, 'f': 0.09969104016477857, 'SinglePre': 0.12881696836716036, 'SingleRecall': 0.0334282325029656, 'SingleF1': 0.053081675708257996, 'MorePre': 0.46708937198067635, 'MoreRecall': 0.07953591198094291, 'MoreF1': 0.13592631101088054}
+top10: {'a': 0.34246724890829694, 'p': 0.2916511714391967, 'r': 0.06242723952995492, 'f': 0.1028415004958488, 'SinglePre': 0.13111996458610004, 'SingleRecall': 0.03513641755634638, 'SingleF1': 0.055421461315370936, 'MorePre': 0.4691200939610453, 'MoreRecall': 0.08214083734640366, 'MoreF1': 0.13980282347450707}
+
+learning rate:0.000050
+loss 18.526224 [learning] epoch 36>> 0.00%completed in 0.38 (sec) <<
+loss 24.785954 [learning] epoch 36>> 3.40%completed in 367.24 (sec) <<
+loss 27.074568 [learning] epoch 36>> 6.80%completed in 724.42 (sec) <<
+loss 19.428892 [learning] epoch 36>> 10.20%completed in 1074.48 (sec) <<
+loss 25.680275 [learning] epoch 36>> 13.60%completed in 1433.70 (sec) <<
+loss 26.314507 [learning] epoch 36>> 17.00%completed in 1786.91 (sec) <<
+loss 24.627666 [learning] epoch 36>> 20.40%completed in 2140.70 (sec) <<
+loss 23.957554 [learning] epoch 36>> 23.80%completed in 2501.01 (sec) <<
+loss 23.797699 [learning] epoch 36>> 27.20%completed in 2859.19 (sec) <<
+loss 23.044483 [learning] epoch 36>> 30.60%completed in 3217.32 (sec) <<
+loss 38.271820 [learning] epoch 36>> 34.00%completed in 3569.39 (sec) <<
+loss 20.747643 [learning] epoch 36>> 37.40%completed in 3933.47 (sec) <<
+loss 20.575077 [learning] epoch 36>> 40.80%completed in 4286.05 (sec) <<
+loss 27.533047 [learning] epoch 36>> 44.20%completed in 4639.77 (sec) <<
+loss 26.331661 [learning] epoch 36>> 47.60%completed in 4996.56 (sec) <<
+loss 27.996885 [learning] epoch 36>> 51.00%completed in 5353.30 (sec) <<
+loss 21.624144 [learning] epoch 36>> 54.40%completed in 5710.46 (sec) <<
+loss 28.673115 [learning] epoch 36>> 57.80%completed in 6075.95 (sec) <<
+loss 22.114483 [learning] epoch 36>> 61.21%completed in 6432.31 (sec) <<
+loss 24.971104 [learning] epoch 36>> 64.61%completed in 6788.02 (sec) <<
+loss 24.857952 [learning] epoch 36>> 68.01%completed in 7138.42 (sec) <<
+loss 30.954401 [learning] epoch 36>> 71.41%completed in 7496.17 (sec) <<
+loss 24.545216 [learning] epoch 36>> 74.81%completed in 7855.62 (sec) <<
+loss 27.156313 [learning] epoch 36>> 78.21%completed in 8219.47 (sec) <<
+loss 22.814623 [learning] epoch 36>> 81.61%completed in 8573.53 (sec) <<
+loss 23.069450 [learning] epoch 36>> 85.01%completed in 8930.36 (sec) <<
+loss 20.929668 [learning] epoch 36>> 88.41%completed in 9263.95 (sec) <<
+loss 30.602974 [learning] epoch 36>> 91.81%completed in 9581.14 (sec) <<
+loss 25.862782 [learning] epoch 36>> 95.21%completed in 9889.42 (sec) <<
+loss 26.029425 [learning] epoch 36>> 98.61%completed in 10207.24 (sec) <<
+
+VALID new curr: {'a': 0.35573144104803495, 'p': 0.29766145976066505, 'r': 0.06463161861692104, 'f': 0.1062031989700718, 'SinglePre': 0.1270772238514174, 'SingleRecall': 0.03399904897765098, 'SingleF1': 0.05364545232870032, 'MorePre': 0.4780565736302979, 'MoreRecall': 0.08655334932707195, 'MoreF1': 0.14656985622496901}
+TEST new curr: {'a': 0.3462882096069869, 'p': 0.29191974967789436, 'r': 0.06312375001243768, 'f': 0.10380175566336422, 'SinglePre': 0.1269446172993155, 'SingleRecall': 0.03387900355871886, 'SingleF1': 0.05348414764321429, 'MorePre': 0.4689497281312601, 'MoreRecall': 0.0842487703724015, 'MoreF1': 0.14283638899381118}
+top5: {'a': 0.3339519650655022, 'p': 0.2903378891419894, 'r': 0.060875016168993344, 'f': 0.10064734768410749, 'SinglePre': 0.124873748967037, 'SingleRecall': 0.03226571767497034, 'SingleF1': 0.051281084444109275, 'MorePre': 0.46734112562616636, 'MoreRecall': 0.08154101900567257, 'MoreF1': 0.13885484153388197}
+top10: {'a': 0.3460152838427948, 'p': 0.29191802901220354, 'r': 0.06307399926368892, 'f': 0.10373437193166198, 'SinglePre': 0.12679063973663138, 'SingleRecall': 0.033807829181494664, 'SingleF1': 0.05338178276423982, 'MorePre': 0.4690721649484536, 'MoreRecall': 0.08421449503864543, 'MoreF1': 0.1427927993374693}
+
+learning rate:0.000050
+loss 22.341398 [learning] epoch 37>> 0.00%completed in 0.28 (sec) <<
+loss 21.503517 [learning] epoch 37>> 3.40%completed in 313.21 (sec) <<
+loss 30.099842 [learning] epoch 37>> 6.80%completed in 624.40 (sec) <<
+loss 21.069408 [learning] epoch 37>> 10.20%completed in 940.60 (sec) <<
+loss 22.697634 [learning] epoch 37>> 13.60%completed in 1252.41 (sec) <<
+loss 22.544863 [learning] epoch 37>> 17.00%completed in 1569.91 (sec) <<
+loss 21.418758 [learning] epoch 37>> 20.40%completed in 1885.97 (sec) <<
+loss 29.434528 [learning] epoch 37>> 23.80%completed in 2199.84 (sec) <<
+loss 25.035252 [learning] epoch 37>> 27.20%completed in 2515.15 (sec) <<
+loss 17.707281 [learning] epoch 37>> 30.60%completed in 2834.18 (sec) <<
+loss 31.666084 [learning] epoch 37>> 34.00%completed in 3151.80 (sec) <<
+loss 35.097443 [learning] epoch 37>> 37.40%completed in 3471.80 (sec) <<
+loss 32.570671 [learning] epoch 37>> 40.80%completed in 3782.84 (sec) <<
+loss 23.725941 [learning] epoch 37>> 44.20%completed in 4097.39 (sec) <<
+loss 17.141104 [learning] epoch 37>> 47.60%completed in 4434.29 (sec) <<
+loss 20.576202 [learning] epoch 37>> 51.00%completed in 4797.55 (sec) <<
+loss 28.631359 [learning] epoch 37>> 54.40%completed in 5155.69 (sec) <<
+loss 21.594603 [learning] epoch 37>> 57.80%completed in 5513.70 (sec) <<
+loss 27.755304 [learning] epoch 37>> 61.21%completed in 5873.74 (sec) <<
+loss 28.587906 [learning] epoch 37>> 64.61%completed in 6229.89 (sec) <<
+loss 23.288137 [learning] epoch 37>> 68.01%completed in 6584.07 (sec) <<
+loss 28.880936 [learning] epoch 37>> 71.41%completed in 6942.33 (sec) <<
+loss 30.483685 [learning] epoch 37>> 74.81%completed in 7255.21 (sec) <<
+loss 22.436035 [learning] epoch 37>> 78.21%completed in 7579.61 (sec) <<
+loss 24.205727 [learning] epoch 37>> 81.61%completed in 7897.49 (sec) <<
+loss 23.686705 [learning] epoch 37>> 85.01%completed in 8210.48 (sec) <<
+loss 23.619509 [learning] epoch 37>> 88.41%completed in 8528.37 (sec) <<
+loss 22.966805 [learning] epoch 37>> 91.81%completed in 8841.03 (sec) <<
+loss 29.798895 [learning] epoch 37>> 95.21%completed in 9154.79 (sec) <<
+loss 26.180523 [learning] epoch 37>> 98.61%completed in 9475.99 (sec) <<
+
+VALID new best: {'a': 0.39885371179039303, 'p': 0.2940206019636247, 'r': 0.07246635526067854, 'f': 0.11627481401917492, 'SinglePre': 0.12589130090318493, 'SingleRecall': 0.037779362815026155, 'SingleF1': 0.05811784499469661, 'MorePre': 0.4675388389206868, 'MoreRecall': 0.09728957174212649, 'MoreF1': 0.16106361703026634}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-37
+
+TEST new best: {'a': 0.39006550218340613, 'p': 0.29052323454079765, 'r': 0.07110377011174018, 'f': 0.11424643079825418, 'SinglePre': 0.12431005519558436, 'SingleRecall': 0.036868327402135234, 'SingleF1': 0.05686995663391337, 'MorePre': 0.4623015873015873, 'MoreRecall': 0.09583383318195061, 'MoreF1': 0.15875764759322614}
+top5: {'a': 0.37254366812227074, 'p': 0.28813273103390047, 'r': 0.06790977204206923, 'f': 0.10991400135278771, 'SinglePre': 0.12136325852036575, 'SingleRecall': 0.034638196915776985, 'SingleF1': 0.05389442598744924, 'MorePre': 0.4602384833147465, 'MoreRecall': 0.09194358280063752, 'MoreF1': 0.1532681979202377}
+top10: {'a': 0.3892467248908297, 'p': 0.2903383412727495, 'r': 0.07095451786549388, 'f': 0.114039436439526, 'SinglePre': 0.12380799743569196, 'SingleRecall': 0.03665480427046263, 'SingleF1': 0.05656336378114188, 'MorePre': 0.4623406720741599, 'MoreRecall': 0.09573100718068242, 'MoreF1': 0.15861882924197462}
+
+learning rate:0.000050
+loss 30.678404 [learning] epoch 38>> 0.00%completed in 0.27 (sec) <<
+loss 27.437492 [learning] epoch 38>> 3.40%completed in 315.55 (sec) <<
+loss 26.933151 [learning] epoch 38>> 6.80%completed in 631.95 (sec) <<
+loss 24.753546 [learning] epoch 38>> 10.20%completed in 992.00 (sec) <<
+loss 23.105820 [learning] epoch 38>> 13.60%completed in 1348.31 (sec) <<
+loss 30.209965 [learning] epoch 38>> 17.00%completed in 1707.14 (sec) <<
+loss 21.582645 [learning] epoch 38>> 20.40%completed in 2063.73 (sec) <<
+loss 31.523275 [learning] epoch 38>> 23.80%completed in 2421.06 (sec) <<
+loss 30.761894 [learning] epoch 38>> 27.20%completed in 2773.79 (sec) <<
+loss 26.971500 [learning] epoch 38>> 30.60%completed in 3129.74 (sec) <<
+loss 22.222115 [learning] epoch 38>> 34.00%completed in 3487.55 (sec) <<
+loss 25.727749 [learning] epoch 38>> 37.40%completed in 3852.98 (sec) <<
+loss 27.117174 [learning] epoch 38>> 40.80%completed in 4212.66 (sec) <<
+loss 26.767891 [learning] epoch 38>> 44.20%completed in 4567.17 (sec) <<
+loss 20.206230 [learning] epoch 38>> 47.60%completed in 4922.68 (sec) <<
+loss 24.038225 [learning] epoch 38>> 51.00%completed in 5285.90 (sec) <<
+loss 25.524708 [learning] epoch 38>> 54.40%completed in 5650.75 (sec) <<
+loss 25.505667 [learning] epoch 38>> 57.80%completed in 6004.77 (sec) <<
+loss 24.996880 [learning] epoch 38>> 61.21%completed in 6367.60 (sec) <<
+loss 22.870106 [learning] epoch 38>> 64.61%completed in 6728.39 (sec) <<
+loss 25.336666 [learning] epoch 38>> 68.01%completed in 7082.57 (sec) <<
+loss 21.184431 [learning] epoch 38>> 71.41%completed in 7443.43 (sec) <<
+loss 20.080742 [learning] epoch 38>> 74.81%completed in 7802.26 (sec) <<
+loss 24.090973 [learning] epoch 38>> 78.21%completed in 8162.93 (sec) <<
+loss 25.234142 [learning] epoch 38>> 81.61%completed in 8522.48 (sec) <<
+loss 20.429783 [learning] epoch 38>> 85.01%completed in 8882.34 (sec) <<
+loss 29.189262 [learning] epoch 38>> 88.41%completed in 9243.15 (sec) <<
+loss 26.979427 [learning] epoch 38>> 91.81%completed in 9603.01 (sec) <<
+loss 24.061161 [learning] epoch 38>> 95.21%completed in 9954.81 (sec) <<
+loss 27.331322 [learning] epoch 38>> 98.61%completed in 10314.53 (sec) <<
+
+VALID new curr: {'a': 0.36708515283842796, 'p': 0.2966999029383217, 'r': 0.0666944353535053, 'f': 0.10890776443533957, 'SinglePre': 0.12239923391660137, 'SingleRecall': 0.033428435568235854, 'SingleF1': 0.05251461333034531, 'MorePre': 0.4758028446193756, 'MoreRecall': 0.09050074013577664, 'MoreF1': 0.1520757090576395}
+TEST new curr: {'a': 0.3593886462882096, 'p': 0.2919863408576877, 'r': 0.06551178595237858, 'f': 0.10701340918325884, 'SinglePre': 0.12207474676912329, 'SingleRecall': 0.03316725978647687, 'SingleF1': 0.05216223275250923, 'MorePre': 0.467333513562224, 'MoreRecall': 0.08887594042946993, 'MoreF1': 0.14934915332334983}
+top5: {'a': 0.3449235807860262, 'p': 0.28988898064042573, 'r': 0.06287499626869385, 'f': 0.1033369038176927, 'SinglePre': 0.11958483754512636, 'SingleRecall': 0.03143534994068802, 'SingleF1': 0.04978395641555514, 'MorePre': 0.4659451390184736, 'MoreRecall': 0.08558550838888794, 'MoreF1': 0.14460901417423158}
+top10: {'a': 0.35917030567685587, 'p': 0.2920550377274745, 'r': 0.06547198535337957, 'f': 0.10696491128252231, 'SinglePre': 0.12199598007515512, 'SingleRecall': 0.033119810201660736, 'SingleF1': 0.05209635586737074, 'MorePre': 0.46757463696220797, 'MoreRecall': 0.08884166509571387, 'MoreF1': 0.14931305625162014}
+
+learning rate:0.000050
+loss 23.294289 [learning] epoch 39>> 0.00%completed in 0.35 (sec) <<
+loss 29.531816 [learning] epoch 39>> 3.40%completed in 355.37 (sec) <<
+loss 19.897833 [learning] epoch 39>> 6.80%completed in 725.13 (sec) <<
+loss 30.061071 [learning] epoch 39>> 10.20%completed in 1089.23 (sec) <<
+loss 25.923744 [learning] epoch 39>> 13.60%completed in 1451.64 (sec) <<
+loss 21.982206 [learning] epoch 39>> 17.00%completed in 1800.30 (sec) <<
+loss 18.232107 [learning] epoch 39>> 20.40%completed in 2157.91 (sec) <<
+loss 36.879967 [learning] epoch 39>> 23.80%completed in 2520.79 (sec) <<
+loss 26.395159 [learning] epoch 39>> 27.20%completed in 2874.33 (sec) <<
+loss 19.771006 [learning] epoch 39>> 30.60%completed in 3233.64 (sec) <<
+loss 30.684486 [learning] epoch 39>> 34.00%completed in 3594.59 (sec) <<
+loss 21.940887 [learning] epoch 39>> 37.40%completed in 3951.70 (sec) <<
+loss 28.720221 [learning] epoch 39>> 40.80%completed in 4315.46 (sec) <<
+loss 21.841255 [learning] epoch 39>> 44.20%completed in 4680.31 (sec) <<
+loss 20.446333 [learning] epoch 39>> 47.60%completed in 5038.84 (sec) <<
+loss 25.500404 [learning] epoch 39>> 51.00%completed in 5393.30 (sec) <<
+loss 19.401150 [learning] epoch 39>> 54.40%completed in 5749.42 (sec) <<
+loss 24.092350 [learning] epoch 39>> 57.80%completed in 6108.50 (sec) <<
+loss 31.569256 [learning] epoch 39>> 61.21%completed in 6464.68 (sec) <<
+loss 31.223427 [learning] epoch 39>> 64.61%completed in 6824.99 (sec) <<
+loss 30.450632 [learning] epoch 39>> 68.01%completed in 7184.10 (sec) <<
+loss 26.027756 [learning] epoch 39>> 71.41%completed in 7547.60 (sec) <<
+loss 22.775106 [learning] epoch 39>> 74.81%completed in 7902.58 (sec) <<
+loss 24.488556 [learning] epoch 39>> 78.21%completed in 8259.46 (sec) <<
+loss 24.945446 [learning] epoch 39>> 81.61%completed in 8628.92 (sec) <<
+loss 32.483799 [learning] epoch 39>> 85.01%completed in 8998.84 (sec) <<
+loss 20.144678 [learning] epoch 39>> 88.41%completed in 9358.10 (sec) <<
+loss 27.661240 [learning] epoch 39>> 91.81%completed in 9710.52 (sec) <<
+loss 20.277027 [learning] epoch 39>> 95.21%completed in 10066.01 (sec) <<
+loss 30.529976 [learning] epoch 39>> 98.61%completed in 10427.92 (sec) <<
+
+VALID new best: {'a': 0.4082423580786026, 'p': 0.2970096501330368, 'r': 0.07417214602362322, 'f': 0.11870109670354088, 'SinglePre': 0.12845336481700118, 'SingleRecall': 0.038801711840228244, 'SingleF1': 0.05960010955902492, 'MorePre': 0.4686598268675858, 'MoreRecall': 0.09948445714869072, 'MoreF1': 0.1641286193490435}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-39
+
+TEST new best: {'a': 0.39754366812227077, 'p': 0.29233733392204875, 'r': 0.07246694062745644, 'f': 0.11614333328017605, 'SinglePre': 0.1272539518627373, 'SingleRecall': 0.03800711743772242, 'SingleF1': 0.0585323078609401, 'MorePre': 0.4609704641350211, 'MoreRecall': 0.09735908553409539, 'MoreF1': 0.16076406084188186}
+top5: {'a': 0.377292576419214, 'p': 0.28930185836263184, 'r': 0.0687754350702978, 'f': 0.11113165531822529, 'SinglePre': 0.12419381511493302, 'SingleRecall': 0.03563463819691578, 'SingleF1': 0.05537939679964605, 'MorePre': 0.45855229699949146, 'MoreRecall': 0.09271477781014893, 'MoreF1': 0.15424311109210392}
+top10: {'a': 0.39688864628820963, 'p': 0.2923250110561653, 'r': 0.0723475388304594, 'f': 0.11598896102860243, 'SinglePre': 0.12700939041858986, 'SingleRecall': 0.03786476868327402, 'SingleF1': 0.05833759777761533, 'MorePre': 0.461119687982449, 'MoreRecall': 0.0972562595328272, 'MoreF1': 0.16063290780944833}
+
+learning rate:0.000050
+loss 25.517551 [learning] epoch 40>> 0.00%completed in 0.46 (sec) <<
+loss 23.053787 [learning] epoch 40>> 3.40%completed in 362.18 (sec) <<
+loss 26.149725 [learning] epoch 40>> 6.80%completed in 715.55 (sec) <<
+loss 30.399336 [learning] epoch 40>> 10.20%completed in 1078.63 (sec) <<
+loss 31.110655 [learning] epoch 40>> 13.60%completed in 1435.17 (sec) <<
+loss 24.639929 [learning] epoch 40>> 17.00%completed in 1753.94 (sec) <<
+loss 18.844593 [learning] epoch 40>> 20.40%completed in 2067.01 (sec) <<
+loss 23.914692 [learning] epoch 40>> 23.80%completed in 2387.10 (sec) <<
+loss 25.681065 [learning] epoch 40>> 27.20%completed in 2708.20 (sec) <<
+loss 28.270004 [learning] epoch 40>> 30.60%completed in 3029.65 (sec) <<
+loss 23.649670 [learning] epoch 40>> 34.00%completed in 3350.95 (sec) <<
+loss 25.521343 [learning] epoch 40>> 37.40%completed in 3664.85 (sec) <<
+loss 24.803907 [learning] epoch 40>> 40.80%completed in 3978.02 (sec) <<
+loss 28.373413 [learning] epoch 40>> 44.20%completed in 4298.06 (sec) <<
+loss 26.685801 [learning] epoch 40>> 47.60%completed in 4615.42 (sec) <<
+loss 24.307913 [learning] epoch 40>> 51.00%completed in 4930.39 (sec) <<
+loss 19.199333 [learning] epoch 40>> 54.40%completed in 5274.04 (sec) <<
+loss 26.015221 [learning] epoch 40>> 57.80%completed in 5624.51 (sec) <<
+loss 20.476095 [learning] epoch 40>> 61.21%completed in 5986.96 (sec) <<
+loss 28.062828 [learning] epoch 40>> 64.61%completed in 6347.48 (sec) <<
+loss 25.981178 [learning] epoch 40>> 68.01%completed in 6704.81 (sec) <<
+loss 25.714304 [learning] epoch 40>> 71.41%completed in 7067.99 (sec) <<
+loss 26.036058 [learning] epoch 40>> 74.81%completed in 7428.55 (sec) <<
+loss 24.309101 [learning] epoch 40>> 78.21%completed in 7793.18 (sec) <<
+loss 31.317280 [learning] epoch 40>> 81.61%completed in 8148.63 (sec) <<
+loss 27.555527 [learning] epoch 40>> 85.01%completed in 8514.48 (sec) <<
+loss 26.913971 [learning] epoch 40>> 88.41%completed in 8882.36 (sec) <<
+loss 22.435579 [learning] epoch 40>> 91.81%completed in 9211.54 (sec) <<
+loss 26.451914 [learning] epoch 40>> 95.21%completed in 9527.61 (sec) <<
+loss 30.138313 [learning] epoch 40>> 98.61%completed in 9844.34 (sec) <<
+
+VALID new curr: {'a': 0.39497816593886464, 'p': 0.30096077860499937, 'r': 0.07176222070155604, 'f': 0.11589096383612545, 'SinglePre': 0.1371782339524275, 'SingleRecall': 0.040038040893961006, 'SingleF1': 0.06198468786808009, 'MorePre': 0.4718279935412594, 'MoreRecall': 0.09446514556003607, 'MoreF1': 0.15741423305925717}
+TEST new curr: {'a': 0.3853165938864629, 'p': 0.29702095430446857, 'r': 0.07023810708351161, 'f': 0.11361021027304113, 'SinglePre': 0.1369761709120789, 'SingleRecall': 0.039549228944246735, 'SingleF1': 0.061377025036818855, 'MorePre': 0.46498792687133494, 'MoreRecall': 0.09240629980634436, 'MoreF1': 0.15417387450498235}
+top5: {'a': 0.3683951965065502, 'p': 0.29431773581614407, 'r': 0.06715356066108795, 'f': 0.10935575863633418, 'SinglePre': 0.1328730929855962, 'SingleRecall': 0.03698695136417556, 'SingleF1': 0.05786611732828535, 'MorePre': 0.463475620646544, 'MoreRecall': 0.08894449109698206, 'MoreF1': 0.14924729327524477}
+top10: {'a': 0.3846069868995633, 'p': 0.2968361629523529, 'r': 0.0701087551367648, 'f': 0.11342745375810943, 'SinglePre': 0.13649827217376995, 'SingleRecall': 0.039359430604982204, 'SingleF1': 0.06110047142015321, 'MorePre': 0.4650781317447984, 'MoreRecall': 0.09232061147195421, 'MoreF1': 0.15405954185374782}
+
+learning rate:0.000050
+loss 28.969149 [learning] epoch 41>> 0.00%completed in 0.32 (sec) <<
+loss 21.020576 [learning] epoch 41>> 3.40%completed in 313.16 (sec) <<
+loss 21.990551 [learning] epoch 41>> 6.80%completed in 632.04 (sec) <<
+loss 22.102840 [learning] epoch 41>> 10.20%completed in 944.81 (sec) <<
+loss 25.321987 [learning] epoch 41>> 13.60%completed in 1261.14 (sec) <<
+loss 30.480898 [learning] epoch 41>> 17.00%completed in 1570.76 (sec) <<
+loss 30.252068 [learning] epoch 41>> 20.40%completed in 1885.65 (sec) <<
+loss 33.234440 [learning] epoch 41>> 23.80%completed in 2198.08 (sec) <<
+loss 19.340242 [learning] epoch 41>> 27.20%completed in 2523.27 (sec) <<
+loss 22.578732 [learning] epoch 41>> 30.60%completed in 2879.87 (sec) <<
+loss 18.444618 [learning] epoch 41>> 34.00%completed in 3239.17 (sec) <<
+loss 26.789597 [learning] epoch 41>> 37.40%completed in 3596.58 (sec) <<
+loss 22.326099 [learning] epoch 41>> 40.80%completed in 3952.05 (sec) <<
+loss 24.775000 [learning] epoch 41>> 44.20%completed in 4307.82 (sec) <<
+loss 20.011988 [learning] epoch 41>> 47.60%completed in 4660.08 (sec) <<
+loss 26.424726 [learning] epoch 41>> 51.00%completed in 5014.29 (sec) <<
+loss 25.451504 [learning] epoch 41>> 54.40%completed in 5365.77 (sec) <<
+loss 22.460201 [learning] epoch 41>> 57.80%completed in 5715.50 (sec) <<
+loss 28.580990 [learning] epoch 41>> 61.21%completed in 6070.69 (sec) <<
+loss 31.612453 [learning] epoch 41>> 64.61%completed in 6416.74 (sec) <<
+loss 25.818871 [learning] epoch 41>> 68.01%completed in 6765.45 (sec) <<
+loss 33.935925 [learning] epoch 41>> 71.41%completed in 7116.78 (sec) <<
+loss 26.647812 [learning] epoch 41>> 74.81%completed in 7464.70 (sec) <<
+loss 20.535959 [learning] epoch 41>> 78.21%completed in 7818.69 (sec) <<
+loss 37.487778 [learning] epoch 41>> 81.61%completed in 8169.92 (sec) <<
+loss 25.643631 [learning] epoch 41>> 85.01%completed in 8519.95 (sec) <<
+loss 21.957113 [learning] epoch 41>> 88.41%completed in 8870.60 (sec) <<
+loss 25.479307 [learning] epoch 41>> 91.81%completed in 9221.53 (sec) <<
+loss 26.695354 [learning] epoch 41>> 95.21%completed in 9567.99 (sec) <<
+loss 17.501270 [learning] epoch 41>> 98.61%completed in 9927.18 (sec) <<
+
+VALID new curr: {'a': 0.3906113537117904, 'p': 0.2987018407980966, 'r': 0.07096882964902364, 'f': 0.11468867697732192, 'SinglePre': 0.13353886094434528, 'SingleRecall': 0.03913456966238706, 'SingleF1': 0.06053028352884933, 'MorePre': 0.47373398675952194, 'MoreRecall': 0.09375053170673608, 'MoreF1': 0.1565251974319641}
+TEST new curr: {'a': 0.38116812227074237, 'p': 0.2949275668370148, 'r': 0.06948189570253033, 'f': 0.11246758685113305, 'SinglePre': 0.13270259152612093, 'SingleRecall': 0.03826809015421115, 'SingleF1': 0.05940521130650953, 'MorePre': 0.4660649192848464, 'MoreRecall': 0.09202927113502768, 'MoreF1': 0.1537074406423082}
+top5: {'a': 0.36419213973799125, 'p': 0.29254176349366423, 'r': 0.0663873991303569, 'f': 0.10821682291497711, 'SinglePre': 0.12987012987012986, 'SingleRecall': 0.03606168446026097, 'SingleF1': 0.05644891744345824, 'MorePre': 0.46401873367558316, 'MoreRecall': 0.08829325975561687, 'MoreF1': 0.14835718605119935}
+top10: {'a': 0.3803493449781659, 'p': 0.2947172524637313, 'r': 0.06933264345628402, 'f': 0.11225673411522104, 'SinglePre': 0.13211901425863348, 'SingleRecall': 0.038030842230130486, 'SingleF1': 0.05906084777923107, 'MorePre': 0.46611642050390967, 'MoreRecall': 0.09194358280063752, 'MoreF1': 0.153590701535907}
+
+learning rate:0.000050
+loss 31.031418 [learning] epoch 42>> 0.00%completed in 0.36 (sec) <<
+loss 31.962029 [learning] epoch 42>> 3.40%completed in 354.49 (sec) <<
+loss 26.157602 [learning] epoch 42>> 6.80%completed in 709.16 (sec) <<
+loss 28.185555 [learning] epoch 42>> 10.20%completed in 1062.65 (sec) <<
+loss 25.289560 [learning] epoch 42>> 13.60%completed in 1415.24 (sec) <<
+loss 20.276005 [learning] epoch 42>> 17.00%completed in 1771.63 (sec) <<
+loss 20.560469 [learning] epoch 42>> 20.40%completed in 2127.84 (sec) <<
+loss 28.634151 [learning] epoch 42>> 23.80%completed in 2480.57 (sec) <<
+loss 32.510803 [learning] epoch 42>> 27.20%completed in 2831.69 (sec) <<
+loss 26.244738 [learning] epoch 42>> 30.60%completed in 3186.06 (sec) <<
+loss 25.311291 [learning] epoch 42>> 34.00%completed in 3540.26 (sec) <<
+loss 31.177467 [learning] epoch 42>> 37.40%completed in 3892.73 (sec) <<
+loss 26.238216 [learning] epoch 42>> 40.80%completed in 4250.60 (sec) <<
+loss 23.758940 [learning] epoch 42>> 44.20%completed in 4602.57 (sec) <<
+loss 29.931513 [learning] epoch 42>> 47.60%completed in 4957.32 (sec) <<
+loss 28.846922 [learning] epoch 42>> 51.00%completed in 5314.91 (sec) <<
+loss 35.934120 [learning] epoch 42>> 54.40%completed in 5672.25 (sec) <<
+loss 30.832090 [learning] epoch 42>> 57.80%completed in 6032.73 (sec) <<
+loss 23.487610 [learning] epoch 42>> 61.21%completed in 6390.70 (sec) <<
+loss 22.058039 [learning] epoch 42>> 64.61%completed in 6743.00 (sec) <<
+loss 26.837837 [learning] epoch 42>> 68.01%completed in 7093.07 (sec) <<
+loss 23.362881 [learning] epoch 42>> 71.41%completed in 7444.91 (sec) <<
+loss 25.852823 [learning] epoch 42>> 74.81%completed in 7795.56 (sec) <<
+loss 25.232895 [learning] epoch 42>> 78.21%completed in 8154.12 (sec) <<
+loss 23.182552 [learning] epoch 42>> 81.61%completed in 8512.13 (sec) <<
+loss 32.575096 [learning] epoch 42>> 85.01%completed in 8863.10 (sec) <<
+loss 20.826715 [learning] epoch 42>> 88.41%completed in 9221.23 (sec) <<
+loss 24.969822 [learning] epoch 42>> 91.81%completed in 9578.30 (sec) <<
+loss 24.558174 [learning] epoch 42>> 95.21%completed in 9940.48 (sec) <<
+loss 23.771030 [learning] epoch 42>> 98.61%completed in 10291.43 (sec) <<
+
+VALID new best: {'a': 0.4146834061135371, 'p': 0.29591399524792583, 'r': 0.07534239782610852, 'f': 0.12010497525809054, 'SinglePre': 0.12815787452967825, 'SingleRecall': 0.039681407513076555, 'SingleF1': 0.06059945899823902, 'MorePre': 0.4686166007905138, 'MoreRecall': 0.10086264100862641, 'MoreF1': 0.16599694776192542}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-42
+
+TEST new best: {'a': 0.4031113537117904, 'p': 0.29149398065916715, 'r': 0.07348185590193132, 'f': 0.11737499602657428, 'SinglePre': 0.12684480347988195, 'SingleRecall': 0.03874258600237248, 'SingleF1': 0.05935591741785403, 'MorePre': 0.46160019260091484, 'MoreRecall': 0.0985758598824356, 'MoreF1': 0.16245834039428345}
+top5: {'a': 0.3822052401746725, 'p': 0.2887660838007258, 'r': 0.06967094854777564, 'f': 0.11225741288507324, 'SinglePre': 0.12399708242159008, 'SingleRecall': 0.036298932384341634, 'SingleF1': 0.056158123657986024, 'MorePre': 0.4594844235452179, 'MoreRecall': 0.09377731315658686, 'MoreF1': 0.15576430401366353}
+top10: {'a': 0.40223799126637555, 'p': 0.2914260855809539, 'r': 0.07332265350593527, 'f': 0.1171663208439664, 'SinglePre': 0.126440361258175, 'SingleRecall': 0.03852906287069988, 'SingleF1': 0.059060988471469615, 'MorePre': 0.46174248513100785, 'MoreRecall': 0.09845589621428939, 'MoreF1': 0.16230418261692542}
+
+learning rate:0.000050
+loss 26.929714 [learning] epoch 43>> 0.00%completed in 0.39 (sec) <<
+loss 28.204025 [learning] epoch 43>> 3.40%completed in 355.80 (sec) <<
+loss 22.044422 [learning] epoch 43>> 6.80%completed in 710.57 (sec) <<
+loss 19.415405 [learning] epoch 43>> 10.20%completed in 1066.55 (sec) <<
+loss 24.266689 [learning] epoch 43>> 13.60%completed in 1428.22 (sec) <<
+loss 31.651016 [learning] epoch 43>> 17.00%completed in 1775.78 (sec) <<
+loss 27.455070 [learning] epoch 43>> 20.40%completed in 2129.66 (sec) <<
+loss 26.246410 [learning] epoch 43>> 23.80%completed in 2482.85 (sec) <<
+loss 22.088736 [learning] epoch 43>> 27.20%completed in 2843.81 (sec) <<
+loss 31.961533 [learning] epoch 43>> 30.60%completed in 3200.06 (sec) <<
+loss 28.630817 [learning] epoch 43>> 34.00%completed in 3560.02 (sec) <<
+loss 27.559931 [learning] epoch 43>> 37.40%completed in 3923.11 (sec) <<
+loss 24.794811 [learning] epoch 43>> 40.80%completed in 4287.36 (sec) <<
+loss 22.691187 [learning] epoch 43>> 44.20%completed in 4637.00 (sec) <<
+loss 19.923565 [learning] epoch 43>> 47.60%completed in 4998.09 (sec) <<
+loss 20.994680 [learning] epoch 43>> 51.00%completed in 5354.82 (sec) <<
+loss 23.867655 [learning] epoch 43>> 54.40%completed in 5714.20 (sec) <<
+loss 29.900621 [learning] epoch 43>> 57.80%completed in 6067.66 (sec) <<
+loss 20.734655 [learning] epoch 43>> 61.21%completed in 6422.21 (sec) <<
+loss 22.681467 [learning] epoch 43>> 64.61%completed in 6776.81 (sec) <<
+loss 17.653820 [learning] epoch 43>> 68.01%completed in 7131.09 (sec) <<
+loss 23.626287 [learning] epoch 43>> 71.41%completed in 7481.46 (sec) <<
+loss 22.363047 [learning] epoch 43>> 74.81%completed in 7838.62 (sec) <<
+loss 24.540445 [learning] epoch 43>> 78.21%completed in 8188.15 (sec) <<
+loss 26.130806 [learning] epoch 43>> 81.61%completed in 8538.72 (sec) <<
+loss 18.266052 [learning] epoch 43>> 85.01%completed in 8891.44 (sec) <<
+loss 21.596575 [learning] epoch 43>> 88.41%completed in 9253.59 (sec) <<
+loss 21.263556 [learning] epoch 43>> 91.81%completed in 9616.95 (sec) <<
+loss 28.862980 [learning] epoch 43>> 95.21%completed in 9971.10 (sec) <<
+loss 25.371822 [learning] epoch 43>> 98.61%completed in 10324.48 (sec) <<
+
+VALID new best: {'a': 0.4230349344978166, 'p': 0.30227387963649127, 'r': 0.07685975821407674, 'f': 0.12255677145929535, 'SinglePre': 0.14880332986472425, 'SingleRecall': 0.047598668568711366, 'SingleF1': 0.07212595021075764, 'MorePre': 0.47172753385309807, 'MoreRecall': 0.09780001020876933, 'MoreF1': 0.16201133064629777}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-43
+
+TEST new best: {'a': 0.4111899563318777, 'p': 0.29700745179986593, 'r': 0.07495447806489487, 'f': 0.11970062925061971, 'SinglePre': 0.1459848541651046, 'SingleRecall': 0.04619217081850534, 'SingleF1': 0.07017860039288482, 'MorePre': 0.46449359720605354, 'MoreRecall': 0.09573100718068242, 'MoreF1': 0.15874504454580332}
+top5: {'a': 0.38973799126637554, 'p': 0.2937425433002839, 'r': 0.07104406921324166, 'f': 0.11441574258060382, 'SinglePre': 0.14130094043887148, 'SingleRecall': 0.04277580071174377, 'SingleF1': 0.06567109816062648, 'MorePre': 0.4621979734996103, 'MoreRecall': 0.09146372812805265, 'MoreF1': 0.15270823199519298}
+top10: {'a': 0.4100982532751092, 'p': 0.2968157395701643, 'r': 0.0747554750698998, 'f': 0.1194312193493518, 'SinglePre': 0.1454026013081723, 'SingleRecall': 0.04588374851720047, 'SingleF1': 0.06975527943589835, 'MorePre': 0.46449088335692285, 'MoreRecall': 0.0956110435125362, 'MoreF1': 0.15857991529518775}
+
+learning rate:0.000050
+loss 61.135811 [learning] epoch 44>> 0.00%completed in 0.44 (sec) <<
+loss 27.224064 [learning] epoch 44>> 3.40%completed in 358.80 (sec) <<
+loss 25.405422 [learning] epoch 44>> 6.80%completed in 712.63 (sec) <<
+loss 23.781029 [learning] epoch 44>> 10.20%completed in 1063.22 (sec) <<
+loss 27.062164 [learning] epoch 44>> 13.60%completed in 1413.33 (sec) <<
+loss 31.227884 [learning] epoch 44>> 17.00%completed in 1772.52 (sec) <<
+loss 28.664452 [learning] epoch 44>> 20.40%completed in 2121.90 (sec) <<
+loss 32.651165 [learning] epoch 44>> 23.80%completed in 2473.11 (sec) <<
+loss 27.026276 [learning] epoch 44>> 27.20%completed in 2822.31 (sec) <<
+loss 25.371351 [learning] epoch 44>> 30.60%completed in 3175.17 (sec) <<
+loss 29.800362 [learning] epoch 44>> 34.00%completed in 3532.72 (sec) <<
+loss 27.187231 [learning] epoch 44>> 37.40%completed in 3885.28 (sec) <<
+loss 26.165339 [learning] epoch 44>> 40.80%completed in 4235.18 (sec) <<
+loss 27.071409 [learning] epoch 44>> 44.20%completed in 4589.21 (sec) <<
+loss 21.929285 [learning] epoch 44>> 47.60%completed in 4939.60 (sec) <<
+loss 29.461143 [learning] epoch 44>> 51.00%completed in 5294.52 (sec) <<
+loss 25.050266 [learning] epoch 44>> 54.40%completed in 5650.78 (sec) <<
+loss 27.560009 [learning] epoch 44>> 57.80%completed in 6003.34 (sec) <<
+loss 25.027794 [learning] epoch 44>> 61.21%completed in 6360.52 (sec) <<
+loss 24.642862 [learning] epoch 44>> 64.61%completed in 6705.52 (sec) <<
+loss 20.854708 [learning] epoch 44>> 68.01%completed in 7055.16 (sec) <<
+loss 30.594263 [learning] epoch 44>> 71.41%completed in 7412.16 (sec) <<
+loss 16.035116 [learning] epoch 44>> 74.81%completed in 7764.14 (sec) <<
+loss 25.616632 [learning] epoch 44>> 78.21%completed in 8122.82 (sec) <<
+loss 21.370245 [learning] epoch 44>> 81.61%completed in 8473.51 (sec) <<
+loss 25.674633 [learning] epoch 44>> 85.01%completed in 8829.35 (sec) <<
+loss 27.477612 [learning] epoch 44>> 88.41%completed in 9180.83 (sec) <<
+loss 23.773989 [learning] epoch 44>> 91.81%completed in 9538.78 (sec) <<
+loss 25.464985 [learning] epoch 44>> 95.21%completed in 9887.04 (sec) <<
+loss 16.839006 [learning] epoch 44>> 98.61%completed in 10237.40 (sec) <<
+
+VALID new curr: {'a': 0.41610262008733623, 'p': 0.3011734028683181, 'r': 0.07560024991818155, 'f': 0.12086187214611874, 'SinglePre': 0.130927997479124, 'SingleRecall': 0.039514978601997146, 'SingleF1': 0.0607078934872338, 'MorePre': 0.4724577950384402, 'MoreRecall': 0.10142412332193354, 'MoreF1': 0.166998179016669}
+TEST new curr: {'a': 0.4074235807860262, 'p': 0.29742976688583384, 'r': 0.07426791773216188, 'f': 0.11885728844867673, 'SinglePre': 0.1305762819495158, 'SingleRecall': 0.03902728351126928, 'SingleF1': 0.060093519397968885, 'MorePre': 0.4656317516203889, 'MoreRecall': 0.09972408356326369, 'MoreF1': 0.16426716350496837}
+top5: {'a': 0.3864628820960699, 'p': 0.29437445428464515, 'r': 0.07044706022825643, 'f': 0.11368745584173678, 'SinglePre': 0.12712074815856989, 'SingleRecall': 0.036441281138790034, 'SingleF1': 0.056644478454077773, 'MorePre': 0.4632352941176471, 'MoreRecall': 0.09501122517180512, 'MoreF1': 0.15768142322843046}
+top10: {'a': 0.4066593886462882, 'p': 0.2973577073521194, 'r': 0.07412861563566532, 'f': 0.11867309147385607, 'SinglePre': 0.13022034842096888, 'SingleRecall': 0.03883748517200474, 'SingleF1': 0.059830777946309456, 'MorePre': 0.4656733157093647, 'MoreRecall': 0.09962125756199551, 'MoreF1': 0.16413021995087104}
+
+learning rate:0.000050
+loss 26.126921 [learning] epoch 45>> 0.00%completed in 0.22 (sec) <<
+loss 27.228712 [learning] epoch 45>> 3.40%completed in 351.33 (sec) <<
+loss 23.377024 [learning] epoch 45>> 6.80%completed in 703.18 (sec) <<
+loss 24.700748 [learning] epoch 45>> 10.20%completed in 1055.14 (sec) <<
+loss 29.901585 [learning] epoch 45>> 13.60%completed in 1407.42 (sec) <<
+loss 19.851418 [learning] epoch 45>> 17.00%completed in 1751.68 (sec) <<
+loss 20.124870 [learning] epoch 45>> 20.40%completed in 2099.19 (sec) <<
+loss 26.062029 [learning] epoch 45>> 23.80%completed in 2453.44 (sec) <<
+loss 23.929232 [learning] epoch 45>> 27.20%completed in 2803.78 (sec) <<
+loss 31.642904 [learning] epoch 45>> 30.60%completed in 3156.90 (sec) <<
+loss 24.733929 [learning] epoch 45>> 34.00%completed in 3508.86 (sec) <<
+loss 23.232176 [learning] epoch 45>> 37.40%completed in 3863.26 (sec) <<
+loss 21.012039 [learning] epoch 45>> 40.80%completed in 4218.23 (sec) <<
+loss 21.299595 [learning] epoch 45>> 44.20%completed in 4577.27 (sec) <<
+loss 20.350491 [learning] epoch 45>> 47.60%completed in 4933.10 (sec) <<
+loss 28.030462 [learning] epoch 45>> 51.00%completed in 5284.30 (sec) <<
+loss 31.468372 [learning] epoch 45>> 54.40%completed in 5636.22 (sec) <<
+loss 25.259686 [learning] epoch 45>> 57.80%completed in 5990.26 (sec) <<
+loss 24.650255 [learning] epoch 45>> 61.21%completed in 6343.47 (sec) <<
+loss 20.723785 [learning] epoch 45>> 64.61%completed in 6696.21 (sec) <<
+loss 24.791172 [learning] epoch 45>> 68.01%completed in 7046.54 (sec) <<
+loss 20.048809 [learning] epoch 45>> 71.41%completed in 7397.46 (sec) <<
+loss 22.201376 [learning] epoch 45>> 74.81%completed in 7743.05 (sec) <<
+loss 26.269291 [learning] epoch 45>> 78.21%completed in 8101.21 (sec) <<
+loss 24.524399 [learning] epoch 45>> 81.61%completed in 8453.92 (sec) <<
+loss 23.932669 [learning] epoch 45>> 85.01%completed in 8803.64 (sec) <<
+loss 24.503210 [learning] epoch 45>> 88.41%completed in 9149.62 (sec) <<
+loss 19.880617 [learning] epoch 45>> 91.81%completed in 9501.29 (sec) <<
+loss 24.350410 [learning] epoch 45>> 95.21%completed in 9855.80 (sec) <<
+loss 26.838131 [learning] epoch 45>> 98.61%completed in 10211.67 (sec) <<
+
+VALID new curr: {'a': 0.41146288209606985, 'p': 0.3039883856918176, 'r': 0.07475727192486586, 'f': 0.12000318395287748, 'SinglePre': 0.14204412567240976, 'SingleRecall': 0.043319067998097954, 'SingleF1': 0.06639094867637145, 'MorePre': 0.47752715121136174, 'MoreRecall': 0.09725554251101697, 'MoreF1': 0.16159902746561497}
+TEST new curr: {'a': 0.4008733624454148, 'p': 0.2995228190382968, 'r': 0.07307389976219142, 'f': 0.11748520236762117, 'SinglePre': 0.14226073257187868, 'SingleRecall': 0.042846975088967974, 'SingleF1': 0.0658583280153159, 'MorePre': 0.4683694181326116, 'MoreRecall': 0.09490839917053692, 'MoreF1': 0.1578339864624154}
+top5: {'a': 0.3829694323144105, 'p': 0.29722516416013556, 'r': 0.0698102506442722, 'f': 0.11306463829307205, 'SinglePre': 0.1384514435695538, 'SingleRecall': 0.04004744958481613, 'SingleF1': 0.062125059806411254, 'MorePre': 0.4668360641373872, 'MoreRecall': 0.09130948912615036, 'MoreF1': 0.15274353534774382}
+top10: {'a': 0.40010917030567683, 'p': 0.2994158735345778, 'r': 0.07293459766569486, 'f': 0.11729689075226832, 'SinglePre': 0.14178574248046105, 'SingleRecall': 0.042609727164887305, 'SingleF1': 0.0655271175000456, 'MorePre': 0.46842728965633995, 'MoreRecall': 0.09483984850302479, 'MoreF1': 0.15774246419154847}
+
+learning rate:0.000050
+loss 30.171803 [learning] epoch 46>> 0.00%completed in 0.42 (sec) <<
+loss 33.831577 [learning] epoch 46>> 3.40%completed in 349.69 (sec) <<
+loss 21.355259 [learning] epoch 46>> 6.80%completed in 705.26 (sec) <<
+loss 20.698193 [learning] epoch 46>> 10.20%completed in 1059.86 (sec) <<
+loss 28.300528 [learning] epoch 46>> 13.60%completed in 1413.68 (sec) <<
+loss 20.525414 [learning] epoch 46>> 17.00%completed in 1769.25 (sec) <<
+loss 37.081192 [learning] epoch 46>> 20.40%completed in 2122.86 (sec) <<
+loss 27.032249 [learning] epoch 46>> 23.80%completed in 2470.57 (sec) <<
+loss 26.569298 [learning] epoch 46>> 27.20%completed in 2824.19 (sec) <<
+loss 27.822636 [learning] epoch 46>> 30.60%completed in 3178.76 (sec) <<
+loss 26.041676 [learning] epoch 46>> 34.00%completed in 3531.36 (sec) <<
+loss 23.363150 [learning] epoch 46>> 37.40%completed in 3887.57 (sec) <<
+loss 21.462196 [learning] epoch 46>> 40.80%completed in 4240.72 (sec) <<
+loss 24.175991 [learning] epoch 46>> 44.20%completed in 4594.84 (sec) <<
+loss 23.146564 [learning] epoch 46>> 47.60%completed in 4938.01 (sec) <<
+loss 24.323284 [learning] epoch 46>> 51.00%completed in 5289.95 (sec) <<
+loss 24.475552 [learning] epoch 46>> 54.40%completed in 5650.78 (sec) <<
+loss 29.614281 [learning] epoch 46>> 57.80%completed in 6007.42 (sec) <<
+loss 29.086075 [learning] epoch 46>> 61.21%completed in 6352.41 (sec) <<
+loss 28.004602 [learning] epoch 46>> 64.61%completed in 6711.80 (sec) <<
+loss 21.834164 [learning] epoch 46>> 68.01%completed in 7065.00 (sec) <<
+loss 25.445238 [learning] epoch 46>> 71.41%completed in 7411.71 (sec) <<
+loss 23.559729 [learning] epoch 46>> 74.81%completed in 7761.70 (sec) <<
+loss 26.123528 [learning] epoch 46>> 78.21%completed in 8114.55 (sec) <<
+loss 24.050177 [learning] epoch 46>> 81.61%completed in 8460.28 (sec) <<
+loss 22.896208 [learning] epoch 46>> 85.01%completed in 8807.43 (sec) <<
+loss 16.849113 [learning] epoch 46>> 88.41%completed in 9156.69 (sec) <<
+loss 23.405495 [learning] epoch 46>> 91.81%completed in 9508.15 (sec) <<
+loss 21.987713 [learning] epoch 46>> 95.21%completed in 9861.74 (sec) <<
+loss 29.040749 [learning] epoch 46>> 98.61%completed in 10208.65 (sec) <<
+
+VALID new curr: {'a': 0.40382096069868995, 'p': 0.29592, 'r': 0.07336883758293415, 'f': 0.1175844174421654, 'SinglePre': 0.11651272079079565, 'SingleRecall': 0.03418925344745601, 'SingleF1': 0.052865703466784306, 'MorePre': 0.4708484752725549, 'MoreRecall': 0.10140710870637878, 'MoreF1': 0.16687432627290671}
+TEST new curr: {'a': 0.39306768558951966, 'p': 0.2915384615384615, 'r': 0.07165102834797664, 'f': 0.11503103010359342, 'SinglePre': 0.11701170117011701, 'SingleRecall': 0.03392645314353499, 'SingleF1': 0.05260157069025767, 'MorePre': 0.46245692763843255, 'MoreRecall': 0.09890147555311819, 'MoreF1': 0.16295355075532966}
+top5: {'a': 0.3730349344978166, 'p': 0.28842744998733855, 'r': 0.06799932338981701, 'f': 0.11005273964330287, 'SinglePre': 0.1142686973538671, 'SingleRecall': 0.031862396204033215, 'SingleF1': 0.04983025063540062, 'MorePre': 0.4598442341512436, 'MoreRecall': 0.09410292882726945, 'MoreF1': 0.15623399533375062}
+top10: {'a': 0.3924126637554585, 'p': 0.2914892754328346, 'r': 0.0715316265509796, 'f': 0.11487328624844205, 'SinglePre': 0.11675002049684349, 'SingleRecall': 0.0337841043890866, 'SingleF1': 0.05240399654074742, 'MorePre': 0.4624578854484197, 'MoreRecall': 0.09879864955185001, 'MoreF1': 0.16281401358430883}
+
+learning rate:0.000050
+loss 27.041252 [learning] epoch 47>> 0.00%completed in 0.32 (sec) <<
+loss 23.406092 [learning] epoch 47>> 3.40%completed in 348.06 (sec) <<
+loss 23.525097 [learning] epoch 47>> 6.80%completed in 696.39 (sec) <<
+loss 24.986134 [learning] epoch 47>> 10.20%completed in 1045.64 (sec) <<
+loss 25.706482 [learning] epoch 47>> 13.60%completed in 1396.67 (sec) <<
+loss 22.783522 [learning] epoch 47>> 17.00%completed in 1742.72 (sec) <<
+loss 23.885872 [learning] epoch 47>> 20.40%completed in 2093.09 (sec) <<
+loss 19.646936 [learning] epoch 47>> 23.80%completed in 2448.09 (sec) <<
+loss 29.654009 [learning] epoch 47>> 27.20%completed in 2793.81 (sec) <<
+loss 27.462677 [learning] epoch 47>> 30.60%completed in 3147.63 (sec) <<
+loss 29.054508 [learning] epoch 47>> 34.00%completed in 3498.86 (sec) <<
+loss 25.078581 [learning] epoch 47>> 37.40%completed in 3853.12 (sec) <<
+loss 24.417831 [learning] epoch 47>> 40.80%completed in 4210.92 (sec) <<
+loss 20.805401 [learning] epoch 47>> 44.20%completed in 4571.30 (sec) <<
+loss 23.384388 [learning] epoch 47>> 47.60%completed in 4927.93 (sec) <<
+loss 23.615837 [learning] epoch 47>> 51.00%completed in 5281.55 (sec) <<
+loss 29.692757 [learning] epoch 47>> 54.40%completed in 5636.97 (sec) <<
+loss 22.435892 [learning] epoch 47>> 57.80%completed in 5996.86 (sec) <<
+loss 27.041851 [learning] epoch 47>> 61.21%completed in 6342.27 (sec) <<
+loss 25.702410 [learning] epoch 47>> 64.61%completed in 6691.32 (sec) <<
+loss 25.737213 [learning] epoch 47>> 68.01%completed in 7037.06 (sec) <<
+loss 32.194916 [learning] epoch 47>> 71.41%completed in 7380.16 (sec) <<
+loss 28.324533 [learning] epoch 47>> 74.81%completed in 7733.79 (sec) <<
+loss 24.510237 [learning] epoch 47>> 78.21%completed in 8084.23 (sec) <<
+loss 34.250298 [learning] epoch 47>> 81.61%completed in 8432.18 (sec) <<
+loss 29.423666 [learning] epoch 47>> 85.01%completed in 8781.91 (sec) <<
+loss 28.050697 [learning] epoch 47>> 88.41%completed in 9124.72 (sec) <<
+loss 22.181261 [learning] epoch 47>> 91.81%completed in 9470.22 (sec) <<
+loss 30.847979 [learning] epoch 47>> 95.21%completed in 9822.81 (sec) <<
+loss 26.695049 [learning] epoch 47>> 98.61%completed in 10172.20 (sec) <<
+
+VALID new curr: {'a': 0.4000545851528384, 'p': 0.30158011686280967, 'r': 0.07268453780012496, 'f': 0.1171374915091701, 'SinglePre': 0.1370831659300924, 'SingleRecall': 0.04056110318592487, 'SingleF1': 0.06259976148977157, 'MorePre': 0.4742346293328835, 'MoreRecall': 0.09567318326442414, 'MoreF1': 0.15922412572561237}
+TEST new curr: {'a': 0.389410480349345, 'p': 0.29655803126039243, 'r': 0.07098436831474314, 'f': 0.11454996507623015, 'SinglePre': 0.13525319527584534, 'SingleRecall': 0.03966785290628707, 'SingleF1': 0.06134429116524801, 'MorePre': 0.46707713357277236, 'MoreRecall': 0.09360593648780655, 'MoreF1': 0.15595688485973302}
+top5: {'a': 0.37134279475982535, 'p': 0.29358708786466425, 'r': 0.06769086874757466, 'f': 0.11001592910336129, 'SinglePre': 0.13150822976150486, 'SingleRecall': 0.03715302491103203, 'SingleF1': 0.05793777054275037, 'MorePre': 0.4649325284090909, 'MoreRecall': 0.08974996144024952, 'MoreF1': 0.15045607986784457}
+top10: {'a': 0.38853711790393014, 'p': 0.2963487239268912, 'r': 0.07082516591874707, 'f': 0.11432701574044332, 'SinglePre': 0.1347057869995137, 'SingleRecall': 0.03943060498220641, 'SingleF1': 0.06100425781823521, 'MorePre': 0.4670832976628713, 'MoreRecall': 0.09350311048653837, 'MoreF1': 0.1558144848069454}
+
+learning rate:0.000050
+loss 27.329464 [learning] epoch 48>> 0.00%completed in 0.30 (sec) <<
+loss 26.086571 [learning] epoch 48>> 3.40%completed in 343.44 (sec) <<
+loss 25.566452 [learning] epoch 48>> 6.80%completed in 686.02 (sec) <<
+loss 20.943172 [learning] epoch 48>> 10.20%completed in 1041.32 (sec) <<
+loss 21.506313 [learning] epoch 48>> 13.60%completed in 1388.71 (sec) <<
+loss 24.689222 [learning] epoch 48>> 17.00%completed in 1737.18 (sec) <<
+loss 26.206654 [learning] epoch 48>> 20.40%completed in 2082.36 (sec) <<
+loss 28.959057 [learning] epoch 48>> 23.80%completed in 2431.96 (sec) <<
+loss 26.655233 [learning] epoch 48>> 27.20%completed in 2785.43 (sec) <<
+loss 33.287388 [learning] epoch 48>> 30.60%completed in 3134.97 (sec) <<
+loss 29.175463 [learning] epoch 48>> 34.00%completed in 3484.71 (sec) <<
+loss 29.690039 [learning] epoch 48>> 37.40%completed in 3829.49 (sec) <<
+loss 23.592661 [learning] epoch 48>> 40.80%completed in 4178.73 (sec) <<
+loss 23.401562 [learning] epoch 48>> 44.20%completed in 4529.25 (sec) <<
+loss 24.998013 [learning] epoch 48>> 47.60%completed in 4880.31 (sec) <<
+loss 19.682396 [learning] epoch 48>> 51.00%completed in 5229.91 (sec) <<
+loss 22.178173 [learning] epoch 48>> 54.40%completed in 5579.94 (sec) <<
+loss 17.637951 [learning] epoch 48>> 57.80%completed in 5920.86 (sec) <<
+loss 27.280973 [learning] epoch 48>> 61.21%completed in 6273.81 (sec) <<
+loss 35.217529 [learning] epoch 48>> 64.61%completed in 6622.41 (sec) <<
+loss 19.802906 [learning] epoch 48>> 68.01%completed in 6970.02 (sec) <<
+loss 21.575251 [learning] epoch 48>> 71.41%completed in 7317.48 (sec) <<
+loss 31.052090 [learning] epoch 48>> 74.81%completed in 7674.41 (sec) <<
+loss 26.041456 [learning] epoch 48>> 78.21%completed in 8025.33 (sec) <<
+loss 20.797379 [learning] epoch 48>> 81.61%completed in 8376.18 (sec) <<
+loss 31.282057 [learning] epoch 48>> 85.01%completed in 8728.29 (sec) <<
+loss 24.701195 [learning] epoch 48>> 88.41%completed in 9084.94 (sec) <<
+loss 26.185272 [learning] epoch 48>> 91.81%completed in 9438.43 (sec) <<
+loss 27.650227 [learning] epoch 48>> 95.21%completed in 9783.21 (sec) <<
+loss 25.699062 [learning] epoch 48>> 98.61%completed in 10133.19 (sec) <<
+
+VALID new best: {'a': 0.43231441048034935, 'p': 0.3028101701395527, 'r': 0.0785457142007081, 'f': 0.12473619554603585, 'SinglePre': 0.13691968695387888, 'SingleRecall': 0.04284355682358536, 'SingleF1': 0.06526502598649066, 'MorePre': 0.4708326920116977, 'MoreRecall': 0.1040954179640311, 'MoreF1': 0.17049618905625147}
+Save model checkpoint to ./checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k/model-48
+
+TEST new best: {'a': 0.4189410480349345, 'p': 0.2971236111648794, 'r': 0.0763673993293599, 'f': 0.12150524016084603, 'SinglePre': 0.13434327899107967, 'SingleRecall': 0.04144721233689205, 'SingleF1': 0.0633498930267977, 'MorePre': 0.4621501520230763, 'MoreRecall': 0.1015920892529691, 'MoreF1': 0.16656832167242686}
+top5: {'a': 0.3972707423580786, 'p': 0.2936927484766555, 'r': 0.07241718987870767, 'f': 0.11618588464424259, 'SinglePre': 0.1299263056712592, 'SingleRecall': 0.038481613285883745, 'SingleF1': 0.05937694475967345, 'MorePre': 0.45994958119866636, 'MoreRecall': 0.0969306438621446, 'MoreF1': 0.16011776695730948}
+top10: {'a': 0.4179585152838428, 'p': 0.2969325629193004, 'r': 0.07618829663386434, 'f': 0.1212625110857722, 'SinglePre': 0.13379576107899807, 'SingleRecall': 0.04118623962040332, 'SingleF1': 0.06298412698412698, 'MorePre': 0.46214486418982204, 'MoreRecall': 0.10147212558482288, 'MoreF1': 0.16640670011101275}
+
+learning rate:0.000050
+loss 26.176641 [learning] epoch 49>> 0.00%completed in 0.57 (sec) <<
+loss 28.761650 [learning] epoch 49>> 3.40%completed in 353.90 (sec) <<
+loss 25.287674 [learning] epoch 49>> 6.80%completed in 700.88 (sec) <<
+loss 25.985630 [learning] epoch 49>> 10.20%completed in 1043.77 (sec) <<
+loss 20.088255 [learning] epoch 49>> 13.60%completed in 1394.67 (sec) <<
+loss 22.136866 [learning] epoch 49>> 17.00%completed in 1742.39 (sec) <<
+loss 22.445702 [learning] epoch 49>> 20.40%completed in 2099.67 (sec) <<
+loss 24.622160 [learning] epoch 49>> 23.80%completed in 2444.53 (sec) <<
+loss 23.472330 [learning] epoch 49>> 27.20%completed in 2796.74 (sec) <<
+loss 21.925243 [learning] epoch 49>> 30.60%completed in 3150.20 (sec) <<
+loss 26.319059 [learning] epoch 49>> 34.00%completed in 3499.09 (sec) <<
+loss 23.672674 [learning] epoch 49>> 37.40%completed in 3845.55 (sec) <<
+loss 28.475777 [learning] epoch 49>> 40.80%completed in 4202.18 (sec) <<
+loss 24.458042 [learning] epoch 49>> 44.20%completed in 4551.38 (sec) <<
+loss 22.856243 [learning] epoch 49>> 47.60%completed in 4898.14 (sec) <<
+loss 29.433880 [learning] epoch 49>> 51.00%completed in 5243.84 (sec) <<
+loss 18.619146 [learning] epoch 49>> 54.40%completed in 5595.81 (sec) <<
+loss 25.193119 [learning] epoch 49>> 57.80%completed in 5945.52 (sec) <<
+loss 20.658960 [learning] epoch 49>> 61.21%completed in 6297.50 (sec) <<
+loss 31.982704 [learning] epoch 49>> 64.61%completed in 6649.37 (sec) <<
+loss 24.827299 [learning] epoch 49>> 68.01%completed in 6998.39 (sec) <<
+loss 23.192968 [learning] epoch 49>> 71.41%completed in 7356.71 (sec) <<
+loss 22.390844 [learning] epoch 49>> 74.81%completed in 7702.70 (sec) <<
+loss 22.535763 [learning] epoch 49>> 78.21%completed in 8056.03 (sec) <<
+loss 17.708364 [learning] epoch 49>> 81.61%completed in 8409.94 (sec) <<
+loss 38.406296 [learning] epoch 49>> 85.01%completed in 8763.07 (sec) <<
+loss 20.929630 [learning] epoch 49>> 88.41%completed in 9119.00 (sec) <<
+loss 23.509247 [learning] epoch 49>> 91.81%completed in 9466.09 (sec) <<
+loss 25.135572 [learning] epoch 49>> 95.21%completed in 9816.77 (sec) <<
+loss 23.006516 [learning] epoch 49>> 98.61%completed in 10168.46 (sec) <<
+
+VALID new curr: {'a': 0.4185043668122271, 'p': 0.30258899676375406, 'r': 0.07603661499707437, 'f': 0.12153347441171108, 'SinglePre': 0.133647428347075, 'SingleRecall': 0.040466000951022346, 'SingleF1': 0.06212245642850625, 'MorePre': 0.47330000793461874, 'MoreRecall': 0.10149218178415259, 'MoreF1': 0.16714301726070388}
+TEST new curr: {'a': 0.4066048034934498, 'p': 0.29706879361914257, 'r': 0.07411866548591556, 'f': 0.11863731923297444, 'SinglePre': 0.13155611641296633, 'SingleRecall': 0.03957295373665481, 'SingleF1': 0.06084371409290704, 'MorePre': 0.4663601161665053, 'MoreRecall': 0.09907285222189852, 'MoreF1': 0.16342742448443043}
+top5: {'a': 0.3847707423580786, 'p': 0.29381851527656205, 'r': 0.07013860558601406, 'f': 0.11324422452848375, 'SinglePre': 0.12834224598930483, 'SingleRecall': 0.03701067615658363, 'SingleF1': 0.05745327317926526, 'MorePre': 0.4637546468401487, 'MoreRecall': 0.0940686534935134, 'MoreF1': 0.15641073133201305}
+top10: {'a': 0.40573144104803494, 'p': 0.2969873741409621, 'r': 0.0739594630899195, 'f': 0.11842681770746202, 'SinglePre': 0.131135878586673, 'SingleRecall': 0.039359430604982204, 'SingleF1': 0.06054634039524826, 'MorePre': 0.46651046295548193, 'MoreRecall': 0.0989528885537523, 'MoreF1': 0.16327338536364666}
+
+learning rate:0.000050
+Train finished!
+Valid Best Result: epoch 48:   {'a': 0.43231441048034935, 'p': 0.3028101701395527, 'r': 0.0785457142007081, 'f': 0.12473619554603585, 'SinglePre': 0.13691968695387888, 'SingleRecall': 0.04284355682358536, 'SingleF1': 0.06526502598649066, 'MorePre': 0.4708326920116977, 'MoreRecall': 0.1040954179640311, 'MoreF1': 0.17049618905625147}
+Test Best Result: epoch 48:   {'a': 0.4189410480349345, 'p': 0.2971236111648794, 'r': 0.0763673993293599, 'f': 0.12150524016084603, 'SinglePre': 0.13434327899107967, 'SingleRecall': 0.04144721233689205, 'SingleF1': 0.0633498930267977, 'MorePre': 0.4621501520230763, 'MoreRecall': 0.1015920892529691, 'MoreF1': 0.16656832167242686}

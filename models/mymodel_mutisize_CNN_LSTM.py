@@ -16,14 +16,17 @@ class myModel(object):
                  lr_decay,
                  embedding, # 词向量
                  max_gradient_norm,
-                 keep_prob,
+                 batch_size,
+                 # keep_prob,
                  rnn_model_cell='rnn',
                  nonstatic=False):
-        self.batch_size = 16
+        # self.batch_size = 16
+        self.batch_size = batch_size
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
-        self.keep_prob = keep_prob
+        # self.keep_prob = keep_prob
+        self.keep_prob = tf.compat.v1.placeholder(tf.float32, name='keep_prob')
 
         self.lr = tf.Variable(lr, dtype=tf.float32)
 

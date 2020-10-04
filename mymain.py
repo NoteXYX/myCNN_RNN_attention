@@ -2,7 +2,7 @@ import tensorflow as tf
 import time
 import os
 import load
-import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
+import models.mymodel_mutisize_CNN_LSTM as mymodel
 import tools
 
 
@@ -28,17 +28,17 @@ def main():
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 5,  # 如果训练5次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
-        'lr': 0.0003,  # 初始学习率
+        'lr': 0.0001,  # 初始学习率
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # keep_prob 保留下来的概率
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0003_16_0.5', # 模型保存地址
+        'check_dir': './checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 1,  #
     }
 
     data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
-    emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
+    emb_file = 'data/ACL2017/kp20k/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
