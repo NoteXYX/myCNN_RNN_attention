@@ -106,41 +106,117 @@ def get_golden_kp(file_name):
     json_file.close()
     return golden_kp
 
-def test_f1(kp, golden_kp, topk=5):
+# def test_f1(kp, golden_kp, topk=5):
+#     res={}
+#     assert len(kp) == len(golden_kp)
+#     true_num = 0.0
+#     pre_num = 0.0
+#     golden_num = 0.0
+#     for line_index in range(len(kp)):
+#         cur_pre_kp = kp[line_index][ : min(len(kp[line_index]), topk)]  # list
+#         cur_golden_kp = golden_kp[line_index]            #list
+#         pre_num += len(cur_pre_kp)
+#         golden_num += len(cur_golden_kp)
+#         for key in cur_pre_kp:
+#             if key in cur_golden_kp:
+#                 true_num += 1
+#     res['p'] = true_num / pre_num * 100
+#     res['r'] = true_num / golden_num *100
+#     res['f1'] = 2 * res['p'] * res['r'] / (res['p'] + res['r'])
+#     return res
+
+def get_test_f1(pre_kp, golden_kp, topk=5):
     res={}
-    assert len(kp) == len(golden_kp)
-    true_num = 0.0
-    pre_num = 0.0
-    golden_num = 0.0
-    for line_index in range(len(kp)):
-        cur_pre_kp = kp[line_index][ : min(len(kp[line_index]), topk)]  # list
-        cur_golden_kp = golden_kp[line_index]            #list
-        pre_num += len(cur_pre_kp)
-        golden_num += len(cur_golden_kp)
-        for key in cur_pre_kp:
-            if key in cur_golden_kp:
-                true_num += 1
-    res['p'] = true_num / pre_num * 100
-    res['r'] = true_num / golden_num *100
-    res['f1'] = 2 * res['p'] * res['r'] / (res['p'] + res['r'])
+    assert len(pre_kp) == len(golden_kp)
+    single_true_num = 0.0
+    single_pre_num = 0.0
+    single_golden_num = 0.0
+    more_true_num = 0.0
+    more_pre_num = 0.0
+    more_golden_num = 0.0
+    for line_index in range(len(pre_kp)):
+        cur_single_pre_kp = []
+        cur_more_pre_kp = []
+        origin_pre_kp = pre_kp[line_index]
+        numOfSingleKp = 0
+        numOfMoreKp = 0
+        booleanSingle = True
+        booleanMore = True
+        for kp in origin_pre_kp:
+            if (booleanSingle and len(kp.split(' ')) == 1):
+                single_pre_num += 1
+                cur_single_pre_kp.append(kp)
+                numOfSingleKp += 1
+                if(numOfSingleKp >= min(len(origin_pre_kp), topk)):
+                    booleanSingle = False
+            elif (booleanMore and len(kp.split(' ')) > 1):
+                more_pre_num += 1
+                cur_more_pre_kp.append(kp)
+                numOfMoreKp += 1
+                if (numOfMoreKp >= min(len(origin_pre_kp), topk)):
+                    booleanMore = False
+            else:
+                break
+
+        cur_single_golden_kp = []
+        cur_more_golden_kp = []
+        origin_golden_kp = golden_kp[line_index]
+        numOfSingleKp = 0
+        numOfMoreKp = 0
+        booleanSingle = True
+        booleanMore = True
+        for kp in origin_golden_kp:
+            if (booleanSingle and len(kp.split(' ')) == 1):
+                single_golden_num += 1
+                cur_single_golden_kp.append(kp)
+                numOfSingleKp += 1
+                if (numOfSingleKp >= min(len(origin_golden_kp), topk)):
+                    booleanSingle = False
+            elif (booleanMore and len(kp.split(' ')) > 1):
+                more_golden_num += 1
+                cur_more_golden_kp.append(kp)
+                numOfMoreKp += 1
+                if (numOfMoreKp >= min(len(origin_golden_kp), topk)):
+                    booleanMore = False
+            else:
+                break
+        for kp in cur_single_pre_kp:
+            if kp in cur_single_golden_kp:
+                single_true_num += 1
+        for kp in cur_more_pre_kp:
+            if kp in cur_more_golden_kp:
+                more_true_num += 1
+    res['single_p'] = single_true_num / single_pre_num * 100
+    res['single_r'] = single_true_num / single_golden_num * 100
+    res['single_f1'] = 2 * res['single_p'] * res['single_r'] / (res['single_p'] + res['single_r'])
+    if more_pre_num == 0:
+        res['more_f1'] = 0
+    else:
+        res['more_p'] = more_true_num / more_pre_num * 100
+        res['more_r'] = more_true_num / more_golden_num * 100
+        res['more_f1'] = 2 * res['more_p'] * res['more_r'] / (res['more_p'] + res['more_r'])
     return res
 
+
 def main():
-    file_name = 'data/ACL2017/krapivin/krapivin_test.json'
-    topk = 5
+    file_name = 'data/ACL2017/kp20k/kp20k_test.json'
+    topk = 10
     tfidf_kp = get_tfidf_kp(file_name, 20)
     textRank_kp = get_textRank_kp(file_name, 20)
     rake_kp = get_rake_kp(file_name, 20)
 
     golden_kp = get_golden_kp(file_name)
-    tfidf_res = test_f1(tfidf_kp, golden_kp, topk=topk)
-    textRank_res = test_f1(textRank_kp, golden_kp, topk=topk)
-    rake_res = test_f1(rake_kp, golden_kp, topk=topk)
+    tfidf_res = get_test_f1(tfidf_kp, golden_kp, topk=topk)
+    textRank_res = get_test_f1(textRank_kp, golden_kp, topk=topk)
+    rake_res = get_test_f1(rake_kp, golden_kp, topk=topk)
     print(file_name)
     print('topk = {}'.format(topk))
-    print('tf_idf Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(tfidf_res['p'], tfidf_res['r'], tfidf_res['f1']))
-    print('textRank Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(textRank_res['p'], textRank_res['r'],textRank_res['f1']))
-    print('RAKE Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(rake_res['p'], rake_res['r'],rake_res['f1']))
+    print("tfidf_res" + str(tfidf_res))
+    print("textRank_res" + str(textRank_res))
+    print("rake_res" + str(rake_res))
+    # print('tf_idf Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(tfidf_res['p'], tfidf_res['r'], tfidf_res['f1']))
+    # print('textRank Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(textRank_res['p'], textRank_res['r'],textRank_res['f1']))
+    # print('RAKE Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(rake_res['p'], rake_res['r'],rake_res['f1']))
 
     # print(golden_kp[9])
     # print(rake_kp[9])
