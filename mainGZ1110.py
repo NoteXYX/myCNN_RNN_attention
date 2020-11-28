@@ -28,14 +28,14 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
-        'lr':0.00005,
+        'lr':0.001,
         'lr_decay':0.5,         #
         'max_grad_norm':5,      #
         'seed':345,             #
-        'nepochs':50,
+        'nepochs':45,
         'batch_size':16,
         'keep_prob':0.5,
-        'check_dir':'./checkpoints/GZ_EMNLP2016_0.0001_16/krapivin',
+        'check_dir':'./checkpoints/GZ_EMNLP2016/krapivin_0.001_16',
         'display_test_per':1,   #
         'lr_decay_per':5       #
     }

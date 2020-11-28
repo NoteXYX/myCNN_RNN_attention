@@ -28,22 +28,22 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
-        'lr':0.00005,
+        'lr':0.001,
         'lr_decay':0.5,         #
         'max_grad_norm':5,      #
         'seed':345,             #
-        'nepochs':50,
+        'nepochs':35,
         'batch_size':16,
         'keep_prob':0.5,
-        'check_dir':'./checkpoints/GZ_EMNLP2016/krapivin_0.00005_16',
+        'check_dir':'./checkpoints/GZ_EMNLP2016/semeval_0.001_16',
         'display_test_per':1,   #
         'lr_decay_per':5       #
     }
 
     # data_set_file = 'data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
     # emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
-    data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
-    emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
+    data_set_file = 'data/ACL2017/semeval/semeval_t_a_GZ_data_set.pkl'
+    emb_file = 'data/ACL2017/semeval/semeval_t_a_GZ_embedding.pkl'
     print('loading dataset.....')
     # train_set,test_set,dic,embedding = load.atisfold(data_set_file, emb_file)
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -178,7 +178,7 @@ def main():
                 # sys.stdout.flush())
 
             #VALID
-            if e >= 0:
+            if e >= 30:
                 print('Validing..............')
                 predictions_valid=[]
                 predictions_test=[]
