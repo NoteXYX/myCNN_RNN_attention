@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
+import json
 
 def shuffle(lol,seed):
     '''
@@ -168,5 +169,98 @@ def conlleval_top(predictions, groundtruth, top_num):
     res['MoreRecall'] = 1.0 * goodMoreCnt / moreRecallCnt
     res['MoreF1'] = 2.0 * res['MorePre'] * res['MoreRecall'] / (res['MorePre'] + res['MoreRecall'])
     return res
+
+def countKp20kPhrase():
+    validPath = 'data/ACL2017/kp20k/kp20k_train.json'
+    testPath = 'data/ACL2017/kp20k/kp20k_test.json'
+    validJsonFile = open(validPath, 'r', encoding='utf-8')
+    testJsonFile = open(testPath, 'r', encoding='utf-8')
+    validSingleNum = 0
+    validMoreNum = 0
+    validLineNum = 0
+    validKpLen = 0.0
+    for line in validJsonFile.readlines():
+        json_data = json.loads(line)
+        for keyword in json_data["keywords"]:
+            curKpLen = len(keyword.strip().split(" "))
+            validKpLen += curKpLen
+            if curKpLen == 1:
+                validSingleNum += 1
+            elif curKpLen > 1:
+                validMoreNum += 1
+        validLineNum += 1
+    validJsonFile.close()
+    testSingleNum = 0
+    testMoreNum = 0
+    testLineNum = 0
+    testKpLen = 0.0
+    for line in testJsonFile.readlines():
+        json_data = json.loads(line)
+        for keyword in json_data["keywords"].split(';'):
+            curKpLen = len(keyword.strip().split(" "))
+            testKpLen += curKpLen
+            if curKpLen == 1:
+                testSingleNum += 1
+            elif curKpLen > 1:
+                testMoreNum += 1
+        testLineNum += 1
+    testJsonFile.close()
+    print("kp20k dataset ----- 训练集single {}个({:.2f}%), more {}个({:.2f}%)；测试集single {}个({:.2f}%), more {}个({:.2f}%)".format(validSingleNum, validSingleNum / (validSingleNum + validMoreNum) * 100.0,
+          validMoreNum, validMoreNum / (validSingleNum + validMoreNum) * 100.0, testSingleNum, testSingleNum / (testSingleNum + testMoreNum) * 100.0,
+          testMoreNum, testMoreNum / (testSingleNum + testMoreNum) * 100.0))
+    print("训练集平均关键短语长度: {:.2f} , 测试集集平均关键短语长度: {:.2f}".format(validKpLen / (validSingleNum + validMoreNum), testKpLen / (testSingleNum + testMoreNum)))
+
+def countKeyphrase(names):
+    jsons = []
+    for name in names:
+        validPath = 'data/ACL2017/' + name + '/' + name + '_valid.json'
+        testPath = 'data/ACL2017/' + name + '/' + name + '_test.json'
+        validJsonFile = open(validPath, 'r', encoding='utf-8')
+        testJsonFile = open(testPath, 'r', encoding='utf-8')
+        validSingleNum = 0
+        validMoreNum = 0
+        validLineNum = 0
+        validKpLen = 0.0
+        for line in validJsonFile.readlines():
+            json_data = json.loads(line)
+            for keyword in json_data["keywords"].split(';'):
+                curKpLen = len(keyword.strip().split(" "))
+                validKpLen += curKpLen
+                if curKpLen == 1:
+                    validSingleNum += 1
+                elif curKpLen > 1:
+                    validMoreNum += 1
+            validLineNum += 1
+        validJsonFile.close()
+        testSingleNum = 0
+        testMoreNum = 0
+        testLineNum = 0
+        testKpLen = 0.0
+        for line in testJsonFile.readlines():
+            json_data = json.loads(line)
+            for keyword in json_data["keywords"].split(';'):
+                curKpLen = len(keyword.strip().split(" "))
+                testKpLen += curKpLen
+                if curKpLen == 1:
+                    testSingleNum += 1
+                elif curKpLen > 1:
+                    testMoreNum += 1
+            testLineNum += 1
+        testJsonFile.close()
+        # print("{} dataset ----- 训练集single个数：{}, more 个数：{}；测试集single个数：{}, more 个数：{}".format(name, validSingleNum, validMoreNum, testSingleNum, testMoreNum))
+        print("{} dataset ----- 训练集single {}个({:.2f}%), more {}个({:.2f}%)；测试集single {}个({:.2f}%), more {}个({:.2f}%)".format(name,
+            validSingleNum, validSingleNum / (validSingleNum + validMoreNum) * 100.0,
+            validMoreNum, validMoreNum / (validSingleNum + validMoreNum) * 100.0, testSingleNum,
+            testSingleNum / (testSingleNum + testMoreNum) * 100.0,
+            testMoreNum, testMoreNum / (testSingleNum + testMoreNum) * 100.0))
+        print("训练集平均关键短语长度: {:.2f} , 测试集集平均关键短语长度: {:.2f}".format(validKpLen/(validSingleNum + validMoreNum), testKpLen/(testSingleNum + testMoreNum)))
+        print('-------------------------------------------------------------------------------------------------------------------------------')
+
+if __name__ == '__main__':
+    names = ['semeval', 'inspec',  'nus', 'krapivin']
+    countKp20kPhrase()
+    print('-------------------------------------------------------------------------------------------------------------------------------')
+    countKeyphrase(names)
+
 
 
