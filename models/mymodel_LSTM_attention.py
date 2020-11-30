@@ -13,6 +13,7 @@ class myModel(object):
                  ny,    # ny: 第1层rnn输出的类别数
                  nz,    # nz: 第2层rnn输出的类别数
                  de,    # emb_dimension: 300
+                 cs,
                  lr,    # 学习率
                  lr_decay,
                  embedding, # 词向量
@@ -21,6 +22,12 @@ class myModel(object):
                  rnn_model_cell='rnn',
                  nonstatic=False):
         self.batch_size = batch_size
+        self.input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs],name='input_x')  # input_x.shape=(None,None,3)
+        self.input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],name="input_y")  # input_y.shape = (None,None)
+        self.input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],name='input_z')  # input_z.shape = (None,None)
+        self.keep_prob = tf.compat.v1.placeholder(tf.float32)
+
+
         self.cnn_input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None], name='cnn_input_x')  # cnn_input_x.shape=(None,None)
         self.rnn_input_y = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name="rnn_input_y")  # rnn_input_y.shape = (None,None)
         self.rnn_input_z = tf.compat.v1.placeholder(tf.int32, shape=[None, None],  name='rnn_input_z')  # rnn_input_z.shape = (None,None)
