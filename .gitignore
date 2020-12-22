@@ -1,3 +1,8 @@
 /bert/
-/checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16/log.txt
-/checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16/checkpoint
+/checkpoints/
+/ACL2017/
+/.idea/
+__pycache__/
+/data/*
+!/data/*.py
+
