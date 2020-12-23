@@ -1,5 +1,5 @@
 # Keyphrase Extraction
-Source codes of our EMNLP2016 paper [Keyphrase Extraction Using Deep Recurrent Neural Networks on Twitter](http://jkx.fudan.edu.cn/~qzhang/paper/keyphrase.emnlp2016.pdf)
+Source codes of A Keyphrase Extraction method based on Multi-size Convolution Windows
 
 ## Preparation
 You need to prepare  the pre-trained word vectors.
@@ -7,7 +7,7 @@ You need to prepare  the pre-trained word vectors.
 
 
 ## Details
-Joint RNN model
+Multi-size CNN + Joint RNN model + attention
 
 * data文件夹存储数据集
 
@@ -15,7 +15,7 @@ Joint RNN model
 
 * main.py是主程序
 
-* models/model.py定义了joint-rnn模型
+* models/model.py定义了我们的模型
 
 * models/bi_lstm_model.py 用双向lstm代替rnn
 
@@ -24,5 +24,5 @@ Joint RNN model
 * tools.py定义了一些工具函数
 
 ## Requirement
-tensorflow0.11 + tensorlayer
+tensorflow1.14.0 + nltk
 
