@@ -2,15 +2,7 @@ import tensorflow as tf
 import time
 import os
 import load
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-import models.mymodel_mutisize_CNN_LSTM as mymodel
-=======
 import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
->>>>>>> ok
-=======
-import models.mymodel_mutisize_CNN_LSTM as mymodel
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
 import tools
 
 
@@ -36,29 +28,13 @@ def main():
         'lr_decay': 0.5,  # 学习率衰减率
         'lr_decay_per': 5,  # 如果训练5次以后准确率没有上升，则衰减学习率为原来的0.5倍
         'nepochs': 50,  # 总共迭代50个epoch
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         'lr': 0.0001,  # 初始学习率
         'batch_size': 16,   # batch_size=16
         'keep_prob': 0.5,   # keep_prob 保留下来的概率
-        'check_dir': './checkpoints/GZ_mutisize_CNN_LSTM_0.0001_16/kp20k', # 模型保存地址
+        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16', # 模型保存地址
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'display_test_per': 1,  #
-<<<<<<< HEAD
-=======
-        'lr': 0.001,  # 初始学习率
-        'batch_size': 16,   # batch_size=16
-        'keep_prob': 0.5,   # keep_prob 保留下来的概率
-        'check_dir': './checkpoints/GZ_LSTM_att/kp20k_0.001_16', # 模型保存地址
-        'max_grad_norm': 5,  #
-        'seed': 345,  #
-        'display_test_per': 1  #
->>>>>>> ok
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     }
 
     data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
@@ -95,15 +71,7 @@ def main():
 
     nsentences = len(train_lex)
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
-=======
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)###########################################
->>>>>>> ok
-=======
-    config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=True, allow_soft_placement=True)###########################################
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     with tf.compat.v1.Session(config=config) as sess:#####################################
         my_model = mymodel.myModel(
             nh1=s['nh1'],
@@ -111,13 +79,6 @@ def main():
             ny=y_nclasses,
             nz=z_nclasses,
             de=s['emb_dimension'],
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-=======
-	    cs=s['cs'],
->>>>>>> ok
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
             lr=s['lr'],
             lr_decay=s['lr_decay'],
             embedding=embedding,

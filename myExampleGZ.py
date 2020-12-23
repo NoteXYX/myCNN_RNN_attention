@@ -2,16 +2,9 @@ import tensorflow as tf
 import load
 import models.mymodel_mutisize_CNN_LSTM_attention as mymodel
 import tools
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-=======
 import json
 import re
 import nltk
->>>>>>> ok
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
-
 def batch_putin(train, test, start_num=0, batch_size=16):
     batch = [train[start_num:start_num + batch_size], test[start_num:start_num + batch_size]]
     return batch
@@ -27,30 +20,14 @@ def main():
         'nh2': 450,
         'win': 3,
         'emb_dimension': 300,
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-        'lr': 0.0001,
-=======
         'lr': 0.001,
->>>>>>> ok
-=======
-        'lr': 0.0001,
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         'lr_decay': 0.5,  #
         'max_grad_norm': 5,  #
         'seed': 345,  #
         'nepochs': 50,
         'batch_size': 16,
         'keep_prob': 1.0,
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16',
-=======
         'check_dir': './checkpoints/GZ_mycps_Adam_0.001_16/semeval',
->>>>>>> ok
-=======
-        'check_dir': './checkpoints/kp20k_mycps_multisize_CNN_LSTM_attention_Adam_0.0001_16',
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         'display_test_per': 1,  #
         'lr_decay_per': 5  #
     }
@@ -58,17 +35,11 @@ def main():
     # load the dataset
     # data_set_file = 'CNTN/data/inspec_wo_stem/data_set.pkl'
     # emb_file = 'CNTN/data/inspec_wo_stem/embedding.pkl'
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     # data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
     # emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
-    data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
-    emb_file = 'data/ACL2017/kp20k/ACL2017_t_a_embedding.pkl'
+    #data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
+    #emb_file = 'data/ACL2017/kp20k/ACL2017_t_a_embedding.pkl'
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
-<<<<<<< HEAD
-=======
     data_set_file = 'data/ACL2017/semeval/semeval_t_a_GZ_data_set.pkl'
     emb_file = 'data/ACL2017/semeval/semeval_t_a_GZ_embedding.pkl'
     testPath = 'data/ACL2017/semeval/semeval_test.json'
@@ -79,9 +50,7 @@ def main():
     testJsonFile = open(testPath, 'r', encoding='utf-8')
     testLines = testJsonFile.readlines()
     testJsonFile.close()
->>>>>>> ok
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
+
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
     test_lex, test_y, test_z = test_set
@@ -89,21 +58,9 @@ def main():
     y_nclasses = 2
     z_nclasses = 5
 
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-    #gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
-    #config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
-    with tf.Session() as sess:
-=======
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
     config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
     with tf.Session(config=config) as sess:
->>>>>>> ok
-=======
-    #gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
-    #config = tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False, allow_soft_placement=True)  ###########################################
-    with tf.Session() as sess:
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         my_model = mymodel.myModel(
             nh1=s['nh1'],
             nh2=s['nh2'],
@@ -119,28 +76,14 @@ def main():
         )
 
         checkpoint_dir = s['check_dir']
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
 
-=======
->>>>>>> ok
-=======
 
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         saver = tf.train.Saver(tf.all_variables())
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if ckpt and ckpt.model_checkpoint_path:
             # print(ckpt.all_model_checkpoint_paths[4])
             print(ckpt.model_checkpoint_path)
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-
-=======
             logFile.write(ckpt.model_checkpoint_path + '\n')
->>>>>>> ok
-=======
-
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
             saver.restore(sess, ckpt.model_checkpoint_path)
 
         def dev_step(cwords):
@@ -156,10 +99,6 @@ def main():
         predictions_test = []
         groundtruth_test = []
         start_num = 0
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         steps = len(test_lex) // s['batch_size']
         # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
         print('testing............')
@@ -170,8 +109,7 @@ def main():
             # x, z = batch
             x = load.pad_sentences(x)
             # x = tools.contextwin_2(x, s['win'])
-<<<<<<< HEAD
-=======
+
         indexInBatch = 0
         steps = len(test_lex) // s['batch_size']
         # for batch in tl.iterate.minibatches(test_lex, test_z, batch_size=s['batch_size']):
@@ -180,25 +118,11 @@ def main():
         for step in range(6):
             x, z = test_batch_putin(test_lex, test_z, start_num=start_num, batch_size=s['batch_size'])
             x = load.pad_sentences(x)
->>>>>>> ok
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
             predictions_test.extend(dev_step(x))
             groundtruth_test.extend(z)
             start_num += s['batch_size']
             if step % 100 == 0:
                 print('tested %d batch......' % (step//100))
-<<<<<<< HEAD
-<<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
-
-        print('dataset: ' + data_set_file)
-        print(predictions_test)
-        print(groundtruth_test)
-
-<<<<<<< HEAD
-=======
                 logFile.write('tested %d batch......\n' % (step//100))
             while indexInBatch < len(predictions_test):
                 curGoodNum = 0
@@ -263,10 +187,6 @@ def main():
         res_test_top10 = tools.conlleval_top(predictions_test, groundtruth_test, 10)
         print('top10: ', res_test_top10)
     '''
-        
->>>>>>> ok
-=======
->>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
 
 if __name__ == '__main__':
     main()
