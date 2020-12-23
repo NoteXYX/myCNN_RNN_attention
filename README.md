@@ -13,11 +13,9 @@ Multi-size CNN + Joint RNN model + attention
 
 * checkpoints文件夹存储模型训练得到的参数
 
-* main.py是主程序
+* mymain.py是训练程序，mypredict.py测试程序
 
-* models/model.py定义了我们的模型
-
-* models/bi_lstm_model.py 用双向lstm代替rnn
+* models/mymodel_mutisize_CNN_LSTM_attention.py定义了我们的模型
 
 * load.py用于加载数据集
 
