@@ -5,11 +5,15 @@ import tensorflow as tf
 tf.compat.v1.disable_v2_behavior()
 
 
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
 class myModel(object):
 =======
 class Model(object):
 >>>>>>> ok
+=======
+class myModel(object):
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
 
     def __init__(self,
                  nh1,   # nh1表示第1层rnn神经元的个数450
@@ -23,11 +27,15 @@ class Model(object):
                  embedding, # 词向量
                  max_gradient_norm,
                  batch_size,
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
                  rnn_model_cell='rnn',
 =======
                  model_cell='lstm',
 >>>>>>> ok
+=======
+                 rnn_model_cell='rnn',
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
                  nonstatic=False):
         self.batch_size = batch_size
         self.input_x = tf.compat.v1.placeholder(tf.int32, shape=[None, None, cs],name='input_x')  # input_x.shape=(None,None,3)
@@ -52,7 +60,10 @@ class Model(object):
 
         with tf.device("/gpu:0"):
             # Create the internal multi-layer cell for rnn
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
             if rnn_model_cell == 'rnn':
                 single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数,450
                 single_cell2 = tf.nn.rnn_cell.BasicRNNCell(nh2) # nh2表示神经元的个数,450
@@ -60,6 +71,7 @@ class Model(object):
                 single_cell1 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh1, state_is_tuple=True)
                 single_cell2 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh2, state_is_tuple=True)
             elif rnn_model_cell == 'gru':
+<<<<<<< HEAD
 =======
             if model_cell == 'rnn':
                 single_cell1 = tf.nn.rnn_cell.BasicRNNCell(nh1) # nh1表示神经元的个数,450
@@ -69,6 +81,8 @@ class Model(object):
                 single_cell2 = tf.compat.v1.nn.rnn_cell.BasicLSTMCell(nh2, state_is_tuple=True)
             elif model_cell == 'gru':
 >>>>>>> ok
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
                 single_cell1 = tf.nn.rnn_cell.GRUCell(nh1)
                 single_cell2 = tf.nn.rnn_cell.GRUCell(nh2)
             else:

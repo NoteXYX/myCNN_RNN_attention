@@ -1,10 +1,14 @@
 import tensorflow as tf
 import load
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
 import models.model as model
 =======
 import models.mymodel_LSTM_attention as model
 >>>>>>> ok
+=======
+import models.model as model
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
 
 import tools
 
@@ -30,17 +34,22 @@ def main():
         'nepochs':50,
         'batch_size':16,
         'keep_prob':1.0,
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
         'check_dir':'./checkpoints/GZ_EMNLP2016/krapivin_0.001_16',
 =======
         'check_dir':'./checkpoints/GZ_EMNLP2016/semeval_0.001_16',
 >>>>>>> ok
+=======
+        'check_dir':'./checkpoints/GZ_EMNLP2016/krapivin_0.001_16',
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         'display_test_per':1,
         'lr_decay_per':5
     }
 
     
     # load the dataset
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
     # data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_allwords_data_set.pkl'
     # emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
@@ -48,10 +57,15 @@ def main():
     #data_set_file = 'data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
     #emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
 >>>>>>> ok
+=======
+    # data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_allwords_data_set.pkl'
+    # emb_file = 'data/ACL2017/ACL2017_t_a_embedding.pkl'
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
     emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
     #data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
     #emb_file = 'data/ACL2017/kp20k/ACL2017_t_a_embedding.pkl'
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
     # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
 =======
@@ -61,6 +75,9 @@ def main():
     #data_set_file = 'data/ACL2017/nus/nus_t_a_GZ_data_set.pkl'
     #emb_file = 'data/ACL2017/nus/nus_t_a_GZ_embedding.pkl'
 >>>>>>> ok
+=======
+    # train_set, test_set, dic, embedding = load.atisfold(data_set_file, emb_file)
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     print('loading dataset.....')
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
     # idx2label = dict((k,v) for v,k in dic['labels2idx'].items())

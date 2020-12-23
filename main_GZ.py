@@ -2,18 +2,24 @@ import tensorflow as tf
 import time
 import os
 import load
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
 import models.mymodel_LSTM_attention as model
 import tools
 
 # def batch_putin(train, test, start_num=0, batch_size=16):
 #     batch = [train[start_num:start_num+batch_size],test[start_num:start_num+batch_size]]
 #     return batch
+<<<<<<< HEAD
 =======
 import models.model as model
 import tools
 
 >>>>>>> ok
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
 
 def train_batch_putin(train_lex, train_y, train_z, start_num=0, batch_size=16):
     # batch = [train_lex[start_num:start_num + batch_size], train_y[start_num:start_num + batch_size], train_z[start_num:start_num + batch_size]]
@@ -34,7 +40,10 @@ def main():
         'nh2':300,
         'win':3,
         'emb_dimension':300,
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         'lr':0.0001,
         'lr_decay':0.5,         #
         'max_grad_norm':5,      #
@@ -43,6 +52,7 @@ def main():
         'batch_size':16,
         'keep_prob':0.5,
         'check_dir':'./checkpoints/GZ_LSTM_att/kp20k_0.0001_16',
+<<<<<<< HEAD
 =======
         'lr':0.01,
         'lr_decay':0.5,         #
@@ -53,17 +63,23 @@ def main():
         'keep_prob':0.5,
         'check_dir':'./checkpoints/GZ_EMNLP2016/kp20k_0.01_16',
 >>>>>>> ok
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
         'display_test_per':1,   #
         'lr_decay_per':5       #
     }
 
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     # data_set_file = 'data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
     # emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
     # data_set_file = 'data/ACL2017/semeval/semeval_t_a_GZ_data_set.pkl'
     #emb_file = 'data/ACL2017/semeval/semeval_t_a_GZ_embedding.pkl'
     data_set_file = 'data/ACL2017/kp20k/kp20k_t_a_allwords_data_set.pkl'
     emb_file = 'data/ACL2017/kp20k/ACL2017_t_a_embedding.pkl'
+<<<<<<< HEAD
 =======
     #data_set_file = 'data/ACL2017/inspec/inspec_t_a_GZ_data_set.pkl'
     #emb_file = 'data/ACL2017/inspec/inspec_t_a_GZ_embedding.pkl'
@@ -76,6 +92,8 @@ def main():
     #data_set_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_data_set.pkl'
     #emb_file = 'data/ACL2017/krapivin/krapivin_t_a_GZ_embedding.pkl'
 >>>>>>> ok
+=======
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
     print('loading dataset.....')
     # train_set,test_set,dic,embedding = load.atisfold(data_set_file, emb_file)
     train_set, valid_set, test_set, dic, embedding = load.atisfold_ACL2017(data_set_file, emb_file)
@@ -210,11 +228,15 @@ def main():
                 # sys.stdout.flush())
 
             #VALID
+<<<<<<< HEAD
 <<<<<<< 936129fc0a1ef858786ced1f91cbb84bda18c18c
             if e >= 0:
 =======
             if e >= 30:
 >>>>>>> ok
+=======
+            if e >= 0:
+>>>>>>> 38d3032a94403d71e2735ea299d5f2ced3272d48
                 print('Validing..............')
                 predictions_valid=[]
                 predictions_test=[]
