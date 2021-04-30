@@ -186,20 +186,24 @@ def get_test_f1(pre_kp, golden_kp, topk=5):
         for kp in cur_more_pre_kp:
             if kp in cur_more_golden_kp:
                 more_true_num += 1
-    res['single_p'] = single_true_num / single_pre_num * 100
-    res['single_r'] = single_true_num / single_golden_num * 100
-    res['single_f1'] = 2 * res['single_p'] * res['single_r'] / (res['single_p'] + res['single_r'])
+    res['single_p'] = round(single_true_num / single_pre_num * 100, 2)
+    res['single_r'] = round(single_true_num / single_golden_num * 100, 2)
+    res['single_f1'] = str(round(2 * res['single_p'] * res['single_r'] / (res['single_p'] + res['single_r']), 2))+ "%"
+    res['single_p'] = str(res['single_p']) + "%"
+    res['single_r'] = str(res['single_r']) + "%"
     if more_pre_num == 0:
-        res['more_f1'] = 0
+        res['more_f1'] = str(0) + "%"
     else:
-        res['more_p'] = more_true_num / more_pre_num * 100
-        res['more_r'] = more_true_num / more_golden_num * 100
-        res['more_f1'] = 2 * res['more_p'] * res['more_r'] / (res['more_p'] + res['more_r'])
+        res['more_p'] = round(more_true_num / more_pre_num * 100, 2)
+        res['more_r'] = round(more_true_num / more_golden_num * 100, 2)
+        res['more_f1'] = str(round(2 * res['more_p'] * res['more_r'] / (res['more_p'] + res['more_r']), 2)) + "%"
+        res['more_p'] = str(res['more_p']) + "%"
+        res['more_r'] = str(res['more_r']) + "%"
     return res
 
 
 def main():
-    file_name = 'data/ACL2017/kp20k/kp20k_test.json'
+    file_name = 'data/ACL2017/nus/nus_test.json'
     topk = 10
     tfidf_kp = get_tfidf_kp(file_name, 20)
     textRank_kp = get_textRank_kp(file_name, 20)
@@ -209,11 +213,17 @@ def main():
     tfidf_res = get_test_f1(tfidf_kp, golden_kp, topk=topk)
     textRank_res = get_test_f1(textRank_kp, golden_kp, topk=topk)
     rake_res = get_test_f1(rake_kp, golden_kp, topk=topk)
+    file = open('checkpoints/trad_test_log.txt', 'a', encoding='utf-8')
     print(file_name)
+    file.write('file_name is: %s \n' % file_name)
     print('topk = {}'.format(topk))
+    file.write('topk = {}\n'.format(topk))
     print("tfidf_res" + str(tfidf_res))
+    file.write("tfidf_res" + str(tfidf_res) + '\n')
     print("textRank_res" + str(textRank_res))
+    file.write("textRank_res" + str(textRank_res) + '\n')
     print("rake_res" + str(rake_res))
+    file.write("rake_res" + str(rake_res) + '\n\n')
     # print('tf_idf Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(tfidf_res['p'], tfidf_res['r'], tfidf_res['f1']))
     # print('textRank Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(textRank_res['p'], textRank_res['r'],textRank_res['f1']))
     # print('RAKE Precision :{:.2f}, Recall :{:.2f}, F1 score : {:.2f}'.format(rake_res['p'], rake_res['r'],rake_res['f1']))
